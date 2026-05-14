@@ -1,0 +1,58 @@
+# ==================== #
+# GitIgnore for GAL Game
+# ==================== #
+
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 开发环境
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python (Ren'Py uses Python)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Ren'Py 特定
+*.rpyc
+*.rpyb
+log/
+traceback.txt
+errors.txt
+*.log
+
+# 游戏构建产物
+*.app/
+*.dmg
+*.exe
+*.zip
+*.tar.gz
+*.apk
+
+# 临时文件
+*.tmp
+*.bak
+*.cache
+*~
+
+# 音频处理中间文件
+*.wav_temp/
+*.mp3_temp/
+
+# 美术素材源文件（如果需要保护）
+# *.psd
+# *.sai
+# *.clip
+
+# ==================== #
+# 保留的文件
+# ==================== #
+!.gitkeep
