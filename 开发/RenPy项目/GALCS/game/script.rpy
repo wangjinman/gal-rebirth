@@ -134,9 +134,8 @@ label route_menu:
 
 label lindao_route_start:
     $ persistent.current_chapter = "lindao"
-    scene black with fade
-    centered "{size=+8}{b}林晚棠线{/b}{/size}\n{w=0.5}那些未曾说出口的话{w=0.5}"
-    pause 2.0
+    $ persistent.lindao_affection = 42  # 继承第一章好感度
+    $ renpy.movie_cutscene("fadeblack.webm") if renpy.exists("fadeblack.webm") else None
     jump lindao_day8
 
 # =============================================================================

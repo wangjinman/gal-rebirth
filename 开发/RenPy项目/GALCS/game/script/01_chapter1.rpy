@@ -633,4 +633,10 @@ label chapter1_day3:
 
     pause 2.0
 
-    jump lindao_route_start
+    narrator "第一章结束。"
+
+    narrator "你已经认识了五位重要的女孩。"
+
+    narrator "接下来的日子，你想和谁在一起？"
+
+    jump route_menu
