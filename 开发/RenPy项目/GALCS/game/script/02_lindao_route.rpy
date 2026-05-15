@@ -62,11 +62,17 @@ label lindao_day8_morning:
 
     narrator "看到我，她明显愣了一下。"
 
+    # 显示林晚棠立绘 - 惊讶表情
+    show lindao surprised at LEFT with dissolve
+
     lindao "陆鸣？你怎么在这里？"
 
     player "早啊，刚好路过。"
 
     narrator "她的表情从惊讶变成了疑惑，然后是……一丝笑意。"
+
+    # 切换到默认表情
+    show lindao normal at LEFT with dissolve
 
     lindao "刚好路过？你家不是反方向吗？"
 
@@ -77,6 +83,9 @@ label lindao_day8_morning:
     player "呃……其实是特意等你的。"
 
     narrator "她的脸微微红了。"
+
+    # 切换到害羞表情
+    show lindao shy at LEFT with dissolve
 
     lindao "……你今天吃错药了？"
 
@@ -89,6 +98,9 @@ label lindao_day8_morning:
     narrator "但我注意到——"
 
     narrator "她的耳根，红红的。"
+
+    # 隐藏立绘
+    hide lindao with dissolve
 
     $ persistent.lindao_affection += 5
     $ persistent.lindao_day8_walked_together = True
@@ -110,6 +122,9 @@ label lindao_day8_classroom:
 
     narrator "她似乎感受到了我的目光。"
 
+    # 显示林晚棠立绘
+    show lindao shy at LEFT with dissolve
+
     lindao "（小声）你今天怎么一直看我……"
 
     player "没什么，就是觉得你今天气色挺好的。"
@@ -117,6 +132,8 @@ label lindao_day8_classroom:
     narrator "这句话，和第一章那天一模一样。"
 
     narrator "但这次——"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "（脸更红了）……你上次也这么说。"
 
@@ -140,9 +157,13 @@ label lindao_day8_classroom:
 
     narrator "我把一盒牛奶放在她桌上。"
 
+    show lindao surprised at LEFT with dissolve
+
     lindao "（惊讶）给我的？"
 
     player "嗯，早餐奶。对身体好。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "（接过，小声）……谢谢。"
 
@@ -163,6 +184,9 @@ label lindao_day8_classroom:
     narrator "林远在旁边挤眉弄眼。"
 
     narrator "林晚棠的脸红得更厉害了。"
+
+    # 隐藏立绘
+    hide lindao with dissolve
 
     scene black
 
@@ -212,11 +236,15 @@ label lindao_day9:
 
     narrator "我走到她身边。"
 
+    show lindao worried at LEFT with dissolve
+
     player "没带伞？"
 
     lindao "（回头）嗯……打算等雨停。"
 
     player "我送你吧。"
+
+    show lindao surprised at LEFT with dissolve
 
     lindao "（惊讶）啊？不用了，我可以——"
 
@@ -225,6 +253,8 @@ label lindao_day9:
     narrator "我把伞递到她手里。"
 
     player "你先用。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "那你呢？"
 
@@ -250,6 +280,8 @@ label lindao_day9:
 
     player_thought "这一刻，前世那个'我没敢追上去'的遗憾，终于被弥补了。"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "（突然开口）陆鸣……"
 
     player "嗯？"
@@ -257,6 +289,8 @@ label lindao_day9:
     lindao "你……好像变了。"
 
     player "是吗？变得更好了？"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "（低头）变得更……让人看不懂了。"
 
@@ -280,6 +314,8 @@ label lindao_day9:
 
     narrator "她的眼眶微微泛红。"
 
+    show lindao crying at LEFT with dissolve
+
     lindao "……你说什么啊，我听不懂。"
 
     narrator "她低下头，加快了脚步。"
@@ -300,6 +336,8 @@ label lindao_day9:
 
     narrator "雨还在下，但似乎小了一些。"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "（接过伞）谢谢你……陆鸣。"
 
     player "不客气。明天见。"
@@ -317,6 +355,8 @@ label lindao_day9:
     narrator "但我知道——"
 
     narrator "这一次，她不会消失在雨里了。"
+
+    hide lindao with dissolve
 
     scene black
 
@@ -351,6 +391,8 @@ label lindao_day10:
 
     narrator "门口传来脚步声。"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "（出现在门口）……我可以进来吗？"
 
     player "！（惊讶）"
@@ -360,6 +402,8 @@ label lindao_day10:
     player "当、当然可以。"
 
     narrator "林晚棠拿着一个便当盒，有些局促地走进来。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "这里风景挺好的……我能在这里吃吗？"
 
@@ -373,9 +417,13 @@ label lindao_day10:
 
     player_thought "突然觉得有点丢人。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "（看了一眼我的面包）……你就吃这个？"
 
     player "面包怎么了，营养很全面的。"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "（嘴角微微上扬）你这是来野餐的还是来渡劫的？"
 
@@ -389,6 +437,8 @@ label lindao_day10:
 
     narrator "风吹过天台，带来初夏的味道。"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "陆鸣。"
 
     player "嗯？"
@@ -396,6 +446,8 @@ label lindao_day10:
     lindao "你最近在看什么书？"
 
     player "法医秦明，怎么了？"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "（皱眉）好重口味……"
 
@@ -409,6 +461,8 @@ label lindao_day10:
 
     player "你想看什么类型的？"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "就……不那么吓人的，有意思的就行。"
 
     player "东野圭吾的《解忧杂货店》怎么样？"
@@ -416,6 +470,8 @@ label lindao_day10:
     lindao "（眼睛亮了）好像听说过。"
 
     player "回头我把书借你。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "（小声）……谢谢。"
 
@@ -436,6 +492,8 @@ label lindao_day10:
 
     narrator "这一刻，时间仿佛静止了。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "陆鸣……"
 
     player "嗯？"
@@ -449,6 +507,8 @@ label lindao_day10:
     narrator "她没有说话。"
 
     narrator "但我看到她的嘴角，弯了弯。"
+
+    hide lindao with dissolve
 
     scene black
 
@@ -492,6 +552,8 @@ label lindao_day11:
 
     player_thought "等我想开口的时候，她已经走了。"
 
+    show lindao normal at LEFT with dissolve
+
     player "晚棠。"
 
     lindao "（抬头）嗯？"
@@ -499,6 +561,8 @@ label lindao_day11:
     player "放学后……能陪我聊会天吗？"
 
     narrator "她愣了一下，然后轻轻点头。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "好啊，反正我也没什么事。"
 
@@ -516,6 +580,8 @@ label lindao_day11:
 
     narrator "她的身体微微一颤。"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "（脸红）你……"
 
     player "头发挡到眼睛了。"
@@ -528,9 +594,13 @@ label lindao_day11:
 
     player "晚棠。"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "嗯……？"
 
     player "你知道吗，这个场景我见过很多次。"
+
+    show lindao surprised at LEFT with dissolve
 
     lindao "（疑惑）什么意思？"
 
@@ -541,6 +611,8 @@ label lindao_day11:
     narrator "她抬起头，看着我。"
 
     narrator "眼睛里有光，有疑惑，有……别的什么。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "陆鸣……你到底想说什么？"
 
@@ -565,6 +637,8 @@ label lindao_day11:
     narrator "我们一起走出校门。"
 
     narrator "这次的分别，没有遗憾。"
+
+    hide lindao with dissolve
 
     scene black
 

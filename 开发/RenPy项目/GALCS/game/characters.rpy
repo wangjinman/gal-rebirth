@@ -311,9 +311,19 @@ define fragment_prompt = Character(None,
 )
 
 # =============================================================================
-# 角色位置定义（用于立绘显示）
+# 角色立绘定义
 # =============================================================================
 
+# 林晚棠立绘（6表情）
+image lindao normal = "images/character/lindao/LWT_01_normal.png"
+image lindao smile = "images/character/lindao/LWT_02_smile.png"
+image lindao shy = "images/character/lindao/LWT_03_shy.png"
+image lindao worried = "images/character/lindao/LWT_04_worried.png"
+image lindao crying = "images/character/lindao/LWT_05_crying.png"
+image lindao surprised = "images/character/lindao/LWT_06_surprised.png"
+
+# 角色位置定义（用于立绘显示）
+# =============================================================================
 # 屏幕位置常量
 define LEFT = Position(xpos=0.15, xanchor=0.5)
 define LEFT_CENTER = Position(xpos=0.3, xanchor=0.5)
