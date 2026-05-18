@@ -13,7 +13,7 @@ label chapter1_day1:
 
     pause 1.0
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "早自习的铃声响起。"
 
@@ -65,7 +65,7 @@ label chapter1_day1:
 
     narrator "周芷晴。"
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "她站在讲台上，笑得像个小太阳。"
 
@@ -264,15 +264,13 @@ label chapter1_day1_office:
     $ persistent.suni_affection += 3
     $ persistent.chapter1_met_suni = True
 
-    scene black
+    scene bg classroom_sunset with dissolve
 
     narrator "一天的时间，过得很快。"
 
     narrator "或者说，太快了。"
 
     narrator "像是怕这一切只是一场梦。"
-
-    scene black
 
     narrator "放学铃响起。"
 
@@ -381,7 +379,7 @@ label chapter1_day2:
             jump chapter1_day2_observe
 
 label chapter1_day2_lindao:
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "一进教室，我就看到林晚棠已经在座位上了。"
 
@@ -487,7 +485,7 @@ label chapter1_day2_lindao:
     jump chapter1_day2_continue
 
 label chapter1_day2_observe:
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "我没有急着行动。"
 
@@ -584,8 +582,6 @@ label chapter1_day3:
 
     pause 2.0
 
-    scene black
-
     narrator "第三天。"
 
     narrator "高考倒计时：27天。"
@@ -603,7 +599,7 @@ label chapter1_day3:
         narrator "1. 提前介入林晚棠留学话题"
         narrator "她在犹豫，也许还有转机"
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "这几天，发生了很多小事。"
 

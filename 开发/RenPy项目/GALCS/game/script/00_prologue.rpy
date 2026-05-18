@@ -304,7 +304,7 @@ label prologue_memory_reconstruction:
     return
 
 label prologue_part3:
-    scene black
+    scene bg bedroom with dissolve
 
     narrator "看向时钟——"
 
@@ -318,7 +318,7 @@ label prologue_part3:
 
     player "妈！我去上学了！"
 
-    scene black
+    scene bg bedroom with dissolve
 
     narrator "餐桌上，妈妈絮絮叨叨说着什么。"
 
@@ -360,7 +360,7 @@ label prologue_part4:
 
     player_thought "有种说不出的感觉。"
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "深吸一口气。"
 

@@ -381,3 +381,16 @@ init python:
             return "#feca57"  # 中好感 - 黄色
         else:
             return "#54a0ff"  # 低好感 - 蓝色
+
+# =============================================================================
+# 背景图定义
+# =============================================================================
+
+# 教室 - 日景（序章、第一章常用）
+image bg classroom_day = "images/backgrounds/BG_01_classroom_day.png"
+
+# 教室 - 夕阳（林晚棠关键场景：告白前、放学后谈话）
+image bg classroom_sunset = "images/backgrounds/BG_02_classroom_sunset.png"
+
+# 主角卧室（日常独白、夜晚回忆场景）
+image bg bedroom = "images/backgrounds/BG_03_bedroom.png"

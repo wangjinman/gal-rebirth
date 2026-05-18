@@ -36,7 +36,7 @@ label lindao_day8:
     pause 1.0
 
 label lindao_day8_morning:
-    scene black
+    scene bg bedroom with dissolve
 
     narrator "从今天开始，我决定每天早起。"
 
@@ -44,7 +44,7 @@ label lindao_day8_morning:
 
     player_thought "绕一点路，和她一起上学。"
 
-    scene black
+    scene bg bedroom with dissolve
 
     narrator "林晚棠家和我家其实顺路。"
 
@@ -54,7 +54,7 @@ label lindao_day8_morning:
 
     narrator "她已经去了日本。"
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "今天，我站在她家楼下。"
 
@@ -108,7 +108,7 @@ label lindao_day8_morning:
     jump lindao_day8_classroom
 
 label lindao_day8_classroom:
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "早自习。"
 
@@ -145,7 +145,7 @@ label lindao_day8_classroom:
 
     $ persistent.lindao_affection += 3
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "午休时间。"
 
@@ -210,7 +210,7 @@ label lindao_day9:
 
     pause 1.0
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "天气预报说今天有雨。"
 
@@ -222,7 +222,7 @@ label lindao_day9:
 
     player_thought "……他说得对。"
 
-    scene black
+    scene bg classroom_sunset with dissolve
 
     narrator "放学的时候，雨下得很大。"
 
@@ -381,7 +381,7 @@ label lindao_day10:
 
     pause 1.0
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "午休时间。"
 
@@ -532,7 +532,7 @@ label lindao_day11:
 
     pause 1.0
 
-    scene black
+    scene bg classroom_sunset with dissolve
 
     narrator "放学后。"
 
