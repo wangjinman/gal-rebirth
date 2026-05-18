@@ -112,14 +112,30 @@ default lindao_day13_immigration = False       # 移民话题关键Flag
 
 # Day 14-16 深入了解
 default lindao_day14_secret = False
+default lindao_day14_fragment_unlocked = False    # 记忆碎片4解锁
 default lindao_day15_family_visit = False
 default lindao_day16_cherry_blossom = False
+
+# Day 16-17 说服林父QTE
+default lindao_day16_persuasion_result = None    # "rational" / "emotional" / "ultimatum"
+default lindao_day16_father_impressed = False    # 是否打动林父
+default lindao_day16_persuasion_failed = False   # 说服是否失败
 
 # Day 17-18 最终抉择
 default lindao_day17_confession_prep = False
 default lindao_day17_father_conflict = False   # 父亲冲突Flag
 default lindao_day18_confession = False        # 告白Flag
 default lindao_day18_result = False            # 告白结果
+
+# Day 20 告白准备QTE
+default lindao_day20_prepared = None          # "letter" / "gift" / "sincere"
+default lindao_day20_letter_written = False   # 是否写了情书
+default lindao_day20_sincere_mode = False      # 是否选择真诚模式
+default lindao_day20_gift = None               # "succulent" / "book" / "bracelet"
+
+# Day 23 告白分支
+default lindao_day23_confession_style = None   # "direct" / "romantic" / "letter" / "gift" / "sincere"
+default lindao_confession_success = False       # 告白是否成功
 
 # 林晚棠结局Flag
 default lindao_ending_type = None              # "HE" / "Normal" / "BE"
@@ -227,6 +243,9 @@ default ALL_FRAGMENTS = [
     # 林晚棠线碎片
     ("frag_006", "错过的告白"),
     ("frag_007", "日本的方向"),
+    ("frag_008", "她的眼泪"),          # Day 14解锁
+    ("frag_009", "父亲的背影"),        # Day 16解锁
+    ("frag_010", "星空下的约定"),      # Day 23解锁
     # ... 其他碎片
 ]
 

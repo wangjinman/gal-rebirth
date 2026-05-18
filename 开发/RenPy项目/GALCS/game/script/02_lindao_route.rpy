@@ -502,7 +502,7 @@ label lindao_day10:
 
     pause 1.0
 
-    scene bg classroom_day with dissolve
+    scene bg rooftop_sunset with dissolve
 
     narrator "午休时间。"
 
@@ -1057,7 +1057,7 @@ label lindao_day13:
 
     pause 1.0
 
-    scene bg classroom_day with dissolve
+    scene bg library with dissolve
 
     narrator "我和林晚棠约在图书馆一起复习。"
 
@@ -1491,6 +1491,14 @@ label lindao_day14:
 
     narrator "这次，我会让那束光留在这里。"
 
+    # 解锁记忆碎片4 - 她的眼泪
+    $ persistent.fragment_count += 1
+    $ persistent.fragments_collected.append("frag_008")
+    $ persistent.lindao_day14_fragment_unlocked = True
+    narrator "{b}{color=#FFD700}【记忆碎片 4/20 解锁】{/color}{/b}"
+    narrator "{i}\"前世，我从未见过她哭。\"{/i}"
+    narrator "{i}\"这一世，我要亲手擦去她的眼泪。\"{/i}"
+
     $ persistent.lindao_affection += 10
     $ persistent.lindao_day14_promise = True
     $ persistent.regret_value += 20
@@ -1742,31 +1750,149 @@ label lindao_day16:
 
     lin_father "（冷笑）谈什么？小孩子别管大人的事。"
 
-    player "（直接）我知道您欠了很多钱。"
+    # ========== QTE说服林父 ==========
+    menu lindao_day16_persuasion_qte:
+        "直接摊牌（理性说服）":
+            jump lindao_day16_persuasion_rational
+        "以情动人（情感打动）":
+            jump lindao_day16_persuasion_emotional
+        "给他压力（最后通牒）":
+            jump lindao_day16_persuasion_ultimatum
 
-    narrator "他的脸色沉了下来。"
+    label lindao_day16_persuasion_rational:
+        narrator "我决定直接切入正题。"
 
-    lin_father "你……"
+        player "（直接）我知道您欠了很多钱。"
 
-    player "我还知道，您太太要带晚棠去日本。"
+        narrator "他的脸色沉了下来。"
 
-    narrator "他没有说话。"
+        lin_father "你……"
 
-    player "我是来告诉您——如果您继续这样下去，晚棠就要走了。"
+        player "我还知道，您太太要带晚棠去日本。"
 
-    player "以后您可能再也见不到她了。"
+        narrator "他没有说话。"
 
-    narrator "他的身体微微一震。"
+        player "我是来告诉您——如果您继续这样下去，晚棠就要走了。"
 
-    player "我知道戒赌很难。"
+        player "以后您可能再也见不到她了。"
 
-    player "但您还有机会。"
+        narrator "他的身体微微一震。"
 
-    player "晚棠她……很需要父亲。"
+        player "我知道戒赌很难。但您还有机会。"
+
+        narrator "他沉默了很久。"
+
+        $ persistent.lindao_day16_persuasion_result = "rational"
+        $ persistent.lindao_day16_father_impressed = False
+
+        jump lindao_day16_persuasion_result
+
+    label lindao_day16_persuasion_emotional:
+        narrator "我决定用真心打动他。"
+
+        player "（放缓语速）林叔叔，我知道您现在很难。"
+
+        narrator "他的表情微微一变。"
+
+        player "但晚棠她……一直在担心您。"
+
+        player "上次她跟我说，她很想念小时候您带她去公园的时候。"
+
+        narrator "这是真的——前世我在整理她遗物时看到过那张照片。"
+
+        lin_father "（沉默）……"
+
+        player "我知道戒赌很难。"
+
+        player "但您还有机会。"
+
+        player "晚棠她……很需要父亲。"
+
+        narrator "他的眼眶红了。"
+
+        lin_father "（声音沙哑）你……你怎么知道……"
+
+        player "因为我也曾是那个'差点失去一切'的人。"
+
+        narrator "这句话是真的——前世的35年，我活成了最遗憾的样子。"
+
+        narrator "他没有再说话，但眼睛里有了不一样的东西。"
+
+        $ persistent.lindao_day16_persuasion_result = "emotional"
+        $ persistent.lindao_day16_father_impressed = True
+        $ persistent.lindao_affection += 8
+        $ persistent.regret_value += 15
+        $ persistent.butterfly_count += 1
+
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +8{/color}{/b}"
+        narrator "{b}{color=#9370DB}蝴蝶效应触发！{/color}{/b}"
+
+        jump lindao_day16_persuasion_result
+
+    label lindao_day16_persuasion_ultimatum:
+        narrator "我决定给他最后的压力。"
+
+        player "（直接）我知道您欠了很多钱。"
+
+        narrator "他的脸色沉了下来。"
+
+        player "我还知道，您太太要带晚棠去日本。"
+
+        player "（加重语气）如果您继续这样下去——"
+
+        player "晚棠就会离开，这辈子您可能再也见不到她了。"
+
+        narrator "他的身体微微一震。"
+
+        player "林叔叔，您想好了吗？"
+
+        narrator "他沉默了很久。"
+
+        narrator "然后——"
+
+        lin_father "（拍桌）你算什么东西！"
+
+        narrator "他站起身，神色不善。"
+
+        player_thought "糟糕，说得太过了……"
+
+        lin_father "滚！"
+
+        narrator "我被赶出了棋牌室。"
+
+        $ persistent.lindao_day16_persuasion_result = "ultimatum"
+        $ persistent.lindao_day16_father_impressed = False
+        $ persistent.lindao_day16_persuasion_failed = True
+
+        narrator "{b}{color=#6B9FFF}说服失败……但命运或许还有转机。{/color}{/b}"
+
+        jump lindao_day16_persuasion_result
+
+    label lindao_day16_persuasion_result:
+        pass
+
+    # 继续说服后的剧情
+    player "（站起身）林叔叔。"
+
+    narrator "他抬起头看着我。"
+
+    lin_father "……你说。"
+
+    player "晚棠她很需要父亲。"
+
+    player "不管发生什么，她都需要您。"
 
     narrator "他沉默了很久。"
 
     narrator "然后，他低下了头。"
+
+    # 解锁记忆碎片9 - 父亲的背影
+    $ persistent.fragment_count += 1
+    $ persistent.fragments_collected.append("frag_009")
+    $ persistent.lindao_day16_fragment_unlocked = True
+    narrator "{b}{color=#FFD700}【记忆碎片 9/20 解锁】{/color}{/b}"
+    narrator "{i}\"前世我从未见过林父低头。\"{/i}"
+    narrator "{i}\"这一世，我改变了他的命运。\"{/i}"
 
     lin_father "（声音沙哑）你一个小孩懂什么……"
 
@@ -2138,6 +2264,110 @@ label lindao_day20:
 
     player "（深呼吸）冷静，冷静……"
 
+    # ========== QTE告白准备 ==========
+    menu lindao_day20_preparation_qte:
+        "写一封情书":
+            jump lindao_day20_prep_letter
+        "准备一份礼物":
+            jump lindao_day20_prep_gift
+        "什么都不准备，真诚最重要":
+            jump lindao_day20_prep_sincere
+
+    label lindao_day20_prep_letter:
+        narrator "我决定写一封情书。"
+
+        narrator "情书是最传统的方式。"
+
+        narrator "前世我在网上看过很多模板……"
+
+        player_thought "但我不想用别人的模板。"
+
+        narrator "我要写出自己的心声。"
+
+        player "（深呼吸，开始写）"
+
+        narrator "【晚棠，当你看到这封信的时候……】"
+
+        narrator "……"
+
+        narrator "一个小时后。"
+
+        narrator "桌上散落着十几张废纸。"
+
+        narrator "但最后一封，终于让我满意了。"
+
+        $ persistent.lindao_day20_prepared = "letter"
+        $ persistent.lindao_day20_letter_written = True
+
+        narrator "{b}{color=#90EE90}准备好了告白信{/color}{/b}"
+
+        jump lindao_day20_prep_continue
+
+    label lindao_day20_prep_gift:
+        narrator "我决定准备一份礼物。"
+
+        player_thought "送什么好呢……"
+
+        narrator "想起之前她说过喜欢多肉。"
+
+        narrator "还有……她曾经提过想要一本绝版书。"
+
+        menu lindao_day20_gift_choice:
+            "去花店买一株精致的多肉":
+                $ persistent.lindao_day20_gift = "succulent"
+                narrator "我去了学校附近的花店。"
+
+                narrator "挑了一株小巧精致的多肉，装在漂亮的盆里。"
+
+                narrator "这让我想起当初救活她多肉的那天。"
+
+            "去图书馆找那本绝版书":
+                $ persistent.lindao_day20_gift = "book"
+                narrator "我去了市里的图书馆。"
+
+                narrator "花了大半天，终于找到了那本绝版书。"
+
+                narrator "旧书散发着岁月的气息，和她很配。"
+
+            "买一条简单的手链":
+                $ persistent.lindao_day20_gift = "bracelet"
+                narrator "我去了商场。"
+
+                narrator "在饰品柜台看到一条简单精致的银手链。"
+
+                narrator "不张扬，但很有质感——就像她一样。"
+
+        $ persistent.lindao_day20_prepared = "gift"
+
+        narrator "{b}{color=#90EE90}准备好了礼物{/color}{/b}"
+
+        jump lindao_day20_prep_continue
+
+    label lindao_day20_prep_sincere:
+        narrator "我决定什么都不准备。"
+
+        player_thought "不……有些东西不需要准备。"
+
+        player_thought "真心就够了。"
+
+        narrator "前世我就是因为想太多，才什么都没做。"
+
+        narrator "这一世，我要用最真诚的方式——"
+
+        narrator "直接告诉她。"
+
+        $ persistent.lindao_day20_prepared = "sincere"
+        $ persistent.lindao_day20_sincere_mode = True
+        $ persistent.lindao_affection += 5
+
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +5（真诚加分）{/color}{/b}"
+        narrator "{b}{color=#90EE90}选择了最直接的方式——真诚告白{/color}{/b}"
+
+        jump lindao_day20_prep_continue
+
+    label lindao_day20_prep_continue:
+        pass
+
     scene bg classroom_day with dissolve
 
     narrator "正当我焦头烂额的时候——"
@@ -2438,101 +2668,288 @@ label lindao_day23:
 
     narrator "我深吸一口气。"
 
-    player "你可能觉得我很奇怪。"
+    # ========== 告白方式选择 ==========
+    menu lindao_day23_confession_choice:
+        "直接告白（勇敢型）":
+            jump lindao_day23_confession_direct
+        "含蓄表白（浪漫型）":
+            jump lindao_day23_confession_romantic
+        "用准备的礼物/信件表达心意":
+            jump lindao_day23_confession_gift
 
-    player "为什么突然对你好，为什么知道你家的事，为什么……"
+    label lindao_day23_confession_direct:
+        narrator "我决定直接说出来。"
 
-    player "总是看着你发呆。"
+        player "晚棠……我喜欢你。"
 
-    show lindao worried at LEFT with dissolve
+        narrator "话说出口的瞬间，世界仿佛安静了。"
 
-    lindao "（小声）……"
+        narrator "夕阳，晚风，远处的城市喧嚣——"
 
-    player "其实……我有些事一直没告诉你。"
+        narrator "一切都停了下来。"
 
-    narrator "她没有说话，只是静静地看着我。"
+        narrator "只剩下她的眼睛，和我的心跳声。"
 
-    player "晚棠……我喜欢你。"
+        show lindao surprised at LEFT with dissolve
 
-    narrator "话说出口的瞬间，世界仿佛安静了。"
+        player "不是最近才喜欢的。"
 
-    narrator "夕阳，晚风，远处的城市喧嚣——"
+        player "是喜欢了很久。"
 
-    narrator "一切都停了下来。"
+        player "久到……我自己都记不清是从什么时候开始的。"
 
-    narrator "只剩下她的眼睛，和我的心跳声。"
+        $ persistent.lindao_day23_confession_style = "direct"
 
-    show lindao surprised at LEFT with dissolve
+        jump lindao_day23_confession_reaction
 
-    player "不是最近才喜欢的。"
+    label lindao_day23_confession_romantic:
+        narrator "我决定换一种方式。"
 
-    player "是喜欢了很久。"
+        player "晚棠，你知道吗……"
 
-    player "久到……我自己都记不清是从什么时候开始的。"
+        player "前世——"
 
-    narrator "她的眼眶红了。"
+        narrator "话说到一半，我停住了。"
 
-    show lindao crying at LEFT with dissolve
+        player_thought "不能告诉她重生的事……"
 
-    lindao "（声音颤抖）你……"
+        player "……其实，我想问你一个问题。"
 
-    player "我知道这很突然。"
+        narrator "她疑惑地看着我。"
 
-    player "我知道我们现在还在高三。"
+        player "如果有一天，我突然对你很好很好……"
 
-    player "我知道我们有很多问题要面对。"
+        player "不是因为突然，而是因为'一直'……"
 
-    player "但是——"
+        player "你会怎么想？"
 
-    narrator "我看着她的眼睛。"
+        narrator "她沉默了一会儿。"
 
-    player "我不想再错过了。"
+        show lindao shy at LEFT with dissolve
 
-    player "这次，我不想给自己留下遗憾。"
+        lindao "……那我会很幸福。"
 
-    narrator "她低下头，肩膀微微颤抖。"
+        narrator "我笑了。"
 
-    narrator "我看到有泪水滴落在地上。"
+        player "那我现在告诉你——"
 
-    player "晚棠……？"
+        player "晚棠，我喜欢你。"
 
-    narrator "她抬起头，泪眼婆娑地看着我。"
+        narrator "夕阳，晚风，远处的城市喧嚣——"
 
-    show lindao crying at LEFT with dissolve
+        narrator "一切都停了下来。"
 
-    lindao "（哽咽）你这个笨蛋……"
+        show lindao surprised at LEFT with dissolve
 
-    player "……？"
+        player "不是最近才喜欢的。"
 
-    lindao "（用手背擦眼泪）你知道我等了多久吗……"
+        player "是喜欢了很久。"
 
-    player_thought "……"
+        player "久到……连我自己都忘了。"
 
-    player_thought "她……等我？"
+        $ persistent.lindao_day23_confession_style = "romantic"
+        $ persistent.lindao_affection += 5
 
-    show lindao crying at LEFT with dissolve
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +5（浪漫加分）{/color}{/b}"
 
-    lindao "（继续哭）我也喜欢你啊……"
+        jump lindao_day23_confession_reaction
 
-    lindao "喜欢了好久好久……"
+    label lindao_day23_confession_gift:
+        narrator "我想起了之前准备的告白方式。"
 
-    narrator "我的大脑一片空白。"
+        if persistent.lindao_day20_prepared == "letter":
+            jump lindao_day23_confession_letter
+        elif persistent.lindao_day20_prepared == "gift":
+            jump lindao_day23_confession_present
+        else:
+            jump lindao_day23_confession_sincere
 
-    narrator "她……也喜欢我？"
+    label lindao_day23_confession_letter:
+        narrator "我拿出那封写了很久的情书。"
 
-    narrator "前世，我暗恋了她三年，什么都没说。"
+        player "晚棠……这是我写给你的。"
 
-    narrator "这一世——"
+        narrator "她愣了一下，接过信封。"
 
-    narrator "原来，她也喜欢我。"
+        narrator "夕阳下，她一个字一个字地读着。"
 
-    narrator "我伸出手，把她拉进怀里。"
+        narrator "我紧张地看着她。"
 
-    player "（轻声）对不起……让你等了这么久。"
+        narrator "她的眼睛渐渐红了。"
+
+        show lindao crying at LEFT with dissolve
+
+        lindao "（声音颤抖）这是……你写的？"
+
+        player "（点头）嗯。"
+
+        narrator "她把信贴在胸口。"
+
+        lindao "……写得真好。"
+
+        player "所以……"
+
+        player "晚棠，我喜欢你。"
+
+        $ persistent.lindao_day23_confession_style = "letter"
+        $ persistent.lindao_affection += 8
+        $ persistent.regret_value += 20
+
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +8{/color}{/b}"
+        narrator "{b}{color=#FFD700}【记忆碎片 5/20 解锁】{/color}{/b}"
+
+        jump lindao_day23_confession_reaction
+
+    label lindao_day23_confession_present:
+        narrator "我拿出准备的礼物。"
+
+        if persistent.lindao_day20_gift == "succulent":
+            player "这是给你的……就像当初我救活的那株多肉一样。"
+
+            narrator "她接过小巧精致的多肉盆栽。"
+
+            narrator "夕阳照在透明的盆壁上，反射出温暖的光。"
+
+            lindao "（惊讶）这株……好可爱……"
+
+        elif persistent.lindao_day20_gift == "book":
+            player "这是给你的……我记得你提过想要这本书。"
+
+            narrator "她接过那本有些泛黄的绝版书。"
+
+            narrator "眼睛一瞬间亮了。"
+
+            lindao "（捂住嘴）这是……你怎么找到的？！"
+
+        else:
+            player "这是给你的……我看到它的时候，觉得很适合你。"
+
+            narrator "她打开盒子，看到那条银手链。"
+
+            narrator "夕阳下，手链闪着柔和的光。"
+
+            lindao "（轻声）好漂亮……"
+
+        show lindao shy at LEFT with dissolve
+
+        lindao "谢谢你……陆鸣。"
+
+        player "所以……晚棠，我喜欢你。"
+
+        $ persistent.lindao_day23_confession_style = "gift"
+        $ persistent.lindao_affection += 10
+        $ persistent.regret_value += 15
+
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +10{/color}{/b}"
+        narrator "{b}{color=#FFD700}【记忆碎片 5/20 解锁】{/color}{/b}"
+
+        jump lindao_day23_confession_reaction
+
+    label lindao_day23_confession_sincere:
+        narrator "我决定用最真诚的方式。"
+
+        player "晚棠。"
+
+        narrator "我看着她的眼睛。"
+
+        player "其实我也不知道该怎么说……"
+
+        player "但有些话，我憋了很久。"
+
+        narrator "她静静地听着。"
+
+        player "从第一次见到你的时候，我就觉得你很特别。"
+
+        player "后来每天和你一起上学、放学……"
+
+        player "我就知道，我喜欢你。"
+
+        narrator "她的眼眶红了。"
+
+        show lindao crying at LEFT with dissolve
+
+        player "不是突然的喜欢，是一直的喜欢。"
+
+        player "晚棠……我喜欢你。"
+
+        $ persistent.lindao_day23_confession_style = "sincere"
+        $ persistent.lindao_affection += 6
+
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +6{/color}{/b}"
+
+        jump lindao_day23_confession_reaction
+
+    label lindao_day23_confession_reaction:
+        narrator "她的眼眶红了。"
+
+        show lindao crying at LEFT with dissolve
+
+        lindao "（声音颤抖）你……"
+
+        player "我知道这很突然。"
+
+        player "我知道我们现在还在高三。"
+
+        player "我知道我们有很多问题要面对。"
+
+        player "但是——"
+
+        narrator "我看着她的眼睛。"
+
+        player "我不想再错过了。"
+
+        player "这次，我不想给自己留下遗憾。"
+
+        narrator "她低下头，肩膀微微颤抖。"
+
+        narrator "我看到有泪水滴落在地上。"
+
+        player "晚棠……？"
+
+        narrator "她抬起头，泪眼婆娑地看着我。"
+
+        show lindao crying at LEFT with dissolve
+
+        lindao "（哽咽）你这个笨蛋……"
+
+        player "……？"
+
+        lindao "（用手背擦眼泪）你知道我等了多久吗……"
+
+        player_thought "……"
+
+        player_thought "她……等我？"
+
+        show lindao crying at LEFT with dissolve
+
+        lindao "（继续哭）我也喜欢你啊……"
+
+        lindao "喜欢了好久好久……"
+
+        narrator "我的大脑一片空白。"
+
+        narrator "她……也喜欢我？"
+
+        narrator "前世，我暗恋了她三年，什么都没说。"
+
+        narrator "这一世——"
+
+        narrator "原来，她也喜欢我。"
+
+        narrator "我伸出手，把她拉进怀里。"
+
+        player "（轻声）对不起……让你等了这么久。"
 
     narrator "她在我怀里哭得更厉害了。"
 
     narrator "但这次，是幸福的眼泪。"
+
+    # 解锁记忆碎片10 - 星空下的约定
+    $ persistent.fragment_count += 1
+    $ persistent.fragments_collected.append("frag_010")
+    narrator "{b}{color=#FFD700}【记忆碎片 10/20 解锁】{/color}{/b}"
+    narrator "{i}\"前世，我从未牵过她的手。\"{/i}"
+    narrator "{i}\"这一世，星空下，我们终于在一起了。\"{/i}"
 
     $ persistent.lindao_affection = 100
     $ persistent.lindao_confession_success = True

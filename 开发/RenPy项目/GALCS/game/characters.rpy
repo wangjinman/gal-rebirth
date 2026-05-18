@@ -412,3 +412,12 @@ image bg classroom_sunset = "images/backgrounds/BG_02_classroom_sunset.png"
 
 # 主角卧室（日常独白、夜晚回忆场景）
 image bg bedroom = "images/backgrounds/BG_03_bedroom.png"
+
+# 学校天台 - 夕阳（林晚棠Day 10天台午餐、周芷晴线关键场景）
+image bg rooftop_sunset = "images/backgrounds/BG_04_rooftop_sunset_golden.png"
+
+# 学校图书馆 - 日景（林晚棠Day 13图书馆、苏念卿线）
+image bg library = "images/backgrounds/BG_05_library_day.png"
+
+# 学校走廊 - 下午（日常转场、课间场景）
+image bg corridor = "images/backgrounds/BG_06_corridor_afternoon.png"
