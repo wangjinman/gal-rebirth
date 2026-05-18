@@ -1,9 +1,11 @@
 # 《重生·轻逆袭》— Steam独立GAL游戏策划案
 
-> **版本**：v1.0  
-> **日期**：2026-05-14  
+> **版本**：v1.2  
+> **日期**：2026-05-18  
 > **作者**：wangjinman  
 > **状态**：策划阶段
+>
+> **更新说明**：v1.2 新增交互系统Ren'Py代码实现示例（Day 9/12/13参考代码），补充好感度浮动具体数值
 
 ---
 
@@ -357,6 +359,427 @@
 | **遗憾弥补系统** | 量化记录主角弥补前世遗憾的进度，影响TE解锁 |
 | **记忆碎片系统** | 随游戏推进解锁主角前世的"记忆碎片"，揭示更多真相 |
 | **Flag系统** | 关键选择自动记录，影响结局分支 |
+| **玩家交互系统** | 关键选择分支、主动探索、QTE事件，增加玩家参与感 |
+
+### 5.4 玩家交互系统（v1.1新增）
+
+> **设计目标**：解决"玩家只需点击看剧情"的无聊感，让玩家在关键时刻做出选择、主动探索、触发特殊事件。
+
+---
+
+#### 5.4.1 关键选择分支系统
+
+**设计原则**：选择不是"选A更好"，而是"你的选择定义了你是谁"。
+
+```
+【选择类型分类】
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【A型 · 命运转折型】（影响核心剧情走向）
+
+定义：重大抉择，会直接改变故事的结局分支
+出现频率：每条线1-3次
+设计要点：
+- 选项之间没有绝对的"正确答案"
+- 不同选择通向不同的情感体验（而非"好结局/坏结局"）
+- 选择后的后果需要延迟显现，制造"蝴蝶效应"感
+
+示例（林晚棠线·Day 13）：
+┌────────────────────────────────────────────────────┐
+│ 【移民话题·关键抉择】                               │
+│                                                     │
+│ 林晚棠：（眼眶泛红）"我妈在办移民手续...要去日本。" │
+│                                                     │
+│ 选项A：「我不想让你走」                              │
+│        → 坦诚表达心意，好感度+15，但移民问题悬而未决 │
+│        → 解锁后续"告白前置"剧情线                   │
+│                                                     │
+│ 选项B：「我们可以想办法」                            │
+│        → 承诺一起解决问题，好感度+10               │
+│        → 解锁"说服林父"事件链（蝴蝶效应核心）       │
+│                                                     │
+│ 选项C：「不管你怎么决定，我都支持你」                 │
+│        → 尊重她的选择，好感度+5                     │
+│        → 移民正常进行，进入"异地恋"结局线           │
+└────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【B型 · 态度表态型】（影响角色对你的认知）
+
+定义：表态型选择，展现你对角色的态度
+出现频率：每条线3-5次
+设计要点：
+- 展现角色的不同侧面（温柔/直接/理性/冲动）
+- 影响角色对你的"印象标签"（可靠/浪漫/朋友/弟弟）
+- 累积影响告白时的"心理准备度"
+
+示例（林晚棠线·Day 9）：
+┌────────────────────────────────────────────────────┐
+│ 【雨中送伞·态度选择】                               │
+│                                                     │
+│ 林晚棠：（站在雨里）"伞忘带了..."                    │
+│                                                     │
+│ 选项A：「我送你回去」（绅士型）                       │
+│        → 好感度+5，展现可靠一面                    │
+│        → 林晚棠印象标签："可以依靠的人"              │
+│                                                     │
+│ 选项B：「我们一起撑伞」（浪漫型）                     │
+│        → 好感度+8，但需要步行更久                   │
+│        → 林晚棠印象标签："有点...不一样"             │
+│        → 解锁"雨中暧昧"特殊对话                     │
+│                                                     │
+│ 选项C：「你先在这等，我去借伞」（理性型）              │
+│        → 好感度+3，避免肢体接触                     │
+│        → 林晚棠印象标签："很体贴但有点疏远"           │
+└────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【C型 · 细节观察型】（影响隐藏信息获取）
+
+定义：观察/行动型选择，可能发现隐藏信息
+出现频率：每条线2-4次
+设计要点：
+- 答案不影响好感度，但影响"信息获取"
+- 发现的隐藏信息可用于后续剧情
+- 设计"二次发现"——首次错过可回头补救
+
+示例（林晚棠线·Day 12）：
+┌────────────────────────────────────────────────────┐
+│ 【去林晚棠家·细节观察】                             │
+│                                                     │
+│ 她去厨房倒水时，你在客厅环顾四周...                   │
+│                                                     │
+│ 选项A：仔细看看书架                                   │
+│        → 发现她喜欢看的书单（获得"共同话题"信息）    │
+│                                                     │
+│ 选项B：观察阳台的多肉植物                              │
+│        → 发现那株快枯萎的多肉（触发"多肉约定"事件）  │
+│                                                     │
+│ 选项C：看看墙上的全家福                                 │
+│        → 发现父母关系紧张的痕迹（伏笔后续家庭剧情）   │
+│                                                     │
+│ 选项D：什么都不做，静静等待                             │
+│        → 无额外信息获得                              │
+└────────────────────────────────────────────────────┘
+```
+
+---
+
+#### 5.4.2 记忆碎片探索系统
+
+**设计原则**：让玩家主动"回想"，而不是被动接受信息。
+
+```
+【记忆碎片探索机制】
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【触发条件】
+
+1. 场景触发型
+   - 进入特定场景时自动触发
+   - 如：看到夕阳 → 想起前世告白失败的场景
+   - 特点：被动触发，用于关键剧情节点
+
+2. 主动回想型（v1.1新增）
+   - 在特定对话后出现"回想"选项
+   - 玩家选择"回想"才能解锁碎片
+   - 特点：主动参与，错过不惩罚但会错过奖励
+
+3. 组合触发型
+   - 同时满足多个条件才能解锁
+   - 如：好感度≥60 + 持有特定道具 + 处于特定场景
+   - 特点：高价值奖励，需要玩家仔细探索
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【林晚棠线·记忆碎片位置设计（共6个）】
+
+┌────────────────────────────────────────────────────┐
+│ 碎片1：序章自动解锁                                 │
+│ 触发：重生后第一夜                                  │
+│ 内容：毕业典礼上的错过                               │
+│ 奖励：无                                            │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│ 碎片2：Day 9 雨中触发                               │
+│ 触发：雨中送伞场景                                  │
+│ 内容："前世我也想过送她回家...但那天我退缩了"       │
+│ 奖励：遗憾弥补值+15                                 │
+│ 触发方式：被动（场景关联）                           │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│ 碎片3：Day 12 主动回想                             │
+│ 触发：多肉约定场景后                                │
+│ 内容："我记得她提过，她最珍视的东西总养不活"         │
+│ 奖励：解锁"多肉存活"成功率+30%                      │
+│ 触发方式：主动                                        │
+│ ┌────────────────────────────────────────────────┐ │
+│ │ player_thought "这盆多肉...她好像特别在意。"      │ │
+│ │                                                  │ │
+│ │ menu:                                            │ │
+│ │     "努力回想...":                               │ │
+│ │         # 触发碎片3                               │ │
+│ │         memory_narration "..."                   │ │
+│ │         $ persistent.fragment_3 = True            │ │
+│ │         "【记忆碎片 3/20 解锁】"                 │ │
+│ │     "先不管了":                                  │ │
+│ │         # 跳过，不惩罚                           │ │
+│ └────────────────────────────────────────────────┘ │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│ 碎片4：Day 14 天台触发                              │
+│ 触发：承诺场景                                      │
+│ 内容："前世我从未对她做出过任何承诺..."              │
+│ 奖励：遗憾弥补值+20                                 │
+│ 触发方式：被动（情感关联）                           │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│ 碎片5：Day 17 说服林父前（主动回想）                │
+│ 触发：说服林父前夜                                  │
+│ 内容："前世她父亲的事...我记得有个转折点"            │
+│ 奖励：解锁"说服成功率"提示（知道该说什么）           │
+│ 触发方式：主动                                        │
+│ ┌────────────────────────────────────────────────┐ │
+│ │ player_thought "要说服他...我该怎么切入？"        │ │
+│ │                                                  │ │
+│ │ menu:                                            │ │
+│ │     "回想起前世的线索":                           │ │
+│ │         # 触发碎片5                               │ │
+│ │         memory_narration "我依稀记得..."          │ │
+│ │         "林父不是不想改变，而是不知道怎么开口..."   │ │
+│ │         $ persistent.fragment_5 = True            │ │
+│ │         "【记忆碎片 5/20 解锁】"                  │ │
+│ │         "（获得提示：重点是让他看到希望）"        │ │
+│ │     "直接去试试":                                 │ │
+│ │         # 跳过，凭直觉行动                       │ │
+│ │         "（说服难度提升，但失败也有后续剧情）"     │ │
+│ └────────────────────────────────────────────────┘ │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│ 碎片6：Day 23 告白成功后                           │
+│ 触发：告白成功后自动触发                            │
+│ 内容："前世最后一面...她笑着说再见，然后消失在人海"  │
+│ 奖励：遗憾弥补值+30，TE前置条件之一                  │
+│ 触发方式：被动（结局关联）                           │
+└────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【记忆碎片UI设计】
+
+┌────────────────────────────────────────────────────┐
+│                                                     │
+│     ┌─────────────────────────────────────────┐     │
+│     │         【记忆碎片解锁】                  │     │
+│     │                                         │     │
+│     │     "雨中送伞...这场景我见过。"          │     │
+│     │                                         │     │
+│     │     ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░  碎片 2/20     │     │
+│     │                                         │     │
+│     │     [继续]                               │     │
+│     └─────────────────────────────────────────┘     │
+│                                                     │
+└────────────────────────────────────────────────────┘
+```
+
+---
+
+#### 5.4.3 QTE快速反应事件
+
+**设计原则**：关键时刻的紧张感，但不过度使用（每条线1-2次）。
+
+```
+【QTE设计规范】
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【触发场景类型】
+
+1. 告白关键时刻
+   - 她说了一半的话，你需要"接住"
+   - 限时3秒，点击屏幕继续
+   - 成功：告白顺利；失败：告白被打断
+
+2. 危机救场
+   - 她需要帮助的瞬间
+   - 限时2秒，做出反应
+   - 成功：好感度大幅提升；失败：错过最佳时机
+
+3. 意外相遇
+   - 她发现了你的秘密
+   - 限时3秒，决定如何回应
+   - 不同选项通向不同剧情
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【林晚棠线QTE示例】
+
+┌────────────────────────────────────────────────────┐
+│ Day 21 篮球场·告白前夜                             │
+│                                                     │
+│ 林晚晴：（小声）"其实...我有件事一直想问你..."       │
+│                                                     │
+│ [QTE开始 - 3秒倒计时]                               │
+│                                                     │
+│ ██████████░░░░ 2.1s                                │
+│                                                     │
+│ [点击屏幕]                                          │
+│                                                     │
+│ 林晚棠：（脸红）"你刚才...在写什么？"                │
+│                                                     │
+│ （QTE成功：紧张但不慌乱地回应）                       │
+│ "再等等，到时候你就知道了。"                         │
+│                                                     │
+│ （QTE失败：紧张得说不出话）                          │
+│ "没、没什么！就是随便写写！"                        │
+│ → 林晚棠露出失落的表情                              │
+│ → 触发"告白前夜的误会"小支线                        │
+└────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────┐
+│ Day 17 说服林父·关键时刻                           │
+│                                                     │
+│ 林父：（沉默良久）"你说这么多...有什么用？"          │
+│                                                     │
+│ [QTE开始 - 2秒倒计时]                               │
+│                                                     │
+│ ██████████░░░░ 1.3s                                │
+│                                                     │
+│ （QTE成功：说出关键台词）                           │
+│ "如果您戒赌...晚棠就不用跟着她妈妈去日本了。"         │
+│                                                     │
+│ （QTE失败：说不出口）                                │
+│ "我...我会努力的..."                                │
+│ → 林父摇头："小孩子懂什么"                          │
+│ → 说服难度大幅提升                                  │
+└────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【QTE UI设计】
+
+┌────────────────────────────────────────────────────┐
+│                                                     │
+│                                                     │
+│                    林晚棠                           │
+│                   "其实..."                          │
+│                                                     │
+│                                                     │
+│                                                     │
+│  ████████████████░░░░  2.3s                        │
+│                                                     │
+│           [ 点击屏幕继续 ]                           │
+│                                                     │
+└────────────────────────────────────────────────────┘
+```
+
+---
+
+#### 5.4.4 好感度浮动+扣分机制
+
+```
+【好感度浮动规则】
+
+基础机制：
+- 正确选择：好感度 +X
+- 错误选择：好感度 -Y（扣分）
+- 被动错过：好感度 不增不减（错过机会）
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【林晚棠线·关键抉择扣分标注】
+
+├─ Day 13·移民话题：
+│   ├─ 选择A「她应该有更好的选择」→ 好感度 -10 ★错误
+│   │   原因：这句话等于"我不在乎你去哪"
+│   ├─ 选择B「我不想让你走」→ 好感度 +15 ★正确
+│   └─ 选择C「我们可以想办法」→ 好感度 +10 ★正确
+│
+├─ Day 14·多肉约定：
+│   ├─ 主动回想碎片3 → 解锁成功率加成
+│   └─ 跳过 → 难度提升但有后续补救
+│
+├─ Day 17·说服林父：
+│   ├─ 选择A「我可以帮你想办法」→ 好感度 +10 ★正确
+│   ├─ 选择B「让你妈妈知道她在努力改变」→ 好感度 +15 ★★最佳
+│   └─ 选择不行动 → 好感度 -15 ★★重大错误
+│       原因：这是蝴蝶效应的核心节点
+│
+├─ Day 20·告白准备：
+│   ├─ 主动准备并发现她在偷看 → 好感度 +8 ★正确
+│   └─ 错过这次 → 告白前夜的紧张感减弱
+│
+└─ Day 23·告白：
+    ├─ 好感度 ≥ 80 → 告白成功
+    ├─ 好感度 60-79 → 告白被拒但可重来
+    └─ 好感度 < 60 → 进入BE线
+```
+
+---
+
+#### 5.4.5 交互系统UI反馈
+
+```
+【选择界面UI】
+
+┌────────────────────────────────────────────────────┐
+│                                                     │
+│  ┌─────────────────────────────────────────────┐   │
+│  │                                              │   │
+│  │  "晚棠，关于移民的事..."                      │   │
+│  │                                              │   │
+│  │  ┌───────────────────────────────────────┐   │   │
+│  │  │  A.「我不想让你走」                    │   │   │
+│  │  │     → 坦诚表达心意                      │   │   │
+│  │  └───────────────────────────────────────┘   │   │
+│  │                                              │   │
+│  │  ┌───────────────────────────────────────┐   │   │
+│  │  │  B.「我们可以想办法」                  │   │   │
+│  │  │     → 承诺一起解决问题                  │   │   │
+│  │  └───────────────────────────────────────┘   │   │
+│  │                                              │   │
+│  │  ┌───────────────────────────────────────┐   │   │
+│  │  │  C.「不管你怎么决定，我都支持你」        │   │   │
+│  │  │     → 尊重她的选择                      │   │   │
+│  │  └───────────────────────────────────────┘   │   │
+│  │                                              │   │
+│  └─────────────────────────────────────────────┘   │
+│                                                     │
+│  ♥ 林晚棠好感度：68/100  [███████░░░]              │
+│                                                     │
+└────────────────────────────────────────────────────┘
+
+【好感度变化反馈】
+
+┌────────────────────────────────────────────────────┐
+│                                                     │
+│              ♥ 林晚棠  +15                          │
+│              "原来...他这么在乎我"                   │
+│                                                     │
+└────────────────────────────────────────────────────┘
+
+【遗憾弥补值反馈】
+
+┌────────────────────────────────────────────────────┐
+│                                                     │
+│         【遗憾弥补值】  115/200                     │
+│         ▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░                   │
+│                                                     │
+│         "你弥补了'前世未能告白'的遗憾"              │
+│                                                     │
+└────────────────────────────────────────────────────┘
+```
+
+---
 
 ### 5.2 UI设计方向
 
@@ -416,7 +839,94 @@
 | **SE音效** | 点击/存档/场景转换等，约20个 | AI音效/免费素材库 |
 | **CV配音** | 全程对话配音（约10小时文本量） | 预算充足时外包 |
 
-### 6.4 AI工作流
+### 6.4 AI生成立绘提示词规范
+
+> ⚠️ **重要**：生成立绘时必须使用以下提示词模板，确保背景透明，便于游戏集成。
+
+#### 基础模板（必填）
+
+```
+[角色描述], [服装描述], [表情描述], transparent background, PNG, high quality, anime style
+```
+
+#### 核心关键词（必加）
+
+| 关键词 | 作用 |
+|--------|------|
+| `transparent background` | 透明背景，PNG格式 |
+| `no background` | 无背景 |
+| `PNG` | 确保输出PNG格式 |
+| `alpha channel` | 保留透明度通道 |
+
+#### 推荐质量增强词
+
+| 关键词 | 作用 |
+|--------|------|
+| `best quality` | 最佳质量 |
+| `masterpiece` | 杰作级 |
+| `detailed` | 细节丰富 |
+| `clean lineart` | 干净线稿 |
+| `properly transparent` | 正确透明处理 |
+
+#### 立绘生成负面提示词
+
+```
+white background, black background, solid background, watermark, signature, text, cropped, worst quality, low quality, blurry, bad anatomy
+```
+
+#### 五位女主立绘提示词模板
+
+**林晚棠（温柔内敛）**
+```
+beautiful anime girl, long brown hair, amber eyes, gentle smile, school uniform (white blouse, gray skirt), upper body portrait, transparent background, PNG, clean lineart, soft lighting, Japanese anime style, best quality, masterpiece
+```
+
+**苏念卿（温柔知性）**
+```
+beautiful anime woman, medium length chestnut hair, gray-blue eyes, mature elegant smile, casual elegant outfit (knit sweater), upper body portrait, transparent background, PNG, clean lineart, warm lighting, Japanese anime style, best quality, masterpiece
+```
+
+**周芷晴（元气阳光）**
+```
+beautiful anime girl, orange-yellow high ponytail, emerald green eyes, bright cheerful smile, school uniform (yellow sweater, white skirt), dynamic pose, transparent background, PNG, clean lineart, energetic lighting, Japanese anime style, best quality, masterpiece
+```
+
+**陈墨（冷傲学霸）**
+```
+beautiful anime girl, short black hair, silver-gray eyes, cool aloof expression, school uniform (crisp white shirt, navy vest), glasses, upper body portrait, transparent background, PNG, clean lineart, cool lighting, Japanese anime style, best quality, masterpiece
+```
+
+**沈听雨（神秘角色）**
+```
+beautiful anime woman, long silver-white hair, light purple eyes, mysterious gentle smile, elegant traditional-modern fusion outfit, upper body portrait, transparent background, PNG, clean lineart, ethereal lighting, Japanese anime style, best quality, masterpiece
+```
+
+#### 立绘表情变化提示词模板
+
+在基础提示词后替换表情描述：
+
+| 表情 | 关键词 |
+|------|--------|
+| 普通/Normal | `gentle neutral expression` |
+| 微笑/Smile | `soft smile, happy eyes, gentle` |
+| 害羞/Shy | `blushing, shy smile, slightly lowered eyes` |
+| 忧虑/Worried | `worried expression, concerned eyes, slight frown` |
+| 哭泣/Crying | `tears in eyes, crying, emotional` |
+| 惊讶/Surprised | `surprised expression, wide eyes, open mouth` |
+| 生气/Angry | `angry expression, furrowed brows` |
+| 冷漠/Cold | `cold expression, distant eyes` |
+
+#### 背景图生成提示词（补充）
+
+如果需要重新生成背景图：
+
+```
+[场景描述], detailed background, no characters, proper perspective, [时间段: morning/sunset/night lighting], Japanese high school classroom/home/cafe, anime style background, high quality
+```
+
+---
+
+### 6.5 AI工作流
 
 ```
 剧本创作流程：
@@ -591,6 +1101,565 @@
 
 > **策划案版本记录**
 > - v1.0 (2026-05-14)：初始版本，完成基础框架
+> - v1.1 (2026-05-18)：新增玩家交互系统设计，解决"玩家操作感不足"痛点
+>   - 关键选择分支系统（命运转折型/态度表态型/细节观察型）
+>   - 记忆碎片探索系统（场景触发/主动回想/组合触发）
+>   - QTE快速反应事件（告白关键时刻/危机救场/意外相遇）
+>   - 好感度浮动+扣分机制
+>   - 交互系统UI反馈设计
+> - v1.2 (2026-05-18)：新增交互系统Ren'Py代码实现示例
+>   - Day 9/12/13 参考代码
+>   - 好感度浮动具体数值标注
+>   - 记忆碎片触发代码模板
+
+---
+
+## 附录：交互系统Ren'Py代码实现示例
+
+### A. 态度选择菜单（B型·Day 9参考）
+
+```rpy
+# Day 9 雨中送伞 - 态度选择
+# 位置：02_lindao_route.rpy - label lindao_day9
+
+label lindao_day9_choice:
+    show lindao worried at LEFT with dissolve
+
+    player "没带伞？"
+
+    lindao "（回头）嗯……打算等雨停。"
+
+    # ========================================
+    # 【B型·态度表态型选择】
+    # ========================================
+
+    menu lindao_day9_umbrella_choice:
+        "「我送你回去吧。」":
+            # 绅士型
+            $ persistent.lindao_personality_impression = "reliable"
+            $ persistent.lindao_affection += 5
+            $ persistent.lindao_day9_gentleman = True
+
+            narrator "我撑开伞，站在她旁边。"
+
+            player "走吧，我送你。"
+
+            show lindao shy at LEFT with dissolve
+
+            lindao "（犹豫了一下）……那就麻烦你了。"
+
+            narrator "她小心翼翼地靠近我。"
+
+            narrator "肩膀和肩膀之间，隔着一把伞的距离。"
+
+        "「我们一起撑伞吧。」":
+            # 浪漫型
+            $ persistent.lindao_personality_impression = "romantic"
+            $ persistent.lindao_affection += 8
+            $ persistent.lindao_day9_shared_umbrella = True
+
+            narrator "我把自己的伞收起来。"
+
+            player "伞太小，一把就够。"
+
+            show lindao surprised at LEFT with dissolve
+
+            lindao "（脸红）这、这样不太好吧……"
+
+            player "淋感冒了才不好。"
+
+            narrator "我自然地走到她旁边。"
+
+            narrator "伞下，两个人的距离近得能听到彼此的呼吸。"
+
+            # 触发记忆碎片2
+            jump memory_fragment_2
+
+        "「你先用伞，我跑回去就行。」":
+            # 理性型
+            $ persistent.lindao_personality_impression = "considerate"
+            $ persistent.lindao_affection += 3
+            $ persistent.lindao_day9_rational = True
+
+            narrator "我把伞递给她。"
+
+            player "你先用，我有书包挡一下就行。"
+
+            show lindao worried at LEFT with dissolve
+
+            lindao "可是你会淋湿的……"
+
+            player "没关系，我家近。"
+
+            narrator "她犹豫着接过伞。"
+
+            narrator "离开时，她回头看了我好几眼。"
+
+# ========================================
+# 【记忆碎片2触发】
+# ========================================
+
+label memory_fragment_2:
+    scene black with fade
+
+    narrator "……"
+
+    player_thought "这个场景……"
+
+    player_thought "前世的我，也站在这里过。"
+
+    player_thought "但那时候，我什么都没做。"
+
+    player_thought "看着她一个人淋着雨离开……"
+
+    narrator "一阵恍惚后，我回过神来。"
+
+    # 解锁记忆碎片
+    $ persistent.fragment_2 = True
+    $ persistent.regret_value += 15
+
+    # 显示碎片解锁提示
+    call screen memory_fragment_popup("碎片 2/20", "前世我也想过送她回家...但那天我退缩了。")
+
+    scene bg street_rain with dissolve
+
+    jump lindao_day9_after_rain
+```
+
+### B. 细节观察选择（C型·Day 12参考）
+
+```rpy
+# Day 12 林晚棠家中 - 细节观察
+# 位置：02_lindao_route.rpy - label lindao_day12_home
+
+label lindao_day12_home:
+    # ... 她去厨房倒水的场景 ...
+
+    narrator "她走进厨房去倒水。"
+
+    narrator "我一个人留在客厅，环顾四周……"
+
+    # ========================================
+    # 【C型·细节观察型选择】
+    # ========================================
+
+    menu lindao_day12_observation:
+        "仔细看看书架":
+            $ persistent.lindao_day12_observed_bookshelf = True
+
+            narrator "书架上摆满了书。"
+
+            narrator "大多是文学类，还有一些日本文学……"
+
+            narrator "《挪威的森林》《雪国》《1Q84》……"
+
+            player_thought "原来她喜欢日本文学。"
+
+            player_thought "难怪……会去日本留学。"
+
+            # 获得"共同话题"信息
+            $ persistent.lindao_common_topic_unlocked = True
+
+            narrator "【发现：她的书架上有很多日本文学书籍】"
+
+        "观察阳台的多肉植物":
+            $ persistent.lindao_day12_observed_succulent = True
+
+            narrator "阳台上有几盆多肉植物。"
+
+            narrator "大部分都很精神……"
+
+            narrator "但有一盆明显快枯萎了，叶子发黄发软。"
+
+            player_thought "这盆……她应该很在意吧。"
+
+            # 触发多肉约定前置
+            $ persistent.lindao_succulent_hint = True
+
+            narrator "【发现：那盆快枯萎的多肉似乎对她很重要】"
+
+        "看看墙上的全家福":
+            $ persistent.lindao_day12_observed_photo = True
+
+            narrator "墙上挂着一张全家福。"
+
+            narrator "照片里是林晚棠小时候的样子。"
+
+            narrator "旁边站着一个男人……是她父亲吧。"
+
+            narrator "但照片上有一些划痕，像是被刻意刮过的。"
+
+            player_thought "她和父亲的关系……"
+
+            # 获得家庭背景信息
+            $ persistent.lindao_family_background_hint = True
+
+            narrator "【发现：全家福上有被刮过的痕迹】"
+
+        "什么都不做，静静等待":
+            $ persistent.lindao_day12_did_nothing = True
+
+            narrator "我站在原地，没有乱动。"
+
+            narrator "这是她的家，我不该随便翻看。"
+
+            narrator "……"
+
+            narrator "她端着水杯走出来。"
+
+    # 继续剧情...
+```
+
+### C. 命运转折选择（A型·Day 13参考）
+
+```rpy
+# Day 13 移民话题 - 命运转折
+# 位置：02_lindao_route.rpy - label lindao_day13_immigration
+
+label lindao_day13_immigration:
+    # ... 前置剧情铺垫 ...
+
+    show lindao crying at LEFT with dissolve
+
+    lindao "（声音颤抖）陆鸣……我妈在办移民手续……"
+
+    lindao "要去日本……"
+
+    narrator "我的心猛地一沉。"
+
+    narrator "前世，她就是在这个时候离开的。"
+
+    narrator "而我什么都没做。"
+
+    narrator "这一次——"
+
+    # ========================================
+    # 【A型·命运转折型选择 - 核心抉择点】
+    # ========================================
+
+    menu lindao_day13_immigration_choice:
+        "「晚棠……我不想让你走。」":
+            # 坦诚表达心意
+            $ persistent.lindao_day13_choice_A = True
+            $ persistent.lindao_affection += 15
+
+            narrator "我深吸一口气。"
+
+            player "晚棠……我不想让你走。"
+
+            narrator "她愣住了，眼眶更红了。"
+
+            show lindao surprised at LEFT with dissolve
+
+            lindao "你……你说什么？"
+
+            player "我知道这很自私。"
+
+            player "但我不想再后悔了。"
+
+            narrator "我看着她的眼睛。"
+
+            player "我不想看你消失在人海里。"
+
+            narrator "她的眼泪流了下来。"
+
+            # 解锁"告白前置"剧情线
+            $ persistent.lindao_confession_hint_unlocked = True
+
+        "「我们可以想办法。」":
+            # 承诺一起解决问题
+            $ persistent.lindao_day13_choice_B = True
+            $ persistent.lindao_affection += 10
+
+            narrator "我握住她的手。"
+
+            player "晚棠，我们可以想办法。"
+
+            player "移民……不是非去不可的吧？"
+
+            show lindao worried at LEFT with dissolve
+
+            lindao "可是……我妈已经辞职了……"
+
+            player "那就找别的方法。"
+
+            narrator "我看着她的眼睛。"
+
+            player "我会帮你的。"
+
+            # 解锁"说服林父"事件链（蝴蝶效应核心）
+            $ persistent.lindao_convince_father_event = True
+
+        "「不管你怎么决定，我都支持你。」":
+            # 尊重她的选择
+            $ persistent.lindao_day13_choice_C = True
+            $ persistent.lindao_affection += 5
+
+            narrator "我沉默了一会儿。"
+
+            player "晚棠……"
+
+            player "不管你怎么决定，我都支持你。"
+
+            show lindao sad at LEFT with dissolve
+
+            lindao "（愣了一下）……真的吗？"
+
+            player "真的。"
+
+            narrator "她低下头。"
+
+            narrator "但我注意到——"
+
+            narrator "她的眼神里，有一丝失落。"
+
+            # 进入"异地恋"结局线
+            $ persistent.lindao_long_distance_route = True
+
+    # 选择后继续剧情...
+```
+
+### D. QTE事件实现模板
+
+```rpy
+# QTE快速反应事件 - 模板
+# 使用Ren'Py的TimeJump和Screen实现
+
+screen qte_timer(seconds=3.0, callback=None):
+    timer seconds action callback
+
+    frame:
+        xalign 0.5
+        yalign 0.8
+        xsize 400
+
+        has vbox
+        align (0.5, 0.5)
+
+        text "【关键时刻！】" size 30 color "#FFD700" bold True
+        text " " size 10
+        bar:
+            xsize 350
+            value AnimatedValue(time, seconds, 0.1)
+            left_gutter 0
+            right_gutter 0
+            thumb None
+            thumb_shadow None
+            bar_scaling composite:
+                Solid("#4A4A4A")
+                Bar.Scaling("left", 0, 0, 0, 0, 0)
+
+        text " " size 5
+        text "[time]" size 24 color "#FFFFFF"
+
+        text " " size 20
+        text "【点击屏幕继续】" size 20 color "#AAAAAA"
+
+init python:
+    class QTEAction(Action):
+        def __init__(self, result_label, success=True):
+            self.result_label = result_label
+            self.success = success
+
+        def __call__(self):
+            if self.success:
+                renpy.jump(self.result_label + "_success")
+            else:
+                renpy.jump(self.result_label + "_fail")
+
+# 使用示例
+label lindao_day17_qte:
+    show lin_father at CENTER with dissolve
+
+    lin_father "你说这么多……有什么用？"
+
+    narrator "他沉默地看着我。"
+
+    narrator "我只有两秒钟……"
+
+    # 启动QTE
+    show screen qte_timer(2.0)
+
+    label .qte_wait:
+        $ time = 2.0
+        while time > 0:
+            $ time -= 0.1
+            pause 0.1
+
+        # QTE超时
+        jump lindao_day17_qte_fail
+
+    label .qte_clicked:
+        hide screen qte_timer
+        jump lindao_day17_qte_success
+
+    label .qte_fail:
+        hide screen qte_timer
+
+        narrator "我没来得及说出口……"
+
+        lin_father "（摇头）小孩子懂什么。"
+
+        narrator "说服失败了。"
+
+        $ persistent.lindao_convince_difficulty = "hard"
+
+        jump lindao_day17_after
+
+    label .qte_success:
+        hide screen qte_timer
+
+        narrator "我脱口而出——"
+
+        player "如果您戒赌……晚棠就不用去日本了。"
+
+        narrator "他愣住了。"
+
+        lin_father "（震惊）你……你怎么知道……"
+
+        narrator "我知道的，比你想象的多得多。"
+
+        $ persistent.lindao_convince_difficulty = "easy"
+
+        jump lindao_day17_after
+```
+
+### E. 好感度浮动反馈实现
+
+```rpy
+# 好感度变化反馈 - 通用模板
+
+screen affection_popup(character_name, change, message=""):
+    modal True
+
+    frame:
+        at popup_animation
+        xalign 0.5
+        yalign 0.5
+        padding (30, 20)
+
+        has vbox
+        align (0.5, 0.5)
+        spacing 10
+
+        if change > 0:
+            text "{color=#FF6B6B}♥ {character_name}  +{change}{/color}" size 28 bold True
+        else:
+            text "{color=#6B9FFF}♥ {character_name}  {change}{/color}" size 28 bold True
+
+        if message:
+            text "[message]" size 20 color "#CCCCCC" italic True
+
+        text " " size 10
+        text "[点击继续]" size 16 color "#888888"
+
+    background "#1A1A1A" opacity 0.9
+
+    click action Return()
+
+transform popup_animation:
+    alpha 0.0
+    easein 0.3 alpha 1.0
+    pause 1.5
+    easeout 0.3 alpha 0.0
+
+# 使用示例
+$ renpy.show_screen("affection_popup", "林晚棠", 8, "\"他今天好温柔……\"")
+$ ui.interact()
+```
+
+### F. 记忆碎片解锁界面
+
+```rpy
+# 记忆碎片解锁界面
+
+screen memory_fragment_popup(fragment_title, fragment_content):
+    modal True
+
+    frame:
+        at popup_animation
+        xalign 0.5
+        yalign 0.5
+        xsize 700
+        padding (40, 30)
+
+        has vbox
+        align (0.5, 0.5)
+        spacing 20
+
+        text "{b}{color=#FFD700}【记忆碎片解锁】{/color}{/b}" size 26 bold True
+
+        text "[fragment_title]" size 20 color "#AAAAAA"
+
+        text " " size 10
+
+        text "[fragment_content]" size 22 color="#F5F5F5" italic True
+
+        text " " size 20
+
+        # 碎片进度条
+        frame:
+            xsize 500
+            has hbox
+            spacing 10
+
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "▓" size 24 color "#FFD700"
+            text "░" size 24 color "#444444"
+
+        text "碎片 2/20" size 18 color "#888888"
+
+        text " " size 15
+
+        text "[点击继续]" size 18 color "#666666"
+
+    background "#0A0A0A" opacity 0.95
+
+    click action Return()
+
+# Ren'Py调用方式
+call screen memory_fragment_popup("碎片 2/20", "前世我也想过送她回家...但那天我退缩了。")
+```
+
+---
+
+### G. 好感度浮动速查表
+
+| 场景 | 选择 | 好感度变化 | 备注 |
+|------|------|-----------|------|
+| **Day 9 雨中** | 绅士型「我送你」 | +5 | 建立可靠印象 |
+| | 浪漫型「一起撑伞」 | +8 | 肢体距离拉近，解锁暧昧 |
+| | 理性型「你先走」 | +3 | 体贴但疏远 |
+| **Day 12 家中** | 观察书架 | 0 | 获得信息，无好感变化 |
+| | 观察多肉 | 0 | 解锁多肉约定前置 |
+| | 观察全家福 | 0 | 获得家庭背景信息 |
+| | 静静等待 | 0 | 无额外信息 |
+| **Day 13 移民** | 「我不想让你走」 | +15 ★正确 | 坦诚心意，解锁告白线 |
+| | 「我们可以想办法」 | +10 ★正确 | 承诺解决，解锁蝴蝶效应 |
+| | 「不管怎样都支持」 | +5 | 尊重但疏远，进入异地恋线 |
+| | 什么都不做 | -10 ★错误 | 错过关键时机 |
+| **Day 17 说服林父** | 触发QTE成功 | +15 | 蝴蝶效应核心 |
+| | 触发QTE失败 | -5 | 说服难度提升 |
+| **Day 23 告白** | 好感≥80 | 告白成功 | 进入HE |
+| | 好感60-79 | 告白被拒 | 可重来 |
+| | 好感<60 | 进入BE | 需重新开始 |
 
 ---
 

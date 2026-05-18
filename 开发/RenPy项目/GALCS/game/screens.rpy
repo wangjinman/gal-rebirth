@@ -164,33 +164,33 @@ style quick_menu_button:
 # =============================================================================
 
 screen choice(items):
+    modal True
+    zorder 100
+
     frame:
-        at choice_appear
-        background Solid("#16213e")
-        padding (30, 20, 30, 20)
+        background Solid("#2d2d4a")
+        padding (40, 30, 40, 30)
+        xalign 0.5
+        yalign 0.5
 
         vbox:
-            spacing 15
-            align (0.5, 0.5)
-
-            for i, (caption, action, condition) in enumerate(items):
-                if condition:
-                    button:
+            spacing 20
+            for caption, action, chosen in items:
+                if action:
+                    textbutton caption:
                         action action
+                        text_size 28
+                        text_color "#ffffff"
+                        text_hover_color "#e8a87c"
+                        text_bold False
                         xalign 0.5
-                        ymargin 10
-                        background Solid("#1a1a2e")
                         padding (20, 15, 20, 15)
-
-                        text caption:
-                            xalign 0.5
-                            size 26
-                            color "#f5f5f5"
-                            hover_color "#e8a87c"
-                            idle_color "#f5f5f5"
-
-transform choice_appear:
-    easein 0.3 alpha 1.0
+                        background Solid("#3d3d5c")
+                        hover_background Solid("#e8a87c")
+                else:
+                    text caption:
+                        size 28
+                        color "#888888"
 
 # =============================================================================
 # 主菜单

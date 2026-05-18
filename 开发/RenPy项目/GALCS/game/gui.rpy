@@ -22,3 +22,31 @@ define gui.interface_color = '#f5f5f5'
 init python:
     # 为默认样式设置中文字体
     style.default.font = "fonts/simhei.ttf"
+
+# =============================================================================
+# 菜单按钮样式（在 screens.rpy 中自定义，此处不覆盖）
+# =============================================================================
+
+# =============================================================================
+# 文本框样式（确保在黑色背景上清晰可见）
+# =============================================================================
+
+# 文本框背景（半透明深色）
+define gui.textbox_height = 160
+define gui.name_xpos = 40
+define gui.name_ypos = -30
+define gui.name_yalign = 1.0
+
+# 对话框窗口背景
+define gui.window_background = "gui/textbox.png"
+
+# 输入提示文字颜色
+define gui.input_color = '#ffffff'
+
+# 对话框文字样式
+define gui.who_color = '#ffffff'
+define gui.what_color = '#ffffff'
+
+# 文本框位置
+define gui.text_xpos = 40
+define gui.text_ypos = 60

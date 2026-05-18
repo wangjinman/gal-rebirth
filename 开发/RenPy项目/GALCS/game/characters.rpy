@@ -257,6 +257,24 @@ define dad_happy = Character("爸爸",
     what_color="#f8f8f8"
 )
 
+# 林晚棠的父亲（出现在林晚棠线）
+define lin_father = Character("林父",
+    color="#708090",           # 石板灰（深沉/有故事感）
+    what_color="#f0f0f0"
+)
+
+define lin_father_angry = Character("林父",
+    color="#505050",
+    what_color="#ffe0e0",
+    who_bold=True
+)
+
+define lin_father_sad = Character("林父",
+    color="#606060",
+    what_color="#f0f0f0",
+    who_italic=True
+)
+
 # 妹妹（提及）
 define sister = Character("妹妹",
     color="#d8a0d8",

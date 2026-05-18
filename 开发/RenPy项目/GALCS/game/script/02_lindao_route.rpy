@@ -242,27 +242,108 @@ label lindao_day9:
 
     lindao "（回头）嗯……打算等雨停。"
 
-    player "我送你吧。"
+    # ========================================
+    # 【B型·态度表态型选择 - Day 9 雨中送伞】
+    # ========================================
 
-    show lindao surprised at LEFT with dissolve
+    menu lindao_day9_umbrella_choice:
+        "「我送你回去吧。」":
+            # 绅士型
+            $ persistent.lindao_personality_impression = "reliable"
+            $ persistent.lindao_affection += 5
+            $ persistent.lindao_day9_gentleman = True
 
-    lindao "（惊讶）啊？不用了，我可以——"
+            narrator "我撑开伞，站在她旁边。"
 
-    player "淋感冒了怎么办？"
+            player "走吧，我送你。"
 
-    narrator "我把伞递到她手里。"
+            show lindao shy at LEFT with dissolve
 
-    player "你先用。"
+            lindao "（犹豫了一下）……那就麻烦你了。"
 
-    show lindao shy at LEFT with dissolve
+            narrator "她小心翼翼地靠近我。"
 
-    lindao "那你呢？"
+            narrator "肩膀和肩膀之间，隔着一把伞的距离。"
 
-    player "我有书包，挡一下就行。"
+            jump lindao_day9_walking
 
-    narrator "她犹豫了一下，接过了伞。"
+        "「我们一起撑伞吧。」":
+            # 浪漫型
+            $ persistent.lindao_personality_impression = "romantic"
+            $ persistent.lindao_affection += 8
+            $ persistent.lindao_day9_shared_umbrella = True
 
-    scene black
+            narrator "我把自己的伞收起来。"
+
+            player "伞太小，一把就够。"
+
+            show lindao surprised at LEFT with dissolve
+
+            lindao "（脸红）这、这样不太好吧……"
+
+            player "淋感冒了才不好。"
+
+            narrator "我自然地走到她旁边。"
+
+            narrator "伞下，两个人的距离近得能听到彼此的呼吸。"
+
+            # 触发记忆碎片2
+            jump memory_fragment_2_day9
+
+        "「你先用伞，我跑回去就行。」":
+            # 理性型
+            $ persistent.lindao_personality_impression = "considerate"
+            $ persistent.lindao_affection += 3
+            $ persistent.lindao_day9_rational = True
+
+            narrator "我把伞递给她。"
+
+            player "你先用，我有书包挡一下就行。"
+
+            show lindao worried at LEFT with dissolve
+
+            lindao "可是你会淋湿的……"
+
+            player "没关系，我家近。"
+
+            narrator "她犹豫着接过伞。"
+
+            narrator "离开时，她回头看了我好几眼。"
+
+            $ persistent.lindao_day9_rain_scene = True
+            $ persistent.lindao_affection += 3
+
+            jump lindao_day9_end
+
+# ========================================
+# 【记忆碎片2 - Day 9触发】
+# ========================================
+
+label memory_fragment_2_day9:
+    scene black with fade
+
+    narrator "……"
+
+    player_thought "这个场景……"
+
+    player_thought "前世的我，也站在这里过。"
+
+    player_thought "但那时候，我什么都没做。"
+
+    player_thought "看着她一个人淋着雨离开……"
+
+    narrator "一阵恍惚后，我回过神来。"
+
+    # 解锁记忆碎片
+    $ persistent.fragment_2 = True
+    $ persistent.regret_value += 15
+
+    narrator "{b}{color=#FFD700}【记忆碎片 2/20 解锁】{/color}{/b}"
+    narrator "{i}\"前世我也想过送她回家...但那天我退缩了。\"{/i}"
+
+    pause 1.0
+
+    scene bg street_rain with dissolve
 
     narrator "雨中的街道。"
 
@@ -280,6 +361,28 @@ label lindao_day9:
 
     player_thought "这一刻，前世那个'我没敢追上去'的遗憾，终于被弥补了。"
 
+    jump lindao_day9_talking
+
+# ========================================
+# 【雨中漫步 - 共同撑伞路线】
+# ========================================
+
+label lindao_day9_walking:
+    scene bg street_rain with dissolve
+
+    narrator "雨中的街道。"
+
+    narrator "我们并肩走着。"
+
+    narrator "她小心翼翼地靠近我，保持着微妙的距离。"
+
+    narrator "雨水打在伞面上，滴滴答答。"
+
+    player_thought "她靠得越来越近……"
+
+    player_thought "不知道是因为伞太小，还是因为别的。"
+
+label lindao_day9_talking:
     show lindao worried at LEFT with dissolve
 
     lindao "（突然开口）陆鸣……"
@@ -326,10 +429,13 @@ label lindao_day9:
 
     narrator "然后，缩了回去。"
 
-    $ persistent.lindao_affection += 10
     $ persistent.lindao_day9_rain_scene = True
+    $ persistent.lindao_affection += 10
     $ persistent.regret_value += 15
 
+    jump lindao_day9_home
+
+label lindao_day9_home:
     scene black
 
     narrator "送她到家门口。"
@@ -360,8 +466,23 @@ label lindao_day9:
 
     scene black
 
-    centered "{b}—— Day 9 End ——{/b}\n
-{w=0.5}小高潮1触发{/w=0.5}"
+label lindao_day9_end:
+    centered "{b}{color=#FFD700}—— Day 9 End ——{/color}{/b}\n{w=0.5}小高潮1触发"
+
+    # 根据选择类型显示不同反馈
+    if persistent.lindao_day9_shared_umbrella:
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +18{/color}{/b}"
+        narrator "{i}\"雨中一起撑伞……她的手好凉，但心是暖的。\"{/i}"
+        narrator "{b}{color=#FFD700}遗憾弥补值 +15{/color}{/b}"
+        narrator "{i}\"【记忆碎片 2/20 解锁】{/i}"
+    elif persistent.lindao_day9_gentleman:
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +15{/color}{/b}"
+        narrator "{i}\"他的肩膀很宽，靠着很有安全感……\"{/i}"
+    elif persistent.lindao_day9_rational:
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +13{/color}{/b}"
+        narrator "{i}\"明明是他把伞让给我……有点傻，但很温柔。\"{/i}"
+    else:
+        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +10{/color}{/b}"
 
     pause 1.5
 
@@ -692,6 +813,8 @@ label lindao_day12:
 
     player "（深呼吸，按门铃）"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "（开门）你来了！快进来。"
 
     narrator "她今天穿的是便装——一件淡黄色的连衣裙。"
@@ -702,13 +825,122 @@ label lindao_day12:
 
     player "（走进门）打扰了。"
 
-    scene black
+    # ========================================
+    # 【C型·细节观察型选择 - Day 12 参观房间】
+    # ========================================
 
-    narrator "她家不大，但收拾得很温馨。"
+    show lindao smile at LEFT with dissolve
 
-    narrator "客厅里有一个小小的书架，摆满了各种书籍。"
+    lindao "你先坐，我去给你倒杯水。"
 
-    narrator "角落里有一盆小小的多肉植物。"
+    narrator "她走进厨房。"
+
+    narrator "我一个人留在客厅，环顾四周……"
+
+    menu lindao_day12_observation:
+        "仔细看看书架":
+            $ persistent.lindao_day12_observed_bookshelf = True
+
+            narrator "书架上摆满了书。"
+
+            narrator "大多是文学类，还有一些日本文学……"
+
+            narrator "《挪威的森林》《雪国》《1Q84》……"
+
+            player_thought "原来她喜欢日本文学。"
+
+            player_thought "难怪……会去日本留学。"
+
+            # 获得"共同话题"信息
+            $ persistent.lindao_common_topic_unlocked = True
+
+            narrator "{i}【发现：她的书架上有很多日本文学书籍】{/i}"
+
+        "观察阳台的多肉植物":
+            $ persistent.lindao_day12_observed_succulent = True
+
+            narrator "阳台上有几盆多肉植物。"
+
+            narrator "大部分都很精神……"
+
+            narrator "但有一盆明显快枯萎了，叶子发黄发软。"
+
+            player_thought "这盆……她应该很在意吧。"
+
+            # 触发多肉约定前置
+            $ persistent.lindao_succulent_hint = True
+
+            narrator "{i}【发现：那盆快枯萎的多肉似乎对她很重要】{/i}"
+
+        "看看墙上的全家福":
+            $ persistent.lindao_day12_observed_photo = True
+
+            narrator "墙上挂着一张全家福。"
+
+            narrator "照片里是林晚棠小时候的样子。"
+
+            narrator "旁边站着一个男人……是她父亲吧。"
+
+            narrator "但照片上有一些划痕，像是被刻意刮过的。"
+
+            player_thought "她和父亲的关系……"
+
+            # 获得家庭背景信息
+            $ persistent.lindao_family_background_hint = True
+
+            narrator "{i}【发现：全家福上有被刮过的痕迹】{/i}"
+
+        "静静坐着等她回来":
+            $ persistent.lindao_day12_did_nothing = True
+
+            narrator "我坐在沙发上，没有乱动。"
+
+            narrator "这是她的家，我不该随便翻看。"
+
+            narrator "……"
+
+            narrator "厨房里传来水流声。"
+
+            narrator "她很快就会出来。"
+
+    # 继续剧情
+    hide lindao with dissolve
+
+    scene bg bedroom with dissolve
+
+    narrator "她端着两杯水走出来。"
+
+    narrator "看到我坐在沙发上，她的表情放松了一些。"
+
+    narrator "但我注意到——"
+
+    narrator "她的目光扫过我刚才"观察"的地方，似乎有一丝紧张。"
+
+    show lindao normal at LEFT with dissolve
+
+    lindao "久等了。"
+
+    narrator "她把水递给我。"
+
+    narrator "然后，走向阳台角落。"
+
+    # 记忆碎片3触发（多肉观察后）
+    if persistent.lindao_day12_observed_succulent:
+        player_thought "她对那盆多肉……真的很在意。"
+
+        player_thought "我记得前世……她也提过这件事。"
+
+        narrator "一阵恍惚。"
+
+        # 解锁记忆碎片3
+        $ persistent.fragment_3 = True
+
+        narrator "{b}{color=#FFD700}【记忆碎片 3/20 解锁】{/color}{/b}"
+        narrator "{i}\"我记得她提过，她最珍视的东西总养不活...\"{/i}"
+
+        $ persistent.regret_value += 10
+
+    show lindao normal at LEFT with dissolve
 
     lindao "那是我的宝贝！"
 
@@ -721,6 +953,8 @@ label lindao_day12:
     narrator "她小心翼翼地照顾那些小植物的样子，很可爱。"
 
     player "你很喜欢植物？"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "（微笑）嗯，因为它们很安静。"
 
@@ -738,9 +972,13 @@ label lindao_day12:
 
     player "这株……好像不太精神。"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "（叹气）是啊，已经救不活了……我总是养不好。"
 
     player "（拿起花盆）给我看看。"
+
+    show lindao surprised at LEFT with dissolve
 
     lindao "（惊讶）你会养植物？"
 
@@ -760,12 +998,16 @@ label lindao_day12:
 
     narrator "她愣了一下，然后笑了。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "（接过花盆）好，一言为定。"
 
     narrator "她笑起来的样子，像是阳光突然照进了房间。"
 
     $ persistent.lindao_affection += 8
     $ persistent.lindao_day12_succulent = True
+
+    hide lindao with dissolve
 
     scene black
 
@@ -781,11 +1023,17 @@ label lindao_day12:
 
     narrator "傍晚离开的时候，她送我到门口。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "谢谢你今天来看我。"
 
     player "（微笑）下次再来的时候，那株多肉应该就活了。"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "（脸红）……那我等你的好消息。"
+
+    hide lindao with dissolve
 
     scene black
 
@@ -809,7 +1057,7 @@ label lindao_day13:
 
     pause 1.0
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "我和林晚棠约在图书馆一起复习。"
 
@@ -818,6 +1066,8 @@ label lindao_day13:
     narrator "笔尖在纸上划来划去，却一个字也没写。"
 
     player "晚棠？"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "（回神）啊……什么？"
 
@@ -836,6 +1086,8 @@ label lindao_day13:
     lindao "我爸……我妈……"
 
     narrator "她的声音有些颤抖。"
+
+    show lindao crying at LEFT with dissolve
 
     lindao "他们可能要离婚了。"
 
@@ -873,16 +1125,23 @@ label lindao_day13:
 
     player_thought "这次，我不会让她一个人承受。"
 
+    # ========================================
+    # 【A型·命运转折型选择 - Day 13 移民话题】
+    # ========================================
+
     menu lindao_day13_choice:
-        "她应该有更好的选择":
+        "她应该有更好的选择……吧":
+            # 错误选项 - 表达犹豫
             jump lindao_day13_choice_a
-        "我不想让你走":
+        "（鼓起勇气）我不想让你走":
+            # 坦诚心意 - ★最佳选项
             jump lindao_day13_choice_b
-        "我们可以想办法":
+        "别急着做决定，让我帮你想想办法":
+            # 承诺解决问题 - ★正确选项
             jump lindao_day13_choice_c
 
 label lindao_day13_choice_a:
-    player "她应该有更好的选择。"
+    player "她应该有更好的选择……吧。"
 
     narrator "我说出这句话的时候，自己都觉得心虚。"
 
@@ -892,23 +1151,33 @@ label lindao_day13_choice_a:
 
     narrator "眼睛里有失望。"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "……是吗。"
 
     narrator "她收回目光，重新看向窗外。"
 
     narrator "气氛变得有些沉重。"
 
-    $ persistent.lindao_affection -= 5
+    $ persistent.lindao_affection -= 10
     $ persistent.lindao_day13_wrong_choice = True
+    $ persistent.lindao_long_distance_route = True
+
+    narrator "{b}{color=#6B9FFF}♥ 林晚棠好感度 -10{/color}{/b}"
+
+    hide lindao with dissolve
 
     jump lindao_day13_continue
 
 label lindao_day13_choice_b:
+    # ★最佳选项 - 坦诚表达心意
     player "（鼓起勇气）我不想让你走。"
 
     narrator "话说出口的瞬间，我自己都愣住了。"
 
     narrator "她的眼睛睁大了。"
+
+    show lindao surprised at LEFT with dissolve
 
     lindao "你……说什么？"
 
@@ -916,7 +1185,7 @@ label lindao_day13_choice_b:
 
     player "我不想你离开。"
 
-    narrator "她的眼眶红了。"
+    show lindao crying at LEFT with dissolve
 
     lindao "（低下头）可是……我妈已经决定了……"
 
@@ -924,19 +1193,30 @@ label lindao_day13_choice_b:
 
     narrator "她抬起头，泪眼婆娑地看着我。"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "……真的吗？"
 
     player "真的。"
 
-    $ persistent.lindao_affection += 12
+    $ persistent.lindao_affection += 15
     $ persistent.lindao_day13_confession_hint = True
+    $ persistent.lindao_convince_father_event = True
+
+    narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +15{/color}{/b}"
+    narrator "{i}\"解锁'说服林父'事件链（蝴蝶效应核心）\"{/i}"
+
+    hide lindao with dissolve
 
     jump lindao_day13_continue
 
 label lindao_day13_choice_c:
-    player "我们可以想办法。"
+    # ★正确选项 - 承诺解决问题
+    player "别急着做决定，让我帮你想想办法。"
 
     narrator "她抬起头，有些疑惑。"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "想办法？"
 
@@ -952,10 +1232,18 @@ label lindao_day13_choice_c:
 
     narrator "她轻轻点了点头。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "……谢谢你，陆鸣。"
 
-    $ persistent.lindao_affection += 8
+    $ persistent.lindao_affection += 10
     $ persistent.lindao_day13_promise = True
+    $ persistent.lindao_convince_father_event = True
+
+    narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +10{/color}{/b}"
+    narrator "{i}\"解锁'说服林父'事件链（蝴蝶效应核心）\"{/i}"
+
+    hide lindao with dissolve
 
     jump lindao_day13_continue
 
@@ -965,6 +1253,8 @@ label lindao_day13_continue:
     narrator "只有空调的嗡嗡声，和窗外偶尔传来的鸟鸣。"
 
     narrator "她坐在我对面，眼眶红红的。"
+
+    show lindao worried at LEFT with dissolve
 
     narrator "我不知道该说什么。"
 
@@ -976,13 +1266,17 @@ label lindao_day13_continue:
     $ persistent.lindao_day13_immigration_talk = True
     $ persistent.regret_value += 10
 
-    scene black
+    hide lindao with dissolve
+
+    scene bg classroom_sunset with dissolve
 
     narrator "离开图书馆的时候，天已经黑了。"
 
     narrator "她走在我身边，比平时更沉默。"
 
     player "晚棠。"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "嗯？"
 
@@ -996,16 +1290,20 @@ label lindao_day13_continue:
 
     narrator "她回过头，对我笑了笑。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "谢谢你，陆鸣。"
 
     narrator "路灯下，她的笑容很温暖。"
 
     narrator "但我看到了她眼角的泪光。"
 
+    hide lindao with dissolve
+
     scene black
 
     centered "{b}—— Day 13 End ——{/b}\n
-{w=0.5}小高潮2触发{/w=0.5}"
+{w=0.5}小高潮2触发"
 
     pause 1.5
 
@@ -1051,7 +1349,7 @@ label lindao_day14:
 
     narrator "叶子已经挺立起来，泛着健康的光泽。"
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "天台。"
 
@@ -1062,6 +1360,8 @@ label lindao_day14:
     player "我答应过你的。"
 
     narrator "她接过花盆，眼睛一下子亮了。"
+
+    show lindao surprised at LEFT with dissolve
 
     lindao "（惊讶）真的活了！"
 
@@ -1076,6 +1376,8 @@ label lindao_day14:
     narrator "我忍不住伸出手——"
 
     narrator "帮她把垂落的发丝别到耳后。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "（身体微微一颤）"
 
@@ -1093,9 +1395,13 @@ label lindao_day14:
 
     $ persistent.lindao_affection += 8
 
-    scene black
+    hide lindao with dissolve
+
+    scene bg classroom_sunset with dissolve
 
     narrator "我们并肩坐在天台边缘，看着夕阳西沉。"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "（轻声）陆鸣……谢谢你。"
 
@@ -1107,6 +1413,8 @@ label lindao_day14:
 
     player "还有什么？"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "（看向远方）谢谢你愿意听我说那些事。"
 
     player "……"
@@ -1114,6 +1422,8 @@ label lindao_day14:
     player "晚棠，关于移民的事……"
 
     narrator "她沉默了一会儿。"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "我妈……已经办得差不多了。"
 
@@ -1129,6 +1439,8 @@ label lindao_day14:
 
     player "（轻声）你很想去吧？"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "（摇头）我不知道……"
 
     narrator "她的声音很轻。"
@@ -1143,6 +1455,8 @@ label lindao_day14:
 
     player "晚棠。"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "嗯？"
 
     player "你不用急着决定。"
@@ -1155,6 +1469,8 @@ label lindao_day14:
 
     narrator "她愣住了。"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "改变……？"
 
     player "（微笑）相信我。"
@@ -1162,6 +1478,8 @@ label lindao_day14:
     narrator "她看着我，眼睛里有光。"
 
     narrator "有希望，有疑惑，也有……信任。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "（轻轻点头）……好。"
 
@@ -1177,6 +1495,8 @@ label lindao_day14:
     $ persistent.lindao_day14_promise = True
     $ persistent.regret_value += 20
 
+    hide lindao with dissolve
+
     scene black
 
     narrator "送她回家的路上，我们都没怎么说话。"
@@ -1188,8 +1508,8 @@ label lindao_day14:
     scene black
 
     centered "{b}—— Day 14 End ——{/b}\n
-{w=0.5}小高潮3触发{/w=0.5}\n
-{w=0.5}承诺已许下{/w=0.5}"
+{w=0.5}小高潮3触发\n
+{w=0.5}承诺已许下"
 
     pause 1.5
 
@@ -1313,7 +1633,7 @@ label lindao_day16:
 
     pause 1.0
 
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "第二天，我在学校找了个机会和林晚棠单独说话。"
 
@@ -1321,11 +1641,15 @@ label lindao_day16:
 
     narrator "她的表情变得有些警惕。"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "你怎么知道？"
 
     player "我猜的。你最近看起来心事重重……"
 
     narrator "她沉默了一会儿。"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "我爸……欠了很多钱。"
 
@@ -1334,6 +1658,8 @@ label lindao_day16:
     lindao "我妈就是因为这个才想离开的。"
 
     narrator "她低下头，声音很轻。"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "他说会戒赌……但每次都食言。"
 
@@ -1347,6 +1673,8 @@ label lindao_day16:
 
     player "晚棠。"
 
+    show lindao surprised at LEFT with dissolve
+
     lindao "嗯？"
 
     player "我可以帮你想办法吗？"
@@ -1359,10 +1687,14 @@ label lindao_day16:
 
     narrator "她犹豫了很久。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "（轻声）……好。"
 
     $ persistent.lindao_affection += 5
     $ persistent.lindao_day16_dad_talk = True
+
+    hide lindao with dissolve
 
     scene black
 
@@ -1523,11 +1855,11 @@ label lindao_day17:
     scene black
 
     centered "{b}—— Day 18 ——{/b}\n
-{w=0.5}命运改变{/w=0.5}"
+{w=0.5}命运改变"
 
     pause 1.0
 
-    scene black
+    scene bg classroom_sunset with dissolve
 
     narrator "学校后门的小公园。"
 
@@ -1538,6 +1870,8 @@ label lindao_day17:
     narrator "但她的嘴角……在笑。"
 
     player "晚棠？"
+
+    show lindao crying at LEFT with dissolve
 
     lindao "（跑过来）陆鸣！"
 
@@ -1589,7 +1923,9 @@ label lindao_day17:
     $ persistent.regret_value += 40
     $ persistent.butterfly_value = 100
 
-    scene black
+    hide lindao with dissolve
+
+    scene bg classroom_sunset with dissolve
 
     narrator "不知道过了多久。"
 
@@ -1599,11 +1935,15 @@ label lindao_day17:
 
     narrator "但她在笑。"
 
+    show lindao crying at LEFT with dissolve
+
     lindao "（擦眼泪）对不起……我失态了……"
 
     player "（微笑）没关系。"
 
     narrator "她不好意思地低下头。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "陆鸣……谢谢你。"
 
@@ -1645,6 +1985,8 @@ label lindao_day17:
 
     player "晚棠，有件事我一直想告诉你。"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "什么事？"
 
     player "（深吸一口气）等高考结束吧。"
@@ -1654,6 +1996,8 @@ label lindao_day17:
     narrator "她没有追问。"
 
     narrator "只是轻轻点了点头。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "好。我等你。"
 
@@ -1665,11 +2009,13 @@ label lindao_day17:
 
     narrator "命运的轨迹，真的被改变了。"
 
+    hide lindao with dissolve
+
     scene black
 
     centered "{b}—— Day 18 End ——{/b}\n
-{w=0.5}大高潮触发{/w=0.5}\n
-{w=0.5}蝴蝶效应·MAX{/w=0.5}"
+{w=0.5}大高潮触发\n
+{w=0.5}蝴蝶效应·MAX"
 
     pause 1.5
 
@@ -1792,9 +2138,13 @@ label lindao_day20:
 
     player "（深呼吸）冷静，冷静……"
 
+    scene bg classroom_day with dissolve
+
     narrator "正当我焦头烂额的时候——"
 
     narrator "身后传来脚步声。"
+
+    show lindao surprised at LEFT with dissolve
 
     lindao "陆鸣？你在干什么？"
 
@@ -1803,6 +2153,8 @@ label lindao_day20:
     narrator "林晚棠站在那里，手里拿着两瓶水。"
 
     narrator "她好奇地看向我脚边的纸团。"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "你在写什么啊？"
 
@@ -1818,6 +2170,8 @@ label lindao_day20:
 
     player_thought "完了，被看到了……"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "你、你、你……"
 
     player "（急忙解释）这是……草稿！草稿！"
@@ -1826,13 +2180,15 @@ label lindao_day20:
 
     narrator "她把手里的水塞给我，转身就要走。"
 
-    lindao "我、我先走了！"
+    lindao "我先走了！"
 
     player "（叫住她）等一下！"
 
     narrator "她停下脚步，但没有回头。"
 
     player "晚棠。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "……什么？"
 
@@ -1841,6 +2197,8 @@ label lindao_day20:
     player "到时候，我会好好告诉你的。"
 
     narrator "她沉默了一会儿。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "……好。"
 
@@ -1852,6 +2210,8 @@ label lindao_day20:
 
     $ persistent.lindao_affection += 8
     $ persistent.lindao_day20_confession_prepare = True
+
+    hide lindao with dissolve
 
     scene black
 
@@ -1891,15 +2251,21 @@ label lindao_day21:
 
     narrator "身后传来脚步声。"
 
+    show lindao surprised at LEFT with dissolve
+
     lindao "（小声）陆鸣？"
 
     narrator "我回过头。"
 
     player "晚棠？你怎么在这里？"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "（走过来）我……睡不着，出来走走。"
 
     narrator "她在我旁边坐下。"
+
+    show lindao normal at LEFT with dissolve
 
     narrator "月光洒在她脸上，很柔和。"
 
@@ -1917,15 +2283,21 @@ label lindao_day21:
 
     narrator "她突然开口。"
 
+    show lindao worried at LEFT with dissolve
+
     lindao "陆鸣……"
 
     player "嗯？"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "你最近是不是有什么事瞒着我？"
 
     narrator "我愣了一下。"
 
     player "为什么这么问？"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "（看向远方）你最近怪怪的……"
 
@@ -1940,6 +2312,8 @@ label lindao_day21:
     player "晚棠……"
 
     narrator "她转过头，看着我。"
+
+    show lindao shy at LEFT with dissolve
 
     player "（认真）明天，我会告诉你一切。"
 
@@ -1977,6 +2351,8 @@ label lindao_day21:
 
     narrator "临走的时候，她突然停下脚步。"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "陆鸣。"
 
     player "嗯？"
@@ -1995,10 +2371,12 @@ label lindao_day21:
 
     player "……好。"
 
+    hide lindao with dissolve
+
     scene black
 
     centered "{b}—— Day 21 End ——{/b}\n
-{w=0.5}告白前夜{/w=0.5}"
+{w=0.5}告白前夜"
 
     pause 1.5
 
@@ -2014,7 +2392,7 @@ label lindao_day23:
     scene black
 
     centered "{b}—— Day 23 ——{/b}\n
-{w=0.5}告白{/w=0.5}"
+{w=0.5}告白"
 
     pause 1.0
 
@@ -2032,7 +2410,7 @@ label lindao_day23:
 
     player_thought "告诉她一切。"
 
-    scene black
+    scene bg classroom_sunset with dissolve
 
     narrator "天台。"
 
@@ -2041,6 +2419,8 @@ label lindao_day23:
     narrator "林晚棠已经在那里等着了。"
 
     narrator "她看到我，有些紧张地攥着衣角。"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "陆鸣……"
 
@@ -2052,6 +2432,8 @@ label lindao_day23:
 
     player "晚棠，我有话要对你说。"
 
+    show lindao normal at LEFT with dissolve
+
     lindao "（点头）……我在听。"
 
     narrator "我深吸一口气。"
@@ -2061,6 +2443,8 @@ label lindao_day23:
     player "为什么突然对你好，为什么知道你家的事，为什么……"
 
     player "总是看着你发呆。"
+
+    show lindao worried at LEFT with dissolve
 
     lindao "（小声）……"
 
@@ -2078,6 +2462,8 @@ label lindao_day23:
 
     narrator "只剩下她的眼睛，和我的心跳声。"
 
+    show lindao surprised at LEFT with dissolve
+
     player "不是最近才喜欢的。"
 
     player "是喜欢了很久。"
@@ -2085,6 +2471,8 @@ label lindao_day23:
     player "久到……我自己都记不清是从什么时候开始的。"
 
     narrator "她的眼眶红了。"
+
+    show lindao crying at LEFT with dissolve
 
     lindao "（声音颤抖）你……"
 
@@ -2110,6 +2498,8 @@ label lindao_day23:
 
     narrator "她抬起头，泪眼婆娑地看着我。"
 
+    show lindao crying at LEFT with dissolve
+
     lindao "（哽咽）你这个笨蛋……"
 
     player "……？"
@@ -2119,6 +2509,8 @@ label lindao_day23:
     player_thought "……"
 
     player_thought "她……等我？"
+
+    show lindao crying at LEFT with dissolve
 
     lindao "（继续哭）我也喜欢你啊……"
 
@@ -2146,6 +2538,8 @@ label lindao_day23:
     $ persistent.lindao_confession_success = True
     $ persistent.regret_value += 50
 
+    hide lindao with dissolve
+
     scene black
 
     narrator "夕阳完全沉入地平线。"
@@ -2158,6 +2552,8 @@ label lindao_day23:
 
     narrator "她靠在我肩膀上，眼睛红红的，但嘴角在笑。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "（轻声）陆鸣……"
 
     player "嗯？"
@@ -2165,6 +2561,8 @@ label lindao_day23:
     lindao "你说的是真的吗？"
 
     player "当然是真的。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "（小声）那你……从什么时候开始喜欢我的？"
 
@@ -2174,11 +2572,15 @@ label lindao_day23:
 
     player "（想了想）大概是……高一的时候吧。"
 
+    show lindao surprised at LEFT with dissolve
+
     lindao "（惊讶）那么早？"
 
     player "嗯。第一次见到你的时候就觉得……"
 
     player "这个女生很特别。"
+
+    show lindao shy at LEFT with dissolve
 
     lindao "（脸红）你骗人……那时候你都不怎么跟我说话……"
 
@@ -2198,6 +2600,8 @@ label lindao_day23:
 
     narrator "像是世界上只剩下我们两个人。"
 
+    show lindao smile at LEFT with dissolve
+
     scene black
 
     narrator "不知道过了多久。"
@@ -2207,6 +2611,8 @@ label lindao_day23:
     lindao "陆鸣。"
 
     player "嗯？"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "（认真地看着我）不管以后发生什么……"
 
@@ -2219,6 +2625,8 @@ label lindao_day23:
     narrator "她笑了。"
 
     narrator "然后踮起脚尖——"
+
+    show lindao shy at LEFT with dissolve
 
     narrator "轻轻在我脸颊上落下一个吻。"
 
@@ -2236,6 +2644,8 @@ label lindao_day23:
 
     player "那……高考之后呢？"
 
+    show lindao shy at LEFT with dissolve
+
     lindao "（抬起头）高考之后……"
 
     narrator "她看着我，眼睛里有光。"
@@ -2246,7 +2656,9 @@ label lindao_day23:
 
     player "好。"
 
-    scene black
+    hide lindao with dissolve
+
+    scene bg classroom_sunset with dissolve
 
     narrator "月亮升起来了。"
 
@@ -2256,14 +2668,18 @@ label lindao_day23:
 
     narrator "路上，我们牵着手。"
 
+    show lindao smile at LEFT with dissolve
+
     narrator "谁也没有说话。"
 
     narrator "但这沉默，比任何语言都更温暖。"
 
+    hide lindao with dissolve
+
     scene black
 
     centered "{b}—— Day 23 End ——{/b}\n
-{w=0.5}告白成功{/w=0.5}"
+{w=0.5}告白成功"
 
     pause 2.0
 
@@ -2279,7 +2695,7 @@ label lindao_day25:
     scene black
 
     centered "{b}—— Day 25 ——{/b}\n
-{w=0.5}高考结束{/w=0.5}"
+{w=0.5}高考结束"
 
     pause 1.0
 
@@ -2295,15 +2711,21 @@ label lindao_day25:
 
     scene black
 
+    scene bg classroom_sunset with dissolve
+
     narrator "校门口。"
 
     narrator "林晚棠站在那里等我。"
 
     narrator "她看到我，眼睛一下子亮了。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "（跑过来）陆鸣！"
 
     player "（微笑）考得怎么样？"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "（笑着）应该还行吧……你呢？"
 
@@ -2313,9 +2735,13 @@ label lindao_day25:
 
     narrator "反而握紧了我的手。"
 
+    show lindao smile at LEFT with dissolve
+
     lindao "好。"
 
-    scene black
+    hide lindao with dissolve
+
+    scene bg classroom_sunset with dissolve
 
     narrator "学校后山。"
 
@@ -2323,13 +2749,17 @@ label lindao_day25:
 
     narrator "也是我们约定'高考后给正式答案'的地方。"
 
-    scene black
+    hide lindao with dissolve
+
+    scene bg classroom_sunset with dissolve
 
     narrator "星空下。"
 
     narrator "我看着她的眼睛。"
 
     player "晚棠。"
+
+    show lindao normal at LEFT with dissolve
 
     lindao "嗯？"
 
@@ -2349,6 +2779,8 @@ label lindao_day25:
 
     player "是想跟你在一起、一辈子、不分开的那种喜欢。"
 
+    show lindao crying at LEFT with dissolve
+
     narrator "她的眼眶红了。"
 
     player "你愿意……做我的女朋友吗？"
@@ -2356,6 +2788,8 @@ label lindao_day25:
     narrator "星空下，她看着我。"
 
     narrator "眼泪落下来，但嘴角在笑。"
+
+    show lindao smile at LEFT with dissolve
 
     lindao "（点头）我愿意。"
 
@@ -2374,6 +2808,8 @@ label lindao_day25:
     narrator "而且，她答应了。"
 
     $ persistent.lindao_happy_ending = True
+
+    hide lindao with dissolve
 
     scene black
 
@@ -2430,17 +2866,17 @@ label lindao_day25:
     scene black
 
     centered "{size=+8}{b}—— 林晚棠线 · Happy Ending ——{/b}{/size}\n
-{w=0.5}这次，我不想再错过{/w=0.5}"
+{w=0.5}这次，我不想再错过"
 
     pause 2.0
 
     scene black
 
     narrator "{b}【遗憾弥补值】{/b}"
-    narrator "[font=simhei.ttf]{color=#FFD700}[u]198/200[/u]{/color}[/font]"
+    narrator "{font=simhei.ttf}{color=#FFD700}{u}198/200{/u}{/color}{/font}"
 
     narrator "{b}【记忆碎片】{/b}"
-    narrator "[font=simhei.ttf]{color=#87CEEB}[u]12/20 解锁[/u]{/color}[/font]"
+    narrator "{font=simhei.ttf}{color=#87CEEB}{u}12/20 解锁{/u}{/color}{/font}"
 
     narrator "{b}【成就解锁】{/b}"
     narrator "'不错过'—— 完成林晚棠线"
@@ -2487,7 +2923,7 @@ label lindao_day25:
 
     pause 2.0
 
-    jump main_menu_screen
+    return
 
 # =============================================================================
 # 林晚棠线结束

@@ -562,7 +562,7 @@ label chapter1_day2_continue:
 
     player_thought "我不会让那个误会发生的。"
 
-    $ persistent.bro_friendship = persistent.bro_friendship + 5 if hasattr(persistent, 'bro_friendship') else 5
+    $ persistent.bro_friendship = (persistent.bro_friendship or 0) + 5
 
     scene black
 
