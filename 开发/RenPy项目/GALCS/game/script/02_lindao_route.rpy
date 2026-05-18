@@ -3103,7 +3103,749 @@ label lindao_day23:
     jump lindao_day25
 
 # =============================================================================
-# Day 25：Happy Ending
+# Day 24：结局判定与分支
+# =============================================================================
+
+label lindao_day24:
+    $ persistent.current_day = 24
+
+    scene black
+
+    centered "{b}—— Day 24 ——{/b}\n
+{w=0.5}命运的抉择"
+
+    pause 1.0
+
+    # =================================================================
+    # 结局类型判定
+    # =================================================================
+
+    # 判定顺序：BE → NE → HE → TE
+    jump lindao_ending_judgment
+
+label lindao_ending_judgment:
+    # 判定1：告白是否成功
+    if not persistent.lindao_confession_success:
+        jump lindao_bad_ending_confession_failed
+    # 判定2：是否打动林父
+    elif not persistent.lindao_day16_father_impressed:
+        jump lindao_normal_ending_family_issue
+    # 判定3：是否触发移民取消蝴蝶效应
+    elif persistent.butterfly_count < 3:
+        jump lindao_normal_ending_butterfly
+    # 判定4：记忆碎片收集是否足够
+    elif persistent.fragment_count < 8:
+        jump lindao_happy_ending
+    # 判定5：遗憾值是否达标
+    elif persistent.regret_value < 150:
+        jump lindao_happy_ending
+    # 判定6：True Ending条件检查
+    elif persistent.te_routes_completed >= 2 and persistent.fragment_count >= 15:
+        jump lindao_true_ending_unlock
+    # 默认：Happy Ending
+    else:
+        jump lindao_happy_ending
+
+# =============================================================================
+# Bad Ending：告白失败
+# =============================================================================
+
+label lindao_bad_ending_confession_failed:
+    $ persistent.lindao_ending_type = "BE"
+
+    scene black
+
+    narrator "那天晚上，我没有等到她。"
+
+    narrator "林晚棠没有出现在天台。"
+
+    narrator "我独自在那里坐了一整晚。"
+
+    narrator "星星很亮，但我的心很冷。"
+
+    scene bg classroom_sunset with dissolve
+
+    narrator "第二天。"
+
+    narrator "她没有看我。"
+
+    narrator "我们之间的距离，仿佛比从前更远了。"
+
+    show lindao worried at LEFT with dissolve
+
+    narrator "我想问为什么。"
+
+    narrator "但我不知道该怎么开口。"
+
+    narrator "也许……这就是命运吧。"
+
+    narrator "前世我没能说出口的话。"
+
+    narrator "这一世，终于说了。"
+
+    narrator "但结果……还是一样。"
+
+    show lindao normal at LEFT with dissolve
+
+    narrator "高考前一周。"
+
+    narrator "林晚棠转学了。"
+
+    narrator "移民手续提前办好了。"
+
+    narrator "她甚至没有跟我说再见。"
+
+    scene black
+
+    narrator "我站在空荡荡的座位前。"
+
+    narrator "她的东西已经全部搬走了。"
+
+    narrator "只留下一张纸条。"
+
+    narrator "\"[player_name]，谢谢你这段时间的陪伴。\""
+
+    narrator "\"[player_name]，对不起。\""
+
+    narrator "\"[player_name]，再见。\""
+
+    narrator "就这么三行字。"
+
+    narrator "连一个'朋友'的称呼都没有。"
+
+    scene black
+
+    narrator "高考结束了。"
+
+    narrator "我考上了一所不好不差的大学。"
+
+    narrator "林晚棠去了日本。"
+
+    narrator "我们再也没有联系过。"
+
+    narrator "这次重生——"
+
+    narrator "好像什么都没改变。"
+
+    narrator "不，改变了一点。"
+
+    narrator "我终于知道——"
+
+    narrator "有些事情，不是努力就能成功的。"
+
+    narrator "有些人，注定会错过。"
+
+    scene black
+
+    centered "{size=+8}{b}—— 林晚棠线 · Bad Ending ——{/b}{/size}\n
+{w=0.5}有些人，注定会错过"
+
+    pause 2.0
+
+    scene black
+
+    narrator "{b}【结局分析】{/b}"
+    narrator "你在关键时刻的选择导致了失败"
+    narrator "告白前没有充分准备"
+    narrator "未能打动林父"
+    narrator "蝴蝶效应触发不足"
+
+    narrator "{b}【成就解锁】{/b}"
+    narrator "'错过'—— 在最关键的时候，没有把握住机会"
+
+    pause 2.0
+
+    scene black
+
+    narrator "感谢游玩林晚棠线。"
+
+    narrator "如果你想重新挑战——"
+
+    narrator "可以从Day 23重新开始。"
+
+    jump lindao_route_ending_menu
+
+# =============================================================================
+# Normal Ending：家庭问题未解决
+# =============================================================================
+
+label lindao_normal_ending_family_issue:
+    $ persistent.lindao_ending_type = "Normal"
+
+    scene black
+
+    narrator "告白成功了。"
+
+    narrator "但问题才刚刚开始。"
+
+    scene bg classroom_sunset with dissolve
+
+    narrator "林父知道了我们的事。"
+
+    narrator "他没有像之前那样激烈反对。"
+
+    narrator "但也没有祝福。"
+
+    narrator "只是沉默。"
+
+    show lindao worried at LEFT with dissolve
+
+    lindao "（担忧）陆鸣，我爸他……"
+
+    player "（握紧她的手）没关系，我们会想办法的。"
+
+    narrator "但我们都知道。"
+
+    narrator "有些问题，不是有决心就能解决的。"
+
+    narrator "林父的赌瘾还在。"
+
+    narrator "家庭的裂痕还没有愈合。"
+
+    scene black
+
+    narrator "高考结束了。"
+
+    narrator "我们都考得不错。"
+
+    narrator "但林晚棠还是要去日本留学。"
+
+    narrator "这次没有移民，但选择了留学。"
+
+    narrator "她申请了一所日本大学的交换项目。"
+
+    show lindao sad at LEFT with dissolve
+
+    lindao "（不舍）陆鸣，我……"
+
+    player "（微笑）没关系，我们可以异地。"
+
+    narrator "但我们都知道。"
+
+    narrator "异国恋……太难了。"
+
+    scene black
+
+    narrator "机场。"
+
+    narrator "林晚棠抱着我哭。"
+
+    show lindao crying at LEFT with dissolve
+
+    lindao "（哽咽）对不起……我答应过你的……"
+
+    player "（擦她的眼泪）不要道歉。"
+
+    player "这是我们一起做的选择。"
+
+    narrator "她点点头，但还是哭得很厉害。"
+
+    narrator "飞机起飞了。"
+
+    narrator "我站在机场，看着那架飞机消失在天际。"
+
+    scene black
+
+    narrator "后来。"
+
+    narrator "我们的联系越来越少。"
+
+    narrator "不是因为不爱了。"
+
+    narrator "只是……太远了。"
+
+    narrator "时差、距离、还有那些无法跨越的差异。"
+
+    narrator "一年后，我们和平分手了。"
+
+    narrator "没有争吵，没有背叛。"
+
+    narrator "只是……走散了。"
+
+    scene black
+
+    centered "{size=+8}{b}—— 林晚棠线 · Normal Ending ——{/b}{/size}\n
+{w=0.5}有些人注定只能陪你走一程"
+
+    pause 2.0
+
+    scene black
+
+    narrator "{b}【结局分析】{/b}"
+    narrator "告白成功，但未能解决根本问题"
+    narrator "林父的态度没有改变"
+    narrator "留学问题依然存在"
+    narrator "爱情输给了现实"
+
+    narrator "{b}【成就解锁】{/b}"
+    narrator "'走过'—— 你们曾经在一起过"
+    narrator "'异地'—— 跨越不了的距离"
+
+    pause 2.0
+
+    scene black
+
+    narrator "感谢游玩林晚棠线。"
+
+    narrator "如果想尝试更好的结局——"
+
+    narrator "需要在Day 16说服林父时选择正确的策略。"
+
+    jump lindao_route_ending_menu
+
+# =============================================================================
+# Normal Ending：蝴蝶效应不足
+# =============================================================================
+
+label lindao_normal_ending_butterfly:
+    $ persistent.lindao_ending_type = "Normal"
+
+    scene black
+
+    narrator "告白成功了。"
+
+    narrator "林父勉强接受了这个事实。"
+
+    narrator "移民的问题暂时搁置。"
+
+    narrator "高考结束了。"
+
+    scene bg classroom_sunset with dissolve
+
+    narrator "成绩出来了。"
+
+    narrator "我们都考上了同一座城市的大学。"
+
+    narrator "虽然不是最好的学校，但足以让我们在一起。"
+
+    show lindao smile at LEFT with dissolve
+
+    narrator "那个夏天。"
+
+    narrator "是我们最快乐的时光。"
+
+    narrator "没有考试的压力，没有移民的阴霾。"
+
+    narrator "只有我们两个人。"
+
+    narrator "和一份刚刚开始的爱情。"
+
+    scene black
+
+    narrator "但有时候。"
+
+    narrator "我会想起前世的一些事情。"
+
+    narrator "那些我没能改变的遗憾。"
+
+    narrator "那些蝴蝶效应没能触及的角落。"
+
+    narrator "母亲还是会生那场病。"
+
+    narrator "虽然发现得早，但还是让我们担心了很久。"
+
+    narrator "父亲还是会有一段时间的迷茫。"
+
+    narrator "虽然后来走出来了，但那段日子很艰难。"
+
+    narrator "我们改变了很多。"
+
+    narrator "但不是全部。"
+
+    scene black
+
+    narrator "大学四年。"
+
+    narrator "我们在一起，感情稳定。"
+
+    narrator "毕业后，找到了还不错的工作。"
+
+    narrator "没有大富大贵，但生活安稳。"
+
+    narrator "偶尔会吵架，但很快就会和好。"
+
+    narrator "这就是生活吧。"
+
+    narrator "不是童话，但足够真实。"
+
+    scene black
+
+    centered "{size=+8}{b}—— 林晚棠线 · Normal Ending ——{/b}{/size}\n
+{w=0.5}平凡的幸福，也是一种完美"
+
+    pause 2.0
+
+    scene black
+
+    narrator "{b}【结局分析】{/b}"
+    narrator "告白成功，生活稳定"
+    narrator "蝴蝶效应触发较少"
+    narrator "部分遗憾未能弥补"
+    narrator "生活平凡但幸福"
+
+    narrator "{b}【成就解锁】{/b}"
+    narrator "'平凡'—— 不是每个人都需要轰轰烈烈"
+    narrator "'在一起'—— 最重要的事"
+
+    pause 2.0
+
+    scene black
+
+    narrator "感谢游玩林晚棠线。"
+
+    narrator "如果你想体验更完整的改变——"
+
+    narrator "可以在游戏中触发更多蝴蝶效应事件。"
+
+    jump lindao_route_ending_menu
+
+# =============================================================================
+# Happy Ending（已有完整代码，这里做标记跳转）
+# =============================================================================
+
+label lindao_happy_ending:
+    $ persistent.lindao_ending_type = "HE"
+    $ persistent.lindao_route_completed = True
+    $ persistent.te_routes_completed += 1
+
+    # 更新遗憾值统计
+    $ persistent.regret_value += 30
+
+    # 标记完成
+    $ renpy.save("lindao_ending_save")
+
+    # 跳转到已有的Happy Ending代码
+    jump lindao_day25
+
+# =============================================================================
+# True Ending 解锁
+# =============================================================================
+
+label lindao_true_ending_unlock:
+    $ persistent.lindao_ending_type = "True"
+
+    scene black
+
+    centered "{b}{color=#FFD700}—— True Ending 路线解锁 ——{/color}{/b}"
+
+    pause 2.0
+
+    narrator "你的选择触发了特殊的剧情线。"
+
+    narrator "林晚棠线 · True Ending"
+
+    narrator "这是林晚棠线的最佳结局。"
+
+    scene black
+
+    narrator "你已经完成了至少2条女主线。"
+
+    narrator "并且收集了15个以上的记忆碎片。"
+
+    narrator "这意味着——"
+
+    narrator "你理解了'重生'的真正含义。"
+
+    narrator "不是简单地改变命运。"
+
+    narrator "而是在每一次选择中，成为更好的自己。"
+
+    pause 2.0
+
+    narrator "True Ending将带给你一个完整的故事收尾。"
+
+    narrator "所有女主的命运都会在这里交汇。"
+
+    narrator "所有的遗憾都会得到最终的解答。"
+
+    scene black
+
+    narrator "继续吗？"
+
+    menu lindao_true_ending_choice:
+        "继续 True Ending 路线":
+            jump lindao_true_ending_route
+        "先保存，返回标题画面":
+            jump lindao_save_and_return
+
+label lindao_true_ending_route:
+    $ persistent.lindao_route_completed = True
+    $ persistent.te_routes_completed += 1
+    $ persistent.true_ending_unlocked = True
+
+    # 跳转到Day 25 True Ending版本
+    jump lindao_day25_true_ending
+
+label lindao_save_and_return:
+    narrator "游戏已保存。"
+
+    narrator "可以在标题画面读取'林晚棠线结局存档'继续。"
+
+    jump lindao_route_ending_menu
+
+# =============================================================================
+# 林晚棠线 · True Ending Day 25
+# =============================================================================
+
+label lindao_day25_true_ending:
+    $ persistent.current_day = 25
+
+    scene black
+
+    centered "{b}—— Day 25 · True Ending ——{/b}\n
+{w=0.5}命运的交汇"
+
+    pause 1.0
+
+    scene black
+
+    narrator "高考结束了。"
+
+    narrator "走出考场的那一刻，我感觉整个人都轻松了。"
+
+    narrator "不管结果如何——"
+
+    narrator "这一次，我没有遗憾。"
+
+    narrator "林父戒赌了，重新找了工作。"
+
+    narrator "林母留了下来，一家人重新开始。"
+
+    narrator "母亲的身体很健康。"
+
+    narrator "而林晚棠——"
+
+    narrator "她还在我身边。"
+
+    scene bg classroom_sunset with dissolve
+
+    narrator "校门口。"
+
+    narrator "她站在那里等我。"
+
+    narrator "阳光洒在她身上，像是镀了一层金边。"
+
+    show lindao smile at LEFT with dissolve
+
+    lindao "（跑过来）陆鸣！"
+
+    player "（张开双臂）过来。"
+
+    narrator "她扑进我怀里。"
+
+    narrator "我紧紧抱住她。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "（小声）这里是学校门口……"
+
+    player "（微笑）我知道。"
+
+    narrator "我低下头，在她额头上轻轻一吻。"
+
+    narrator "周围有同学起哄。"
+
+    narrator "但我不在乎。"
+
+    narrator "这一次，我什么都不在乎了。"
+
+    narrator "只想和她在一起。"
+
+    hide lindao with dissolve
+
+    scene black
+
+    narrator "成绩出来的那天。"
+
+    narrator "我们都考得不错。"
+
+    narrator "可以上同一所城市的大学。"
+
+    narrator "林父这次是真正地接受了我们。"
+
+    narrator "他甚至主动找我谈话。"
+
+    show lindao normal at LEFT with dissolve
+
+    lin_father "小伙子，好好对她。"
+
+    player "（认真）我会的，叔叔。"
+
+    narrator "林母在一旁笑着。"
+
+    show lindao smile at LEFT with dissolve
+
+    lindao "（小声）我爸好像真的变了……"
+
+    player "（微笑）蝴蝶效应。"
+
+    narrator "她疑惑地看着我。"
+
+    narrator "我没有解释。"
+
+    narrator "有些事情，不需要解释。"
+
+    hide lindao with dissolve
+
+    scene black
+
+    narrator "九月份。"
+
+    narrator "大学开学的第一天。"
+
+    narrator "我站在校门口，等她。"
+
+    narrator "她穿着白裙子，从远处跑过来。"
+
+    show lindao smile at LEFT with dissolve
+
+    lindao "（扑进我怀里）等很久了吗？"
+
+    player "（揉她的头发）没有，刚好。"
+
+    narrator "阳光很暖，风很轻。"
+
+    narrator "她的笑容，比阳光更耀眼。"
+
+    player "走吧，去报到。"
+
+    lindao "嗯！"
+
+    narrator "我们牵着手，走进校园。"
+
+    narrator "身后是十八岁的夏天。"
+
+    narrator "面前是全新的人生。"
+
+    narrator "这一次——"
+
+    narrator "我没有错过。"
+
+    narrator "而且，我拥有了最好的一切。"
+
+    scene black
+
+    centered "{size=+8}{b}—— 林晚棠线 · True Ending ——{/b}{/size}\n
+{w=0.5}这次，我抓住了命运"
+
+    pause 2.0
+
+    scene black
+
+    narrator "{b}【True Ending 统计】{/b}"
+    narrator "{font=simhei.ttf}{color=#FFD700}遗憾弥补值：{/color}{/font}" + str(persistent.regret_value) + "/300"
+    narrator "{font=simhei.ttf}{color=#87CEEB}记忆碎片：{/color}{/font}" + str(persistent.fragment_count) + "/20"
+    narrator "{font=simhei.ttf}{color=#FF6B6B}蝴蝶效应：{/color}{/font}" + str(persistent.butterfly_count) + "次"
+
+    narrator "{b}【成就解锁】{/b}"
+    narrator "'不错过'—— 完成林晚棠线"
+    narrator "'蝴蝶效应'—— 改变了命运的轨迹"
+    narrator "'此生不换'—— 说出那句迟到了十七年的话"
+    narrator "'完美'—— 达成True Ending"
+
+    pause 2.0
+
+    scene black
+
+    narrator "你已完成林晚棠线的True Ending。"
+
+    narrator "感谢你陪伴陆鸣走完这段旅程。"
+
+    narrator "他曾经是一个懦弱的人。"
+
+    narrator "错过喜欢的人，错过重要的人，错过想要珍惜的时光。"
+
+    narrator "但这一世——"
+
+    narrator "他终于抓住了命运的咽喉。"
+
+    narrator "成为了那个不会被命运打败的人。"
+
+    jump lindao_route_ending_menu
+
+# =============================================================================
+# 结局菜单
+# =============================================================================
+
+label lindao_route_ending_menu:
+    scene black
+
+    centered "{b}—— 林晚棠线 · 结局菜单 ——{/b}"
+
+    pause 1.0
+
+    menu lindao_ending_menu_choice:
+        "查看结局总结":
+            jump lindao_ending_summary
+        "读取存档（重新体验其他路线）":
+            jump lindao_load_save
+        "返回标题画面":
+            jump lindao_return_to_title
+        "结束游戏":
+            jump lindao_exit_game
+
+label lindao_ending_summary:
+    scene black
+
+    narrator "{b}【林晚棠线 · 结局总结】{/b}"
+
+    if persistent.lindao_ending_type == "BE":
+        narrator "结局类型：Bad Ending"
+        narrator "告白失败，未能挽回林晚棠"
+    elif persistent.lindao_ending_type == "Normal":
+        narrator "结局类型：Normal Ending"
+        narrator "告白成功，但未能解决所有问题"
+    elif persistent.lindao_ending_type == "HE":
+        narrator "结局类型：Happy Ending"
+        narrator "达成幸福的结局"
+    elif persistent.lindao_ending_type == "True":
+        narrator "结局类型：True Ending"
+        narrator "达成最完美的结局"
+
+    narrator ""
+    narrator "{b}【游戏数据】{/b}"
+    narrator "记忆碎片：" + str(persistent.fragment_count) + "/20"
+    narrator "遗憾弥补值：" + str(persistent.regret_value) + "/300"
+    narrator "蝴蝶效应：" + str(persistent.butterfly_count) + "次"
+    narrator "已攻略角色：林晚棠"
+
+    if persistent.te_routes_completed >= 2:
+        narrator ""
+        narrator "{b}{color=#FFD700}【提示】{/color}{/b}"
+        narrator "你已完成" + str(persistent.te_routes_completed) + "条女主线"
+        narrator "当完成2条以上女主线且收集足够记忆碎片时"
+        narrator "可以解锁True Ending"
+
+    pause 2.0
+
+    jump lindao_route_ending_menu
+
+label lindao_load_save:
+    narrator "请在标题画面选择'读取存档'。"
+
+    jump lindao_return_to_title
+
+label lindao_return_to_title:
+    scene black
+
+    narrator "正在返回标题画面……"
+
+    pause 1.0
+
+    jump start
+
+label lindao_exit_game:
+    scene black
+
+    centered "{b}感谢游玩{/b}"
+    centered "{b}《重生·轻逆袭》{/b}"
+
+    pause 2.0
+
+    return
+
+# =============================================================================
+# Day 25：Happy Ending（原代码保留）
 # =============================================================================
 
 label lindao_day25:

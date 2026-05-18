@@ -138,7 +138,13 @@ default lindao_day23_confession_style = None   # "direct" / "romantic" / "letter
 default lindao_confession_success = False       # 告白是否成功
 
 # 林晚棠结局Flag
-default lindao_ending_type = None              # "HE" / "Normal" / "BE"
+default lindao_ending_type = None              # "HE" / "Normal" / "BE" / "True"
+default lindao_route_completed = False          # 标记林晚棠线已完成
+default lindao_bad_ending_reached = False      # 是否到达过Bad Ending
+default lindao_normal_ending_reached = False   # 是否到达过Normal Ending
+
+# True Ending解锁检查
+default te_lindao_unlocked = False             # 林晚棠线TE解锁
 
 # =============================================================================
 # 苏念卿线Flag
