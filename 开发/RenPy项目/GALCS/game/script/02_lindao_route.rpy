@@ -914,7 +914,7 @@ label lindao_day12:
 
     narrator "但我注意到——"
 
-    narrator "她的目光扫过我刚才"观察"的地方，似乎有一丝紧张。"
+    narrator "她的目光扫过我刚才'观察'的地方，似乎有一丝紧张。"
 
     show lindao normal at LEFT with dissolve
 
