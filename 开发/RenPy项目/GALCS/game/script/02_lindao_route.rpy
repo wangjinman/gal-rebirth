@@ -1708,9 +1708,18 @@ label lindao_day16:
 
     narrator "放学后，我去打听了林父的下落。"
 
+    # 放学后的走廊场景
+    scene bg corridor with dissolve
+
+    narrator "走廊里，夕阳透过窗户洒进来。"
+
+    narrator "我的影子被拉得很长。"
+
     narrator "有人说在城南的棋牌室看到他。"
 
     narrator "我犹豫了很久。"
+
+    scene black
 
     narrator "去，还是不去？"
 
@@ -3673,17 +3682,65 @@ label lindao_day25_true_ending:
 
     narrator "林母在一旁笑着。"
 
+    scene black
+
+    narrator "那个夏天。"
+
+    # 公园场景 - 约会
+    scene bg park with dissolve
+
+    narrator "夕阳下，我们走在公园的小路上。"
+
+    narrator "她牵着气球，笑得很开心。"
+
     show lindao smile at LEFT with dissolve
 
-    lindao "（小声）我爸好像真的变了……"
+    lindao "陆鸣，你说我们会一直在一起吗？"
 
-    player "（微笑）蝴蝶效应。"
+    player "（握紧她的手）会的，一定会的。"
 
-    narrator "她疑惑地看着我。"
+    show lindao shy at LEFT with dissolve
 
-    narrator "我没有解释。"
+    lindao "（小声）那你要说话算话哦。"
 
-    narrator "有些事情，不需要解释。"
+    narrator "晚风轻轻吹过，带来夏天的气息。"
+
+    narrator "这一刻，我觉得自己是世界上最幸福的人。"
+
+    hide lindao with dissolve
+
+    scene black
+
+    narrator "后来有一天。"
+
+    # 咖啡馆场景 - 庆祝
+    scene bg cafe with dissolve
+
+    narrator "我们约在常去的那家咖啡馆。"
+
+    narrator "这里有我们太多回忆。"
+
+    narrator "我在这里向她告白过。"
+
+    narrator "也在这里等过她很多次。"
+
+    show lindao smile at LEFT with dissolve
+
+    lindao "（放下咖啡杯）陆鸣，你在发什么呆？"
+
+    player "（微笑）在想我们第一次在这里见面的场景。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "那时候你还很害羞呢……"
+
+    player "（笑）是啊，现在也是。"
+
+    narrator "她笑了。"
+
+    narrator "咖啡的香气，温暖的灯光，还有她的笑容。"
+
+    narrator "一切都是刚刚好的样子。"
 
     hide lindao with dissolve
 
@@ -3989,6 +4046,68 @@ label lindao_day25:
     narrator "而我——"
 
     narrator "终于不再是那个'差不多先生'了。"
+
+    scene black
+
+    narrator "那个夏天。"
+
+    # 公园场景 - 约会
+    scene bg park with dissolve
+
+    narrator "夕阳下，我们走在公园的小路上。"
+
+    narrator "她牵着气球，笑得很开心。"
+
+    show lindao smile at LEFT with dissolve
+
+    lindao "陆鸣，你说我们会一直在一起吗？"
+
+    player "（握紧她的手）会的，一定会的。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "（小声）那你要说话算话哦。"
+
+    narrator "晚风轻轻吹过，带来夏天的气息。"
+
+    narrator "这一刻，我觉得自己是世界上最幸福的人。"
+
+    hide lindao with dissolve
+
+    scene black
+
+    narrator "后来有一天。"
+
+    # 咖啡馆场景 - 庆祝
+    scene bg cafe with dissolve
+
+    narrator "我们约在常去的那家咖啡馆。"
+
+    narrator "这里有我们太多回忆。"
+
+    narrator "我在这里向她告白过。"
+
+    narrator "也在这里等过她很多次。"
+
+    show lindao smile at LEFT with dissolve
+
+    lindao "（放下咖啡杯）陆鸣，你在发什么呆？"
+
+    player "（微笑）在想我们第一次在这里见面的场景。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "那时候你还很害羞呢……"
+
+    player "（笑）是啊，现在也是。"
+
+    narrator "她笑了。"
+
+    narrator "咖啡的香气，温暖的灯光，还有她的笑容。"
+
+    narrator "一切都是刚刚好的样子。"
+
+    hide lindao with dissolve
 
     scene black
 
