@@ -11,6 +11,18 @@ init python:
     style.affection_popup.background = Solid("#2d4a6f")
     style.affection_popup.padding = (20, 15, 20, 15)
 
+    # 角色专属对话框映射
+    # 林晚棠 - 暖橙边框专属UI
+    DIALOGUE_BOXES = {
+        "林晚棠": "images/UI/UI_02_lwt_dialogue_box.png",
+    }
+
+    # 获取对话背景图片
+    def get_dialogue_bg(who):
+        if who and who in DIALOGUE_BOXES:
+            return DIALOGUE_BOXES[who]
+        return "images/UI/UI_01_dialogue_box.png"
+
 # =============================================================================
 # 好感度变化弹窗（Screen）
 # =============================================================================
@@ -80,43 +92,49 @@ screen hud():
 
 # =============================================================================
 # 对话框样式覆盖 - 使用自定义UI组件
+# 支持角色专属对话框
 # =============================================================================
+# 屏幕 1920x1080
+# UI_01 尺寸 1920x350，内容从顶部开始
+# UI_02 尺寸 1920x440，内容从 y=42 开始（顶部42px透明）
 
 screen say(who, what):
-    # 对话框底栏背景 - 使用带装饰边框的完整版本
-    add "images/UI/UI_01_dialogue_box.png":
-        xalign 0.5
-        yalign 1.0
+    # 根据角色选择对话框背景
+    $ bg_img = get_dialogue_bg(who)
+    $ is_lwt = who and who in DIALOGUE_BOXES
+    # 所有对话框高度统一为440px
+    $ box_height = 440
+    # 文字区域y坐标：UI_01内容从y=90开始，UI_02内容从y=42开始
+    # 文字区域y坐标：UI_01内容从y=90(屏幕730)，UI_02内容从y=42(屏幕682)
+    $ text_ypos = 960
 
-    # 文字内容窗口 - 填满对话框区域
-    # 白色区域在中间，文字用深色以便可见
+    # 对话框图片 - 贴底显示
+    add bg_img:
+        xalign 0.5
+        ypos 1080 - box_height
+
+    # 文字内容窗口
     window:
         id "window"
         background None
         xfill True
-        ypos 730
-        ymaximum 350
-        padding (80, 50, 80, 30)
+        ypos text_ypos
+        ymaximum 400
+        padding (100, 60, 100, 50)
 
         has vbox
-        spacing 8
+        spacing 10
 
         if who:
             text who id "who":
-                size 24
-                color "#2c3e50"  # 深色文字配白色背景
+                size 26
+                color "#2c3e50"
                 font "fonts/SourceHanSansLite.ttf"
 
         text what id "what":
-            size 28
-            color "#2c3e50"  # 深色文字配白色背景
+            size 32
+            color "#2c3e50"
             font "fonts/SourceHanSansLite.ttf"
-
-    # 角色姓名标签 - 叠在对话框左上角
-    if who:
-        add "images/UI/UI_01_name_tag.png":
-            xpos 60
-            ypos 720
 
     use quick_menu
 

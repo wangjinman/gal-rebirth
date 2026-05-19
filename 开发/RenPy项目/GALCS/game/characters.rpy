@@ -342,14 +342,14 @@ image lindao surprised = Transform("images/character/lindao/LWT_06_surprised.png
 
 # 角色位置定义（用于立绘显示）
 # =============================================================================
-# 屏幕位置常量
-define LEFT = Position(xpos=0.15, xanchor=0.5)
-define LEFT_CENTER = Position(xpos=0.3, xanchor=0.5)
+# 屏幕位置常量 - 调整后更居中（再往右移动0.2）
+define LEFT = Position(xpos=0.48, xanchor=0.5)
+define LEFT_CENTER = Position(xpos=0.58, xanchor=0.5)
 define CENTER = Position(xpos=0.5, xanchor=0.5)
-define RIGHT_CENTER = Position(xpos=0.7, xanchor=0.5)
-define RIGHT = Position(xpos=0.85, xanchor=0.5)
-define FAR_LEFT = Position(xpos=0.0, xanchor=0.5)
-define FAR_RIGHT = Position(xpos=1.0, xanchor=0.5)
+define RIGHT_CENTER = Position(xpos=0.82, xanchor=0.5)
+define RIGHT = Position(xpos=0.92, xanchor=0.5)
+define FAR_LEFT = Position(xpos=0.35, xanchor=0.5)
+define FAR_RIGHT = Position(xpos=0.95, xanchor=0.5)
 
 # 角色叠加顺序
 define ADVANCE_SPRITE_ORDER = 0
