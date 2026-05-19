@@ -79,35 +79,44 @@ screen hud():
                 text "第一章" size 16 color "#6c9bd1"
 
 # =============================================================================
-# 对话框样式覆盖
+# 对话框样式覆盖 - 使用自定义UI组件
 # =============================================================================
 
 screen say(who, what):
+    # 对话框底栏背景 - 使用带装饰边框的完整版本
+    add "images/UI/UI_01_dialogue_box.png":
+        xalign 0.5
+        yalign 1.0
+
+    # 文字内容窗口 - 填满对话框区域
+    # 白色区域在中间，文字用深色以便可见
     window:
         id "window"
-        background Solid("#1a1a2e")
-        ymaximum 220
-        yalign 1.0
-        padding (20, 20, 20, 20)
+        background None
+        xfill True
+        ypos 730
+        ymaximum 350
+        padding (80, 50, 80, 30)
 
-        vbox:
-            spacing 10
+        has vbox
+        spacing 8
 
-            if who:
-                frame:
-                    background Solid("#2d4a6f")
-                    padding (15, 5, 15, 5)
-                    xalign 0.0
-                    xpos 50
-                    yoffset -10
+        if who:
+            text who id "who":
+                size 24
+                color "#2c3e50"  # 深色文字配白色背景
+                font "fonts/SourceHanSansLite.ttf"
 
-                    text who:
-                        id "who"
+        text what id "what":
+            size 28
+            color "#2c3e50"  # 深色文字配白色背景
+            font "fonts/SourceHanSansLite.ttf"
 
-            text what:
-                id "what"
-                xalign 0.5
-                yalign 0.5
+    # 角色姓名标签 - 叠在对话框左上角
+    if who:
+        add "images/UI/UI_01_name_tag.png":
+            xpos 60
+            ypos 720
 
     use quick_menu
 
@@ -150,6 +159,7 @@ screen quick_menu():
 style quick_menu_frame:
     xalign 0.5
     yalign 1.0
+    yoffset -60  # 调整到底栏上方
     padding (10, 10, 10, 10)
     background Solid("#1a1a2e")
 

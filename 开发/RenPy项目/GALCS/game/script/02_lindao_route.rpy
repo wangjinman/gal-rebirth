@@ -3790,9 +3790,9 @@ label lindao_day25_true_ending:
     scene black
 
     narrator "{b}【True Ending 统计】{/b}"
-    narrator "{font=simhei.ttf}{color=#FFD700}遗憾弥补值：{/color}{/font}" + str(persistent.regret_value) + "/300"
-    narrator "{font=simhei.ttf}{color=#87CEEB}记忆碎片：{/color}{/font}" + str(persistent.fragment_count) + "/20"
-    narrator "{font=simhei.ttf}{color=#FF6B6B}蝴蝶效应：{/color}{/font}" + str(persistent.butterfly_count) + "次"
+    narrator "遗憾弥补值：[persistent.regret_value]/300"
+    narrator "记忆碎片：[persistent.fragment_count]/20"
+    narrator "蝴蝶效应：[persistent.butterfly_count]次"
 
     narrator "{b}【成就解锁】{/b}"
     narrator "'不错过'—— 完成林晚棠线"
@@ -3861,15 +3861,15 @@ label lindao_ending_summary:
 
     narrator ""
     narrator "{b}【游戏数据】{/b}"
-    narrator "记忆碎片：" + str(persistent.fragment_count) + "/20"
-    narrator "遗憾弥补值：" + str(persistent.regret_value) + "/300"
-    narrator "蝴蝶效应：" + str(persistent.butterfly_count) + "次"
+    narrator "记忆碎片：[persistent.fragment_count]/20"
+    narrator "遗憾弥补值：[persistent.regret_value]/300"
+    narrator "蝴蝶效应：[persistent.butterfly_count]次"
     narrator "已攻略角色：林晚棠"
 
     if persistent.te_routes_completed >= 2:
         narrator ""
         narrator "{b}{color=#FFD700}【提示】{/color}{/b}"
-        narrator "你已完成" + str(persistent.te_routes_completed) + "条女主线"
+        narrator "你已完成[persistent.te_routes_completed]条女主线"
         narrator "当完成2条以上女主线且收集足够记忆碎片时"
         narrator "可以解锁True Ending"
 
