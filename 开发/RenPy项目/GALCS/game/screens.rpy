@@ -120,7 +120,7 @@ screen say(who, what):
         xfill True
         ypos text_ypos
         ymaximum 400
-        padding (100, 60, 100, 50)
+        padding (350, 60, 100, 50)
 
         has vbox
         spacing 10
@@ -130,6 +130,7 @@ screen say(who, what):
                 size 26
                 color "#2c3e50"
                 font "fonts/SourceHanSansLite.ttf"
+                yoffset -20
 
         text what id "what":
             size 32

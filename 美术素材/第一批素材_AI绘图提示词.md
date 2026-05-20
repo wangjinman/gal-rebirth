@@ -1,8 +1,8 @@
 # 《重生·轻逆袭》美术素材AI提示词 - 专用文档
 
 > **文档编号**：GAL-PROMPT-001
-> **版本**：v1.3
-> **日期**：2026-05-18
+> **版本**：v1.7
+> **日期**：2026-05-20
 > **状态**：正式使用中
 > **用途**：所有美术素材AI生成提示词的统一管理文档
 > **生成工具建议**：Midjourney / Stable Diffusion XL / DALL-E 3
@@ -19,6 +19,10 @@
 | v1.1 | 2026-05-18 | 扩充背景素材（+5张天台/图书馆/走廊/公园/咖啡馆），完善UI素材（12个组件） | AI辅助 |
 | v1.2 | 2026-05-18 | 添加透明背景核心关键词，所有立绘提示词更新 | AI辅助 |
 | v1.3 | 2026-05-18 | 融合桌面版v1.1与现有v1.2，完善素材清单状态追踪、背景+UI提示词完整性 | AI辅助 |
+| v1.4 | 2026-05-20 | 批量更新素材状态（林晚棠6立绘+8背景+UI-01均已完成），新增雨夜街道背景提示词 | AI辅助 |
+| v1.5 | 2026-05-20 | 新增9张背景图提示词（住宅3张+棋牌室+咖啡馆+篮球场+天台星空夜景等），完善素材清单状态追踪 | AI辅助 |
+| v1.6 | 2026-05-20 | 新增5张序章背景图提示词（卧室夜景+急救室+玄关+校门日景+记忆碎片特效） | AI辅助 |
+| v1.7 | 2026-05-20 | 新增2张序章CG提示词（加班猝死+意识消散），完善序章素材优先级分析 | AI辅助 |
 
 ---
 
@@ -69,16 +73,27 @@
 
 | 批次 | 优先级 | 素材类型 | 数量 | 用途 | 状态 |
 |------|--------|---------|------|------|------|
-| **P0** | 最高 | 林晚棠立绘（6表情） | 6张 | Demo核心展示 | ⚠️ 已生成（需替换透明版） |
+| **P0** | 最高 | 林晚棠立绘（6表情） | 6张 | Demo核心展示 | ✅ 已完成 |
 | **P0** | 最高 | 教室背景（日景） | 1张 | 序章+第一章 | ✅ 已完成 |
 | **P0** | 最高 | 教室背景（窗外夕阳） | 1张 | 林晚棠关键场景 | ✅ 已完成 |
 | **P0** | 最高 | 主角卧室背景 | 1张 | 日常场景 | ✅ 已完成 |
-| **P0** | 高 | 学校天台（黄昏） | 1张 | 关键浪漫场景 | 🔲 待生成 |
-| **P0** | 高 | 学校图书馆 | 1张 | 学习/安静对话 | 🔲 待生成 |
-| **P0** | 高 | 学校走廊 | 1张 | 课间/转场 | 🔲 待生成 |
-| **P0** | 高 | 公园长椅（黄昏） | 1张 | 约会场景 | 🔲 待生成 |
-| **P0** | 高 | 咖啡馆内景 | 1张 | 苏念卿线/约会 | 🔲 待生成 |
-| **P1** | 高 | 对话框底栏 | 1个 | 核心UI | 🔲 待生成 |
+| **P0** | 高 | 学校天台（黄昏） | 1张 | 关键浪漫场景 | ✅ 已完成 |
+| **P0** | 高 | 学校图书馆 | 1张 | 学习/安静对话 | ✅ 已完成 |
+| **P0** | 高 | 学校走廊 | 1张 | 课间/转场 | ✅ 已完成 |
+| **P0** | 高 | 公园长椅（黄昏） | 1张 | 约会场景 | ✅ 已完成 |
+| **P0** | 高 | 咖啡馆内景 | 1张 | 苏念卿线/约会 | ✅ 已完成 |
+| **P0** | 高 | 住宅门口/上学路 | 1张 | Day 8上学同行 | 🔲 待生成 |
+| **P0** | 高 | 住宅室内客厅 | 1张 | Day 12 去林晚棠家 | 🔲 待生成 |
+| **P0** | 高 | 住宅阳台(多肉) | 1张 | Day 12 照顾多肉 | 🔲 待生成 |
+| **P0** | 高 | 棋牌室 | 1张 | Day 16 说服林父 | 🔲 待生成 |
+| **P0** | 高 | 卧室·昏暗夜景 | 1张 | 序章"加班夜" | 🔲 待生成 |
+| **P0** | 高 | 急救室/意识模糊底图 | 1张 | 序章死亡过渡 | 🔲 待生成 |
+| **P1** | 高 | 咖啡馆内景(Day15剧情) | 1张 | Day 15 获取情报 | 🔲 待生成 |
+| **P1** | 高 | 玄关/鞋柜 | 1张 | 序章"妈，我去上学了" | 🔲 待生成 |
+| **P1** | 高 | 校门·日景 | 1张 | 序章进入校园 | 🔲 待生成 |
+| **P1** | 高 | 篮球场夜景/星空 | 1张 | Day 21 告白前夜 | 🔲 待生成 |
+| **P1** | 高 | 天台星空夜景 | 1张 | Day 23 告白场景 | 🔲 待生成 |
+| **P1** | 高 | 对话框底栏 | 1个 | 核心UI | ✅ 已完成 |
 | **P1** | 高 | 选择菜单按钮 | 3状态 | 选项UI | 🔲 待生成 |
 | **P1** | 高 | 主菜单背景 | 1张 | 启动界面 | 🔲 待生成 |
 | **P1** | 高 | 存档/读档槽位 | 2个 | 存档界面 | 🔲 待生成 |
@@ -611,6 +626,789 @@ cinematic composition, depth of field
 **规格要求**：
 - 分辨率：1920×1080px
 - 格式：PNG/JPG
+
+---
+
+#### 【背景-09】雨夜街道
+
+**用途**：林晚棠线Day 10关键场景，雨中对话
+
+**英文正向提示词**：
+```
+anime style rainy night street background, high quality
+heavy rain, wet pavement reflecting street lights
+orange and yellow light pools from street lamps
+umbrellas scattered on street, silhouettes in rain
+night atmosphere, melancholic and emotional mood
+rain droplets on camera lens effect, bokeh lights
+distant buildings with warm windows, cold blue tones
+romantic but sad atmosphere, anime visual novel style
+cinematic composition, dramatic lighting contrast
+```
+
+**中文参考**：
+```
+日系风格雨夜街道背景，高质量
+大雨倾盆，湿润的地面反射路灯灯光
+橙黄色光斑从路灯洒下
+街道上散落的雨伞，雨中的身影剪影
+夜晚氛围，忧郁情绪化的氛围
+镜头雨滴效果，散景灯光
+远处建筑透着温暖灯光，冷蓝色调
+浪漫但伤感的氛围，动漫视觉小说风格
+电影感构图，戏剧性光线对比
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-10】住宅区街道（上学路上）
+
+**用途**：Day 8 早晨和女生一起上学的场景
+
+**英文正向提示词**：
+```
+anime style residential neighborhood street, morning sunlight
+quiet suburban area, Japanese style apartment buildings
+morning golden sunlight through cherry blossom trees
+boy and girl walking together to school, back view
+blue and white school uniforms, gentle morning breeze
+cherry blossom petals on the path, nostalgic atmosphere
+clean street with subtle shadows, cinematic composition
+warm and peaceful morning scene, anime visual novel background
+```
+
+**中文参考**：
+```
+日系住宅区街道，清晨阳光
+安静的郊区，日式公寓楼
+晨间金色阳光透过樱花树
+男生女生一起上学，背影
+蓝白色校服，柔和晨风
+道路上的樱花花瓣，怀旧氛围
+干净的街道，微妙的阴影，电影感构图
+温暖平和的清晨场景，动漫视觉小说背景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-11】住宅室内客厅
+
+**用途**：Day 12 去林晚棠家做客，室内对话场景
+
+**英文正向提示词**：
+```
+anime style cozy living room interior, afternoon soft light
+Japanese style apartment, wooden furniture
+warm afternoon sunlight through curtains
+comfortable sofa, small茶几 with tea cups
+green plants in corner, bookshelf with books
+neat and tidy, homey atmosphere
+heartwarming family living room, anime background
+soft bokeh effect, nostalgic and peaceful feeling
+```
+
+**中文参考**：
+```
+日系温馨客厅内部，下午柔和光线
+日式公寓，木质家具
+温暖的下午阳光透过窗帘
+舒适的沙发，放着茶杯的小茶几
+角落的绿植，装满书籍的书架
+整洁干净，温馨的家庭氛围
+令人心暖的家庭客厅，动漫背景
+柔和散景效果，怀旧平和的感觉
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-12】住宅阳台（多肉植物）
+
+**用途**：Day 12 在林晚棠家阳台照顾多肉植物
+
+**英文正向提示词**：
+```
+anime style apartment balcony, bright sunlight
+wooden plant shelf with colorful succulents and small potted plants
+small green plants in various cute pots
+sunny balcony atmosphere, Japanese apartment style
+soft shadows, warm afternoon lighting
+green plants and flowers on wooden shelf
+peaceful and healing atmosphere, anime visual novel background
+detailed succulent plants, cute potted flowers
+```
+
+**中文参考**：
+```
+日系公寓阳台，明亮阳光
+木质花架上摆满颜色的多肉和小盆栽
+小绿植装在各种可爱的花盆里
+阳光明媚的阳台氛围，日式公寓风格
+柔和阴影，温暖的下午光线
+木质架子上绿植和花朵
+平和治愈的氛围，动漫视觉小说背景
+精细的多肉植物，可爱的盆栽
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-13】棋牌室内部
+
+**用途**：Day 16 城南棋牌室，说服林父的关键场景
+
+**英文正向提示词**：
+```
+anime style mahjong parlor interior, dim lighting
+smoky atmosphere, cigarette smoke haze
+mahjong tables with players, middle-aged men playing
+old and worn interior, yellowish ceiling lights
+warm but gloomy feeling, retro Chinese mahjong hall
+dusty environment, cluttered space
+dramatic shadows, melancholic atmosphere
+anime visual novel background, serious emotional scene
+```
+
+**中文参考**：
+```
+日系风格麻将馆内部，昏暗灯光
+烟雾缭绕的氛围，香烟烟雾弥漫
+麻将桌旁有玩家，中年男子在打牌
+老旧破败的内部，泛黄的顶灯
+温暖但阴郁的感觉，复古中式麻将馆
+灰尘环境，杂乱的空間
+戏剧性的阴影，忧郁的氛围
+动漫视觉小说背景，严肃情绪化的场景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 注意：此场景较为阴暗，与其他明亮场景形成对比
+
+---
+
+#### 【背景-14】咖啡馆吧台（偏内景）
+
+**用途**：Day 15 在晚星咖啡馆与苏念卿对话，获取关键情报
+
+**英文正向提示词**：
+```
+anime style cozy cafe interior, warm amber lighting
+wooden counter with espresso machine, coffee cups on shelf
+round mirrors on wall, vintage decorations
+cafe interior with soft warm light, pendant lamps
+barista area visible, steam rising from coffee
+comfortable booth seats in background
+cozy and relaxing atmosphere, anime visual novel
+romantic evening ambiance, detailed cafe environment
+```
+
+**中文参考**：
+```
+日系温馨咖啡馆内部，暖琥珀色灯光
+木质吧台配浓缩咖啡机，架子上咖啡杯
+墙上圆形镜子，复古装饰
+咖啡馆内部，柔和暖光，吊灯
+可见咖啡师区域，咖啡升起蒸汽
+背景有舒适卡座
+温馨放松的氛围，动漫视觉小说
+浪漫夜晚氛围，精细的咖啡馆环境
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-15】篮球场夜景（星空）
+
+**用途**：Day 21 告白前夜，月下约定场景
+
+**英文正向提示词**：
+```
+anime style basketball court at night, starry sky
+wooden bench beside basketball court, night scene
+countless stars in dark blue sky, full moon bright
+empty basketball court, soft moonlight on court
+peaceful and romantic night atmosphere, anime background
+city skyline in far distance, warm window lights
+quiet nighttime, emotional scene location
+dreamy and nostalgic feeling, visual novel CG background
+```
+
+**中文参考**：
+```
+日系篮球场夜景，满天星空
+篮球场旁的木质长椅，夜间场景
+深蓝色天空中无数星星，皎洁明月
+空无一人的篮球场，月光洒在球场
+平和浪漫的夜晚氛围，动漫背景
+远处城市天际线，温暖的窗户灯光
+寂静的夜晚，情绪化场景地点
+梦幻怀旧感，视觉小说CG背景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-16】天台夜景（星空）
+
+**用途**：Day 23 告白大高潮场景，星空下的告白
+
+**英文正向提示词**：
+```
+anime style school rooftop at night, starry night sky
+countless bright stars, Milky Way visible
+romantic stargazing atmosphere, vast open sky
+school rooftop with chain-link fence, night scene
+city lights glowing in the distance, warm atmosphere
+magical starry night, emotional confession scene
+peaceful and beautiful, anime visual novel background
+cinematic composition, romantic and dreamy
+```
+
+**中文参考**：
+```
+日系学校天台夜景，满天星空
+无数明亮的星星，可见银河
+浪漫观星氛围，广阔开放的天空
+学校天台有铁丝网围栏，夜间场景
+远处城市灯光闪烁，温暖的氛围
+神奇的星空夜晚，情绪化告白场景
+平和美丽，动漫视觉小说背景
+电影感构图，浪漫梦幻
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-17】城南街道夜景
+
+**用途**：Day 16 傍晚去棋牌室的路上
+
+**英文正向提示词**：
+```
+anime style urban street at dusk, evening atmosphere
+Chinese neighborhood street, small shops closing
+orange and purple gradient sunset in sky
+street lamps starting to light up, warm glow
+residential area with local shops, quiet evening
+nostalgic Chinese urban scene, anime background
+peaceful evening mood, soft shadows
+cinematic composition, emotional transitional scene
+```
+
+**中文参考**：
+```
+日系城郊街道黄昏，傍晚氛围
+中国住宅区街道，小店即将打烊
+天空中橙紫色渐变夕阳
+路灯开始亮起，温暖光芒
+住宅区有小店，安静的傍晚
+怀旧中式城市场景，动漫背景
+平和傍晚情绪，柔和阴影
+电影感构图，情绪化过渡场景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+#### 【背景-18】公园角落（日景）
+
+**用途**：Day 18 命运改变后的公园，喜悦场景
+
+**英文正向提示词**：
+```
+anime style small park corner, afternoon sunlight
+peaceful park with wooden bench under tree
+green grass and flowers, gentle breeze
+soft warm lighting, cheerful and hopeful atmosphere
+park in afternoon, nature surrounding
+comfortable and healing environment, anime background
+beautiful natural lighting, emotional positive scene
+nostalgic and warm feeling, visual novel scene
+```
+
+**中文参考**：
+```
+日系小公园角落，下午阳光
+树下有木质长椅的宁静公园
+绿草和花朵，柔和微风
+柔和温暖光线，欢快充满希望的氛围
+下午的公园，自然环绕
+舒适治愈的环境，动漫背景
+美丽自然光，情绪化正面场景
+怀旧温暖感，视觉小说场景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+
+---
+
+### 4.2 序章专用背景素材
+
+> ⚠️ **特别说明**：序章"死亡与重生"的氛围营造至关重要，需要昏暗、情绪化的背景来替代纯黑屏，增强沉浸感。
+
+---
+
+#### 【背景-19】卧室·昏暗夜景（加班夜）
+
+**用途**：序章开头，35岁主角加班到凌晨三点的场景
+
+**英文正向提示词**：
+```
+anime style dimly lit bedroom at night, late night atmosphere
+dark room, computer monitor glowing blue light
+desk lamp with warm orange light, papers scattered on desk
+window showing city lights at night, darkness outside
+messy bedroom, exhausted atmosphere, melancholic mood
+overturned chair, empty cup of coffee on desk
+clock showing 3:00 AM, time passing feeling
+lonely and suffocating atmosphere, adult working late
+cinematic composition, emotional visual novel background
+dark blue and purple tones, single light source from monitor
+```
+
+**中文参考**：
+```
+日系风格昏暗卧室，夜晚氛围
+漆黑的房间，电脑显示器发出蓝色光芒
+台灯发出暖橙色光线，桌上散落文件
+窗户可见城市夜景，外面一片漆黑
+凌乱的卧室，疲惫的氛围，忧郁的情绪
+椅子翻倒，桌上空咖啡杯
+时钟显示凌晨3点，时间流逝感
+孤独压抑的氛围，成年人深夜加班
+电影感构图，情绪化视觉小说背景
+深蓝紫色调，唯一光源来自显示器
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：昏暗、压抑、孤独、深夜加班
+
+---
+
+#### 【背景-20】急救室/意识模糊底图
+
+**用途**：序章主角倒下后、意识消散前的过渡场景
+
+**英文正向提示词**：
+```
+anime style abstract consciousness fading scene, high quality
+blurred vision effect, lights bleeding together
+bright white overhead lights, hospital emergency room feel
+swirling abstract pattern, consciousness dissolving
+darkness creeping from edges, tunnel vision effect
+heartbeat pulse visual effect, dramatic lighting
+emotional and surreal atmosphere, visual novel transition
+dreamlike quality, soul leaving body feeling
+cinematic composition, emotional death scene
+soft focus, ethereal white and blue tones
+```
+
+**中文参考**：
+```
+日系风格抽象意识消散场景，高质量
+模糊视觉效果，灯光交融在一起
+头顶明亮白色灯光，医院急救室感觉
+漩涡般抽象图案，意识消融
+黑暗从边缘蔓延，隧道视觉效应
+心跳脉冲视觉效果，戏剧性光线
+情绪化超现实氛围，视觉小说过渡
+梦幻般的质感，灵魂离体感
+电影感构图，情绪化死亡场景
+柔焦效果， ethereal 白色蓝色调
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：意识模糊、消散、白光、深蓝渐变、梦幻
+
+---
+
+#### 【背景-21】住宅玄关/鞋柜
+
+**用途**：序章重生后"妈，我去上学了"的场景，妈妈声音来源
+
+**英文正向提示词**：
+```
+anime style home entrance genkan, morning light
+Japanese style apartment entrance, wooden genkan floor
+shoes on shoe rack, umbrellas by the door
+warm morning sunlight streaming in from outside
+cozy and familiar atmosphere, nostalgic feeling
+family home warmth, mother's presence implied
+shoe cabinet with mirror, jackets hanging
+peaceful morning scene, anime background
+soft warm lighting, heartwarming atmosphere
+```
+
+**中文参考**：
+```
+日系风格住宅玄关，清晨光线
+日式公寓入口，木质玄关地板
+鞋架上的鞋子，门边的雨伞
+温暖的清晨阳光从外面洒入
+温馨熟悉的氛围，怀旧感
+家庭温暖，暗示妈妈的存在
+带镜子的鞋柜，挂着的外套
+宁静的清晨场景，动漫背景
+柔和暖光，温馨的家庭氛围
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：清晨、温暖、家庭、怀旧
+
+---
+
+#### 【背景-22】校门·日景
+
+**用途**：序章进入校园前的场景，"滨海市第一中学"校门
+
+**英文正向提示词**：
+```
+anime style school gate entrance, morning sunlight
+Chinese high school gate, "滨海市第一中学" sign
+students walking through gate in uniforms
+blue and white school uniforms, morning rush
+cherry blossom trees along the path, petals falling
+bright morning sky, warm sunshine
+youthful and energetic atmosphere
+school pillar with school emblem
+clean campus entrance, nostalgic school feeling
+cinematic composition, emotional scene transition
+```
+
+**中文参考**：
+```
+日系风格校门入口，清晨阳光
+中式高中校门，"滨海市第一中学"校牌
+穿校服的学生走过校门
+蓝白色校服，清晨人潮
+道路两旁的樱花树，花瓣飘落
+明亮的早晨天空，温暖阳光
+青春洋溢的氛围
+校门柱子上的校徽
+干净的校园入口，怀旧的校园感
+电影感构图，情绪化场景过渡
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：清晨、青春、校园、蓝白色调
+
+---
+
+#### 【背景-23】记忆碎片特效背景
+
+**用途**：序章"记忆碎片"解锁时的过渡背景
+
+**英文正向提示词**：
+```
+anime style ethereal memory fragment transition, high quality
+floating light particles, shimmering fragments
+dark background with soft glowing orbs
+abstract geometric shapes, memory visualization
+dreamlike quality, time passing feeling
+nostalgic warm tones mixed with cool blue
+soft radial light from center, magical atmosphere
+emotional and surreal, visual novel effect
+cinematic composition, transition scene
+beautiful particle effects, heart-touching moment
+```
+
+**中文参考**：
+```
+日系风格空灵记忆碎片过渡，高质量
+漂浮光粒子，闪烁的碎片
+深色背景配柔和发光球体
+抽象几何形状，记忆可视化
+梦幻般的质感，时间流逝感
+怀旧暖色调与冷蓝色混合
+中心柔和径向光，魔法般的氛围
+情绪化超现实，视觉小说效果
+电影感构图，过渡场景
+美丽粒子效果，触动心弦的时刻
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG（透明背景效果更好）
+- 氛围关键词：空灵、碎片、记忆、怀旧、魔法
+
+---
+
+### 4.4 CG场景素材
+
+> ⚠️ **CG vs 背景的选择原则**：
+> - **CG**：关键情绪点、需要角色参与的名场面、玩家第一眼的震撼点
+> - **背景**：过渡场景、纯描述性场景、内心独白场景
+>
+> 📍 **序章CG优先级**：
+> - 🔴 CG-P01（加班猝死）= 必须做，玩家第一眼震撼
+> - 🟡 CG-P02（意识消散）= 建议做，死亡仪式感
+
+---
+
+#### 【CG-P01】加班夜·生命终结（序章）
+
+**用途**：序章行28-40，主角倒下瞬间——游戏第一个情绪高潮点
+
+**优先级**：🔴 最高（P0）
+
+**情绪峰值**：★★★★★
+
+**剧本位置**：
+```
+narrator "胃部传来一阵剧烈的绞痛。"
+narrator "像是有什么东西在内部撕裂。"
+player "……哈……"
+narrator "手机从指间滑落。"
+narrator "屏幕碎裂的声音，像是某种终结的号角。"
+```
+
+**画面描述**：
+```
+昏暗卧室，一个35岁男人的背影坐在电脑前
+- 电脑屏幕发出惨淡蓝光，照亮他疲惫的脸
+- 一只手捂住胸口，表情痛苦扭曲
+- 手机从手中滑落，屏幕碎裂的瞬间
+- 暖橙色台灯 vs 冷蓝色屏幕光的强烈对比
+- 孤独、压抑、挣扎的氛围
+```
+
+**英文正向提示词**：
+```
+anime style dramatic scene, high quality, detailed
+adult man sitting at desk, 35 years old, suffering expression, back view
+computer monitor blue light illuminating face from below
+one hand clutching chest in pain, other hand dropping phone
+phone screen cracking mid-air, glass shards visible in flash
+warm desk lamp orange glow vs cold monitor blue light contrast
+dim dark bedroom, late night atmosphere, papers scattered on desk
+empty coffee cup beside computer, overturned feeling
+dramatic tension building, life ending moment
+cinematic composition, emotional visual novel CG art
+dark blue purple tones with orange accent, melancholic mood
+```
+
+**中文参考**：
+```
+日系戏剧性场景，高质量，精细
+35岁成年男人坐在书桌前，痛苦的表情，背影
+电脑显示器蓝光从下方照亮他的脸
+一只手因疼痛捂住胸口，另一只手正在松开手机
+手机在空中滑落，屏幕碎裂的瞬间，闪光中可见玻璃碎片
+暖橙色台灯光芒 vs 冷蓝色显示器光的强烈对比
+昏暗漆黑的卧室，深夜氛围，桌上散落文件
+电脑旁有空咖啡杯，一种被压垮的感觉
+戏剧性张力积聚，生命终结时刻
+电影感构图，情绪化视觉小说CG艺术
+深蓝紫色调配橙色点缀，忧郁情绪
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG透明背景
+- 情绪关键词：痛苦、挣扎、孤独、终结
+- Ren'Py使用：`show cg death_moment with fade`
+
+---
+
+#### 【CG-P02】意识消散·沉入深海（序章）
+
+**用途**：序章行50-66，主角意识消散的过渡场景
+
+**优先级**：🟡 建议（P1）
+
+**情绪峰值**：★★★★☆
+
+**剧本位置**：
+```
+narrator "视野越来越暗。"
+narrator "就像……沉入深海。"
+player_thought "就这样……结束了吗……"
+player_thought "那些……没说出口的话……"
+narrator "意识，在这一刻，彻底消散。"
+scene black with fade
+pause 3.0
+```
+
+**画面描述**：
+```
+抽象意识视角，从中心向外模糊消散
+- 画面从中心向外模糊，白色光点逐渐消散
+- 深蓝色"深海"感从边缘蔓延
+- 隐约可见过去的画面碎片飘过（林晚棠的笑容、妈妈的身影）
+- 空灵、告别、沉静的氛围
+```
+
+**英文正向提示词**：
+```
+anime style ethereal consciousness fading scene, high quality
+white light particles dissolving into darkness from center
+tunnel vision effect, edges darkening with deep blue
+ghostly memory fragments floating in void, translucent silhouettes
+past scenes fading: a girl's smile, a mother's figure
+soul leaving body visualization, spirit rising upward
+deep ocean blue darkness creeping in from edges
+peaceful but melancholic atmosphere, accepting death
+surreal dreamlike quality, transition between life and death
+cinematic composition, emotional visual novel CG art
+soft focus, ethereal white to deep blue radial gradient
+```
+
+**中文参考**：
+```
+日系空灵意识消散场景，高质量
+白色光粒子从中心向黑暗中消融
+隧道视觉效应，边缘渐暗呈深蓝色
+幽灵般的记忆碎片在虚空中飘浮，半透明剪影
+过去的画面渐渐消散：女孩的笑容、母亲的身影
+灵魂离体可视化，精神向上飘升
+深蓝色海洋般的黑暗从边缘蔓延
+平和但忧郁的氛围，接受死亡
+超现实梦幻般的质感，生命与死亡的过渡
+电影感构图，情绪化视觉小说CG艺术
+柔焦效果， ethereal 白色到深蓝色径向渐变
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG透明背景
+- 氛围关键词：空灵、消散、深海、告别
+- Ren'Py使用：`show cg consciousness_fade with dissolve`
+
+---
+
+#### 【CG-01】星空告白
+
+**用途**：林晚棠线告白名场面
+
+**英文正向提示词**：
+```
+anime style romantic scene illustration, high quality
+two high school students on school rooftop at night
+starry sky with countless stars, romantic atmosphere
+boy confessing to girl, emotional moment
+warm golden lighting from city below, moonlight on faces
+tears of joy in girl's eyes, heartfelt confession
+cinematic composition, emotional visual novel CG art
+transparent background, PNG, alpha channel
+```
+
+**中文参考**：
+```
+日系浪漫场景插画，高质量
+两个高中生夜晚在学校天台
+满天星星的夜空，浪漫氛围
+男孩向女孩告白，情绪化时刻
+城市温暖的灯光从下方照射，月光洒在脸上
+女孩眼中喜悦的泪水，真诚的告白
+电影感构图，情绪化视觉小说CG艺术
+透明背景，PNG格式，保留透明度通道
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG透明背景
+
+---
+
+#### 【CG-02】雨中撑伞
+
+**用途**：林晚棠线Day 10雨夜场景
+
+**英文正向提示词**：
+```
+anime style romantic rainy scene, high quality
+couple sharing one umbrella on rainy night street
+rain falling heavily around them, warm street lamp glow
+girl slightly leaning toward boy, intimate atmosphere
+wet pavement reflecting orange lights, romantic mood
+cinematic composition, emotional visual novel CG art
+transparent background, PNG, alpha channel
+```
+
+**中文参考**：
+```
+日系浪漫雨景，高质量
+情侣雨夜共撑一把伞
+周围大雨倾盆，温暖的街灯光芒
+女孩微微靠近男孩，亲密氛围
+湿润地面反射橙色灯光，浪漫情绪
+电影感构图，情绪化视觉小说CG艺术
+透明背景，PNG格式，保留透明度通道
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG透明背景
+
+---
+
+#### 【CG-03】天台拥抱
+
+**用途**：告白成功后甜蜜场景
+
+**英文正向提示词**：
+```
+anime style tender embrace scene, high quality
+two high school students hugging on rooftop at sunset
+warm golden hour lighting, romantic atmosphere
+girl's head on boy's shoulder, peaceful happy expression
+vast sky with orange and pink gradient
+cinematic composition, visual novel CG art
+transparent background, PNG, alpha channel
+```
+
+**中文参考**：
+```
+日系温馨拥抱场景，高质量
+两个高中生夕阳时分在天台相拥
+温暖的金色时刻光线，浪漫氛围
+女孩的头靠在男孩肩上，平静幸福的表情
+广阔天空，橙粉渐变
+电影感构图，视觉小说CG艺术
+透明背景，PNG格式，保留透明度通道
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG透明背景
 
 ---
 
@@ -1171,21 +1969,136 @@ UI_{组件类型}_{状态}.png
 
 | 素材名称 | 提示词版本 | 生成日期 | 使用模型 | 状态 | 备注 |
 |---------|-----------|----------|---------|------|------|
-| 林晚棠立绘-01 | v1.2 | 2026-05-15 | — | ⚠️ 已生成 | 需替换透明背景版本 |
-| 林晚棠立绘-02~06 | v1.2 | — | — | ⏳ 待生成 | 透明背景 |
-| 背景-01 教室日景 | v1.0 | — | — | ✅ 已完成 | — |
-| 背景-02 教室夕阳 | v1.0 | — | — | ✅ 已完成 | — |
-| 背景-03 卧室 | v1.0 | — | — | ✅ 已完成 | — |
-| 背景-04 天台 | v1.1 | — | — | 🔲 待生成 | — |
-| 背景-05 图书馆 | v1.1 | — | — | 🔲 待生成 | — |
-| 背景-06 走廊 | v1.1 | — | — | 🔲 待生成 | — |
-| 背景-07 公园 | v1.1 | — | — | 🔲 待生成 | — |
-| 背景-08 咖啡馆 | v1.1 | — | — | 🔲 待生成 | — |
-| UI-01~12 | v1.1 | — | — | 🔲 待生成 | — |
+| 林晚棠立绘-01~06 | v1.4 | 2026-05-20 | — | ✅ 已完成 | 透明背景PNG |
+| 背景-01 教室日景 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-02 教室夕阳 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-03 卧室 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-04 天台 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-05 图书馆 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-06 走廊 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-07 公园 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-08 咖啡馆 | v1.4 | 2026-05-18 | — | ✅ 已完成 | — |
+| 背景-09 雨夜街道 | v1.4 | — | — | ✅ 已完成 | Day 9 雨中场景 |
+| 背景-10 住宅区街道 | v1.5 | — | — | 🔲 待生成 | Day 8 上学同行 |
+| 背景-11 住宅客厅 | v1.5 | — | — | 🔲 待生成 | Day 12 家访 |
+| 背景-12 住宅阳台 | v1.5 | — | — | 🔲 待生成 | Day 12 多肉 |
+| 背景-13 棋牌室 | v1.5 | — | — | 🔲 待生成 | Day 16 说服林父 |
+| 背景-14 咖啡馆吧台 | v1.5 | — | — | 🔲 待生成 | Day 15 情报 |
+| 背景-15 篮球场夜景 | v1.5 | — | — | 🔲 待生成 | Day 21 告白前夜 |
+| 背景-16 天台星空夜景 | v1.5 | — | — | 🔲 待生成 | Day 23 告白 |
+| 背景-17 城南街道夜景 | v1.5 | — | — | 🔲 待生成 | Day 16 过渡 |
+| 背景-18 公园角落日景 | v1.5 | — | — | 🔲 待生成 | Day 18 喜悦场景 |
+| 背景-19 卧室·昏暗夜景 | v1.6 | — | — | 🔲 待生成 | 序章"加班夜" |
+| 背景-20 急救室/意识模糊 | v1.6 | — | — | 🔲 待生成 | 序章死亡过渡 |
+| 背景-21 住宅玄关 | v1.6 | — | — | 🔲 待生成 | 序章"妈，我去上学了" |
+| 背景-22 校门·日景 | v1.6 | — | — | 🔲 待生成 | 序章进入校园 |
+| 背景-23 记忆碎片特效 | v1.6 | — | — | 🔲 待生成 | 序章记忆解锁 |
+| CG-01 星空告白 | v1.4 | 2026-05-20 | — | ✅ 已完成 | — |
+| CG-02 雨中撑伞 | v1.4 | — | — | 🔲 待生成 | 新增 |
+| CG-03 天台拥抱 | v1.4 | — | — | 🔲 待生成 | 新增 |
+| CG-P01 加班猝死 | v1.7 | — | — | 🔲 待生成 | 序章情绪高潮 |
+| CG-P02 意识消散 | v1.7 | — | — | 🔲 待生成 | 序章死亡过渡 |
+| UI-01 对话框 | v1.4 | 2026-05-19 | — | ✅ 已完成 | — |
+| UI-02~12 | v1.1 | — | — | 🔲 待生成 | — |
 
 ---
 
-## 九、后续素材预告
+## 九、林晚棠线完整素材清单
+
+### 9.1 已完成素材 ✅
+
+| 素材类型 | 文件名 | 用途 | 状态 |
+|---------|--------|------|------|
+| 林晚棠立绘×6 | LWT_01~06_*.png | 全部6种表情 | ✅ |
+| 背景-01 | BG_01_classroom_day.png | 教室日景 | ✅ |
+| 背景-02 | BG_02_classroom_sunset.png | 教室夕阳 | ✅ |
+| 背景-03 | BG_03_bedroom.png | 卧室 | ✅ |
+| 背景-04 | BG_04_rooftop_sunset_golden.png | 天台黄昏 | ✅ |
+| 背景-05 | BG_05_library_day.png | 图书馆 | ✅ |
+| 背景-06 | BG_06_corridor_afternoon.png | 走廊 | ✅ |
+| 背景-07 | BG_07_park_bench_sunset.png | 公园长椅 | ✅ |
+| 背景-08 | BG_08_cafe_sunset.png | 咖啡馆 | ✅ |
+| 背景-09 | BG_09_rainy_street_night.png | 雨夜街道 | ✅ |
+| 背景-10 | 待生成 | 住宅区街道 | 🔲 |
+| 背景-11 | 待生成 | 住宅客厅 | 🔲 |
+| 背景-12 | 待生成 | 住宅阳台 | 🔲 |
+| 背景-13 | 待生成 | 棋牌室 | 🔲 |
+| 背景-14 | 待生成 | 咖啡馆吧台 | 🔲 |
+| 背景-15 | 待生成 | 篮球场夜景 | 🔲 |
+| 背景-16 | 待生成 | 天台星空夜景 | 🔲 |
+| 背景-17 | 待生成 | 城南街道夜景 | 🔲 |
+| 背景-18 | 待生成 | 公园角落日景 | 🔲 |
+| UI-01 | UI_01_dialogue_box.png | 对话框 | ✅ |
+
+### 9.2 序章完整素材清单 🔲
+
+#### 9.2.1 序章CG（关键情绪点）
+
+| 素材类型 | 提示词状态 | 优先级 | 备注 |
+|---------|-----------|--------|------|
+| **CG-P01 加班猝死** | ✅ 文档中新增 | 🔴 P0 | 玩家第一眼震撼，情绪高潮 |
+| **CG-P02 意识消散** | ✅ 文档中新增 | 🟡 P1 | 死亡仪式感，过渡场景 |
+
+#### 9.2.2 序章背景图
+
+| 素材类型 | 提示词状态 | 优先级 | 备注 |
+|---------|-----------|--------|------|
+| **背景-19 卧室·昏暗夜景** | ✅ 文档中已有 | 🔴 P0 | 序章"加班夜" |
+| **背景-20 急救室/意识模糊** | ✅ 文档中已有 | 🔴 P0 | 序章死亡过渡 |
+| **背景-21 住宅玄关** | ✅ 文档中已有 | 🟡 P1 | 序章"妈，我去上学了" |
+| **背景-22 校门·日景** | ✅ 文档中已有 | 🟡 P1 | 序章进入校园 |
+| **背景-23 记忆碎片特效** | ✅ 文档中已有 | 🟢 P2 | 序章记忆解锁 |
+
+#### 9.2.3 序章黑屏→素材对照表
+
+| 行号 | 原代码 | 建议类型 | 素材编号 | 说明 |
+|------|--------|----------|----------|------|
+| 7 | `scene black` | ✅ 保持黑屏 | - | 标题页用黑底白字更有仪式感 |
+| 22 | 内心独白 | 🖼️ 背景 | BG-19 | 需要看到"手机屏幕光" |
+| 28 | `vpunch`倒下 | 🎬 CG | CG-P01 | 倒下瞬间，关键情绪点 |
+| 40 | 手机滑落后 | 🖼️ 背景 | BG-19 | 手机碎裂的视觉暗示 |
+| 50 | 意识消散 | 🎬 CG | CG-P02 | "意识消散"是名场面 |
+| 66 | 重生过渡 | 🖼️ 背景 | BG-19 | 渐变到清醒 |
+| 113 | 重生醒来 | 🖼️ 背景 | BG-19 | 同一背景，淡入效果 |
+| 131 | 震惊确认 | 🖼️ 背景 | BG-19 | 确认重生的震惊 |
+| 179 | 坐床边发呆 | 🖼️ 背景 | BG-19 | 情绪过渡 |
+| 319 | 上学出发 | 🖼️ 背景 | BG-21 | 玄关场景 |
+| 335 | 章节标题 | ✅ 保持黑屏 | - | 章节过渡页 |
+| 344 | 进入校门 | 🖼️ 背景 | BG-22 | 校门日景 |
+| 375 | 章节标题 | ✅ 保持黑屏 | - | 正式章节标题 |
+
+### 9.3 林晚棠线补充素材 🔲
+
+| 素材类型 | 提示词状态 | 优先级 | 备注 |
+|---------|-----------|--------|------|
+| **背景-09 雨夜街道** | ✅ 文档中已有 | P0 | ~~林晚棠线Day 9~~ ✅ 已完成 |
+| **背景-10 住宅区街道** | ✅ 文档中新增 | P0 | Day 8 上学同行 |
+| **背景-11 住宅客厅** | ✅ 文档中新增 | P0 | Day 12 去林晚棠家 |
+| **背景-12 住宅阳台** | ✅ 文档中新增 | P0 | Day 12 照顾多肉 |
+| **背景-13 棋牌室** | ✅ 文档中新增 | P0 | Day 16 说服林父 |
+| **背景-14 咖啡馆吧台** | ✅ 文档中新增 | P1 | Day 15 获取情报 |
+| **背景-15 篮球场夜景** | ✅ 文档中新增 | P1 | Day 21 告白前夜 |
+| **背景-16 天台星空夜景** | ✅ 文档中新增 | P1 | Day 23 告白场景 |
+| **背景-17 城南街道夜景** | ✅ 文档中新增 | P2 | Day 16 过渡场景 |
+| **背景-18 公园角落日景** | ✅ 文档中新增 | P2 | Day 18 喜悦场景 |
+| CG-01 星空告白 | ✅ 已在文档中新增 | P1 | 告白名场面 |
+| CG-02 雨中撑伞 | ✅ 已在文档中新增 | P1 | Day 10场景 |
+| CG-03 天台拥抱 | ✅ 已在文档中新增 | P2 | 告白后甜蜜 |
+| UI-02 选择菜单按钮 | ✅ 已有提示词 | P1 | 3种状态 |
+| UI-03 主菜单背景 | ✅ 已有提示词 | P1 | - |
+| UI-04 存档/读档槽位 | ✅ 已有提示词 | P1 | 2种状态 |
+| UI-05 设置面板 | ✅ 已有提示词 | P2 | - |
+| UI-06 快捷菜单图标组 | ✅ 已有提示词 | P1 | 6个图标 |
+| UI-07 好感度浮动提示 | ✅ 已有提示词 | P1 | 2种状态 |
+| UI-08 好感度进度条 | ✅ 已有提示词 | P2 | - |
+| UI-09 章节标题卡片 | ✅ 已有提示词 | P2 | - |
+| UI-10 确认对话框 | ✅ 已有提示词 | P2 | - |
+| UI-11 历史记录面板 | ✅ 已有提示词 | P2 | - |
+| UI-12 游戏标题Logo | ✅ 已有提示词 | P2 | - |
+
+---
+
+## 十、后续素材预告
 
 ### P1批次（第一批后）
 - 其他四位女主立绘各6表情
@@ -1198,5 +2111,18 @@ UI_{组件类型}_{状态}.png
 
 ---
 
+## 十一、后续素材预告
+
+### P1批次（第二批）
+- 其他四位女主立绘各6表情
+- 更多背景图（咖啡馆、天台、医院、便利店等）
+
+### P2批次（正式开发）
+- CG场景图（20-30张）
+- 全套UI素材
+- 差分立绘（服装/头发变化）
+
+---
+
 > **文档版本记录**：见上方"版本记录"表格
-> **最后更新**：2026-05-18 by AI辅助
+> **最后更新**：2026-05-20 v1.7 by AI辅助

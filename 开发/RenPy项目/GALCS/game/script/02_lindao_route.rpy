@@ -11,6 +11,26 @@ define lindao = Character('林晚棠', color="#D4A574", what_color="#F5F5F5")
 define lindao_thought = Character('陆鸣（内心）', color="#8ECAE6", what_color="#F5F5F5")
 
 # =============================================================================
+# CG图片定义
+# =============================================================================
+
+# CG-01: 星空告白 (Day 23)
+image cg_01_starry_sky_confession = "cg/CG_01_lwt_starry_sky_confession.png"
+
+# CG-02: 雨中撑伞 (Day 9)
+image cg_02_rainy_umbrella = "cg/CG_02_lwt_rainy_umbrella_school_uniform.png"
+
+# CG-03: 天台拥抱 (Day 14)
+image cg_03_rooftop_embrace = "cg/CG_03_lwt_rooftop_embrace.png"
+
+# =============================================================================
+# 背景图片定义
+# =============================================================================
+
+# BG-09: 雨夜街道 (Day 9 雨中场景)
+image bg rainy_street_night = "backgrounds/BG_09_rainy_street_night.png"
+
+# =============================================================================
 # Day 8：靠近期的开始
 # =============================================================================
 
@@ -343,7 +363,7 @@ label memory_fragment_2_day9:
 
     pause 1.0
 
-    scene bg street_rain with dissolve
+    scene bg rainy_street_night with dissolve
 
     narrator "雨中的街道。"
 
@@ -368,7 +388,7 @@ label memory_fragment_2_day9:
 # ========================================
 
 label lindao_day9_walking:
-    scene bg street_rain with dissolve
+    scene bg rainy_street_night with dissolve
 
     narrator "雨中的街道。"
 
@@ -432,6 +452,13 @@ label lindao_day9_talking:
     $ persistent.lindao_day9_rain_scene = True
     $ persistent.lindao_affection += 10
     $ persistent.regret_value += 15
+
+    # 【CG-02 雨中撑伞】
+    hide lindao
+    scene black with dissolve
+    show cg_02_rainy_umbrella with dissolve
+    pause 2.0
+    hide cg_02_rainy_umbrella with dissolve
 
     jump lindao_day9_home
 
@@ -1423,6 +1450,7 @@ label lindao_day14:
 
     narrator "她沉默了一会儿。"
 
+    hide lindao with dissolve
     show lindao worried at LEFT with dissolve
 
     lindao "我妈……已经办得差不多了。"
@@ -1503,7 +1531,12 @@ label lindao_day14:
     $ persistent.lindao_day14_promise = True
     $ persistent.regret_value += 20
 
-    hide lindao with dissolve
+    # 【CG-03 天台拥抱】
+    hide lindao
+    scene black with dissolve
+    show cg_03_rooftop_embrace with dissolve
+    pause 2.0
+    hide cg_03_rooftop_embrace with dissolve
 
     scene black
 
@@ -2498,12 +2531,14 @@ label lindao_day21:
 
     player "晚棠？你怎么在这里？"
 
+    hide lindao with dissolve
     show lindao normal at LEFT with dissolve
 
     lindao "（走过来）我……睡不着，出来走走。"
 
     narrator "她在我旁边坐下。"
 
+    hide lindao with dissolve
     show lindao normal at LEFT with dissolve
 
     narrator "月光洒在她脸上，很柔和。"
@@ -2528,6 +2563,7 @@ label lindao_day21:
 
     player "嗯？"
 
+    hide lindao with dissolve
     show lindao worried at LEFT with dissolve
 
     lindao "你最近是不是有什么事瞒着我？"
@@ -2917,6 +2953,7 @@ label lindao_day23:
 
         narrator "她抬起头，泪眼婆娑地看着我。"
 
+        hide lindao with dissolve
         show lindao crying at LEFT with dissolve
 
         lindao "（哽咽）你这个笨蛋……"
@@ -3102,7 +3139,11 @@ label lindao_day23:
 
     hide lindao with dissolve
 
-    scene black
+    # 【CG-01 星空告白】
+    scene black with dissolve
+    show cg_01_starry_sky_confession with dissolve
+    pause 2.5
+    hide cg_01_starry_sky_confession with dissolve
 
     centered "{b}—— Day 23 End ——{/b}\n
 {w=0.5}告白成功"

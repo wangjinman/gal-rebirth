@@ -595,9 +595,7 @@ label chapter1_day3:
     player_thought "这次，一定要抓住。"
 
     if persistent.chapter1_day2_immigration_topic:
-        narrator "{b}【蝴蝶效应统计·第一章】{/b}"
-        narrator "1. 提前介入林晚棠留学话题"
-        narrator "她在犹豫，也许还有转机"
+        narrator "{color=#a29bfe}{b}【蝴蝶效应】{/b}{/color} {color=#ffeaa7}→ 你已提前介入林晚棠留学话题，她在犹豫，也许还有转机{/color}"
 
     scene bg classroom_day with dissolve
 
