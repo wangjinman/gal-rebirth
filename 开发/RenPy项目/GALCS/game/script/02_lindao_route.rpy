@@ -74,7 +74,8 @@ label lindao_day8_morning:
 
     narrator "她已经去了日本。"
 
-    scene bg classroom_day with dissolve
+    # 站在她家楼下等她
+    scene bg residential_street with dissolve
 
     narrator "今天，我站在她家楼下。"
 
@@ -933,7 +934,8 @@ label lindao_day12:
     # 继续剧情
     hide lindao with dissolve
 
-    scene bg bedroom with dissolve
+    # 客厅 - 她端水出来
+    scene bg living_room with dissolve
 
     narrator "她端着两杯水走出来。"
 
@@ -950,6 +952,9 @@ label lindao_day12:
     narrator "她把水递给我。"
 
     narrator "然后，走向阳台角落。"
+
+    # 阳台 - 多肉植物
+    scene bg balcony with dissolve
 
     # 记忆碎片3触发（多肉观察后）
     if persistent.lindao_day12_observed_succulent:
@@ -1582,7 +1587,8 @@ label lindao_day15:
 
     narrator "这是重生者最大的优势，也是最大的限制。"
 
-    scene black
+    # 苏念卿的咖啡馆 - 获取情报
+    scene bg cafe_bar with dissolve
 
     narrator "放学后，我去了一趟苏念卿的咖啡馆。"
 
@@ -1764,7 +1770,8 @@ label lindao_day16:
 
     player_thought "这次，我不想再错过了。"
 
-    scene black
+    # 城南棋牌室
+    scene bg mahjong_parlor with dissolve
 
     narrator "城南棋牌室。"
 
@@ -1946,6 +1953,9 @@ label lindao_day16:
 
     narrator "我站起身，转身离开。"
 
+    # 走出棋牌室 - 城南街道黄昏
+    scene bg urban_street_dusk with dissolve
+
     narrator "走到门口的时候——"
 
     lin_father "（叫住我）等一下。"
@@ -2027,7 +2037,8 @@ label lindao_day17:
 
     pause 1.0
 
-    scene bg classroom_sunset with dissolve
+    # 学校后门小公园 - 命运转折
+    scene bg park_corner with dissolve
 
     narrator "学校后门的小公园。"
 
@@ -2503,7 +2514,8 @@ label lindao_day21:
 
     pause 1.0
 
-    scene black
+    # 篮球场夜 - 告白前夜
+    scene bg basketball_court with dissolve
 
     narrator "告白前夜。"
 
@@ -2685,7 +2697,8 @@ label lindao_day23:
 
     player_thought "告诉她一切。"
 
-    scene bg classroom_sunset with dissolve
+    # 天台 - 告白场景（夕阳版）
+    scene bg rooftop_sunset with dissolve
 
     narrator "天台。"
 
@@ -3003,7 +3016,8 @@ label lindao_day23:
 
     hide lindao with dissolve
 
-    scene black
+    # 时间流转：夕阳 → 星空
+    scene bg rooftop_stars with dissolve
 
     narrator "夕阳完全沉入地平线。"
 
@@ -3727,8 +3741,8 @@ label lindao_day25_true_ending:
 
     narrator "那个夏天。"
 
-    # 公园场景 - 约会
-    scene bg park with dissolve
+    # 公园场景 - 约会（夕阳）
+    scene bg park_sunset with dissolve
 
     narrator "夕阳下，我们走在公园的小路上。"
 
@@ -3754,8 +3768,8 @@ label lindao_day25_true_ending:
 
     narrator "后来有一天。"
 
-    # 咖啡馆场景 - 庆祝
-    scene bg cafe with dissolve
+    # 咖啡馆场景 - 庆祝（夕阳）
+    scene bg cafe_sunset with dissolve
 
     narrator "我们约在常去的那家咖啡馆。"
 
@@ -4092,8 +4106,8 @@ label lindao_day25:
 
     narrator "那个夏天。"
 
-    # 公园场景 - 约会
-    scene bg park with dissolve
+    # 公园场景 - 约会（夕阳）
+    scene bg park_sunset with dissolve
 
     narrator "夕阳下，我们走在公园的小路上。"
 
@@ -4119,8 +4133,8 @@ label lindao_day25:
 
     narrator "后来有一天。"
 
-    # 咖啡馆场景 - 庆祝
-    scene bg cafe with dissolve
+    # 咖啡馆场景 - 庆祝（夕阳）
+    scene bg cafe_sunset with dissolve
 
     narrator "我们约在常去的那家咖啡馆。"
 

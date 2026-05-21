@@ -4,7 +4,7 @@
 # =============================================================================
 
 label prologue_part1:
-    scene black
+    scene bg bedroom_late_night with fade
 
     centered "{size=+8}{b}序章·第一幕{/b}{/size}\n
 {w=0.5}终焉{w=0.5}"
@@ -25,7 +25,10 @@ label prologue_part1:
 
     narrator "三十五岁的身体，好像真的撑不住了。"
 
-    scene black with vpunch
+    # CG-01: 生命终结时刻（情绪最高潮）
+    show cg death_overtime with vpunch
+    pause 2.0
+    hide cg death_overtime
 
     narrator "胃部传来一阵剧烈的绞痛。"
 
@@ -47,7 +50,11 @@ label prologue_part1:
 
     call memory_fragment_death
 
-    scene black
+    # 意识流过渡背景 + CG-02叠加
+    scene bg consciousness_fading with dissolve
+    # CG-02: 意识消散 - 沉入深海（抽象意识流过渡）
+    show cg consciousness_fade with dissolve
+    pause 2.5
 
     narrator "视野越来越暗。"
 
@@ -63,6 +70,7 @@ label prologue_part1:
 
     narrator "意识，在这一刻，彻底消散。"
 
+    hide cg consciousness_fade with fade
     scene black with fade
     pause 3.0
 
@@ -304,7 +312,8 @@ label prologue_memory_reconstruction:
     return
 
 label prologue_part3:
-    scene bg bedroom with dissolve
+    # 重生后醒来 - 记忆碎片过渡（日景）
+    scene bg memory_fragment with dissolve
 
     narrator "看向时钟——"
 
@@ -318,7 +327,8 @@ label prologue_part3:
 
     player "妈！我去上学了！"
 
-    scene bg bedroom with dissolve
+    # 家中玄关 - 清晨出门
+    scene bg home_entrance with dissolve
 
     narrator "餐桌上，妈妈絮絮叨叨说着什么。"
 
@@ -342,7 +352,8 @@ label prologue_part3:
     jump prologue_part4
 
 label prologue_part4:
-    scene black
+    # 清晨高中校门 - 重生后第一天到校
+    scene bg school_gate_morning with dissolve
 
     narrator "「滨海市第一中学」"
 

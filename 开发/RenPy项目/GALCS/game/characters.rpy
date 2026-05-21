@@ -421,3 +421,72 @@ image bg library = "images/backgrounds/BG_05_library_day.png"
 
 # 学校走廊 - 下午（日常转场、课间场景）
 image bg corridor = "images/backgrounds/BG_06_corridor_afternoon.png"
+
+# 公园长椅 - 夕阳（日常/约会场景）
+image bg park_sunset = "images/backgrounds/BG_07_park_bench_sunset.png"
+
+# 咖啡馆 - 夕阳（苏念卿线/约会场景）
+image bg cafe_sunset = "images/backgrounds/BG_08_cafe_sunset.png"
+
+# 雨夜街道（林晚棠Day 9雨中场景）
+image bg rainy_street = "images/backgrounds/BG_09_rainy_street_night.png"
+
+# =============================================================================
+# 林晚棠线背景图（BG-10 ~ BG-18）
+# =============================================================================
+
+# 住宅区街道 - 清晨（Day 8 上学同行/等她下楼）
+image bg residential_street = "images/backgrounds/BG_10_residential_street_morning.png"
+
+# 住宅客厅 - 下午（Day 12 家访/参观房间）
+image bg living_room = "images/backgrounds/BG_11_living_room_afternoon.png"
+
+# 住宅阳台 - 下午（Day 12 多肉植物场景）
+image bg balcony = "images/backgrounds/BG_12_balcony_succulents_afternoon.png"
+
+# 棋牌室 - 内景（Day 16 说服林父场景）
+image bg mahjong_parlor = "images/backgrounds/BG_13_mahjong_parlor_interior.png"
+
+# 咖啡馆吧台 - 傍晚（Day 15 苏念卿咖啡馆获取情报）
+image bg cafe_bar = "images/backgrounds/BG_14_cafe_bar_evening.png"
+
+# 篮球场 - 夜景（Day 21 告白前夜月下约定）
+image bg basketball_court = "images/backgrounds/BG_15_basketball_court_night.png"
+
+# 天台 - 星空夜景（Day 23 夜晚告白/告白后）
+image bg rooftop_stars = "images/backgrounds/BG_16_rooftop_night_stars.png"
+
+# 城南街道 - 黄昏（Day 16 过渡/寻找林父途中）
+image bg urban_street_dusk = "images/backgrounds/BG_17_urban_street_dusk.png"
+
+# 公园角落 - 下午（Day 18 喜悦/放松场景）
+image bg park_corner = "images/backgrounds/BG_18_park_corner_afternoon.png"
+
+# =============================================================================
+# 序章专用背景图
+# =============================================================================
+
+# 卧室·昏暗夜景 - 加班夜（序章·第一幕：死亡场景）
+image bg bedroom_late_night = "images/backgrounds/BG_19_bedroom_night_overtime.png"
+
+# 意识消散过渡（序章·第二幕：意识流过渡场景）
+image bg consciousness_fading = "images/backgrounds/BG_20_consciousness_fading.png"
+
+# 家中玄关 - 清晨（序章·第三幕：出门上学场景）
+image bg home_entrance = "images/backgrounds/BG_21_home_entrance_morning.png"
+
+# 清晨高中校门（序章·第四幕：重生后第一天到校）
+image bg school_gate_morning = "images/backgrounds/BG_22_school_gate_morning.png"
+
+# 记忆碎片过渡特效（序章·第三幕/各章节转场用）
+image bg memory_fragment = "images/backgrounds/BG_23_memory_fragment_transition.png"
+
+# =============================================================================
+# 序章CG图
+# =============================================================================
+
+# CG-P01 - 【加班夜·生命终结】35岁男人深夜加班倒下瞬间（序章情绪高潮★5）
+image cg death_overtime = "images/cg/CG_P01_death_overtime.png"
+
+# CG-P02 - 【意识消散·沉入深海】抽象意识消散过渡（意识流场景）
+image cg consciousness_fade = "images/cg/CG_P02_consciousness_fade.png"
