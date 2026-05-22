@@ -785,6 +785,9 @@ label lindao_day11:
 
     narrator "我们一起走出校门。"
 
+    # 校门外·黄昏街道
+    scene bg school_gate_dusk with dissolve
+
     narrator "这次的分别，没有遗憾。"
 
     hide lindao with dissolve
@@ -1547,6 +1550,9 @@ label lindao_day14:
 
     narrator "送她回家的路上，我们都没怎么说话。"
 
+    # 住宅区街道·夜景（晴）
+    scene bg residential_night_clear with dissolve
+
     narrator "但气氛很舒服。"
 
     narrator "像是两个人之间，已经有了某种默契。"
@@ -1648,6 +1654,9 @@ label lindao_day15:
 
     narrator "我走出咖啡馆，脑海里翻涌着苏念卿的话。"
 
+    # 咖啡馆外·黄昏街道
+    scene bg cafe_street_evening with dissolve
+
     narrator "'让她妈妈有留下来的理由'……"
 
     narrator "前世的林晚棠家……"
@@ -1747,8 +1756,8 @@ label lindao_day16:
 
     narrator "放学后，我去打听了林父的下落。"
 
-    # 放学后的走廊场景
-    scene bg corridor with dissolve
+    # 放学后的走廊·夕阳窗边
+    scene bg corridor_window_sunset with dissolve
 
     narrator "走廊里，夕阳透过窗户洒进来。"
 
@@ -2222,7 +2231,8 @@ label lindao_day19:
 
     narrator "这一次，我要提前预防。"
 
-    scene black
+    # 医院走廊·白天
+    scene bg hospital_corridor with dissolve
 
     narrator "医院。"
 

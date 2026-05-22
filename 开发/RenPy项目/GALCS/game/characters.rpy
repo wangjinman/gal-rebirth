@@ -486,7 +486,39 @@ image bg memory_fragment = "images/backgrounds/BG_23_memory_fragment_transition.
 # =============================================================================
 
 # CG-P01 - 【加班夜·生命终结】35岁男人深夜加班倒下瞬间（序章情绪高潮★5）
-image cg death_overtime = "images/cg/CG_P01_death_overtime.png"
+image cg death_overtime = "images/cg/CG_P01_overtime_life_end.png"
 
 # CG-P02 - 【意识消散·沉入深海】抽象意识消散过渡（意识流场景）
-image cg consciousness_fade = "images/cg/CG_P02_consciousness_fade.png"
+image cg consciousness_fade = "images/cg/CG_P02_consciousness_deep_sea_opaque.png"
+
+# =============================================================================
+# 林晚棠线补充背景（BG-24~28）
+# =============================================================================
+
+# 医院走廊·白天 - Day19 带妈妈检查
+image bg hospital_corridor = "images/backgrounds/BG_24_corridor_hospital_day.png"
+
+# 走廊窗边·夕阳 - Day11 并肩看晚霞
+image bg corridor_window_sunset = "images/backgrounds/BG_25_corridor_window_sunset.png"
+
+# 校门外·黄昏街道 - Day11 走出校门告别
+image bg school_gate_dusk = "images/backgrounds/BG_26_school_gate_street_dusk.png"
+
+# 住宅区街道·夜景(晴) - Day14 天台CG后送回家
+image bg residential_night_clear = "images/backgrounds/BG_27_residential_street_night.png"
+
+# 咖啡馆外街道·黄昏 - Day15 走出咖啡馆
+image bg cafe_street_evening = "images/backgrounds/BG_28_cafe_exterior_street_evening.png"
+
+# =============================================================================
+# UI素材 - 选择菜单按钮（3态差分）
+# =============================================================================
+
+# 普通状态 - 深蓝紫底 + 白色边框
+image ui_choice_normal = "images/UI/UI_choice_normal.png"
+
+# 悬停状态 - 橙色边框 + 光晕
+image ui_choice_hover = "images/UI/UI_choice_hover.png"
+
+# 选中状态 - 淡橙色填充
+image ui_choice_selected = "images/UI/UI_choice_selected.png"

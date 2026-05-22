@@ -14,14 +14,14 @@ init python:
     # 角色专属对话框映射
     # 林晚棠 - 暖橙边框专属UI
     DIALOGUE_BOXES = {
-        "林晚棠": "images/UI/UI_02_lwt_dialogue_box.png",
+        "林晚棠": "images/UI/UI_bar_narration.png",
     }
 
     # 获取对话背景图片
     def get_dialogue_bg(who):
         if who and who in DIALOGUE_BOXES:
             return DIALOGUE_BOXES[who]
-        return "images/UI/UI_01_dialogue_box.png"
+        return "images/UI/UI_dialogue_box.png"
 
 # =============================================================================
 # 好感度变化弹窗（Screen）
@@ -95,18 +95,16 @@ screen hud():
 # 支持角色专属对话框
 # =============================================================================
 # 屏幕 1920x1080
-# UI_01 尺寸 1920x350，内容从顶部开始
-# UI_02 尺寸 1920x440，内容从 y=42 开始（顶部42px透明）
+# 新UI尺寸：通用对话框 1920x168，林晚棠专属 1920x168
 
 screen say(who, what):
     # 根据角色选择对话框背景
     $ bg_img = get_dialogue_bg(who)
     $ is_lwt = who and who in DIALOGUE_BOXES
-    # 所有对话框高度统一为440px
-    $ box_height = 440
-    # 文字区域y坐标：UI_01内容从y=90开始，UI_02内容从y=42开始
-    # 文字区域y坐标：UI_01内容从y=90(屏幕730)，UI_02内容从y=42(屏幕682)
-    $ text_ypos = 960
+    # 对话框高度（两张新UI均为168px）
+    $ box_height = 168
+    # 文字区域y坐标：对话框贴底(912)，文字垂直居中于对话框内
+    $ text_ypos = 935
 
     # 对话框图片 - 贴底显示
     add bg_img:
@@ -119,8 +117,8 @@ screen say(who, what):
         background None
         xfill True
         ypos text_ypos
-        ymaximum 400
-        padding (350, 60, 100, 50)
+        ymaximum 145
+        padding (350, 20, 100, 20)
 
         has vbox
         spacing 10
@@ -196,30 +194,34 @@ screen choice(items):
     modal True
     zorder 100
 
-    frame:
-        background Solid("#2d2d4a")
-        padding (40, 30, 40, 30)
+    vbox:
         xalign 0.5
         yalign 0.5
+        spacing 15
 
-        vbox:
-            spacing 20
-            for caption, action, chosen in items:
-                if action:
-                    textbutton caption:
-                        action action
-                        text_size 28
-                        text_color "#ffffff"
-                        text_hover_color "#e8a87c"
-                        text_bold False
-                        xalign 0.5
-                        padding (20, 15, 20, 15)
-                        background Solid("#3d3d5c")
-                        hover_background Solid("#e8a87c")
-                else:
+        for caption, action, chosen in items:
+            if action:
+                button:
+                    action action
+                    xsize 800
+                    ysize 90
+                    background "images/UI/UI_choice_normal.png"
+                    hover_background "images/UI/UI_choice_hover.png"
+
                     text caption:
-                        size 28
-                        color "#888888"
+                        xalign 0.5
+                        yalign 0.5
+                        size 26
+                        color "#ffffff"
+                        outlines [(1, "#000000", 0, 0)]
+
+            else:
+                # 禁用状态的选项（灰色文字）
+                text caption:
+                    xalign 0.5
+                    size 26
+                    color "#666666"
+
 
 # =============================================================================
 # 主菜单

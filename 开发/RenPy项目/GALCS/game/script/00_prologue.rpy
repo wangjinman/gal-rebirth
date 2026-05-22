@@ -136,7 +136,10 @@ label prologue_part2:
 
     narrator "双手颤抖。"
 
-    scene black
+    narrator "猛地坐起身，心跳剧烈加速。"
+
+    # 坐起身来，看清房间 —— 卧室日景淡入
+    scene bg bedroom with fade
 
     narrator "这是……"
 
@@ -147,8 +150,6 @@ label prologue_part2:
     narrator "这是……高考前那个家？！"
 
     player "怎么可能……"
-
-    narrator "猛地坐起身，心跳剧烈加速。"
 
     narrator "环顾四周——"
 
@@ -165,12 +166,6 @@ label prologue_part2:
     narrator "高考倒计时：30天。"
 
     player "！！！！！！"
-
-    narrator "闹钟还在响。"
-
-    narrator "但我已经无暇顾及。"
-
-    narrator "双手颤抖。"
 
     player "……疼。"
 
@@ -217,6 +212,13 @@ label prologue_part2:
     narrator "全都涌入脑海。"
 
     call prologue_memory_reconstruction
+
+    # === 时空跳跃：死亡 → 重生 ===
+    # 记忆碎片过渡特效（纯画面展示，无文字干扰）
+    scene bg memory_fragment with dissolve
+    window hide
+    pause 2.5
+    window show
 
     jump prologue_part3
 
@@ -312,8 +314,8 @@ label prologue_memory_reconstruction:
     return
 
 label prologue_part3:
-    # 重生后醒来 - 记忆碎片过渡（日景）
-    scene bg memory_fragment with dissolve
+    # 重生后醒来 - 卧室日景
+    scene bg bedroom with fade
 
     narrator "看向时钟——"
 
@@ -325,9 +327,9 @@ label prologue_part3:
 
     narrator "但那是十七年后的昨晚了。"
 
-    player "妈！我去上学了！"
+    narrator "得赶紧准备出门了。"
 
-    # 家中玄关 - 清晨出门
+    # 家中玄关 - 出门前的早晨
     scene bg home_entrance with dissolve
 
     narrator "餐桌上，妈妈絮絮叨叨说着什么。"
@@ -341,6 +343,8 @@ label prologue_part3:
     player_thought "林晚棠……就坐在我旁边。"
 
     player_thought "这次，该怎么做？"
+
+    player "妈！我去上学了！"
 
     scene black
 

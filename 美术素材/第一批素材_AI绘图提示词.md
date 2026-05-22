@@ -1171,6 +1171,291 @@ beautiful particle effects, heart-touching moment
 
 ---
 
+---
+
+### 4.2.2 林晚棠线补充背景素材
+
+> ⚠️ **说明**：以下5张背景为林晚棠线（02_lindao_route.rpy）审查后确认缺失的场景背景，用于替换当前的黑屏段落，提升画面饱满度和沉浸感。
+
+---
+
+#### 【背景-24】医院走廊·白天
+
+**用途**：Day 19，带妈妈去医院检查——"拯救妈妈"前世遗憾的关键场景
+
+**出现位置**：行2217、2225、2247（3处连续使用）
+
+**优先级**：🔴 P0（有对话+情绪+角色互动，黑屏体验极差）
+
+**剧本上下文**：
+```
+lindao "妈，我们去医院看看吧。"
+narrator "医院里人来人往。"
+narrator "妈妈坐在长椅上，伸手摸了摸我的头。"
+mother "没事的。妈妈身体好着呢。"
+narrator "我看着她，心里默默发誓——这一次，绝不会再错过。"
+```
+
+**英文正向提示词**：
+```
+anime style hospital corridor, daytime, bright atmosphere
+long white corridor with fluorescent ceiling lights
+waiting benches along the wall, clean tiled floor
+people walking in distance, blurred background figures
+windows at far end letting in natural daylight
+soft white and light blue tones, clinical but not cold
+information desk visible in background, hospital signage
+calm and peaceful atmosphere, emotional family scene
+cinematic composition, visual novel background
+warm natural lighting from windows, hopeful mood
+clean modern Chinese hospital interior
+```
+
+**中文参考**：
+```
+日系风格医院走廊，白天，明亮氛围
+长长的白色走廊，天花板的荧光灯
+墙边等候长椅，干净瓷砖地面
+远处走动的人影，模糊的背景人物
+远端窗户透入自然日光
+柔和白色和浅蓝色调，临床感但不冰冷
+可见背景中的服务台和医院标识
+平静安详的氛围，情绪化家庭场景
+电影感构图，视觉小说背景
+窗户透入温暖自然光线，充满希望的情绪
+干净的现代中式医院内部
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：明亮、安静、希望、家庭温情、医院
+
+---
+
+#### 【背景-25】走廊窗边·夕阳
+
+**用途**：Day 11傍晚，夕阳西斜，主角与林晚棠并肩站在窗边看晚霞——高浪漫感场景
+
+**出现位置**：行718（1次）
+
+**优先级**：🟡 P1（浪漫氛围场景，窗边空间与教室完全不同）
+
+**剧本上下文**：
+```
+narrator "夕阳西斜。"
+narrator "我们并肩站在窗边，看着外面的晚霞。"
+lindao "你看，今天的晚霞好像特别好看。"
+player "嗯……确实很好看。"
+narrator "她的侧脸被夕阳染成了暖色。"
+```
+
+**英文正向提示词**：
+```
+anime style school hallway by window, sunset golden hour
+large window frame on right side, showing beautiful evening sky
+orange and pink gradient sunset sky, soft clouds
+window sill with small potted plant, warm light streaming in
+school corridor perspective, lockers faintly visible on left
+dust particles dancing in golden sunlight beam
+romantic and peaceful atmosphere, youth moment
+warm orange and amber tones dominating the scene
+empty quiet hallway, after school hours feeling
+cinematic composition, emotional visual novel background
+beautiful lighting, nostalgic school memory scene
+```
+
+**中文参考**：
+```
+日系风格学校走廊窗边，夕阳金色时刻
+右侧大窗框，展示美丽的黄昏天空
+橙粉渐变晚霞天空，柔和云朵
+窗台有小盆栽，温暖阳光倾泻而入
+学校走廊透视感，左侧隐约可见储物柜
+金色阳光束中飞舞的尘埃粒子
+浪漫宁静的氛围，青春时刻
+温暖橙色琥珀色调主导画面
+空旷安静的走廊，放学后的感觉
+电影感构图，情绪化视觉小说背景
+美丽的光线，怀旧校园记忆场景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：夕阳、浪漫、校园、青春、温馨
+
+---
+
+#### 【背景-26】校门外·黄昏街道
+
+**用途**：Day 11傍晚，天色渐暗，一起走出校门告别的场景
+
+**出现位置**：行782（1次）
+
+**优先级**：🟡 P1（告别场景，校门外街道与住宅区街道语境完全不同）
+
+**剧本上下文**：
+```
+narrator "天色渐渐暗了下来。"
+narrator "我们一起走出校门。"
+lindao "那我先回去了。"
+player "路上小心。"
+narrator "她点点头，转身离开。"
+narrator "夕阳把她的影子拉得很长。"
+```
+
+**英文正向提示词**：
+```
+anime style street outside school gate, dusk twilight
+school gate visible in background, slightly out of focus
+urban street stretching into distance, evening atmosphere
+street lamps just starting to glow warm orange
+long shadows cast by setting sun, golden hour remaining
+few students walking home in distance, silhouettes
+trees lining the sidewalk, leaves rustling in evening breeze
+peaceful end-of-day atmosphere, farewell moment
+warm orange and purple dusk sky gradient
+quiet city street, suburban school area feeling
+cinematic composition, emotional visual novel background
+nostalgic youth farewell scene, gentle mood
+```
+
+**中文参考**：
+```
+日系风格校门外街道，黄昏暮色
+背景中可见校门，略微虚焦
+城市街道向远方延伸，傍晚氛围
+街灯刚开始发出温暖的橙色光芒
+落日投下长长的影子，残留的金色时刻
+远处几个回家的学生身影，剪影
+人行道旁的树木，晚风中树叶摇曳
+平静的一日终了氛围，告别时刻
+温暖橙色紫色黄昏天空渐变
+安静的城市街道，郊区学校区域感觉
+电影感构图，情绪化视觉小说背景
+怀旧青春告别场景，温柔的情绪
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：黄昏、告别、街道、温柔、青春
+
+---
+
+#### 【背景-27】住宅区街道·夜景（晴天）
+
+**用途**：Day 14晚上，天台拥抱CG结束后送林晚棠回家的路途——晴夜无雨版
+
+**出现位置**：行1546（1次）
+
+**优先级**：🟡 P1（Day 14非雨天，不能用BG-09雨夜街道）
+
+**剧本上下文**：
+```
+hide cg rooftop_embrace with dissolve
+scene black
+narrator "送她回家的路上，我们谁都没有说话。"
+narrator "但手一直牵在一起。"
+narrator "今晚的月亮很亮。"
+```
+
+**英文正向提示词**：
+```
+anime style residential street at night, clear weather no rain
+quiet neighborhood street, apartment buildings on both sides
+bright full moon in night sky, moonlight casting soft shadows
+street lamps glowing warm orange, illuminating the path
+no people around, intimate private atmosphere
+clean dry pavement reflecting moonlight gently
+balconies with faint indoor lights from apartments
+peaceful late evening, romantic walking-home scene
+deep blue night sky with stars visible
+safe and quiet residential area, Chinese urban housing
+cinematic composition, visual novel background
+warm orange lamp light vs cool blue moonlight contrast
+```
+
+**中文参考**：
+```
+日系风格住宅区街道夜晚，晴天无雨
+安静的社区街道，两侧公寓楼
+明亮的满月在夜空中，月光洒下柔和阴影
+街灯发出温暖橙色光芒，照亮道路
+周围无人，私密亲密的氛围
+干净干燥的地面，轻柔反射月光
+阳台透出公寓内微弱的室内灯光
+安宁的深夜，浪漫的回家路途
+深蓝色夜空，星星清晰可见
+安全安静的居民区，中式城市住宅
+电影感构图，视觉小说背景
+温暖橙色路灯光 vs 冷蓝色月光对比
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：晴夜、安静、浪漫、月光、温馨
+
+---
+
+#### 【背景-28】咖啡馆外街道·黄昏
+
+**用途**：Day 15傍晚，从咖啡馆走出来，脑海中翻涌苏念卿话语的独白场景
+
+**出现位置**：行1647（1次）
+
+**优先级**：🟡 P1（咖啡馆外景视角，承接室内咖啡馆场景）
+
+**剧本上下文**：
+```
+narrator "走出咖啡馆的时候，脑子里还在想着她说的话。"
+player_thought ""如果真的喜欢她的话……""
+player_thought ""现在就是最好的时机。""
+narrator "苏念卿说得对。"
+narrator "不能再等了。"
+```
+
+**英文正向提示词**：
+```
+anime style cafe exterior street view, evening sunset
+cafe storefront visible on one side, warm interior lights through glass door
+outdoor seating area with empty tables and chairs
+evening street, pedestrian zone or quiet side street
+sunset sky with warm orange and soft purple hues
+street lamps beginning to glow, transitional day-to-night
+cozy commercial district atmosphere, urban evening scene
+glass windows reflecting sunset colors, inviting ambiance
+a few pedestrians in distance, unhurried pace
+introspective and thoughtful mood, decision-making moment
+cinematic composition, visual novel background
+warm color palette, emotionally charged transition scene
+```
+
+**中文参考**：
+```
+日系风格咖啡馆外景街道视角，傍晚夕阳
+一侧可见咖啡馆店面，玻璃门透出温暖室内灯光
+户外座区，空着的桌椅
+傍晚的街道，步行区或安静的侧街
+夕阳天空，温暖橙色和柔和紫色的色调
+街灯开始亮起，昼夜交替的时刻
+舒适的商业区氛围，城市傍晚场景
+窗户玻璃反射出夕阳色彩，诱人的氛围
+远处零星行人，不紧不慢的节奏
+内省沉思的氛围，做决定的关键时刻
+电影感构图，视觉小说背景
+暖色调，充满情绪张力的过渡场景
+```
+
+**规格要求**：
+- 分辨率：1920×1080px
+- 格式：PNG/JPG
+- 氛围关键词：傍晚、沉思、都市、温暖、过渡
+
+---
+
 ### 4.4 CG场景素材
 
 > ⚠️ **CG vs 背景的选择原则**：
