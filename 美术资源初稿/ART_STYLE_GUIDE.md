@@ -164,10 +164,10 @@ BG_{编号}_{英文场景名}_{光线/时段}.png
 | 03 | `BG_03_bedroom.png` | 卧室（2008 中式） |
 | 04 | `BG_04_rooftop_sunset_golden.png` | 天台夕阳（日景） |
 | 05 | `BG_05_library_day.png` | 图书馆午后 · 空镜 |
-| 06 | `BG_06_corridor_afternoon.png` | 走廊午后 |
+| 06 | `BG_06_corridor_afternoon.png` | 走廊午后 · **中式**（班牌/公告栏汉字，非日语） |
 | 07 | `BG_07_park_bench_sunset.png` | **银杏**公园长椅 · 夕阳 |
 | 08 | `BG_08_cafe_sunset.png` | 咖啡馆宽景夕阳 |
-| 09 | `BG_09_rainy_street_night.png` | 雨夜街道（同街区） |
+| 09 | `BG_09_rainy_street_night.png` | 雨夜街道（同街区 · **有雨**；晴夜用 BG_27） |
 | 10 | `BG_10_residential_street_morning.png` | 住宅区上学路 · 空镜 · 樱花少 |
 | — | `BG_pending_girl_bedroom_day.png` | **待定编号** · 女孩卧室日景 |
 | 11 | `BG_11_living_room_afternoon.png` | 林晚棠家客厅 · 窗外见阳台 · Day12 |
@@ -184,6 +184,11 @@ BG_{编号}_{英文场景名}_{光线/时段}.png
 | 21 | `BG_21_home_entrance_morning.png` | **序章** · 重生后住宅玄关清晨 ·「妈，我去上学了」 |
 | 22 | `BG_22_school_gate_morning.png` | **序章** · 滨海一中校门清晨 · **空镜定稿**（= `_empty` 同图） |
 | 23 | `BG_23_memory_fragment_transition.png` | **序章** · 记忆碎片解锁过渡 · **RGBA 透明底** |
+| 24 | `BG_24_hospital_corridor_day.png` | **Day19** · 医院走廊白天 ·「拯救妈妈」P0 |
+| 25 | `BG_25_corridor_window_sunset.png` | **Day11** · 走廊窗边夕阳 · 与 **BG_06** 同走廊·**中式班牌** |
+| 26 | `BG_26_school_gate_street_dusk.png` | **Day11** · 校门外黄昏街道告别 · 衔接 **BG_22** |
+| 27 | `BG_27_residential_street_night_clear.png` | **Day14** · 住宅区晴夜回家路 · ≠ **BG_09** 雨夜 |
+| 28 | `BG_28_cafe_exterior_street_evening.png` | **Day15** · 咖啡馆外街道黄昏 · 衔接 **BG_08/14** |
 
 ### 序章专用背景（4.2）
 
@@ -334,10 +339,13 @@ image memory_frag = "背景/BG_23_memory_fragment_transition.png"
 |------|-------------|------|
 | Day12 | 客厅 → 阳台 | `背景\DAY12_lin_home_scene.md` |
 | Day16 | 黄昏街道 → 棋牌室 | BG_17 → BG_13 |
-| Day15 | 咖啡馆吧台 | BG_14（`near_bar` / `customer_view` 备选） |
+| **Day19** | 带妈妈去医院检查 · 走廊对话 | **BG_24**（行 2217/2225/2247） |
+| **Day11** | 窗边晚霞 → 校门外告别 | **BG_25**（718）→ **BG_26**（782）· 校门同 **BG_22** |
+| Day15 | 咖啡馆内 → 走出店门独白 | **BG_14/08** 内景 → **BG_28** 外景（行 1647） |
 | 同地点 | 天台：BG_04 日 / BG_16 夜；公园：BG_07 夕 / BG_18 午后 | — |
-| 同街区 | BG_09 雨夜 / BG_17 黄昏 | — |
-| **序章** | 加班倒下 **CG_P01** → 消散 → 重生 → 入校 | BG_19 → **CG_P01** → BG_20 → … |
+| 同街区 | BG_09 雨夜 / BG_17 黄昏 / **BG_27 晴夜**（≠ BG_09） | — |
+| **Day14** | 天台拥抱 CG 后送林晚棠回家 | **BG_27**（行 1546）· 不用 BG_09 |
+| **序章** | 倒下 → 消散 → 黑屏 → 重生 | BG_19 → **CG_P01** → **CG_P02** / BG_20 → black → BG_03… |
 
 ### 背景备选（对比用，非默认）
 
@@ -365,6 +373,7 @@ image memory_frag = "背景/BG_23_memory_fragment_transition.png"
 | 编号 | **推荐定稿** | 说明 |
 |------|-------------|------|
 | P01 | `CG_P01_overtime_life_end.png` | **序章 P0 已定稿** · v4 构图 + **咬牙**（见 `CG_P01_FINAL.md`） |
+| P02 | `CG_P02_consciousness_deep_sea.png` | **序章 P1** · 意识消散·沉入深海 · **RGBA 推荐** |
 | 01 | `CG_01_starry_sky_confession.png` | 星空告白 · 白连衣裙 · 天台夜景 |
 | 02 | `CG_02_rainy_umbrella_school_uniform.png` | 雨中撑伞 · 校服 · 娇羞 · 伞遮男主 |
 | 03 | `CG_03_rooftop_embrace.png` | 天台拥抱 · 校服 · 夕阳金时刻 |
@@ -399,21 +408,34 @@ clenched teeth NOT open mouth, hand on chest, phone falling to floor crack on im
 monitor blue light from below vs warm orange lamp, dim bedroom overtime, 1920x1080 VN CG
 ```
 
+#### CG-P02 · 意识消散·沉入深海（序章行 50–66）
+
+> 规则与 Ren'Py：`CG\CG_P02_FINAL.md`
+
+| 项目 | 约定 |
+|------|------|
+| 定稿叠层 | `CG_P02_consciousness_deep_sea.png`（RGBA） |
+| 全屏 | `CG_P02_consciousness_deep_sea_opaque.png` |
+| 画面 | 中心白光消散、深海蓝边缘；**中：女主**；**侧：母亲+童年男孩** |
+| 旧版 | `_v1`（回忆剪影未区分母/儿/女主） |
+| 衔接 | CG_P01 / BG_20 之后 → `scene black` → 重生 |
+
 ---
 
-## 七、UI 资源（暂定）
+## 七、UI 资源 · Design System v1（2026-05-21 重做）
+
+> **主规范**：`UI\UI_DESIGN_SYSTEM.md` · **Ren'Py**：`UI\RENPY_GUI_SNIPPET.rpy`  
+> **重建**：`python UI\scripts\build_ui_design_system.py`  
+> **旧版归档**：`UI\_archive_UI02\`
 
 | 文件 | 说明 |
 |------|------|
-| `UI_02_dialogue_minimal_wantang_posA_overflow_top.png` | 对话底栏 · 立绘头上探 · **1920×440** |
-| `UI_02_narration_minimal_v2_left_weight.png` | 旁白 · 无立绘 · 左侧加重 |
-| `UI_02_narration_minimal_v2_center.png` | 旁白 · 居中窄栏（对比） |
-| `UI_01_dialogue_box.png` | 早期 Gal 对话框模板（已由 UI_02 取代） |
+| `UI_DS_bar_dialogue.png` | 对话底栏 **1920×360** |
+| `UI_DS_bar_narration.png` | 旁白底栏 **1920×360** |
+| `UI_DS_nameplate.png` | 姓名条 **320×44** |
+| `UI_DS_choice_*.png` | 选项 **780×76** ×3 |
 
-规范：`UI\DIALOGUE_UI_MINIMAL_SPEC.md`  
-重建：`UI\scripts\build_dialogue_ui_minimal_posA.py` 等
-
-**Ren'Py 底对齐**：`xalign 0.5`、`yalign 1.0`
+底栏 **360px**、`yalign 1.0`；`gui.textbox_height=360`。立绘 `x≈72`；正文 `x=400`。
 
 ---
 
@@ -488,6 +510,8 @@ PowerShell 中文路径失败时，可将脚本复制到 `C:\Users\wangjinman\Ap
 | BG_22 | 滨海一中校门；**空镜定稿**（`_with_students` 备选） |
 | BG_23 | 整屏碎裂连片 + 碎片区回忆合成；RGBA 叠层 |
 | **CG_P01** | **P0 定稿**：v4 前倾栽桌 + **咬牙**（弃 v3 扭肢、弃 v4b） |
+| **CG_P02** | P1 沉入深海意识消散 RGBA + opaque（回忆：中女主、侧母+童年男主） |
+| **BG_24** | Day19 医院走廊白天 P0 |
 
 ---
 
@@ -548,6 +572,17 @@ PowerShell 中文路径失败时，可将脚本复制到 `C:\Users\wangjinman\Ap
 | 2026-05-21 | BG_20 加强心跳脉冲；v1 备份为 `_v1_soft_pulse` |
 | 2026-05-21 | BG_20 定稿改为纯白闪回；v2 备份 `_v2_strong_pulse` |
 | 2026-05-21 | **CG_P01 用户确认定稿**；专档 `CG_P01_FINAL.md`、`PROLOGUE_BG_RULES.md` |
+| 2026-05-21 | 序章 CG_P02 意识消散·沉入深海 `CG_P02_FINAL.md` |
+| 2026-05-21 | CG_P02 回忆改为中女主、侧母亲+童年男主 |
+| 2026-05-21 | BG_24 医院走廊白天 Day19「拯救妈妈」 |
+| 2026-05-21 | BG_25 走廊窗边夕阳 Day11 · 同 BG_06 走廊 |
+| 2026-05-21 | BG_25 重生成：对齐 BG_06 透视·中式班牌/公告栏 |
+| 2026-05-21 | BG_25 用户确认定稿 |
+| 2026-05-21 | BG_26 校门外黄昏街道 Day11 告别 |
+| 2026-05-21 | BG_27 住宅区晴夜 Day14 送归（≠ BG_09） |
+| 2026-05-21 | BG_28 咖啡馆外街道黄昏 Day15 |
+| 2026-05-21 | UI_choice 三态按钮 800×90（UI_02 同色系） |
+| 2026-05-21 | **UI Design System v1** 整体重做 `UI_DS_*` |
 
 ---
 

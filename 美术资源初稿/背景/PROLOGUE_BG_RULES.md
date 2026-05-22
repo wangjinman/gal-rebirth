@@ -9,7 +9,8 @@
 ```
 BG_19（现代加班·卧室或办公室）
   → CG_P01（倒下瞬间·定稿）
-  → BG_20（意识消散·纯白闪回 RGBA 叠层）
+  → CG_P02（沉入深海·意识消散 RGBA）或 BG_20（白闪回叠层，二选一/可叠用）
+  → scene black（剧本 pause 3.0）
   → BG_03（2008 卧室醒）
   → BG_21（玄关·「妈，我去上学了」）
   → BG_22（滨海一中校门·空镜）
@@ -29,6 +30,13 @@ BG_19（现代加班·卧室或办公室）
 | 21 | `BG_21_home_entrance_morning.png` | 清晨玄关，妈妈画外音 |
 | 22 | `BG_22_school_gate_morning.png` | **空镜** 校牌「滨海市第一中学」 |
 | 23 | `BG_23_memory_fragment_transition.png` | **RGBA** 叠层，勿当全屏不透明 scene |
+
+**序章 CG**（`CG\`）：
+
+| 编号 | 文件 | 说明 |
+|------|------|------|
+| P01 | `CG_P01_overtime_life_end.png` | P0 定稿·倒下 |
+| P02 | `CG_P02_consciousness_deep_sea.png` | P1·沉入深海 RGBA |
 
 ---
 
