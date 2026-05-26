@@ -34,12 +34,25 @@
 |--------|------------|-------------|-------------|
 | `UI_DS_bar_dialogue.png` | **1920×360** | 底对齐全宽 | `gui.textbox_height = 360` |
 | `UI_DS_bar_narration.png` | **1920×360** | 底对齐全宽 | 旁白分支 `say` |
-| `UI_DS_nameplate.png` | **320×44** | 姓名条底，x≈400、y≈底栏上缘 | `gui.name_*` 或 `add` |
+| `UI_DS_nameplate.png` | **12×44** | 姓名左侧色条 only，x≈400、字从 x≈416 起 | `add` + `text who` |
 | `UI_DS_choice_normal.png` | **780×76** | 选项底 | `gui.choice_button_width/height` |
 | `UI_DS_choice_hover.png` | **780×76** | 悬停 | 同上 |
 | `UI_DS_choice_selected.png` | **780×76** | 选中 | 同上 |
+| `UI_DS_quick_bar.png` | **1920×56** | 顶对齐 `yalign 0.0` | `screen quick_menu` |
+| `UI_DS_quick_{auto,skip,hide,history,save,load,settings,exit}_{default,hover}.png` | **48×48** | 快捷菜单图标 | `xsize/ysize 48` |
+| `UI_DS_say_voice_{default,hover}.png` | **40×40** | 句内语音重播（可选） | say 屏角标 |
 
 **底栏渐变**：PNG 顶缘近透明 → 底缘渐浓；**勿**与 `bar_narration` 叠在同屏。
+
+### 2.1 风格变体（尺寸相同）
+
+| 目录 | 风格 | 生成脚本 |
+|------|------|----------|
+| `UI/`（根） | 极简浅色 · 暖米白 | `scripts/build_ui_design_system.py` |
+| `UI/anime_style/` | **二次元卡通 · 粉** | `scripts/build_ui_anime_say.py pink` |
+| `UI/anime_style_blue/` | **二次元卡通 · 蓝** | `scripts/build_ui_anime_say.py blue` |
+
+两套文件名均为 `UI_DS_*`，可整目录切换，无需改 Ren'Py 尺寸。
 
 ---
 

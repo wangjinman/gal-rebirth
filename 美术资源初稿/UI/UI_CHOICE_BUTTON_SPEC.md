@@ -1,7 +1,7 @@
-# UI_02 · 选择菜单按钮
+# 选项按钮 · anime_style（当前定稿）
 
-> 与 `UI_02_dialogue_minimal` 同系：深色条带 RGB(32,42,72) + 暖橙强调色  
-> **2026-05-21**
+> **2026-05-26 封版** · 粉套无色浮岛 / 蓝套同形天蓝雾  
+> 旧版 `UI_choice_*.png`（800×90 橙框系）见文末；新资源在 `anime_style*/UI_DS_choice_*.png`。
 
 ---
 
@@ -9,57 +9,63 @@
 
 | 项目 | 值 |
 |------|-----|
-| 单按钮画布 | **800 × 90** px |
-| 格式 | PNG **RGBA** 透明底 |
-| 圆角 | 约 14px |
-| 可裁剪 | 宽度可按 Ren'Py `xsize` 缩放，建议保持比例 |
+| 资源画布 | **780 × 76** px（RGBA） |
+| Ren'Py（GALCS） | `xsize 800` · `ysize 90`（会横向略拉宽） |
+| 形状 | 浮岛 **80%×62%**，上亮下淡渐变 |
+| 圆角 | 药丸（`radius = 岛高/2`） |
 
-## 交付文件
+## 交付文件（每主题 3 张）
 
 | 状态 | 文件 |
 |------|------|
-| 普通 | `UI_choice_normal.png` |
-| 悬停 | `UI_choice_hover.png`（橙框 + 外光晕） |
-| 选中 | `UI_choice_selected.png`（淡橙填充 + 橙边） |
+| 普通 | `UI_DS_choice_normal.png` |
+| 悬停 | `UI_DS_choice_hover.png` |
+| 选中 | `UI_DS_choice_selected.png` |
 
-路径：`J:\项目\GAL\美术资源初稿\UI\`
+路径：
+
+- 樱粉：`anime_style/`
+- 晴空蓝：`anime_style_blue/`
 
 ## 重建
 
 ```powershell
-python J:\项目\GAL\美术资源初稿\UI\scripts\build_choice_buttons.py
+cd J:\项目\GAL\美术资源初稿\UI\scripts
+python build_ui_anime_say.py pink   # 或 blue / all
 ```
 
-## Ren'Py 示例
+自动生成 UI 预览：`previews/latest/UI_SAY_PREVIEW_sheet_*_galcs.png`
+
+## 实现要点（改脚本时必读）
+
+- 函数：`_choice_island_render()` · `_choice_island_finish()` · `soft_island_mask()`
+- **禁止** 恢复：矢量顶弧、双高光椭圆、整条灰雾底
+- **禁止** 缩小后仅用硬 `floating_island_mask` 裁切（会糊满画布）
+
+详见 `UI_AGENT_RULES.md` §4。
+
+## Ren'Py 示例（GALCS 现状）
 
 ```renpy
-image choice normal = "UI/UI_choice_normal.png"
-image choice hover = "UI/UI_choice_hover.png"
-image choice selected = "UI/UI_choice_selected.png"
-
-# 或使用 gui 绘制减少素材依赖：
-# define gui.choice_button_borders = Borders(14, 14, 14, 14)
-# define gui.choice_button_tile = False
+# 资产 780×76，屏幕 800×90
+background "images/UI/UI_choice_normal.png"
+hover_background "images/UI/UI_choice_hover.png"
+text caption:
+    size 26   # 预览建议可试 28
+    color "#ffffff"
+    outlines [(1, "#000000", 0, 0)]
 ```
 
-```renpy
-screen choice(items):
-    style_prefix "choice"
-    vbox:
-        xalign 0.5
-        yalign 0.5
-        spacing 12
-        for i in items:
-            textbutton i.caption:
-                action i.action
-                idle_background "UI/UI_choice_normal.png"
-                hover_background "UI/UI_choice_hover.png"
-                selected_idle_background "UI/UI_choice_selected.png"
-                selected_hover_background "UI/UI_choice_selected.png"
-                xsize 800
-                ysize 90
-```
+文案颜色与描边见 `UI_AGENT_RULES.md` §7。
 
 ---
 
-*与对话条 `DIALOGUE_UI_MINIMAL_SPEC.md` 配套使用。*
+## 附录 · 旧版 UI_02 橙框按钮（已 superseded）
+
+| 项目 | 值 |
+|------|-----|
+| 画布 | 800 × 90 |
+| 脚本 | `build_choice_buttons.py` |
+| 文件 | `UI/UI_choice_*.png` |
+
+仅作历史参考，与当前 Say 屏 `UI_DS_*` 不是同一套。

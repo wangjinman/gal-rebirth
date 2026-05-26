@@ -58,3 +58,25 @@ define gui.choice_button_text_size = 22
 #         # show lin at portrait position
 #     else:
 #         add "UI/UI_DS_bar_narration.png" xalign 0.5 yalign 1.0
+
+## Quick menu (say 模块) — 1920x56 顶条 + 48x48 图标
+# screen quick_menu():
+#     zorder 100
+#     if quick_menu:
+#         add "UI/UI_DS_quick_bar.png" xalign 0.5 yalign 0.0
+#         hbox:
+#             xalign 0.98
+#             yalign 0.0
+#             yoffset 4
+#             spacing 6
+#             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True):
+#                 style "quick_button"
+#                 idle_background "UI/UI_DS_quick_skip_default.png"
+#                 hover_background "UI/UI_DS_quick_skip_hover.png"
+#                 xsize 48 ysize 48
+#             textbutton _("Auto") action Preference("auto-forward", "toggle"):
+#                 style "quick_button"
+#                 idle_background "UI/UI_DS_quick_auto_default.png"
+#                 hover_background "UI/UI_DS_quick_auto_hover.png"
+#                 xsize 48 ysize 48
+#             # history / save / load / settings / hide / exit 同理

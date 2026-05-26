@@ -9,9 +9,7 @@ label chapter1_day1:
 
     scene black
 
-    centered "{b}—— Day 1 ——{/b}"
-
-    pause 1.0
+    call chapter_title("Day 1", "", 1.5)
 
     scene bg classroom_day with dissolve
 
@@ -327,9 +325,7 @@ label chapter1_day1_office:
 
     scene black
 
-    centered "{b}—— Day 1 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 1 End", "", 1.5)
 
     jump chapter1_day2
 
@@ -338,7 +334,7 @@ label chapter1_day2:
 
     scene black
 
-    centered "{b}—— Day 2 ——{/b}"
+    call chapter_title("Day 2", "", 1.5)
 
     pause 1.0
 
@@ -566,9 +562,7 @@ label chapter1_day2_continue:
 
     scene black
 
-    centered "{b}—— Day 2 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 2 End", "", 1.5)
 
     jump chapter1_day3
 
@@ -577,10 +571,7 @@ label chapter1_day3:
 
     scene black
 
-    centered "{b}—— Day 3 至 Day 7 ——{/b}\n
-{w=0.5}日常推进中……{w=0.5}"
-
-    pause 2.0
+    call chapter_title("日常推进中……", "Day 3 至 Day 7", 2.0)
 
     narrator "第三天。"
 
@@ -595,7 +586,7 @@ label chapter1_day3:
     player_thought "这次，一定要抓住。"
 
     if persistent.chapter1_day2_immigration_topic:
-        narrator "{color=#a29bfe}{b}【蝴蝶效应】{/b}{/color} {color=#ffeaa7}→ 你已提前介入林晚棠留学话题，她在犹豫，也许还有转机{/color}"
+        call show_notification("命运改变", "留学出现转机", "#a29bfe")
 
     scene bg classroom_day with dissolve
 
@@ -623,9 +614,7 @@ label chapter1_day3:
 
     scene black
 
-    centered "{b}—— 第一章 End ——{/b}"
-
-    pause 2.0
+    call chapter_title("第一章 End", "", 1.5)
 
     narrator "第一章结束。"
 

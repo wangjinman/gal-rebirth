@@ -28,25 +28,28 @@ init python:
 # =============================================================================
 
 # =============================================================================
-# 文本框样式（确保在黑色背景上清晰可见）
+# 文本框样式（由 screens.rpy 自定义 say screen 完全接管）
+# 此处仅保留最小值避免冲突
 # =============================================================================
 
-# 文本框背景（半透明深色）
-define gui.textbox_height = 160
-define gui.name_xpos = 40
-define gui.name_ypos = -30
-define gui.name_yalign = 1.0
+# 文本框高度（设为0，由自定义say screen控制布局）
+define gui.textbox_height = 0
 
-# 对话框窗口背景
-define gui.window_background = "gui/textbox.png"
+# 对话框窗口背景（设为透明，不覆盖自定义对话框图片）
+define gui.window_background = None
+
+# 角色名位置（由自定义say screen控制）
+define gui.name_xpos = 0
+define gui.name_ypos = 0
+define gui.name_yalign = 0.0
 
 # 输入提示文字颜色
 define gui.input_color = '#ffffff'
 
-# 对话框文字样式
-define gui.who_color = '#ffffff'
-define gui.what_color = '#ffffff'
+# 对话框文字颜色
+define gui.who_color = '#2c3e50'
+define gui.what_color = '#2c3e50'
 
-# 文本框位置
-define gui.text_xpos = 40
-define gui.text_ypos = 60
+# 文本框位置偏移（设为0，由自定义say screen的绝对坐标控制）
+define gui.text_xpos = 0
+define gui.text_ypos = 0

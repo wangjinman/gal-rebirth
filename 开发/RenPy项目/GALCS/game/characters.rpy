@@ -332,13 +332,13 @@ define fragment_prompt = Character(None,
 # 角色立绘定义
 # =============================================================================
 
-# 林晚棠立绘（6表情）- zoom=0.65 适配1080p屏幕
-image lindao normal = Transform("images/character/lindao/LWT_01_normal.png", zoom=0.65)
-image lindao smile = Transform("images/character/lindao/LWT_02_smile.png", zoom=0.65)
-image lindao shy = Transform("images/character/lindao/LWT_03_shy.png", zoom=0.65)
-image lindao worried = Transform("images/character/lindao/LWT_04_worried.png", zoom=0.65)
-image lindao crying = Transform("images/character/lindao/LWT_05_crying.png", zoom=0.65)
-image lindao surprised = Transform("images/character/lindao/LWT_06_surprised.png", zoom=0.65)
+# 林晚棠立绘（6表情）- zoom=0.85 适配1080p屏幕
+image lindao normal = Transform("images/character/lindao/LWT_01_normal.png", zoom=0.85)
+image lindao smile = Transform("images/character/lindao/LWT_02_smile.png", zoom=0.85)
+image lindao shy = Transform("images/character/lindao/LWT_03_shy.png", zoom=0.85)
+image lindao worried = Transform("images/character/lindao/LWT_04_worried.png", zoom=0.85)
+image lindao crying = Transform("images/character/lindao/LWT_05_crying.png", zoom=0.85)
+image lindao surprised = Transform("images/character/lindao/LWT_06_surprised.png", zoom=0.85)
 
 # 角色位置定义（用于立绘显示）
 # =============================================================================

@@ -37,9 +37,7 @@ image bg rainy_street_night = "backgrounds/BG_09_rainy_street_night.png"
 label lindao_day8:
     scene black
 
-    centered "{b}—— 林晚棠线 ——{/b}"
-
-    pause 1.5
+    call chapter_title("林晚棠线", "", 1.5)
 
     narrator "第一章结束后的第二天清晨。"
 
@@ -51,9 +49,7 @@ label lindao_day8:
 
     scene black
 
-    centered "{b}—— Day 8 ——{/b}\n{w=0.5}靠近{w=0.5}"
-
-    pause 1.0
+    call chapter_title("靠近", "Day 8", 1.5)
 
 label lindao_day8_morning:
     scene bg bedroom with dissolve
@@ -211,9 +207,7 @@ label lindao_day8_classroom:
 
     scene black
 
-    centered "{b}—— Day 8 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 8 End", "", 1.5)
 
     jump lindao_day9
 
@@ -226,10 +220,7 @@ label lindao_day9:
 
     scene black
 
-    centered "{b}—— Day 9 ——{/b}\n
-{w=0.5}雨{w=0.5}"
-
-    pause 1.0
+    call chapter_title("雨", "Day 9", 1.5)
 
     scene bg classroom_day with dissolve
 
@@ -359,7 +350,7 @@ label memory_fragment_2_day9:
     $ persistent.fragment_2 = True
     $ persistent.regret_value += 15
 
-    narrator "{b}{color=#FFD700}【记忆碎片 2/20 解锁】{/color}{/b}"
+    call show_notification("记忆碎片", "雨中的温暖", "#FFD700")
     narrator "{i}\"前世我也想过送她回家...但那天我退缩了。\"{/i}"
 
     pause 1.0
@@ -495,22 +486,18 @@ label lindao_day9_home:
     scene black
 
 label lindao_day9_end:
-    centered "{b}{color=#FFD700}—— Day 9 End ——{/color}{/b}\n{w=0.5}小高潮1触发"
+    call chapter_title("Day 9 End", "", 1.5)
 
     # 根据选择类型显示不同反馈
     if persistent.lindao_day9_shared_umbrella:
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +18{/color}{/b}"
         narrator "{i}\"雨中一起撑伞……她的手好凉，但心是暖的。\"{/i}"
-        narrator "{b}{color=#FFD700}遗憾弥补值 +15{/color}{/b}"
-        narrator "{i}\"【记忆碎片 2/20 解锁】{/i}"
+        call show_notification("记忆碎片解锁", "雨中的温暖", "#FFD700")
     elif persistent.lindao_day9_gentleman:
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +15{/color}{/b}"
         narrator "{i}\"他的肩膀很宽，靠着很有安全感……\"{/i}"
     elif persistent.lindao_day9_rational:
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +13{/color}{/b}"
         narrator "{i}\"明明是他把伞让给我……有点傻，但很温柔。\"{/i}"
     else:
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +10{/color}{/b}"
+        pass
 
     pause 1.5
 
@@ -525,10 +512,7 @@ label lindao_day10:
 
     scene black
 
-    centered "{b}—— Day 10 ——{/b}\n
-{w=0.5}天台{w=0.5}"
-
-    pause 1.0
+    call chapter_title("天台", "Day 10", 1.5)
 
     scene bg rooftop_sunset with dissolve
 
@@ -661,9 +645,7 @@ label lindao_day10:
 
     scene black
 
-    centered "{b}—— Day 10 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 10 End", "", 1.5)
 
     jump lindao_day11
 
@@ -676,10 +658,7 @@ label lindao_day11:
 
     scene black
 
-    centered "{b}—— Day 11 ——{/b}\n
-{w=0.5}夕阳{w=0.5}"
-
-    pause 1.0
+    call chapter_title("夕阳", "Day 11", 1.5)
 
     scene bg classroom_sunset with dissolve
 
@@ -794,9 +773,7 @@ label lindao_day11:
 
     scene black
 
-    centered "{b}—— Day 11 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 11 End", "", 1.5)
 
     jump lindao_day12
 
@@ -809,10 +786,7 @@ label lindao_day12:
 
     scene black
 
-    centered "{b}—— Day 12 ——{/b}\n
-{w=0.5}多肉{w=0.5}"
-
-    pause 1.0
+    call chapter_title("多肉", "Day 12", 1.5)
 
     scene black
 
@@ -885,7 +859,7 @@ label lindao_day12:
             # 获得"共同话题"信息
             $ persistent.lindao_common_topic_unlocked = True
 
-            narrator "{i}【发现：她的书架上有很多日本文学书籍】{/i}"
+            call show_notification("观察", "📚 书架上摆满了日本文学书籍", "#6B9FFF")
 
         "观察阳台的多肉植物":
             $ persistent.lindao_day12_observed_succulent = True
@@ -901,7 +875,7 @@ label lindao_day12:
             # 触发多肉约定前置
             $ persistent.lindao_succulent_hint = True
 
-            narrator "{i}【发现：那盆快枯萎的多肉似乎对她很重要】{/i}"
+            call show_notification("观察", "🌱 一盆快枯萎的多肉……她似乎很在意它", "#6B9FFF")
 
         "看看墙上的全家福":
             $ persistent.lindao_day12_observed_photo = True
@@ -919,7 +893,7 @@ label lindao_day12:
             # 获得家庭背景信息
             $ persistent.lindao_family_background_hint = True
 
-            narrator "{i}【发现：全家福上有被刮过的痕迹】{/i}"
+            call show_notification("观察", "🖼️ 全家福上……有人被刮掉了？", "#6B9FFF")
 
         "静静坐着等她回来":
             $ persistent.lindao_day12_did_nothing = True
@@ -970,7 +944,7 @@ label lindao_day12:
         # 解锁记忆碎片3
         $ persistent.fragment_3 = True
 
-        narrator "{b}{color=#FFD700}【记忆碎片 3/20 解锁】{/color}{/b}"
+        call show_notification("记忆碎片", "枯萎的多肉", "#FFD700")
         narrator "{i}\"我记得她提过，她最珍视的东西总养不活...\"{/i}"
 
         $ persistent.regret_value += 10
@@ -1072,9 +1046,7 @@ label lindao_day12:
 
     scene black
 
-    centered "{b}—— Day 12 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 12 End", "", 1.5)
 
     jump lindao_day13
 
@@ -1087,10 +1059,7 @@ label lindao_day13:
 
     scene black
 
-    centered "{b}—— Day 13 ——{/b}\n
-{w=0.5}图书馆{w=0.5}"
-
-    pause 1.0
+    call chapter_title("图书馆", "Day 13", 1.5)
 
     scene bg library with dissolve
 
@@ -1198,8 +1167,6 @@ label lindao_day13_choice_a:
     $ persistent.lindao_day13_wrong_choice = True
     $ persistent.lindao_long_distance_route = True
 
-    narrator "{b}{color=#6B9FFF}♥ 林晚棠好感度 -10{/color}{/b}"
-
     hide lindao with dissolve
 
     jump lindao_day13_continue
@@ -1238,9 +1205,6 @@ label lindao_day13_choice_b:
     $ persistent.lindao_day13_confession_hint = True
     $ persistent.lindao_convince_father_event = True
 
-    narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +15{/color}{/b}"
-    narrator "{i}\"解锁'说服林父'事件链（蝴蝶效应核心）\"{/i}"
-
     hide lindao with dissolve
 
     jump lindao_day13_continue
@@ -1274,9 +1238,6 @@ label lindao_day13_choice_c:
     $ persistent.lindao_affection += 10
     $ persistent.lindao_day13_promise = True
     $ persistent.lindao_convince_father_event = True
-
-    narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +10{/color}{/b}"
-    narrator "{i}\"解锁'说服林父'事件链（蝴蝶效应核心）\"{/i}"
 
     hide lindao with dissolve
 
@@ -1337,10 +1298,7 @@ label lindao_day13_continue:
 
     scene black
 
-    centered "{b}—— Day 13 End ——{/b}\n
-{w=0.5}小高潮2触发"
-
-    pause 1.5
+    call chapter_title("Day 13 End", "", 1.5)
 
     jump lindao_day14
 
@@ -1353,10 +1311,7 @@ label lindao_day14:
 
     scene black
 
-    centered "{b}—— Day 14 ——{/b}\n
-{w=0.5}天台{w=0.5}"
-
-    pause 1.0
+    call chapter_title("天台", "Day 14", 1.5)
 
     scene black
 
@@ -1531,7 +1486,8 @@ label lindao_day14:
     $ persistent.fragment_count += 1
     $ persistent.fragments_collected.append("frag_008")
     $ persistent.lindao_day14_fragment_unlocked = True
-    narrator "{b}{color=#FFD700}【记忆碎片 4/20 解锁】{/color}{/b}"
+
+    call show_notification("记忆碎片", "她的眼泪", "#FFD700")
     narrator "{i}\"前世，我从未见过她哭。\"{/i}"
     narrator "{i}\"这一世，我要亲手擦去她的眼泪。\"{/i}"
 
@@ -1559,11 +1515,7 @@ label lindao_day14:
 
     scene black
 
-    centered "{b}—— Day 14 End ——{/b}\n
-{w=0.5}小高潮3触发\n
-{w=0.5}承诺已许下"
-
-    pause 1.5
+    call chapter_title("承诺已许下", "Day 14 End", 1.5)
 
     jump lindao_day15
 
@@ -1576,10 +1528,7 @@ label lindao_day15:
 
     scene black
 
-    centered "{b}—— Day 15 ——{/b}\n
-{w=0.5}情报{w=0.5}"
-
-    pause 1.0
+    call chapter_title("情报", "Day 15", 1.5)
 
     scene black
 
@@ -1673,9 +1622,7 @@ label lindao_day15:
 
     scene black
 
-    centered "{b}—— Day 15 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 15 End", "", 1.5)
 
     jump lindao_day16
 
@@ -1684,10 +1631,7 @@ label lindao_day16:
 
     scene black
 
-    centered "{b}—— Day 16 ——{/b}\n
-{w=0.5}父亲的真相{w=0.5}"
-
-    pause 1.0
+    call chapter_title("父亲的真相", "Day 16", 1.5)
 
     scene bg classroom_day with dissolve
 
@@ -1882,9 +1826,6 @@ label lindao_day16:
         $ persistent.regret_value += 15
         $ persistent.butterfly_count += 1
 
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +8{/color}{/b}"
-        narrator "{b}{color=#9370DB}蝴蝶效应触发！{/color}{/b}"
-
         jump lindao_day16_persuasion_result
 
     label lindao_day16_persuasion_ultimatum:
@@ -1948,7 +1889,8 @@ label lindao_day16:
     $ persistent.fragment_count += 1
     $ persistent.fragments_collected.append("frag_009")
     $ persistent.lindao_day16_fragment_unlocked = True
-    narrator "{b}{color=#FFD700}【记忆碎片 9/20 解锁】{/color}{/b}"
+
+    call show_notification("记忆碎片", "父亲的背影", "#FFD700")
     narrator "{i}\"前世我从未见过林父低头。\"{/i}"
     narrator "{i}\"这一世，我改变了他的命运。\"{/i}"
 
@@ -1989,9 +1931,7 @@ label lindao_day16:
 
     scene black
 
-    centered "{b}—— Day 16 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 16 End", "", 1.5)
 
     jump lindao_day17
 
@@ -2004,10 +1944,7 @@ label lindao_day17:
 
     scene black
 
-    centered "{b}—— Day 17 ——{/b}\n
-{w=0.5}等待{w=0.5}"
-
-    pause 1.0
+    call chapter_title("等待", "Day 17", 1.5)
 
     scene black
 
@@ -2041,10 +1978,7 @@ label lindao_day17:
 
     scene black
 
-    centered "{b}—— Day 18 ——{/b}\n
-{w=0.5}命运改变"
-
-    pause 1.0
+    call chapter_title("命运改变", "Day 18", 1.5)
 
     # 学校后门小公园 - 命运转折
     scene bg park_corner with dissolve
@@ -2201,11 +2135,7 @@ label lindao_day17:
 
     scene black
 
-    centered "{b}—— Day 18 End ——{/b}\n
-{w=0.5}大高潮触发\n
-{w=0.5}蝴蝶效应·MAX"
-
-    pause 1.5
+    call chapter_title("Day 18 End", "", 1.5)
 
     jump lindao_day19
 
@@ -2218,10 +2148,7 @@ label lindao_day19:
 
     scene black
 
-    centered "{b}—— Day 19 ——{/b}\n
-{w=0.5}母亲的健康{w=0.5}"
-
-    pause 1.0
+    call chapter_title("母亲的健康", "Day 19", 1.5)
 
     scene black
 
@@ -2277,9 +2204,7 @@ label lindao_day19:
 
     scene black
 
-    centered "{b}—— Day 19 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 19 End", "", 1.5)
 
     jump lindao_day20
 
@@ -2288,10 +2213,7 @@ label lindao_day20:
 
     scene black
 
-    centered "{b}—— Day 20 ——{/b}\n
-{w=0.5}告白准备{w=0.5}"
-
-    pause 1.0
+    call chapter_title("告白准备", "Day 20", 1.5)
 
     scene black
 
@@ -2423,9 +2345,6 @@ label lindao_day20:
         $ persistent.lindao_day20_sincere_mode = True
         $ persistent.lindao_affection += 5
 
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +5（真诚加分）{/color}{/b}"
-        narrator "{b}{color=#90EE90}选择了最直接的方式——真诚告白{/color}{/b}"
-
         jump lindao_day20_prep_continue
 
     label lindao_day20_prep_continue:
@@ -2508,9 +2427,7 @@ label lindao_day20:
 
     scene black
 
-    centered "{b}—— Day 20 End ——{/b}"
-
-    pause 1.5
+    call chapter_title("Day 20 End", "", 1.5)
 
     jump lindao_day21
 
@@ -2519,10 +2436,7 @@ label lindao_day21:
 
     scene black
 
-    centered "{b}—— Day 21 ——{/b}\n
-{w=0.5}月下约定{w=0.5}"
-
-    pause 1.0
+    call chapter_title("月下约定", "Day 21", 1.5)
 
     # 篮球场夜 - 告白前夜
     scene bg basketball_court with dissolve
@@ -2672,10 +2586,7 @@ label lindao_day21:
 
     scene black
 
-    centered "{b}—— Day 21 End ——{/b}\n
-{w=0.5}告白前夜"
-
-    pause 1.5
+    call chapter_title("告白前夜", "Day 21 End", 1.5)
 
     jump lindao_day23
 
@@ -2688,10 +2599,7 @@ label lindao_day23:
 
     scene black
 
-    centered "{b}—— Day 23 ——{/b}\n
-{w=0.5}告白"
-
-    pause 1.0
+    call chapter_title("告白", "Day 23", 1.5)
 
     scene black
 
@@ -2818,8 +2726,6 @@ label lindao_day23:
         $ persistent.lindao_day23_confession_style = "romantic"
         $ persistent.lindao_affection += 5
 
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +5（浪漫加分）{/color}{/b}"
-
         jump lindao_day23_confession_reaction
 
     label lindao_day23_confession_gift:
@@ -2863,8 +2769,7 @@ label lindao_day23:
         $ persistent.lindao_affection += 8
         $ persistent.regret_value += 20
 
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +8{/color}{/b}"
-        narrator "{b}{color=#FFD700}【记忆碎片 5/20 解锁】{/color}{/b}"
+        call show_notification("记忆碎片解锁", "心意", "#FFD700")
 
         jump lindao_day23_confession_reaction
 
@@ -2908,8 +2813,7 @@ label lindao_day23:
         $ persistent.lindao_affection += 10
         $ persistent.regret_value += 15
 
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +10{/color}{/b}"
-        narrator "{b}{color=#FFD700}【记忆碎片 5/20 解锁】{/color}{/b}"
+        call show_notification("记忆碎片解锁", "心意", "#FFD700")
 
         jump lindao_day23_confession_reaction
 
@@ -2942,8 +2846,6 @@ label lindao_day23:
 
         $ persistent.lindao_day23_confession_style = "sincere"
         $ persistent.lindao_affection += 6
-
-        narrator "{b}{color=#FF6B6B}♥ 林晚棠好感度 +6{/color}{/b}"
 
         jump lindao_day23_confession_reaction
 
@@ -3016,7 +2918,8 @@ label lindao_day23:
     # 解锁记忆碎片10 - 星空下的约定
     $ persistent.fragment_count += 1
     $ persistent.fragments_collected.append("frag_010")
-    narrator "{b}{color=#FFD700}【记忆碎片 10/20 解锁】{/color}{/b}"
+
+    call show_notification("记忆碎片", "星空下的约定", "#FFD700")
     narrator "{i}\"前世，我从未牵过她的手。\"{/i}"
     narrator "{i}\"这一世，星空下，我们终于在一起了。\"{/i}"
 
@@ -3169,10 +3072,7 @@ label lindao_day23:
     pause 2.5
     hide cg_01_starry_sky_confession with dissolve
 
-    centered "{b}—— Day 23 End ——{/b}\n
-{w=0.5}告白成功"
-
-    pause 2.0
+    call chapter_title("告白成功", "Day 23 End", 2.0)
 
     jump lindao_day25
 
@@ -3185,10 +3085,7 @@ label lindao_day24:
 
     scene black
 
-    centered "{b}—— Day 24 ——{/b}\n
-{w=0.5}命运的抉择"
-
-    pause 1.0
+    call chapter_title("命运的抉择", "Day 24", 1.5)
 
     # =================================================================
     # 结局类型判定
@@ -3311,21 +3208,18 @@ label lindao_bad_ending_confession_failed:
 
     scene black
 
-    centered "{size=+8}{b}—— 林晚棠线 · Bad Ending ——{/b}{/size}\n
-{w=0.5}有些人，注定会错过"
-
-    pause 2.0
+    call chapter_title("有些人，注定会错过", "林晚棠线 · Bad Ending", 2.5)
 
     scene black
 
-    narrator "{b}【结局分析】{/b}"
-    narrator "你在关键时刻的选择导致了失败"
-    narrator "告白前没有充分准备"
-    narrator "未能打动林父"
-    narrator "蝴蝶效应触发不足"
+    narrator "—— 结局回顾 ——"
+    narrator "有些关键的选择，没能把握住"
+    narrator "告白前准备不够充分"
+    narrator "也没能打动她的父亲"
+    narrator "命运的改变，还差一点点"
 
-    narrator "{b}【成就解锁】{/b}"
-    narrator "'错过'—— 在最关键的时候，没有把握住机会"
+    narrator ""
+    narrator "错过 —— 在最关键的时候，没能抓住机会"
 
     pause 2.0
 
@@ -3438,22 +3332,19 @@ label lindao_normal_ending_family_issue:
 
     scene black
 
-    centered "{size=+8}{b}—— 林晚棠线 · Normal Ending ——{/b}{/size}\n
-{w=0.5}有些人注定只能陪你走一程"
-
-    pause 2.0
+    call chapter_title("有些人注定只能陪你走一程", "林晚棠线 · Normal Ending", 2.5)
 
     scene black
 
-    narrator "{b}【结局分析】{/b}"
-    narrator "告白成功，但未能解决根本问题"
-    narrator "林父的态度没有改变"
-    narrator "留学问题依然存在"
-    narrator "爱情输给了现实"
+    narrator "—— 结局回顾 ——"
+    narrator "告白成功了，但根本问题没有解决"
+    narrator "她父亲的态度依然没有改变"
+    narrator "留学的阴影还在那里"
+    narrator "有些东西，爱情也战胜不了"
 
-    narrator "{b}【成就解锁】{/b}"
-    narrator "'走过'—— 你们曾经在一起过"
-    narrator "'异地'—— 跨越不了的距离"
+    narrator ""
+    narrator "走过 —— 你们曾经在一起过"
+    narrator "异地 —— 跨越不了的距离"
 
     pause 2.0
 
@@ -3544,21 +3435,18 @@ label lindao_normal_ending_butterfly:
 
     scene black
 
-    centered "{size=+8}{b}—— 林晚棠线 · Normal Ending ——{/b}{/size}\n
-{w=0.5}平凡的幸福，也是一种完美"
-
-    pause 2.0
+    call chapter_title("平凡的幸福，也是一种完美", "林晚棠线 · Normal Ending", 2.5)
 
     scene black
 
-    narrator "{b}【结局分析】{/b}"
-    narrator "告白成功，生活稳定"
-    narrator "蝴蝶效应触发较少"
-    narrator "部分遗憾未能弥补"
-    narrator "生活平凡但幸福"
+    narrator "—— 结局回顾 ——"
+    narrator "告白成功了，生活也稳定下来"
+    narrator "但有些遗憾，还是没能弥补"
+    narrator "不是每一个转折都能改变"
+    narrator "平凡的幸福，也是一种完美"
 
-    narrator "{b}【成就解锁】{/b}"
-    narrator "'平凡'—— 不是每个人都需要轰轰烈烈"
+    narrator ""
+    narrator "平凡 —— 不是每个人都需要轰轰烈烈"
     narrator "'在一起'—— 最重要的事"
 
     pause 2.0
@@ -3600,15 +3488,11 @@ label lindao_true_ending_unlock:
 
     scene black
 
-    centered "{b}{color=#FFD700}—— True Ending 路线解锁 ——{/color}{/b}"
+    call chapter_title("命运的重逢", "", 2.0)
 
-    pause 2.0
+    narrator "所有的选择，都在此刻交汇。"
 
-    narrator "你的选择触发了特殊的剧情线。"
-
-    narrator "林晚棠线 · True Ending"
-
-    narrator "这是林晚棠线的最佳结局。"
+    narrator "——这是属于你们的结局。"
 
     scene black
 
@@ -3666,10 +3550,7 @@ label lindao_day25_true_ending:
 
     scene black
 
-    centered "{b}—— Day 25 · True Ending ——{/b}\n
-{w=0.5}命运的交汇"
-
-    pause 1.0
+    call chapter_title("命运的交汇", "Day 25 · True Ending", 2.0)
 
     scene black
 
@@ -3847,23 +3728,20 @@ label lindao_day25_true_ending:
 
     scene black
 
-    centered "{size=+8}{b}—— 林晚棠线 · True Ending ——{/b}{/size}\n
-{w=0.5}这次，我抓住了命运"
-
-    pause 2.0
+    call chapter_title("这次，我抓住了命运", "林晚棠线 · True Ending", 2.5)
 
     scene black
 
-    narrator "{b}【True Ending 统计】{/b}"
+    narrator "—— True Ending 统计 ——"
     narrator "遗憾弥补值：[persistent.regret_value]/300"
     narrator "记忆碎片：[persistent.fragment_count]/20"
-    narrator "蝴蝶效应：[persistent.butterfly_count]次"
+    narrator "命运改变次数：[persistent.butterfly_count]"
 
-    narrator "{b}【成就解锁】{/b}"
-    narrator "'不错过'—— 完成林晚棠线"
-    narrator "'蝴蝶效应'—— 改变了命运的轨迹"
-    narrator "'此生不换'—— 说出那句迟到了十七年的话"
-    narrator "'完美'—— 达成True Ending"
+    narrator ""
+    narrator "不错过 —— 完成林晚棠线"
+    narrator "命运的轨迹 —— 你改变了未来"
+    narrator "迟到了十七年的话 —— 终于说出口"
+    narrator "完美 —— 达成 True Ending"
 
     pause 2.0
 
@@ -3892,9 +3770,7 @@ label lindao_day25_true_ending:
 label lindao_route_ending_menu:
     scene black
 
-    centered "{b}—— 林晚棠线 · 结局菜单 ——{/b}"
-
-    pause 1.0
+    call chapter_title("林晚棠线 · 结局菜单", "", 2.0)
 
     menu lindao_ending_menu_choice:
         "查看结局总结":
@@ -3909,7 +3785,7 @@ label lindao_route_ending_menu:
 label lindao_ending_summary:
     scene black
 
-    narrator "{b}【林晚棠线 · 结局总结】{/b}"
+    narrator "{i}—— 旅程总结 ——{/i}"
 
     if persistent.lindao_ending_type == "BE":
         narrator "结局类型：Bad Ending"
@@ -3925,7 +3801,7 @@ label lindao_ending_summary:
         narrator "达成最完美的结局"
 
     narrator ""
-    narrator "{b}【游戏数据】{/b}"
+    narrator "{i}—— 这一次的数据 ——{/i}"
     narrator "记忆碎片：[persistent.fragment_count]/20"
     narrator "遗憾弥补值：[persistent.regret_value]/300"
     narrator "蝴蝶效应：[persistent.butterfly_count]次"
@@ -3933,7 +3809,7 @@ label lindao_ending_summary:
 
     if persistent.te_routes_completed >= 2:
         narrator ""
-        narrator "{b}{color=#FFD700}【提示】{/color}{/b}"
+        narrator "{color=#FFD700}{i}—— 提示 ——{/i}{/color}"
         narrator "你已完成[persistent.te_routes_completed]条女主线"
         narrator "当完成2条以上女主线且收集足够记忆碎片时"
         narrator "可以解锁True Ending"
@@ -3975,10 +3851,7 @@ label lindao_day25:
 
     scene black
 
-    centered "{b}—— Day 25 ——{/b}\n
-{w=0.5}高考结束"
-
-    pause 1.0
+    call chapter_title("高考结束", "Day 25", 1.5)
 
     scene black
 
@@ -4208,25 +4081,23 @@ label lindao_day25:
 
     scene black
 
-    centered "{size=+8}{b}—— 林晚棠线 · Happy Ending ——{/b}{/size}\n
-{w=0.5}这次，我不想再错过"
-
-    pause 2.0
+    call chapter_title("这次，我不想再错过", "林晚棠线 · Happy Ending", 2.5)
 
     scene black
 
-    narrator "{b}【遗憾弥补值】{/b}"
-    narrator "{font=simhei.ttf}{color=#FFD700}{u}198/200{/u}{/color}{/font}"
+    narrator "—— 旅程总结 ——"
 
-    narrator "{b}【记忆碎片】{/b}"
-    narrator "{font=simhei.ttf}{color=#87CEEB}{u}12/20 解锁{/u}{/color}{/font}"
+    narrator "这一世，你没有再留下遗憾。"
 
-    narrator "{b}【成就解锁】{/b}"
-    narrator "'不错过'—— 完成林晚棠线"
+    narrator "记忆碎片：12 / 20"
 
-    narrator "'蝴蝶效应'—— 改变了命运的轨迹"
+    narrator ""
 
-    narrator "'此生不换'—— 说出那句迟到了十七年的话"
+    narrator "不错过 —— 完成林晚棠线"
+
+    narrator "命运的轨迹 —— 你改变了彼此的未来"
+
+    narrator "迟到了十七年的话 —— 终于说出口"
 
     pause 2.0
 
@@ -4260,7 +4131,7 @@ label lindao_day25:
 
     scene black
 
-    centered "{b}—— THE END ——{/b}"
+    call chapter_title("THE END", "", 2.5)
 
     centered "{b}感谢游玩{/b}"
 

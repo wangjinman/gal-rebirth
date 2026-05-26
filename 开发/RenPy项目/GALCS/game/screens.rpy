@@ -11,10 +11,13 @@ init python:
     style.affection_popup.background = Solid("#2d4a6f")
     style.affection_popup.padding = (20, 15, 20, 15)
 
-    # 角色专属对话框映射
-    # 林晚棠 - 暖橙边框专属UI
+    # 对话框映射
+    # bar_narration = 旁白/内心独白/多女主通用框（上方可叠放立绘或头像）
     DIALOGUE_BOXES = {
-        "林晚棠": "images/UI/UI_bar_narration.png",
+        "旁白": "images/UI/UI_bar_narration.png",
+        "独白": "images/UI/UI_bar_narration.png",
+        "???": "images/UI/UI_bar_narration.png",
+        "内心": "images/UI/UI_bar_narration.png",
     }
 
     # 获取对话背景图片
@@ -91,104 +94,146 @@ screen hud():
                 text "第一章" size 16 color "#6c9bd1"
 
 # =============================================================================
-# 对话框样式覆盖 - 使用自定义UI组件
-# 支持角色专属对话框
 # =============================================================================
-# 屏幕 1920x1080
-# 新UI尺寸：通用对话框 1920x168，林晚棠专属 1920x168
+# 对话框 - 自定义UI完全接管
+# 布局（1920x1080 屏幕）：
+#   y=720~1080  对话框 (360px, 贴屏幕底边，含内嵌按钮)
+# =============================================================================
 
 screen say(who, what):
     # 根据角色选择对话框背景
     $ bg_img = get_dialogue_bg(who)
-    $ is_lwt = who and who in DIALOGUE_BOXES
-    # 对话框高度（两张新UI均为168px）
-    $ box_height = 168
-    # 文字区域y坐标：对话框贴底(912)，文字垂直居中于对话框内
-    $ text_ypos = 935
 
-    # 对话框图片 - 贴底显示
+    # ── 层1：对话框背景图 (360px, 直接贴屏幕底边) ──
     add bg_img:
         xalign 0.5
-        ypos 1080 - box_height
+        ypos 720
 
-    # 文字内容窗口
-    window:
-        id "window"
-        background None
-        xfill True
-        ypos text_ypos
-        ymaximum 145
-        padding (350, 20, 100, 20)
+    # ── 层2：名字背景牌 (320×44) ──
+    if who:
+        add "images/UI/UI_nameplate.png":
+            xpos 345
+            ypos 746
 
-        has vbox
-        spacing 10
+    # ── 层3：文字内容 ──
+    # 无论有无角色名，都预留名字行高度（32px），避免正文位置跳动
+    fixed:
+        xpos 370
+        ypos 746
+        xsize 1190
+        ysize 300
 
-        if who:
-            text who id "who":
-                size 26
+        vbox:
+            spacing 28
+
+            # 名字行：有名字显示名字，无名字时留空（保持高度一致）
+            if who:
+                text who id "who":
+                    size 42
+                    color "#2c3e50"
+                    font "fonts/simhei.ttf"
+            else:
+                null height 44
+
+            text what id "what":
+                size 38
                 color "#2c3e50"
-                font "fonts/SourceHanSansLite.ttf"
-                yoffset -20
+                font "fonts/simhei.ttf"
+                line_spacing 12
 
-        text what id "what":
-            size 32
-            color "#2c3e50"
-            font "fonts/SourceHanSansLite.ttf"
+    # ── 层4：快捷按钮（内嵌在对话框右下角，单排显示）──
+    if quick_menu:
+        hbox:
+            xpos 1460
+            ypos 1016
+            spacing 6
 
-    use quick_menu
+            imagebutton:
+                idle "images/UI/UI_quick_auto_default.png"
+                hover "images/UI/UI_quick_auto_hover.png"
+                action ui.callsinnewcontext("toggle_auto_forward")
+            imagebutton:
+                idle "images/UI/UI_quick_skip_default.png"
+                hover "images/UI/UI_quick_skip_hover.png"
+                action Skip()
+            imagebutton:
+                idle "images/UI/UI_quick_save_default.png"
+                hover "images/UI/UI_quick_save_hover.png"
+                action ShowMenu('save')
+            imagebutton:
+                idle "images/UI/UI_quick_load_default.png"
+                hover "images/UI/UI_quick_load_hover.png"
+                action ShowMenu('load')
+            imagebutton:
+                idle "images/UI/UI_quick_history_default.png"
+                hover "images/UI/UI_quick_history_hover.png"
+                action ShowMenu('history')
+            imagebutton:
+                idle "images/UI/UI_quick_settings_default.png"
+                hover "images/UI/UI_quick_settings_hover.png"
+                action ShowMenu('preferences')
+            imagebutton:
+                idle "images/UI/UI_quick_hide_default.png"
+                hover "images/UI/UI_quick_hide_hover.png"
+                action _window_hide
+            imagebutton:
+                idle "images/UI/UI_quick_exit_default.png"
+                hover "images/UI/UI_quick_exit_hover.png"
+                action MainMenu()
 
 # =============================================================================
-# 快速菜单（对话框下方的快捷操作）
+# 快速菜单（保留定义，不再被 say screen use）
 # =============================================================================
 
 screen quick_menu():
     if quick_menu:
-        frame:
-            style "quick_menu_frame"
+        hbox:
+            xpos 1460
+            ypos 1016
+            spacing 6
 
-            hbox:
-                spacing 20
-
-                textbutton _("回滚"):
-                    action Rollback()
-                    text_style "quick_menu_button"
-
-                textbutton _("自动"):
-                    action ui.callsinnewcontext("toggle_auto_forward")
-                    text_style "quick_menu_button"
-
-                textbutton _("跳过"):
-                    action Skip()
-                    text_style "quick_menu_button"
-
-                textbutton _("保存"):
-                    action ShowMenu('save')
-                    text_style "quick_menu_button"
-
-                textbutton _("读取"):
-                    action ShowMenu('load')
-                    text_style "quick_menu_button"
-
-                textbutton _("设置"):
-                    action ShowMenu('preferences')
-                    text_style "quick_menu_button"
-
-style quick_menu_frame:
-    xalign 0.5
-    yalign 1.0
-    yoffset -60  # 调整到底栏上方
-    padding (10, 10, 10, 10)
-    background Solid("#1a1a2e")
-
-style quick_menu_button:
-    size 20
-    color "#f5f5f5"
-    hover_color "#e8a87c"
-    insensitive_color "#606060"
+            imagebutton:
+                idle "images/UI/UI_quick_auto_default.png"
+                hover "images/UI/UI_quick_auto_hover.png"
+                action ui.callsinnewcontext("toggle_auto_forward")
+            imagebutton:
+                idle "images/UI/UI_quick_skip_default.png"
+                hover "images/UI/UI_quick_skip_hover.png"
+                action Skip()
+            imagebutton:
+                idle "images/UI/UI_quick_save_default.png"
+                hover "images/UI/UI_quick_save_hover.png"
+                action ShowMenu('save')
+            imagebutton:
+                idle "images/UI/UI_quick_load_default.png"
+                hover "images/UI/UI_quick_load_hover.png"
+                action ShowMenu('load')
+            imagebutton:
+                idle "images/UI/UI_quick_history_default.png"
+                hover "images/UI/UI_quick_history_hover.png"
+                action ShowMenu('history')
+            imagebutton:
+                idle "images/UI/UI_quick_settings_default.png"
+                hover "images/UI/UI_quick_settings_hover.png"
+                action ShowMenu('preferences')
+            imagebutton:
+                idle "images/UI/UI_quick_hide_default.png"
+                hover "images/UI/UI_quick_hide_hover.png"
+                action _window_hide
+            imagebutton:
+                idle "images/UI/UI_quick_exit_default.png"
+                hover "images/UI/UI_quick_exit_hover.png"
+                action MainMenu()
 
 # =============================================================================
 # 选择菜单样式
 # =============================================================================
+
+transform choice_hover:
+    on hovered, showed:
+        easein 0.1 zoom 1.03 yoffset -2
+    on idle:
+        easeout 0.1 zoom 1.0 yoffset 0
 
 screen choice(items):
     modal True
@@ -202,6 +247,7 @@ screen choice(items):
         for caption, action, chosen in items:
             if action:
                 button:
+                    at choice_hover
                     action action
                     xsize 800
                     ysize 90
@@ -210,17 +256,114 @@ screen choice(items):
 
                     text caption:
                         xalign 0.5
-                        yalign 0.5
+                        yalign 0.35
                         size 26
                         color "#ffffff"
                         outlines [(1, "#000000", 0, 0)]
 
             else:
-                # 禁用状态的选项（灰色文字）
                 text caption:
                     xalign 0.5
                     size 26
                     color "#666666"
+
+
+# =============================================================================
+# 章节标题（全屏居中 + 淡入/停留/淡出）
+# 用法: call chapter_title("终焉", "序章·第一幕", 2.0)
+#   title    = 主标题（大字）
+#   subtitle = 副标题（小字，可选，传 "" 则不显示）
+#   hold     = 居中停留秒数（默认2.0）
+# 总时长 = 0.8(dissolve) + hold(停留) + 1.0(淡出dissolve) = 默认3.8秒
+# =============================================================================
+label chapter_title(title, subtitle="", hold=2.0):
+    $ _ct_title = title
+    $ _ct_subtitle = subtitle
+    window hide
+    show screen _chapter_title_display with dissolve
+    $ renpy.pause(0.8 + hold + 1.0)
+    hide screen _chapter_title_display with dissolve
+    window show
+    return
+
+screen _chapter_title_display:
+    zorder 200
+    frame:
+        background Solid("#000000aa")
+        xfill True
+        yfill True
+        vbox:
+            xalign 0.5
+            yalign 0.45
+            spacing 20
+
+            if _ct_subtitle:
+                text _ct_subtitle:
+                    xalign 0.5
+                    size 28
+                    color "#a0a0a0"
+                    outlines [(1, "#000000", 0, 0)]
+
+            text _ct_title:
+                xalign 0.5
+                size 64
+                color "#ffffff"
+                outlines [(2, "#000000", 0, 0)]
+
+
+# =============================================================================
+# 悬浮通知（Toast）— 记忆碎片解锁 / 细节发现 等提示
+# 屏幕右上角淡入 → 停留 → 上飘淡出
+# 用法: $ show_notification("记忆碎片解锁", "✦ 雨中的温暖 ✦", "#FFD700")
+#   title   = 标题文字（小字）
+#   message = 主内容（大字）
+#   color   = 主题色（十六进制，默认金色）
+# =============================================================================
+
+init python:
+    _toast_title = ""
+    _toast_message = ""
+    _toast_color = "#FFD700"
+
+label show_notification(title, message, color="#FFD700"):
+    $ _toast_title = title
+    $ _toast_message = message
+    $ _toast_color = color
+    show screen _toast_display
+    $ renpy.pause(2.0)
+    hide screen _toast_display
+    return
+
+screen _toast_display:
+    zorder 300
+    # 居中偏上显示，无背景框
+    frame:
+        at toast_anim
+        xalign 0.5
+        ypos 80
+        background None
+        xpadding 0
+        ypadding 0
+        vbox:
+            xalign 0.5
+            spacing 12
+            if _toast_title:
+                text _toast_title:
+                    xalign 0.5
+                    size 26
+                    color _toast_color
+            text _toast_message:
+                xalign 0.5
+                size 42
+                color "#ffffff"
+
+transform toast_anim:
+    on show:
+        alpha 0.0
+        yoffset 15
+        easein 0.4 alpha 1.0 yoffset 0
+        pause 2.2
+        easeout 0.5 alpha 0.0 yoffset -20
 
 
 # =============================================================================
@@ -232,7 +375,7 @@ screen main_menu():
 
     vbox:
         align (0.5, 0.3)
-        spacing 20
+        spacing 60
 
         text "{b}{size=+20}重生·轻逆袭{/size}{/b}":
             color "#f5f5f5"
@@ -335,7 +478,7 @@ screen preferences():
         padding (40, 30, 40, 30)
 
         vbox:
-            spacing 20
+            spacing 60
 
             text "{b}游戏设置{/b}":
                 size 32
@@ -345,31 +488,31 @@ screen preferences():
             null height 20
 
             hbox:
-                spacing 20
+                spacing 60
 
                 text "文字速度:" size 24 color "#f5f5f5"
                 bar value FieldValue(_preferences, "text_cps", range=100)
 
             hbox:
-                spacing 20
+                spacing 60
 
                 text "自动播放:" size 24 color "#f5f5f5"
                 bar value FieldValue(_preferences, "auto_forward_after", range=30)
 
             hbox:
-                spacing 20
+                spacing 60
 
                 text "音乐音量:" size 24 color "#f5f5f5"
                 bar value FieldValue(_preferences, "music_volume")
 
             hbox:
-                spacing 20
+                spacing 60
 
                 text "音效音量:" size 24 color "#f5f5f5"
                 bar value FieldValue(_preferences, "sound_volume")
 
             hbox:
-                spacing 20
+                spacing 60
 
                 text "全屏模式:" size 24 color "#f5f5f5"
                 textbutton _("切换"):
@@ -451,7 +594,7 @@ screen yesno_prompt:
         padding (40, 30, 40, 30)
 
         vbox:
-            spacing 20
+            spacing 60
             align (0.5, 0.5)
 
             text "{b}[yesno_prompt_title]{/b}":
@@ -497,7 +640,7 @@ screen confirm(message, yes_action, no_action):
         padding (40, 30, 40, 30)
 
         vbox:
-            spacing 20
+            spacing 60
             align (0.5, 0.5)
 
             text "{b}[message]{/b}":

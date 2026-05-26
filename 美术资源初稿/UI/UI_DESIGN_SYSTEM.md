@@ -38,7 +38,10 @@
 
 ### 2.2 尺寸与间距
 
-> **完整规格表**（已交付实测 + 规划全模块宽×高）：见 **`UI_SPEC.md`**。
+> **完整规格表**（已交付实测 + 规划全模块宽×高）：见 **`UI_SPEC.md`**。  
+> **官方双色**（樱粉 / 晴空蓝）：见 **`UI_THEME_COLORS.md`**（项目 UI 定调，仅此两套）。  
+> **Say 屏布局说明图**（参考样张 × 已交付对照）：见 **`UI_SAY_LAYOUT_GUIDE.md`**。  
+> **二次元 say 基准绘制**：见 **`UI_BASELINE.md`**；口令「回复到基准版」。
 
 | Token | 值 |
 |-------|-----|
@@ -118,6 +121,8 @@
 | `UI_DS_choice_selected.png` | **780×76** | 选项·选中 |
 
 规划中的 P1–P3 尺寸见 `UI_SPEC.md` §4。
+
+**二次元卡通风（say 全套第二版）**：`UI/anime_style/`，脚本 `scripts/build_ui_anime_say.py`，说明见 `anime_style/README.md`。
 
 **旧版归档**（勿删）：`UI_02_*`、`UI_choice_*` → 目录 `_archive_UI02/`
 

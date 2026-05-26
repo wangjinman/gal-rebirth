@@ -9,7 +9,7 @@ label start:
     call init_game from _call_init_game
 
     # 显示标题画面（可选跳过）
-    $ quick_menu = False
+    $ quick_menu = True
     scene black with fade
     pause 1.0
 
@@ -75,12 +75,6 @@ label reset_all_flags:
 label prologue:
     # 更新当前章节
     $ persistent.current_chapter = "prologue"
-
-    # 显示序章标题
-    scene black with fade
-    centered "{size=+10}{b}序章{/b}{/size}\n{w=0.5}死亡与重生{w=0.5}"
-
-    pause 2.0
 
     # 跳转到序章脚本
     jump prologue_part1
@@ -206,14 +200,13 @@ label collect_fragment(fragment_id, fragment_name):
     $ persistent.fragments_collected.append(fragment_id)
     $ persistent.fragment_count += 1
 
-    # 显示收集提示
-    scene black with dissolve
-    centered "{size=+6}{color=#a29bfe}✧ 记忆碎片收集 ✧{/color}{/size}\n\n{size=+4}[fragment_name]{/size}"
-
-    pause 2.0
-
-    # 返回到之前的场景（使用 scene black 恢复）
-    scene black with dissolve
+    # 显示收集提示（全屏居中动画，与 Toast 风格统一）
+    $ _toast_title = "记忆碎片"
+    $ _toast_message = fragment_name
+    $ _toast_color = "#a29bfe"
+    show screen _toast_display
+    $ renpy.pause(3.0)
+    hide screen _toast_display
 
     return
 

@@ -6,10 +6,7 @@
 label prologue_part1:
     scene bg bedroom_late_night with fade
 
-    centered "{size=+8}{b}序章·第一幕{/b}{/size}\n
-{w=0.5}终焉{w=0.5}"
-
-    pause 1.5
+    call chapter_title("终焉", "序章·第一幕", 2.0)
 
     narrator "..."
 
@@ -77,7 +74,7 @@ label prologue_part1:
     jump prologue_part2
 
 label memory_fragment_death:
-    narrator "{b}【记忆碎片·01】{/b}"
+    narrator "{i}—— 她的笑容 ——{/i}"
 
     narrator "她的笑容，干净得像夏天的风。"
 
@@ -89,7 +86,7 @@ label memory_fragment_death:
 
     narrator "再后来，就再也没有后来了。"
 
-    narrator "{b}【记忆碎片·02】{/b}"
+    narrator "{i}—— 兄弟 ——{/i}"
 
     narrator "林远。我最好的兄弟。"
 
@@ -101,7 +98,7 @@ label memory_fragment_death:
 
     narrator "那个误会，从未解开过。"
 
-    narrator "{b}【记忆碎片·03】{/b}"
+    narrator "{i}—— 最后的遗憾 ——{/i}"
 
     narrator "妈妈走的那天。"
 
@@ -223,7 +220,7 @@ label prologue_part2:
     jump prologue_part3
 
 label prologue_memory_reconstruction:
-    narrator "{b}【重生确认】{/b}"
+    narrator "{i}—— 重生 ——{/i}"
 
     narrator "你回到了2024年5月8日。"
 
@@ -243,7 +240,7 @@ label prologue_memory_reconstruction:
 
     player_thought "前世我考了什么成绩来着……"
 
-    narrator "{b}【记忆碎片解锁】{/b}"
+    call show_notification("记忆碎片", "高考的遗憾", "#FFD700")
 
     narrator "高考成绩：理科487分"
 
@@ -257,7 +254,7 @@ label prologue_memory_reconstruction:
 
     narrator "林晚棠。"
 
-    narrator "{b}【记忆碎片解锁】{/b}"
+    call show_notification("记忆碎片", "她要走了", "#FFD700")
 
     narrator "林晚棠将在高考后前往日本留学"
 
@@ -271,7 +268,7 @@ label prologue_memory_reconstruction:
 
     player_thought "还有……"
 
-    narrator "{b}【记忆碎片解锁】{/b}"
+    call show_notification("记忆碎片", "兄弟", "#FFD700")
 
     narrator "林远——你最好的兄弟"
 
@@ -281,7 +278,7 @@ label prologue_memory_reconstruction:
 
     player_thought "这次，不能再让那个误会发生了。"
 
-    narrator "{b}【记忆碎片解锁】{/b}"
+    call show_notification("记忆碎片", "最后的遗憾", "#FFD700")
 
     narrator "母亲将在你28岁时因病去世"
 
@@ -295,7 +292,7 @@ label prologue_memory_reconstruction:
 
     player_thought "等等，有些事情我想不起来了……"
 
-    narrator "{b}【重生规则·记忆限制】{/b}"
+    narrator "{i}—— 模糊的记忆 ——{/i}"
 
     narrator "你只能记住关键人生节点的结果"
 
@@ -348,10 +345,7 @@ label prologue_part3:
 
     scene black
 
-    centered "{size=+8}{b}第一章·熟悉的陌生{/b}{/size}\n
-{w=0.5}重生后的第一天{w=0.5}"
-
-    pause 2.0
+    call chapter_title("重生后的第一天", "第一章 · 熟悉的陌生", 2.0)
 
     jump prologue_part4
 
@@ -389,8 +383,6 @@ label prologue_part4:
 
     scene black
 
-    centered "{b}——第一章·熟悉的陌生——{/b}"
-
-    pause 2.0
+    call chapter_title("—— 第一章 · 熟悉的陌生 ——", "", 1.5)
 
     jump chapter1_day1
