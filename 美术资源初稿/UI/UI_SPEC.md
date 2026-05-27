@@ -14,7 +14,7 @@
 |----|------|------|
 | 游戏分辨率 | **1920×1080** | `config.screen_width/height` |
 | 安全区（全宽 UI） | 宽 **1920** | 底栏、遮罩、菜单底 |
-| 底栏高度 `bar.h` | **360** | ADV / NVL 共用 |
+| 底栏高度 `bar.h` | **280** | ADV / NVL 共用（定稿蓝套） |
 | 底栏锚点 | `xalign 0.5` · `yalign 1.0` | 贴屏幕底边 |
 | 立绘区（逻辑） | x **0–360** | 立绘 **不在** 底栏 PNG 内 |
 | 对话正文区 | x **400**，宽 **1420** | 底栏上叠字 |
@@ -32,8 +32,8 @@
 
 | 文件名 | 宽×高 (px) | 锚点 / 用法 | Ren'Py 对应 |
 |--------|------------|-------------|-------------|
-| `UI_DS_bar_dialogue.png` | **1920×360** | 底对齐全宽 | `gui.textbox_height = 360` |
-| `UI_DS_bar_narration.png` | **1920×360** | 底对齐全宽 | 旁白分支 `say` |
+| `UI_DS_bar_dialogue.png` | **1920×280** | 底对齐全宽 · 顶直角 · 无左右描边 | `gui.textbox_height = 280` |
+| `UI_DS_bar_narration.png` | **1920×280** | 同上 | 旁白分支 `say` |
 | `UI_DS_nameplate.png` | **12×44** | 姓名左侧色条 only，x≈400、字从 x≈416 起 | `add` + `text who` |
 | `UI_DS_choice_normal.png` | **780×76** | 选项底 | `gui.choice_button_width/height` |
 | `UI_DS_choice_hover.png` | **780×76** | 悬停 | 同上 |

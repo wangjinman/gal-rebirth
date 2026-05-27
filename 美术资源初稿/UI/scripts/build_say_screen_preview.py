@@ -25,10 +25,14 @@ BG_DIR = ART_ROOT / "背景"
 SPRITE_DEFAULT = (
     ART_ROOT / "立绘" / "lin-wantang-expr-smile-v3-transparent-v1-feather.png"
 )
-# GALCS characters.rpy：800×1200 源图 + zoom + LEFT(xpos=0.48, xanchor=0.5)
+SIDE_DEFAULT = (
+    ART_ROOT / "立绘" / "bust" / "lin-wantang-expr-smile-v3-transparent-v1-bust-feather.png"
+)
 GALCS_LINDAO_NORMAL = Path(
     r"J:\项目\GAL\开发\RenPy项目\GALCS\game\images\character\lindao\LWT_01_normal.png"
 )
+BAR_H = 280
+NAMEPLATE_W, NAMEPLATE_H = 12, 44
 PREVIEW_DIR = UI_ROOT / "previews"
 PREVIEW_LATEST = PREVIEW_DIR / "latest"
 PREVIEW_HISTORY = PREVIEW_DIR / "history"
@@ -62,11 +66,11 @@ THEME_DIRS = {
     "blue": UI_ROOT / "anime_style_blue",
 }
 
-# GALCS game/screens.rpy（当前工程）
+# GALCS screens.rpy 对齐（底栏高 BAR_H，ypos = 1080 - BAR_H）
 LAYOUT_GALCS = {
-    "bar_y": 720,
-    "nameplate": (345, 746),
-    "text_box": (370, 746, 1190, 300),
+    "bar_y": H - BAR_H,
+    "nameplate": (345, H - BAR_H + 26),
+    "text_box": (370, H - BAR_H + 26, 1190, BAR_H - 36),
     "who_size": 42,
     "what_size": 38,
     "who_color": "#FF70A8",
@@ -88,9 +92,30 @@ LAYOUT_GALCS = {
     "choice_text_size": 26,
 }
 
+# MO 式左侧槽：主角 / 角色+side / 旁白
+LAYOUT_LEFT_SLOT = {
+    "bar_y": H - BAR_H,
+    "side": (18, H, 280),
+    "nameplate_hero": (24, H - BAR_H + 18),
+    "nameplate_npc": (196, H - BAR_H + 18),
+    "text_box_hero": (292, H - BAR_H + 28, 1188, 268),
+    "text_box_npc": (408, H - BAR_H + 28, 1072, 268),
+    "text_box_nvl": (88, H - BAR_H + 28, 1352, 268),
+    "who_size": 42,
+    "what_size": 38,
+    "who_color": "#FF70A8",
+    "what_color": "#E8ECF2",
+    "quick_origin": (1460, 1016),
+    "quick_spacing": 6,
+    "quick_icons": LAYOUT_GALCS["quick_icons"],
+    "choice_box": (800, 90),
+    "choice_spacing": 15,
+    "choice_text_size": 26,
+}
+
 # UI_SAY_LAYOUT_GUIDE.md 推荐叠层
 LAYOUT_SPEC = {
-    "bar_y": 720,
+    "bar_y": H - BAR_H,
     "quick_bar_y": 664,
     "nameplate": (400, 688),
     "voice": (720, 708),
@@ -324,6 +349,62 @@ def _draw_choices(
         y += ch + spacing
 
 
+def _center_text_on_box(
+    draw: ImageDraw.ImageDraw,
+    box: tuple[int, int, int, int],
+    text: str,
+    font,
+    fill: str,
+    *,
+    outline: str = "#101820",
+    ow: int = 2,
+    enabled: bool = True,
+) -> None:
+    x0, y0, x1, y1 = box
+    bb = draw.textbbox((0, 0), text, font=font)
+    tw, th = bb[2] - bb[0], bb[3] - bb[1]
+    x = x0 + (x1 - x0 - tw) // 2
+    y = y0 + (y1 - y0 - th) // 2
+    _text_outline(draw, (x, y), text, font, fill, outline=outline, ow=ow, enabled=enabled)
+
+
+def _nameplate_pos(cfg: dict, layout: str, role: str | None) -> tuple[int, int]:
+    if layout == "left_slot":
+        key = "nameplate_npc" if role == "npc" else "nameplate_hero"
+        return cfg[key]
+    return cfg["nameplate"]
+
+
+def _draw_who_on_nameplate(
+    canvas: Image.Image,
+    ui: Path,
+    nx: int,
+    ny: int,
+    who: str,
+    font,
+    *,
+    fill: str = "#FF70A8",
+    outline: str = "#FFFFFF",
+    ow: int = 2,
+    enabled: bool = True,
+) -> None:
+    """姓名叠在铭牌内（最后绘制，保证在条带之上）。"""
+    np_img = _load_ui(ui, "UI_DS_nameplate.png")
+    x0 = nx + 18
+    x1 = nx + np_img.width - 10
+    draw = ImageDraw.Draw(canvas)
+    _center_text_on_box(
+        draw,
+        (x0, ny, x1, ny + np_img.height),
+        who,
+        font,
+        fill,
+        outline=outline,
+        ow=ow,
+        enabled=enabled,
+    )
+
+
 def build_frame(
     *,
     theme: str,
@@ -338,9 +419,16 @@ def build_frame(
     sprite_zoom: float | None = None,
     sprite_xpos: float = 0.48,
     sprite_xanchor: float = 0.5,
+    speak_role: str | None = None,
+    side_sprite: Path | None = None,
 ) -> Image.Image:
     ui = THEME_DIRS[theme]
-    cfg = LAYOUT_GALCS if layout == "galcs" else LAYOUT_SPEC
+    if layout == "left_slot":
+        cfg = LAYOUT_LEFT_SLOT
+    elif layout == "galcs":
+        cfg = LAYOUT_GALCS
+    else:
+        cfg = LAYOUT_SPEC
     accent = "#FF70A8" if theme == "pink" else "#41B9FF"
 
     if bg is None or mode == "black":
@@ -365,9 +453,13 @@ def build_frame(
     draw_choices = show_choices or mode == "choice"
 
     if draw_say:
-        bar_name = (
-            "UI_DS_bar_narration.png" if (mode == "narration" or not who) else "UI_DS_bar_dialogue.png"
-        )
+        use_nvl_bar = mode == "narration" or not who
+        if layout == "left_slot":
+            role_probe = speak_role
+            if role_probe is None:
+                role_probe = "narration" if not who else ("npc" if side_sprite and side_sprite.is_file() else "hero")
+            use_nvl_bar = role_probe == "narration"
+        bar_name = "UI_DS_bar_narration.png" if use_nvl_bar else "UI_DS_bar_dialogue.png"
         bar = _load_ui(ui, bar_name)
         _paste(canvas, bar, (W - bar.width) // 2, cfg["bar_y"])
 
@@ -377,9 +469,24 @@ def build_frame(
         qbar = _load_ui(ui, "UI_DS_quick_bar.png")
         _paste(canvas, qbar, (W - qbar.width) // 2, cfg["quick_bar_y"])
 
+    role = speak_role
+    if layout == "left_slot" and role is None:
+        if not who or mode in ("narration",):
+            role = "narration"
+        elif side_sprite and side_sprite.is_file():
+            role = "npc"
+        else:
+            role = "hero"
+
+    if draw_say and layout == "left_slot" and role == "npc" and side_sprite and side_sprite.is_file():
+        sx, y_bot, max_sh = cfg["side"]
+        _place_sprite(canvas, side_sprite, x=sx, y_bottom=y_bot, max_h=max_sh)
+
+    np_pos: tuple[int, int] | None = None
     if draw_say and who and mode not in ("black", "narration"):
         np_img = _load_ui(ui, "UI_DS_nameplate.png")
-        nx, ny = cfg["nameplate"]
+        nx, ny = _nameplate_pos(cfg, layout, role)
+        np_pos = (nx, ny)
         _paste(canvas, np_img, nx, ny)
         if layout == "spec":
             voice = _load_ui(ui, "UI_DS_say_voice_default.png")
@@ -387,7 +494,11 @@ def build_frame(
             _paste(canvas, voice, vx, vy)
 
     if draw_say and what:
-        tx, ty, tw, th = cfg["text_box"]
+        if layout == "left_slot":
+            slot_key = {"hero": "hero", "npc": "npc", "narration": "nvl"}.get(role or "hero", "hero")
+            tx, ty, tw, th = cfg[f"text_box_{slot_key}"]
+        else:
+            tx, ty, tw, th = cfg["text_box"]
         if font_profile:
             who_sz = font_profile.who_size
             what_sz = font_profile.what_size
@@ -420,6 +531,7 @@ def build_frame(
                 enabled=use_o,
             )
             ty += who_sz + 28
+
         _draw_multiline(
             draw,
             (tx, ty, tx + tw, ty + th),
@@ -532,6 +644,109 @@ def build_sheet(theme: str = "pink", layout: str = "galcs") -> Image.Image:
         tile = _label_bar(img, title, sub)
         sheet.paste(tile, (ox, oy))
     return sheet
+
+
+def build_left_slot_sheet(theme: str = "pink") -> Image.Image:
+    """MO 式左侧槽：主角 / 角色+side / 旁白 三态竖排。"""
+    bg = resolve_bg("BG_02_classroom_sunset")
+    what_hero = "但我知道。"
+    what_nvl = "雨停之后，走廊里只剩下球鞋摩擦地面的声音。"
+    panels = [
+        (
+            build_frame(
+                theme=theme,
+                layout="left_slot",
+                mode="say",
+                bg=bg,
+                sprite=GALCS_LINDAO_NORMAL,
+                sprite_zoom=0.85,
+                who=SAMPLE_WHO,
+                what=what_hero,
+                speak_role="hero",
+            ),
+            "① 主角 · 仅姓名条",
+            f"nameplate {NAMEPLATE_W}×{NAMEPLATE_H} · bar {BAR_H}px · 无 side",
+        ),
+        (
+            build_frame(
+                theme=theme,
+                layout="left_slot",
+                mode="say",
+                bg=bg,
+                sprite=GALCS_LINDAO_NORMAL,
+                sprite_zoom=0.85,
+                who=SAMPLE_WHO,
+                what=what_hero,
+                speak_role="npc",
+                side_sprite=SIDE_DEFAULT,
+            ),
+            "② 角色 · side + 姓名 + 全屏立绘",
+            "side 在底栏槽内 · 不隐藏全屏立绘",
+        ),
+        (
+            build_frame(
+                theme=theme,
+                layout="left_slot",
+                mode="narration",
+                bg=bg,
+                sprite=GALCS_LINDAO_NORMAL,
+                sprite_zoom=0.85,
+                who=None,
+                what=what_nvl,
+                speak_role="narration",
+            ),
+            "③ 旁白 · 左侧空",
+            "bar_narration · 无 nameplate",
+        ),
+    ]
+    gap = 20
+    header_h = 78
+    body_h = sum(H + 72 + 36 for _ in panels) + gap * (len(panels) - 1)
+    sheet = Image.new("RGB", (W, header_h + body_h), (235, 238, 245))
+    d = ImageDraw.Draw(sheet)
+    d.text(
+        (24, 10),
+        "左侧槽 Say UI · 三态预览（底栏 320 + 斜角姓名条）",
+        fill=(45, 55, 75),
+        font=_font(24, bold=True),
+    )
+    d.text(
+        (24, 44),
+        f"主题={theme} · build_ui_anime_say.py 后自动生成 · 叠层 layout=left_slot",
+        fill=(100, 110, 130),
+        font=_font(14),
+    )
+    y = header_h
+    for img, title, sub in panels:
+        tile = _label_bar(img, title, sub)
+        sheet.paste(tile, (0, y))
+        y += tile.height + gap
+    return sheet
+
+
+def publish_left_slot_previews(
+    themes: list[str],
+    *,
+    archive: bool = True,
+    triggered_by: str = "build_ui_anime_say.py",
+) -> list[Path]:
+    if not themes:
+        return []
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    PREVIEW_LATEST.mkdir(parents=True, exist_ok=True)
+    hist_dir = PREVIEW_HISTORY / ts if archive else None
+    if hist_dir:
+        hist_dir.mkdir(parents=True, exist_ok=True)
+    saved: list[Path] = []
+    for theme in themes:
+        img = build_left_slot_sheet(theme)
+        name = f"UI_LEFT_SLOT_PREVIEW_{theme}.png"
+        for folder in (PREVIEW_LATEST, hist_dir) if hist_dir else (PREVIEW_LATEST,):
+            out = folder / name
+            img.save(out, "PNG", optimize=True)
+            saved.append(out)
+            print("Left-slot preview saved:", out, img.size)
+    return saved
 
 
 def build_sprite_zoom_sheet(

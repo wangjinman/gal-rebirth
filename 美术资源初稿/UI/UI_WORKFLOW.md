@@ -8,11 +8,11 @@
 ```powershell
 cd J:\项目\GAL\美术资源初稿\UI\scripts
 
-# 樱粉（含 25 张 UI + 四宫格预览）
-python build_ui_anime_say.py pink
-
-# 晴空蓝
+# 定稿 · 晴空蓝（进游戏用这套）
 python build_ui_anime_say.py blue
+
+# 樱粉备选
+python build_ui_anime_say.py pink
 
 # 两套 UI + 两套预览
 python build_ui_anime_say.py all

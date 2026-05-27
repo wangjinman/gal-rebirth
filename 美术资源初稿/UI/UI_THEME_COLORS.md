@@ -1,7 +1,7 @@
 # GAL 项目 · 官方 UI 配色定调（Locked）
 
-> **粉套 `anime_style/`**：仅 **底栏 + 选项** 无色玻璃；**快捷栏 / 图标 / 姓名条** 仍为樱粉。  
-> **蓝套 `anime_style_blue/`**：全套晴空蓝。
+> **定稿（进游戏）**：**`anime_style_blue/`** 晴空蓝全套 · Lock `say-ui-final-blue-20260527`  
+> **备选**：`anime_style/` 粉套（底栏/选项无色玻璃 + 樱粉快捷/姓名条）
 
 ---
 
@@ -39,11 +39,19 @@ define gui.name_text_color = "#FF70A8"
 
 ---
 
-## 3. 晴空蓝 · `anime_style_blue/`
+## 3. 晴空蓝 · `anime_style_blue/`（**定稿**）
 
-底栏 / 快捷栏 / 姓名条：全套天蓝 Token。  
-**选项**：与粉套相同 **浮岛 + 上亮下淡** 形状，填充为淡天蓝雾（上白 → 下 `BAR_BOTTOM` 色、边缘 `ACCENT`）。
+| 项 | 说明 |
+|----|------|
+| 底栏 | `bar_anime()` · 1920×**280** · 顶直角 · **无左右描边** |
+| 快捷/姓名 | 天蓝 Token · 姓名条 12×44 左竖条 |
+| 选项 | 浮岛 + 上亮下淡 · `choice_island_blue()` |
+
+```renpy
+define gui.accent_color = "#41B9FF"
+define gui.name_text_color = "#41B9FF"
+```
 
 ---
 
-*Theme lock ID: `theme-lock-split-20260526`（选项浮岛定稿）*
+*Theme lock ID: `say-ui-final-blue-20260527`*

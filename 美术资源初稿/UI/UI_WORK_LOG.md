@@ -4,6 +4,31 @@
 
 ---
 
+## 2026-05-27 · Say UI 定稿：晴空蓝套
+
+用户确认 **蓝套** 进游戏；粉套保留备选。
+
+| 定稿项 | 值 |
+|--------|-----|
+| 目录 | `anime_style_blue/` |
+| Lock | `say-ui-final-blue-20260527` |
+| 底栏 | 1920×280 · 顶直角 · `bar_anime()` · 仅顶边描边（无左右/底） |
+| 选项 | 浮岛 + 上亮下淡 · `choice_island_blue()` |
+| 预览 | `previews/latest/UI_SAY_PREVIEW_sheet_blue_galcs.png` |
+
+进包：整目录 `UI_DS_*` → `GALCS/game/images/UI/`（去前缀）。引擎 `screens.rpy` 底栏建议 `yalign 1.0` 或 `ypos 800`。
+
+---
+
+## 2026-05-26 · 左侧槽（MO 式）底栏 + 姓名条（已撤回，非定稿）
+
+- `UI_DS_bar_dialogue` **1920×320**，左侧 400px 略实（`left_slot`）；`bar_narration` 同高、无左槽。
+- `UI_DS_nameplate` **268×50** 斜角铭牌（主角/角色共用，不分色）。
+- 预览：`previews/latest/UI_LEFT_SLOT_PREVIEW_{pink|blue}.png`（三态竖排）。
+- **未动**：选项、快捷钮；**非 UI 包**：`立绘/bust/` side 胸像。
+
+---
+
 ## 2026-05-26 · Say UI 封版 + 预览流程 + 选项定稿
 
 ### 状态

@@ -47,8 +47,8 @@ define gui.name_yalign = 0.0
 define gui.input_color = '#ffffff'
 
 # 对话框文字颜色
-define gui.who_color = '#2c3e50'
-define gui.what_color = '#2c3e50'
+define gui.who_color = '#1a1a2e'
+define gui.what_color = '#1a1a2e'
 
 # 文本框位置偏移（设为0，由自定义say screen的绝对坐标控制）
 define gui.text_xpos = 0

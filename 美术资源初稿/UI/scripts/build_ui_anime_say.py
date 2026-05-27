@@ -17,9 +17,10 @@ from PIL import Image, ImageDraw, ImageFilter
 
 # --- 尺寸（与 UI_SPEC 一致）---
 W = 1920
-BAR_H = 360
+BAR_H = 280  # 对话框高度（原 360；仅缩底栏试验）
+LEFT_SLOT_W = 400  # 保留常量，当前底栏不启用左槽加厚
 CHOICE_W, CHOICE_H = 780, 76
-NAMEPLATE_W, NAMEPLATE_H = 12, 44  # 仅左侧强调色条（无底板）
+NAMEPLATE_W, NAMEPLATE_H = 12, 44  # 左侧强调色条
 QUICK_BAR_H = 56
 QUICK_ICON = 48
 VOICE_ICON = 40
@@ -189,7 +190,7 @@ def apply_bar_choice_neutral() -> None:
 
 
 def top_rounded_mask(size: tuple[int, int], radius: int) -> Image.Image:
-    """仅顶部圆角；避免整图圆角 + 底矩形拼接产生接缝横线。"""
+    """仅顶部圆角（选项等仍可用；底栏已改直角）。"""
     w, h = size
     r = min(radius, h // 2, w // 2)
     m = Image.new("L", size, 0)
@@ -200,25 +201,51 @@ def top_rounded_mask(size: tuple[int, int], radius: int) -> Image.Image:
     return m
 
 
-def _draw_bar_border_top_rounded(
-    draw: ImageDraw.ImageDraw, w: int, h: int, radius: int, color: tuple, width: int
+def rect_bar_mask(size: tuple[int, int]) -> Image.Image:
+    """底栏矩形 mask（顶边直角）。"""
+    return Image.new("L", size, 255)
+
+
+def _draw_bar_border_dialogue(
+    draw: ImageDraw.ImageDraw, w: int, h: int, color: tuple, width: int
 ) -> None:
-    """只画上圆角 + 直底边，不用整圈 rounded_rectangle（避免底角多余线段）。"""
-    r = min(radius, h // 2, w // 2)
+    """对话底栏：仅顶边横线，不画左右/底（避免贴屏缘与黑边叠缝）。"""
+    ow = max(1, width)
+    y = ow // 2
+    draw.line([(0, y), (w - 1, y)], fill=color, width=ow)
+
+
+def _draw_bar_border_rect(
+    draw: ImageDraw.ImageDraw, w: int, h: int, color: tuple, width: int
+) -> None:
+    """四边直角描边（非对话底栏用）。"""
     ow = width
     inset = ow // 2 + 1
-    # 底边
     draw.line(
         [(inset, h - inset - 1), (w - inset - 1, h - inset - 1)],
         fill=color,
         width=ow,
     )
-    # 左右竖边（从圆角下端到距底 inset）
+    draw.line([(inset, inset), (inset, h - inset - 1)], fill=color, width=ow)
+    draw.line([(w - inset - 1, inset), (w - inset - 1, h - inset - 1)], fill=color, width=ow)
+    draw.line([(inset, inset), (w - inset - 1, inset)], fill=color, width=ow)
+
+
+def _draw_bar_border_top_rounded(
+    draw: ImageDraw.ImageDraw, w: int, h: int, radius: int, color: tuple, width: int
+) -> None:
+    """快捷栏等仍用顶圆角描边（对话底栏已改直角）。"""
+    r = min(radius, h // 2, w // 2)
+    ow = width
+    inset = ow // 2 + 1
+    draw.line(
+        [(inset, h - inset - 1), (w - inset - 1, h - inset - 1)],
+        fill=color,
+        width=ow,
+    )
     draw.line([(inset, r), (inset, h - inset - 1)], fill=color, width=ow)
     draw.line([(w - inset - 1, r), (w - inset - 1, h - inset - 1)], fill=color, width=ow)
-    # 顶边直线（两角之间）
     draw.line([(r, inset), (w - r - 1, inset)], fill=color, width=ow)
-    # 左上、右上圆角弧
     draw.arc(
         (inset, inset, 2 * r - inset, 2 * r - inset),
         180,
@@ -315,7 +342,6 @@ def _apply_circle_clip(img: Image.Image, margin: int = 2) -> Image.Image:
 def bar_anime(height: int, alpha: float, nvl: bool, left_weight: bool) -> Image.Image:
     top_c = BAR_NVL_TOP if nvl else BAR_TOP
     bot_c = BAR_NVL_BOTTOM if nvl else BAR_BOTTOM
-    r_top = RADIUS_BAR_TOP
 
     arr = np.zeros((height, W, 4), dtype=np.float32)
     for y in range(height):
@@ -334,7 +360,7 @@ def bar_anime(height: int, alpha: float, nvl: bool, left_weight: bool) -> Image.
             arr[y, x, 3] = 255
 
     fill = Image.fromarray(arr.astype(np.uint8), "RGBA")
-    shape = top_rounded_mask((W, height), r_top)
+    shape = rect_bar_mask((W, height))
     img = Image.new("RGBA", (W, height), (0, 0, 0, 0))
     img.paste(fill, (0, 0), shape)
 
@@ -350,33 +376,41 @@ def bar_anime(height: int, alpha: float, nvl: bool, left_weight: bool) -> Image.
     img.putalpha(Image.fromarray(final_a))
 
     draw = ImageDraw.Draw(img)
-    _draw_bar_border_top_rounded(draw, W, height, r_top, OUTLINE, 2)
+    _draw_bar_border_dialogue(draw, W, height, OUTLINE, 2)
     return img
 
 
-def bar_colorless(height: int, alpha: float, nvl: bool) -> Image.Image:
+def bar_colorless(
+    height: int, alpha: float, nvl: bool, *, left_slot: bool = False
+) -> Image.Image:
     """无色对话框：冷雾玻璃 + 顶缘高光；正文区略实，黑屏/彩景观感更接近。"""
-    r_top = RADIUS_BAR_TOP
     arr = np.zeros((height, W, 4), dtype=np.float32)
     tint = np.array(BAR_COLORLESS_TINT, dtype=np.float32)
     rgb_lift = BAR_COLORLESS_RGB_LIFT
     peak = min(0.78, alpha * (0.92 if nvl else 1.0))
+    slot_w = LEFT_SLOT_W if left_slot else 0
 
     for y in range(height):
         t = y / max(height - 1, 1)
         bell = math.sin(math.pi * t) ** 1.08
-        text_zone = max(0.0, (t - 0.38) / 0.62) ** 0.85
-        base_a = peak * (0.14 + 0.48 * bell + 0.26 * t + 0.16 * text_zone)
+        text_zone = max(0.0, (t - 0.32) / 0.68) ** 0.82
+        base_a = peak * (0.12 + 0.46 * bell + 0.30 * t + 0.18 * text_zone)
         base_a = min(0.78, base_a)
         mix = rgb_lift * (0.40 + 0.60 * (base_a / 0.78))
         rgb = 255.0 * (1.0 - mix) + tint * mix
-        arr[y, :, 0] = rgb[0]
-        arr[y, :, 1] = rgb[1]
-        arr[y, :, 2] = rgb[2]
-        arr[y, :, 3] = base_a * 255.0
+        for x in range(W):
+            a = base_a
+            if slot_w and not nvl and x < slot_w:
+                slot_t = max(0.0, (t - 0.25) / 0.75) ** 0.9
+                edge = 1.0 - min(1.0, x / max(slot_w - 1, 1)) ** 1.6
+                a = min(0.82, base_a + 0.06 * slot_t * (0.35 + 0.65 * edge))
+            arr[y, x, 0] = rgb[0]
+            arr[y, x, 1] = rgb[1]
+            arr[y, x, 2] = rgb[2]
+            arr[y, x, 3] = a * 255.0
 
     img = Image.fromarray(arr.astype(np.uint8), "RGBA")
-    shape = top_rounded_mask((W, height), r_top)
+    shape = rect_bar_mask((W, height))
     shape_a = np.array(shape, dtype=np.float32) / 255.0
     ca = np.array(img.split()[3], dtype=np.float32) * shape_a
 
@@ -388,23 +422,8 @@ def bar_colorless(height: int, alpha: float, nvl: bool) -> Image.Image:
 
     img.putalpha(Image.fromarray(ca.astype(np.uint8)))
     draw = ImageDraw.Draw(img)
-    inset = 2
     draw.line(
-        [(r_top, inset), (W - r_top - 1, inset)],
-        fill=(255, 255, 255, BAR_COLORLESS_RIM_A),
-        width=1,
-    )
-    draw.arc(
-        (inset, inset, 2 * r_top - inset, 2 * r_top - inset),
-        180,
-        270,
-        fill=(255, 255, 255, BAR_COLORLESS_RIM_A),
-        width=1,
-    )
-    draw.arc(
-        (W - 2 * r_top + inset - 1, inset, W - inset - 1, 2 * r_top - inset),
-        270,
-        360,
+        [(0, 1), (W - 1, 1)],
         fill=(255, 255, 255, BAR_COLORLESS_RIM_A),
         width=1,
     )
@@ -608,7 +627,7 @@ def choice_anime(state: str) -> Image.Image:
 
 
 def _nameplate_anime_render(nw: int, nh: int) -> Image.Image:
-    """姓名区仅左侧竖条，无胶囊底板。"""
+    """姓名区仅左侧竖条。"""
     layer = Image.new("RGBA", (nw, nh), (0, 0, 0, 0))
     draw = ImageDraw.Draw(layer)
     pad_y = max(2, nh // 10)
@@ -920,11 +939,11 @@ def main(theme: str = "pink") -> None:
 
     if theme == "pink":
         save(
-            bar_colorless(BAR_H, BAR_COLORLESS_A_DIALOGUE, False),
+            bar_colorless(BAR_H, BAR_COLORLESS_A_DIALOGUE, False, left_slot=False),
             "UI_DS_bar_dialogue.png",
         )
         save(
-            bar_colorless(BAR_H, BAR_COLORLESS_A_NVL, True),
+            bar_colorless(BAR_H, BAR_COLORLESS_A_NVL, True, left_slot=False),
             "UI_DS_bar_narration.png",
         )
     else:

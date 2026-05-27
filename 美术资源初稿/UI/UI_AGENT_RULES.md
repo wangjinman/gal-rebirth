@@ -1,6 +1,6 @@
 # GAL Say UI · 协作规则（Agent / 人工）
 
-> **版本**：2026-05-26 · Say 屏 UI 暂告一段落，字体待选。  
+> **版本**：2026-05-27 · **Say 屏 UI 定稿：晴空蓝套**（`anime_style_blue/`）。字体待选。  
 > 工作流详见 `UI_WORKFLOW.md` · 变更日志见 `UI_WORK_LOG.md`。
 
 ---
@@ -18,7 +18,22 @@
 
 ## 2. 主题定调（勿擅自改）
 
-### 粉套 `anime_style/`
+### 定稿 · 晴空蓝 `anime_style_blue/`（进游戏用这套）
+
+| 项目 | 定稿规格 |
+|------|----------|
+| **Lock ID** | `say-ui-final-blue-20260527` |
+| 底栏 | `bar_anime()` · **1920×280** · 顶边**直角** · **仅顶线描边**（无左右/底，避免贴屏黑缝） |
+| 选项 | 浮岛 + 上亮下淡 · `choice_island_blue()` |
+| 快捷/姓名 | 全套天蓝 Token · 姓名 **12×44** 左竖条 |
+| 复制源 | `UI/anime_style_blue/UI_DS_*` → `GALCS/game/images/UI/`（去 `UI_DS_` 前缀） |
+| 预览基准 | `previews/latest/UI_SAY_PREVIEW_sheet_blue_galcs.png` |
+
+**Agent 未经你明确要求，不得改蓝套 PNG 形状/尺寸/描边逻辑**（字体、引擎坐标除外）。
+
+粉套 `anime_style/` 保留为对照/备选，**不再作为默认进包主题**。
+
+### 粉套 `anime_style/`（备选 · 非定稿）
 
 | 分组 | 张数 | 风格 |
 |------|------|------|
@@ -83,17 +98,18 @@ python build_say_font_preview.py --theme blue
 
 ---
 
-## 5. 对话框底栏 · 技术规则
+## 5. 对话框底栏 · 技术规则（定稿蓝套）
 
-`bar_colorless()`：冷雾 tint、顶缘高光带、正文区略实；**不**加粉/蓝描边。  
-黑屏与彩景无法完全一致；可选 Ren'Py 淡幕布（未默认写入 GALCS）。
+- **蓝套**：`bar_anime()` + `rect_bar_mask()` + `_draw_bar_border_dialogue()`（只画顶边）。  
+- **粉套**（备选）：`bar_colorless()`，同样直角、无左右描边。  
+- 常量：`BAR_H = 280`。Ren'Py 建议 `yalign 1.0` 贴底，或 `ypos 800`（1080−280）。
 
 ---
 
 ## 6. 预览图规则
 
 1. **出一版 UI → 必出一版 UI 预览**（除非 `--no-preview`）。  
-2. 预览默认：`galcs` 布局，对齐 `GALCS/game/screens.rpy`（底栏 y=720、选项 800×90 拉伸、对话+选项同屏）。  
+2. 预览默认：`galcs` 布局；底栏 **y = 1080 − 280**、选项 800×90 拉伸、对话+选项同屏。  
 3. 字体方案用 `build_say_font_preview.py`，不混在 UI 构建里。  
 4. 新字体试稿：字体文件放入 `GALCS/game/fonts/`，在 `build_say_font_preview.py` 的 `font_presets()` 增加条目后重跑。
 
@@ -104,13 +120,13 @@ python build_say_font_preview.py --theme blue
 | 区域 | 推荐（预览已对照） |
 |------|-------------------|
 | 正文 | `#E8ECF2` + 2px 深色描边 |
-| 姓名 | 樱粉 `#FF70A8` / 天蓝 `#41B9FF` |
+| 姓名 | 定稿蓝 **`#41B9FF`**（樱粉 `#FF70A8` 仅粉套备选） |
 | 选项字 | 白字 + 描边，约 28px |
 | 字体族 | 思源黑 / 微软雅黑 / 霞鹜新晰黑（GitHub OFL） |
 
 **不要** 在无色玻璃 UI 上继续用 `#2c3e50` 深灰字（GALCS 当前写死，待你确认后改引擎）。
 
-Say **UI PNG 暂封版**；字体不进 `build_ui_anime_say.py`，只走字体预览 + 后续 `gui.rpy`。
+Say **UI PNG（蓝套）已封版**；字体不进 `build_ui_anime_say.py`，只走字体预览 + 后续 `gui.rpy`。
 
 ---
 
@@ -134,4 +150,4 @@ Say **UI PNG 暂封版**；字体不进 `build_ui_anime_say.py`，只走字体�
 | `UI_WORK_LOG.md` | 按日变更 |
 | `previews/README.md` | 预览目录说明 |
 
-*Rules ID: `gal-ui-rules-20260526`*
+*Rules ID: `gal-ui-rules-20260527` · UI lock: `say-ui-final-blue-20260527`*

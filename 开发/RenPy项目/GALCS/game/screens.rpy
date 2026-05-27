@@ -97,31 +97,31 @@ screen hud():
 # =============================================================================
 # 对话框 - 自定义UI完全接管
 # 布局（1920x1080 屏幕）：
-#   y=720~1080  对话框 (360px, 贴屏幕底边，含内嵌按钮)
+#   y=800~1080  对话框 (280px, 贴屏幕底边，含内嵌按钮)
 # =============================================================================
 
 screen say(who, what):
     # 根据角色选择对话框背景
     $ bg_img = get_dialogue_bg(who)
 
-    # ── 层1：对话框背景图 (360px, 直接贴屏幕底边) ──
+    # ── 层1：对话框背景图 (280px, 直接贴屏幕底边) ──
     add bg_img:
         xalign 0.5
-        ypos 720
+        ypos 800
 
     # ── 层2：名字背景牌 (320×44) ──
     if who:
         add "images/UI/UI_nameplate.png":
             xpos 345
-            ypos 746
+            ypos 826
 
     # ── 层3：文字内容 ──
     # 无论有无角色名，都预留名字行高度（32px），避免正文位置跳动
     fixed:
         xpos 370
-        ypos 746
+        ypos 826
         xsize 1190
-        ysize 300
+        ysize 220
 
         vbox:
             spacing 28
@@ -130,16 +130,17 @@ screen say(who, what):
             if who:
                 text who id "who":
                     size 42
-                    color "#2c3e50"
+                    color "#1a1a2e"
                     font "fonts/simhei.ttf"
             else:
                 null height 44
 
             text what id "what":
                 size 38
-                color "#2c3e50"
+                color "#1a1a2e"
                 font "fonts/simhei.ttf"
                 line_spacing 12
+                outlines [(1, "#ffffff", 0, 0)]
 
     # ── 层4：快捷按钮（内嵌在对话框右下角，单排显示）──
     if quick_menu:

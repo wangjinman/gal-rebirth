@@ -7,8 +7,8 @@
 # 角色定义
 # =============================================================================
 
-define lindao = Character('林晚棠', color="#D4A574", what_color="#F5F5F5")
-define lindao_thought = Character('陆鸣（内心）', color="#8ECAE6", what_color="#F5F5F5")
+define lindao = Character('林晚棠', color="#D4A574", what_color="#b08860")
+define lindao_thought = Character('陆鸣（内心）', color="#8ECAE6", what_color="#6a9ac4")
 
 # =============================================================================
 # CG图片定义
@@ -133,9 +133,7 @@ label lindao_day8_classroom:
 
     narrator "其实余光一直在看她。"
 
-    player_thought "她今天穿的是白色衬衫……"
-
-    player_thought "前世我从来没注意过这种事。"
+    player_thought "她今天穿的是白色衬衫……很好看。"
 
     narrator "她似乎感受到了我的目光。"
 
@@ -184,11 +182,9 @@ label lindao_day8_classroom:
 
     lindao "（接过，小声）……谢谢。"
 
-    narrator "她低头喝牛奶的样子，像只小仓鼠。"
+    narrator "她低头喝牛奶的样子，很安静。"
 
-    player_thought "我居然觉得有点可爱。"
-
-    player_thought "前世我怎么没发现……"
+    player_thought "突然觉得有点可爱。"
 
     $ persistent.lindao_affection += 5
 
@@ -578,8 +574,7 @@ label lindao_day10:
 
     lindao "你最近在看什么书？"
 
-    player "法医秦明，怎么了？"
-
+    player "《福尔摩斯探案集》，怎么了？"
     show lindao normal at LEFT with dissolve
 
     lindao "（皱眉）好重口味……"
@@ -588,9 +583,7 @@ label lindao_day10:
 
     lindao "（想了想）那你能给我推荐一本吗？"
 
-    player_thought "她主动找我聊天了。"
-
-    player_thought "前世……从来没发生过这种事。"
+    player_thought "她主动找我聊天了。这让我很开心。"
 
     player "你想看什么类型的？"
 
@@ -598,7 +591,7 @@ label lindao_day10:
 
     lindao "就……不那么吓人的，有意思的就行。"
 
-    player "东野圭吾的《解忧杂货店》怎么样？"
+    player "东野圭吾的《白夜行》怎么样？"
 
     lindao "（眼睛亮了）好像听说过。"
 
@@ -610,9 +603,7 @@ label lindao_day10:
 
     narrator "她低头吃饭的样子，在阳光下显得格外温柔。"
 
-    player_thought "她笑起来真好看。"
-
-    player_thought "前世我怎么就没发现呢……"
+    player_thought "她笑起来真好看。阳光落在她脸上。"
 
     $ persistent.lindao_affection += 6
     $ persistent.lindao_day10_rooftop_lunch = True
@@ -646,6 +637,198 @@ label lindao_day10:
     scene black
 
     call chapter_title("Day 10 End", "", 1.5)
+
+    jump lindao_day10_5
+
+label lindao_day10_5:
+    scene black
+
+    call chapter_title("变数", "Day 10·傍晚", 1.5)
+
+    scene bg classroom_sunset with dissolve
+
+    narrator "天快黑的时候，我在教室门口看到了一个不认识的男生。"
+
+    narrator "穿着干净的校服衬衫，头发梳得很整齐。"
+
+    narrator "手里拿着一袋东西——看起来像是零食或者礼物。"
+
+    narrator "他在等林晚棠。"
+
+    show lindao surprised at LEFT with dissolve
+
+    lindao "（走出教室）……赵轩然？"
+
+    zhao_xuran "（微笑）晚棠！等你好久了。"
+
+    narrator "他把手里的袋子递过去。"
+
+    zhao_xuran "这是你上次说想吃的那个蛋糕，我特意去市里买的。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "（愣住）啊……你不用这么麻烦的……"
+
+    zhao_xuran "不麻烦。反正我也要去那边补习。"
+
+    narrator "他的语气很自然。自然到让人觉得他们已经这样很久了。"
+
+    player_thought "这个人是谁？"
+
+    player_thought "这个人是谁？以前完全没注意到班里有这号人。"
+
+    # 躲在一旁观察
+    narrator "我站在走廊拐角，看着他们说话。"
+
+    zhao_xuran "对了，你上次说的留学的事——"
+
+    lindao "嗯……"
+
+    zhao_xuran "如果真的要去日本的话，我可以帮你查一下那边的学校信息。"
+
+    zhao_xuran "我表哥就在东京大学念书。"
+
+    show lindao normal at LEFT with dissolve
+
+    lindao "（眼睛亮了一下）真的吗？那就太好了！"
+
+    zhao_xuran "（笑）小事一桩。"
+
+    narrator "他们聊得很自然。"
+
+    narrator "像是已经认识很久的朋友。"
+
+    narrator "或者说……比朋友更多一点？"
+
+    player_thought "他在帮她查日本学校的信息。"
+
+    player_thought "这意味着——他是支持她离开的。"
+
+    player_thought "和我完全相反。"
+
+    # 林晚棠发现主角
+    narrator "正想着的时候——"
+
+    lindao "（突然转头）……陆鸣？"
+
+    narrator "她看到了躲在拐角的我。"
+
+    show lindao surprised at LEFT with dissolve
+
+    lindao "你怎么在这里？"
+
+    zhao_xuran "（看过来）这位是？"
+
+    # 三人首次同框
+    lindao "啊……这是我同桌，陆鸣。"
+
+    lindao "陆鸣，这是赵轩然，以前……我们是一个初中的。"
+
+    zhao_xuran "（礼貌地点头）你好。"
+
+    narrator "他的笑容很标准。"
+
+    narrator "标准的、挑不出任何毛病的、社交式的笑容。"
+
+    player_thought "我不喜欢这个人。"
+
+    player "（挤出笑容）你好。"
+
+    zhao_xuran "（看了看手腕上的表）那我先走了，补习要迟到了。"
+
+    zhao_xuran "晚棠，那个资料我晚上QQ上发给你。"
+
+    lindao "嗯，谢谢。"
+
+    narrator "他离开的时候，又看了我一眼。"
+
+    narrator "不是敌意的眼神。"
+
+    narrator "更像是——在确认一个竞争对手的存在。"
+
+    hide lindao with dissolve
+
+    scene bg corridor_window_sunset with dissolve
+
+    narrator "走廊上只剩下我和林晚棠两个人。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "（小声）你……都看到了？"
+
+    player "嗯。"
+
+    lindao "他……是我初中同学。"
+
+    lindao "之前帮过我一些忙……"
+
+    player "（平静地）他喜欢你吧。"
+
+    narrator "她愣住了。"
+
+    show lindao worried at LEFT with dissolve
+
+    lindao "什么？没有的事……"
+
+    player "晚棠。"
+
+    narrator "我没有追问。"
+
+    player "不管他是谁，做什么，那是你的事。"
+
+    player "我只是觉得……你应该知道我在意你。"
+
+    narrator "她的表情复杂起来。"
+
+    narrator "有惊讶，有慌乱，也有某种我说不清的东西。"
+
+    show lindao normal at LEFT with dissolve
+
+    lindao "陆鸣……你今天怎么怪怪的……"
+
+    player "大概是因为看到有人给你送蛋糕，心里不太舒服吧。"
+
+    narrator "话一出口我就后悔了——"
+
+    narrator "这也太直白了。"
+
+    narrator "但她的脸红了。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "（低头，声音很小）……笨蛋。"
+
+    narrator "然后她转身跑了。"
+
+    narrator "但跑到楼梯口的时候——"
+
+    narrator "她回过头来。"
+
+    lindao "（大声）明天见！"
+
+    narrator "声音大得整个走廊都能听到。"
+
+    $ persistent.lindao_affection += 5
+    $ persistent.lindao_day10_rival_met = True
+    $ persistent.zhao_introduced = True
+
+    hide lindao with dissolve
+
+    scene black
+
+    narrator "我站在原地。"
+
+    narrator "心情很复杂。"
+
+    player_thought "有一个条件比我更好的人也在追求她……"
+
+    player_thought "而且他们认识得更久，关系看起来也更自然。"
+
+    player_thought "但我不会放弃的。"
+
+    player_thought "因为这次——我不会再逃了。"
+
+    scene black
 
     jump lindao_day11
 
@@ -808,13 +991,11 @@ label lindao_day12:
 
     narrator "周六下午。"
 
-    narrator "我站在林晚棠家门口，手里拿着《解忧杂货店》。"
+    narrator "我站在林晚棠家门口，手里拿着《白夜行》。"
 
     narrator "心跳有些快。"
 
-    player_thought "前世我去过她家吗……好像没有。"
-
-    player_thought "连她家长什么样都不知道。"
+    player_thought "心跳有些快。第一次去女生家。"
 
     player "（深呼吸，按门铃）"
 
@@ -1667,9 +1848,7 @@ label lindao_day16:
 
     player_thought "……"
 
-    player_thought "前世我只知道结果，不知道过程。"
-
-    player_thought "原来是这样……"
+    player_thought "原来背后还有这些我不知道的事。"
 
     player "晚棠。"
 
@@ -1723,7 +1902,7 @@ label lindao_day16:
 
     player_thought "这次，我不想再错过了。"
 
-    # 城南棋牌室
+    # 城南棋牌室 — 第一次尝试（失败）
     scene bg mahjong_parlor with dissolve
 
     narrator "城南棋牌室。"
@@ -1752,7 +1931,7 @@ label lindao_day16:
 
     lin_father "（冷笑）谈什么？小孩子别管大人的事。"
 
-    # ========== QTE说服林父 ==========
+    # ========== QTE说服林父（第一次尝试 - 失败线前置） ==========
     menu lindao_day16_persuasion_qte:
         "直接摊牌（理性说服）":
             jump lindao_day16_persuasion_rational
@@ -1787,7 +1966,7 @@ label lindao_day16:
         $ persistent.lindao_day16_persuasion_result = "rational"
         $ persistent.lindao_day16_father_impressed = False
 
-        jump lindao_day16_persuasion_result
+        jump lindao_day16_first_attempt_fail
 
     label lindao_day16_persuasion_emotional:
         narrator "我决定用真心打动他。"
@@ -1822,11 +2001,9 @@ label lindao_day16:
 
         $ persistent.lindao_day16_persuasion_result = "emotional"
         $ persistent.lindao_day16_father_impressed = True
-        $ persistent.lindao_affection += 8
-        $ persistent.regret_value += 15
-        $ persistent.butterfly_count += 1
 
-        jump lindao_day16_persuasion_result
+        # 情感路线：第一次没有完全失败，但也没完全成功
+        jump lindao_day16_first_attempt_partial
 
     label lindao_day16_persuasion_ultimatum:
         narrator "我决定给他最后的压力。"
@@ -1863,80 +2040,179 @@ label lindao_day16:
         $ persistent.lindao_day16_father_impressed = False
         $ persistent.lindao_day16_persuasion_failed = True
 
-        narrator "{b}{color=#6B9FFF}说服失败……但命运或许还有转机。{/color}{/b}"
+        jump lindao_day16_first_attempt_fail
 
-        jump lindao_day16_persuasion_result
+    # ========================================
+    # 【关键冲突点 - 第一次尝试失败/部分失败】
+    # ========================================
 
-    label lindao_day16_persuasion_result:
-        pass
+    label lindao_day16_first_attempt_fail:
 
-    # 继续说服后的剧情
-    player "（站起身）林叔叔。"
+        scene bg urban_street_dusk with dissolve
 
-    narrator "他抬起头看着我。"
+        narrator "被赶出来之后，我一个人走在城南的街道上。"
 
-    lin_father "……你说。"
+        narrator "天已经黑透了。"
 
-    player "晚棠她很需要父亲。"
+        player_thought "失败了……"
 
-    player "不管发生什么，她都需要您。"
+        player_thought "不仅没说服他，还把事情搞砸了。"
 
-    narrator "他沉默了很久。"
+        player_thought "如果林晚棠知道了……"
 
-    narrator "然后，他低下了头。"
+        # 第二天：林晚棠发现了 — 关系降至冰点
+        scene black
 
-    # 解锁记忆碎片9 - 父亲的背影
-    $ persistent.fragment_count += 1
-    $ persistent.fragments_collected.append("frag_009")
-    $ persistent.lindao_day16_fragment_unlocked = True
+        call chapter_title("裂痕", "Day 16·傍晚", 1.5)
 
-    call show_notification("记忆碎片", "父亲的背影", "#FFD700")
-    narrator "{i}\"前世我从未见过林父低头。\"{/i}"
-    narrator "{i}\"这一世，我改变了他的命运。\"{/i}"
+        scene bg classroom_sunset with dissolve
 
-    lin_father "（声音沙哑）你一个小孩懂什么……"
+        narrator "第二天放学后。"
 
-    player "我不懂。"
+        narrator "林晚棠堵在了教室门口。"
 
-    player "但我知道，如果您现在不改变，您会后悔一辈子。"
+        show lindao crying at LEFT with dissolve
 
-    narrator "他没有再说话。"
+        lindao "你去找过我爸？"
 
-    narrator "我站起身，转身离开。"
+        narrator "她的声音在发抖。"
 
-    # 走出棋牌室 - 城南街道黄昏
-    scene bg urban_street_dusk with dissolve
+        player "晚棠，听我说——"
 
-    narrator "走到门口的时候——"
+        lindao "（提高音量）谁让你去的？！"
 
-    lin_father "（叫住我）等一下。"
+        narrator "教室里的同学都看了过来。"
 
-    narrator "我回过头。"
+        show lindao worried at LEFT with dissolve
 
-    lin_father "你……叫什么名字？"
+        lindao "我爸爸回来大发脾气！他说有个'多事的小孩'去找过他！"
 
-    player "陆鸣。"
+        lindao "你知道他被你刺激之后做了什么吗？"
 
-    lin_father "（沉默）……谢谢你。"
+        narrator "她的眼泪掉下来。"
 
-    scene black
+        lindao "他又去打了！他说既然有人看不起他，那他就继续打！"
 
-    narrator "我不知道这次谈话有没有用。"
+        player "……我不知道会变成这样。"
 
-    narrator "但我做了我能做的事。"
+        lindao "（擦眼泪，声音变得很冷）陆鸣，我以为你是为了我好。"
 
-    narrator "剩下的，就交给命运了。"
+        lindao "但你只是觉得自己了不起而已吧？觉得你能改变一切？"
 
-    narrator "这次，我不再后悔。"
+        player "不是的——"
 
-    scene black
+        lindao "（打断）别再来找我。"
 
-    call chapter_title("Day 16 End", "", 1.5)
+        narrator "她转身跑了出去。"
 
-    jump lindao_day17
+        narrator "我想追——"
+
+        narrator "但脚步像灌了铅一样沉重。"
+
+        $ persistent.lindao_affection -= 20
+        $ persistent.lindao_day16_ice_point = True
+        $ persistent.lindao_relationship_iced = True
+
+        hide lindao with dissolve
+
+        scene black
+
+        narrator "{b}{color=#FF6B6B}关系降至冰点{/color}{/b}"
+
+        narrator "这一次，我真的搞砸了。"
+
+        scene black
+
+        call chapter_title("Day 16 End", "", 1.5)
+
+        jump lindao_day17
+
+    label lindao_day16_first_attempt_partial:
+
+        # 情感路线：没有完全成功，但也触动了林父
+        # 但林晚棠还是从侧面得知了，产生了矛盾（程度较轻）
+        scene bg urban_street_dusk with dissolve
+
+        narrator "走出棋牌室的时候——"
+
+        lin_father "（叫住我）等一下。"
+
+        narrator "我回过头。"
+
+        lin_father "你……叫什么名字？"
+
+        player "陆鸣。"
+
+        lin_father "（沉默）……你让我想起了些事情。"
+
+        narrator "他没有说下去。"
+
+        narrator "但我能看出他的内心在挣扎。"
+
+        player "林叔叔，我会再来的。"
+
+        lin_father "（摇头）别来了。这是我自己的事。"
+
+        narrator "他转身走进了棋牌室的深处。"
+
+        # 但第二天：矛盾还是发生了（程度较轻）
+        scene black
+
+        call chapter_title("误会", "Day 16·次日", 1.5)
+
+        scene bg school_gate_dusk with dissolve
+
+        narrator "第二天早上。"
+
+        narrator "林晚棠没有等我。"
+
+        narrator "我一个人走到学校。"
+
+        show lindao worried at LEFT with dissolve
+
+        narrator "到了教室，我看到她在座位上。"
+
+        narrator "但没有看我。"
+
+        player "晚棠……"
+
+        lindao "（低头翻书）我今天想安静一下。"
+
+        narrator "她的声音很平静。"
+
+        narrator "但那种平静比生气更让人不安。"
+
+        player "是不是你爸说了什么？"
+
+        show lindao normal at LEFT with dissolve
+
+        lindao "（抬头，眼神复杂）他什么都没说。"
+
+        lindao "但他昨晚喝了酒，一直在说'那个小孩说得对'。"
+
+        lindao "（苦笑）你知道我最怕什么吗？不是他去赌博。"
+
+        lindao "是给他希望之后，又让他失望。"
+
+        narrator "我心里一紧。"
+
+        lindao "陆鸣……你的出发点是好的。"
+
+        lindao "但有些事情，不是一个高中生能解决的。"
+
+        $ persistent.lindao_affection -= 8
+        $ persistent.lindao_day16_partial_conflict = True
+
+        hide lindao with dissolve
+
+        scene black
+
+        call chapter_title("Day 16 End", "", 1.5)
+
+        jump lindao_day17
 
 # =============================================================================
-# Day 17-18：蝴蝶效应（大高潮）
+# Day 17：低谷期 / 冷战
 # =============================================================================
 
 label lindao_day17:
@@ -1944,54 +2220,340 @@ label lindao_day17:
 
     scene black
 
-    call chapter_title("等待", "Day 17", 1.5)
+    call chapter_title("沉默", "Day 17", 1.5)
 
-    scene black
-
-    narrator "三天过去了。"
-
-    narrator "林父没有消息。"
-
-    narrator "我不知道那天的谈话有没有用。"
-
-    narrator "每天在学校看到林晚棠，她都在假装没事。"
-
-    narrator "但我能感觉到她在担心。"
-
-    player_thought "会不会失败了……"
-
-    player_thought "蝴蝶效应……真的能改变命运吗？"
-
-    scene black
+    scene bg classroom_day with dissolve
 
     narrator "第三天。"
 
-    narrator "林晚棠给我发消息。"
+    narrator "林晚棠没有跟我说话。"
 
-    narrator "'陆鸣，你在哪？'"
+    narrator "不是故意不理我——"
 
-    narrator "'能出来一下吗？'"
+    narrator "而是像我们之间竖了一道看不见的墙。"
 
-    narrator "'有件事……我想当面告诉你。'"
+    player_thought "她想安静。我应该尊重她。"
 
-    player_thought "……来了。"
+    # 冷战中的观察 — 赵轩然趁虚而入
+    narrator "但有些事情，不想看到也会看到。"
+
+    narrator "午休时间。我从教室后门进来——"
+
+    narrator "赵轩然坐在林晚棠前面的座位上。"
+
+    show lindao smile at LEFT_CENTER with dissolve
+
+    zhao_xuran "（递过一张纸）这是东京大学的申请资料，我表哥发给我的。"
+
+    lindao "（接过，眼睛亮了）哇……好详细……"
+
+    zhao_xuran "你要是有什么不懂的随时问我，反正我表哥在那边。"
+
+    narrator "他的语气很自然。自然到让人挑不出任何毛病。"
+
+    narrator "而林晚棠笑得很放松。"
+
+    narrator "是一种这几天她没有对我展现过的放松。"
+
+    player_thought "他在帮她规划去日本的未来。"
+
+    player_thought "而我……差点毁了她爸爸。"
+
+    # 陈墨的意外介入 — 打破主角的孤独感
+    narrator "我转身想走——"
+
+    chen "陆鸣。"
+
+    narrator "陈墨站在走廊上。"
+
+    chen "你的表情很难看。"
+
+    player "……被你看出来了。"
+
+    chen "（沉默了两秒）……上次熨斗的事，谢了。"
+
+    narrator "她说完就走了。"
+
+    narrator "没有多问一句。"
+
+    narrator "但这三个字，在今天的冷风里显得格外暖和。"
+
+    $ persistent.chen_affection += 2
+
+    # 下午的场景 — 尝试修复
+    scene bg corridor_window_sunset with dissolve
+
+    narrator "放学后。"
+
+    narrator "我在楼梯口等她。"
+
+    show lindao normal at LEFT with dissolve
+
+    narrator "她看到了我。"
+
+    narrator "脚步顿了一下——然后继续往下走。"
+
+    player "晚棠！"
+
+    narrator "她停下脚步。"
+
+    narrator "但没有回头。"
+
+    lindao "（背对着我）我今天要早点回去。"
+
+    player "我知道错了。"
+
+    narrator "她的肩膀微微一颤。"
+
+    player "我不该擅自去找你爸。"
+
+    player "我以为自己在帮你，但其实只是在满足自己的英雄主义。"
+
+    narrator "很长的沉默。"
+
+    lindao "（轻声）你知道就好。"
+
+    narrator "她继续往前走了。"
+
+    narrator "但走到楼梯拐角的时候——"
+
+    lindao "（没有回头）……谢谢你没有追上来。"
+
+    narrator "这句话比任何责骂都让我难受。"
+
+    hide lindao with dissolve
 
     scene black
 
-    call chapter_title("命运改变", "Day 18", 1.5)
+    narrator "{b}{color=#888888}距离告白还有6天{/color}{/b}"
+
+    narrator "{b}{color=#888888}但我们之间，像是隔了一个世纪{/color}{/b}"
+
+    $ persistent.lindao_day17_cold_war = True
+
+    scene black
+
+    call chapter_title("Day 17 End", "", 1.5)
+
+    jump lindao_day18
+
+label lindao_day18:
+    $ persistent.current_day = 18
+
+    scene black
+
+    call chapter_title("转机", "Day 18", 1.5)
+
+    scene black
+
+    narrator "第四天。"
+
+    narrator "冷战持续着。"
+
+    narrator "我没有再试图去找她说话。"
+
+    narrator "但我在做另一件事。"
+
+    # 第二次尝试 — 换一个方法
+    scene bg living_room with dissolve
+
+    narrator "我去了林晚棠家。"
+
+    narrator "不是去找她。"
+
+    narrator "而是去找她妈妈。"
+
+    player_thought "上次我只关注了林父的问题……"
+
+    player_thought "但苏念卿说得对——关键不在于林父。"
+
+    player_thought "而在于让林母有留下来的理由。"
+
+    narrator "开门的是林晚棠。"
+
+    show lindao surprised at LEFT with dissolve
+
+    lindao "（惊讶）陆鸣？你怎么……"
+
+    player "我不是来找你的。"
+
+    lindao "（疑惑）那你是来……"
+
+    player "我想跟你妈聊聊。"
+
+    narrator "她的表情变得复杂起来。"
+
+    show lindao worried at LEFT with dissolve
+
+    lindao "你……还想管我们家的事？"
+
+    player "（认真地看着她）晚棠，上一次是我太急了。"
+
+    player "这次不一样。"
+
+    narrator "她看了我很久。"
+
+    lindao "……妈在厨房。你自己去说吧。"
+
+    narrator "她让开了路。"
+
+    narrator "没有阻止我。"
+
+    # 和林母的对话 — 关键转折
+    narrator "我在客厅等了大概十分钟。"
+
+    narrator "林母从厨房出来，围裙还没摘。"
+
+    lin_mom "听晚棠说你想找我？"
+
+    narrator "她的语气客气但疏离。"
+
+    player "阿姨好。我是晚棠的同学，叫陆鸣。"
+
+    lin_mom "我知道你。晚棠提过你几次了。"
+
+    player "阿姨，我知道您打算带晚棠去日本。"
+
+    narrator "她的表情沉了下来。"
+
+    lin_mom "是晚棠让你来的？"
+
+    player "不是。是她不知道我来。"
+
+    narrator "她坐了下来。"
+
+    player "阿姨，我不谈晚棠爸的事。"
+
+    player "那是你们大人的问题，我没资格插嘴。"
+
+    lin_mom "那你来做什么？"
+
+    player "我只是想告诉您一件事。"
+
+    player "（深呼吸）晚棠不想走。"
+
+    narrator "房间安静了几秒。"
+
+    lin_mom "每个孩子都不想离开家。"
+
+    player "这不是'不想离开家'。"
+
+    player "她有舍不得的东西在这里。"
+
+    player "有她养了很久的多肉植物，有她习惯走的上学路。"
+
+    player "还有……她还没有跟喜欢的人好好说过话。"
+
+    narrator "林母的眼神变了。"
+
+    lin_mom "（轻声）……她跟你说的？"
+
+    player "她什么都没跟我说。"
+
+    player "但我看得出来。"
+
+    player "阿姨，我不是来劝您改变主意的。"
+
+    player "我只是想说——如果有一天您决定留下来……"
+
+    player "不是因为日本的工作黄了，也不是因为签证出了问题。"
+
+    player "而是因为您发现，其实这里也有值得留下的东西。"
+
+    narrator "很长的沉默。"
+
+    # 林母的反应
+    lin_mom "（叹气）你这孩子……"
+
+    lin_mom "你说得对。"
+
+    narrator "我愣住了。"
+
+    lin_mom "我确实是因为对他失望才想走的。"
+
+    lin_mom "但如果他真的能改……"
+
+    lin_mom "我也不是非要带着孩子跑到国外去。"
+
+    player "阿姨。"
+
+    lin_mom "（摇头）不过这些不是你能决定的。"
+
+    lin_mom "要看他自己。"
+
+    narrator "她站起身。"
+
+    lin_mom "你回去吧。谢谢你愿意来说这些。"
+
+    lin_mom "至少……让我重新想了一下。"
+
+    $ persistent.lindao_day18_mom_talk = True
+    $ persistent.lindao_affection += 5
+
+    # 出门遇到林晚棠
+    scene bg residential_street with dissolve
+
+    narrator "走出楼道的时候。"
+
+    narrator "林晚棠站在楼下。"
+
+    narrator "像是在等我又不像是在等我。"
+
+    show lindao shy at LEFT with dissolve
+
+    lindao "你和我妈说了什么？"
+
+    player "就是聊了聊天。"
+
+    lindao "（低头）她很少会跟陌生人说这么多话的。"
+
+    player "也许她只是需要一个理由留下来。"
+
+    narrator "她沉默了一会儿。"
+
+    show lindao normal at LEFT with dissolve
+
+    lindao "（小声）陆鸣……"
+
+    player "嗯？"
+
+    lindao "（抬头看着我）谢谢你没有放弃。"
+
+    narrator "她的眼眶有些红。"
+
+    lindao "（快速低下头）但是！如果你再自作主张，我真的会生气的！"
+
+    player "知道了。"
+
+    narrator "她转身要上楼——"
+
+    narrator "又回过头来。"
+
+    lindao "明天见。"
+
+    narrator "声音很小。"
+
+    narrator "但足够让我笑出来了。"
+
+    $ persistent.lindao_affection += 10
+    $ persistent.lindao_relationship_iced = False
+    $ persistent.lindao_day18_reconciled = True
+
+    hide lindao with dissolve
+
+    # 命运转折 — 更真实更艰难的成功
+    call chapter_title("命运改变", "Day 18·傍晚", 1.5)
 
     # 学校后门小公园 - 命运转折
     scene bg park_corner with dissolve
 
-    narrator "学校后门的小公园。"
+    narrator "傍晚。"
 
-    narrator "林晚棠站在那里等我。"
+    narrator "林晚棠发消息让我到学校后门的小公园。"
 
-    narrator "她的眼睛红红的，像是哭过。"
+    narrator "看到她的瞬间我就知道——"
 
-    narrator "但她的嘴角……在笑。"
-
-    player "晚棠？"
+    narrator "有事发生了。"
 
     show lindao crying at LEFT with dissolve
 

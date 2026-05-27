@@ -1,8 +1,8 @@
 # 《重生·轻逆袭》美术素材AI提示词 - 专用文档
 
 > **文档编号**：GAL-PROMPT-001
-> **版本**：v1.7
-> **日期**：2026-05-20
+> **版本**：v1.8
+> **日期**：2026-05-27
 > **状态**：正式使用中
 > **用途**：所有美术素材AI生成提示词的统一管理文档
 > **生成工具建议**：Midjourney / Stable Diffusion XL / DALL-E 3
@@ -23,6 +23,7 @@
 | v1.5 | 2026-05-20 | 新增9张背景图提示词（住宅3张+棋牌室+咖啡馆+篮球场+天台星空夜景等），完善素材清单状态追踪 | AI辅助 |
 | v1.6 | 2026-05-20 | 新增5张序章背景图提示词（卧室夜景+急救室+玄关+校门日景+记忆碎片特效） | AI辅助 |
 | v1.7 | 2026-05-20 | 新增2张序章CG提示词（加班猝死+意识消散），完善序章素材优先级分析 | AI辅助 |
+| v1.8 | 2026-05-27 | **新增4张林晚棠补充立绘提示词**（angry/gentle/sad/thinking），括号表情清理方案配套素材；characters.rpy 已同步加定义(LWT_07~10) | AI辅助 |
 
 ---
 
@@ -74,6 +75,7 @@
 | 批次 | 优先级 | 素材类型 | 数量 | 用途 | 状态 |
 |------|--------|---------|------|------|------|
 | **P0** | 最高 | 林晚棠立绘（6表情） | 6张 | Demo核心展示 | ✅ 已完成 |
+| **P1** | 高 | 林晚棠补充立绘（4表情：angry/gentle/sad/thinking） | 4张 | 括号表情清理配套 | 🔲 待生成 |
 | **P0** | 最高 | 教室背景（日景） | 1张 | 序章+第一章 | ✅ 已完成 |
 | **P0** | 最高 | 教室背景（窗外夕阳） | 1张 | 林晚棠关键场景 | ✅ 已完成 |
 | **P0** | 最高 | 主角卧室背景 | 1张 | 日常场景 | ✅ 已完成 |
@@ -150,7 +152,7 @@ white background, black background, solid background, watermark
 
 ## 四、AI绘图提示词
 
-### 4.1 林晚棠立绘（6表情）
+### 4.1 林晚棠立绘（10表情 = 已有6 + 新增4）
 
 ---
 
@@ -352,6 +354,178 @@ masterpiece, best quality, 2D game sprite, visual novel character sprite
 ```
 
 **角色表情**：震惊、惊讶、惊呆、惊叹、目瞪口呆
+
+---
+
+#### 【晚棠-07】生气/愤怒表情（吵架/被冒犯时）
+
+**用途**：Day 16-17 与主角争吵、情绪激动场景（与 worried 的"担忧"区分开，这是真正的生气）
+
+**英文正向提示词**：
+```
+anime style illustration, high quality, detailed, Japanese visual novel art style
+a beautiful 18-year-old Chinese girl with long dark brown hair
+angry expression, furrowed brows, narrowed eyes with intensity
+slightly open mouth as if shouting or arguing, firm jawline
+amber/golden eyes flashing with anger and frustration
+wearing a standard Chinese high school uniform (blue and white)
+dramatic side lighting from one direction, tense atmosphere
+transparent background, PNG, properly transparent, alpha channel
+clean lineart, clenched fists at sides or hands on hips, flushed face from anger
+masterpiece, best quality, 2D game sprite, visual novel character sprite
+```
+
+**中文参考**：
+```
+日系动漫风格插画，高质量，精细，视觉小说艺术风格
+一位美丽的18岁中国女孩，长长的棕黑色头发
+生气的表情，眉头紧锁，眼神锐利且带有怒意
+微微张嘴像是在争辩或说话，下颌线条坚定
+琥珀色眼睛因愤怒而闪着光
+穿着标准中式高中校服（蓝白色）
+戏剧性的单侧光线，紧张的氛围
+透明背景，PNG格式，正确透明处理
+干净的线稿，双手握拳在身侧或叉腰，因生气而涨红的脸
+杰作，最高品质，2D游戏立绘，视觉小说角色立绘
+```
+
+**角色表情**：生气、愤怒、激动争执、冷脸、提高音量
+**与现有表情的区别**：`worried` 是担忧/焦虑（眉心微蹙+忧郁微笑），`angry` 是真生气（皱眉+眼神锐利+可能张嘴）
+**典型剧本场景**：Day 16-17 吵架时——"谁让你去的？！""别再来找我！"
+
+**规格要求**：
+- 分辨率：800×1200px（竖版立绘比例）
+- 格式：PNG透明背景
+- 精度：300DPI
+
+---
+
+#### 【晚棠-08】温柔/轻柔表情（安心/感谢/内敛笑时）
+
+**用途**：日常温柔时刻、轻声道谢、安静陪伴——与 smile 的"开朗笑"区分，这是更内敛柔和的
+
+**英文正向提示词**：
+```
+anime style illustration, high quality, detailed, Japanese visual novel art style
+a beautiful 18-year-old Chinese girl with long dark brown hair
+gentle soft smile, warm and tender expression, eyes slightly relaxed
+kind and soothing gaze, inner peace showing on face
+amber/golden eyes with soft warmth, gentle look
+wearing a standard Chinese high school uniform (blue and white)
+soft diffused lighting from front, calm and peaceful atmosphere
+transparent background, PNG, properly transparent, alpha channel
+clean lineart, relaxed shoulders, slight head tilt, delicate and graceful
+masterpiece, best quality, 2D game sprite, visual novel character sprite
+```
+
+**中文参考**：
+```
+日系动漫风格插画，高质量，精细，视觉小说艺术风格
+一位美丽的18岁中国女孩，长长的棕黑色头发
+温柔的轻柔微笑，温暖亲切的表情，眼神微微放松
+善良安抚的目光，脸上透出内心的平和
+琥珀色眼睛带着柔软的温暖感，温和的眼神
+穿着标准中式高中校服（蓝白色）
+正面柔和的漫射光，平静安宁的氛围
+透明背景，PNG格式，正确透明处理
+干净的线稿，放松的肩膀，微微侧头，精致优雅
+杰作，最高品质，2D游戏立绘，视觉小说角色立绘
+```
+
+**角色表情**：温柔、轻柔、安心、内敛的笑、轻声道谢
+**与现有表情的区别**：`smile` 偏开心灿烂（眼角眯起+脸颊泛红），`gentle` 偏安静温暖（眼神放松+嘴角浅浅上扬）
+**典型剧本场景**："……谢谢。"（轻声）/ "嗯，因为它们很安静。" / 安静陪伴时刻
+
+**规格要求**：
+- 分辨率：800×1200px（竖版立绘比例）
+- 格式：PNG透明背景
+- 精度：300DPI
+
+---
+
+#### 【晚棠-09】失落/消沉表情（苦涩/低落/无奈时）
+
+**用途**：心情低落但没到哭的程度——与 crying 的"在哭"区分，这是更内敛的消沉
+
+**英文正向提示词**：
+```
+anime style illustration, high quality, detailed, Japanese visual novel art style
+a beautiful 18-year-old Chinese girl with long dark brown hair
+sad and downcast expression, empty smile or wry grin
+eyes looking downward or to the side, lost in thought
+amber/golden eyes dimmed with melancholy, lifeless gaze
+wearing a standard Chinese high school uniform (blue and white)
+flat cool-toned lighting, grayish blue ambient atmosphere
+transparent background, PNG, properly transparent, alpha channel
+clean lineart, shoulders slightly slumped, forced smile, quiet resignation
+masterpiece, best quality, 2D game sprite, visual novel character sprite
+```
+
+**中文参考**：
+```
+日系动漫风格插画，高质量，精细，视觉小说艺术风格
+一位美丽的18岁中国女孩，长长的棕黑色头发
+失落消沉的表情，空荡荡的微笑或自嘲的苦笑
+眼神向下或看向一侧，陷入沉思
+琥珀色眼睛黯淡无光，带着忧郁，空洞的眼神
+穿着标准中式高中校服（蓝白色）
+平淡的冷色调光线，灰蓝色环境氛围
+透明背景，PNG格式，正确透明处理
+干净的线稿，肩膀微微塌陷，勉强的笑容，安静的认命感
+杰作，最高品质，2D游戏立绘，视觉小说角色立绘
+```
+
+**角色表情**：失落、消沉、苦涩的自嘲、无奈叹气、情绪低落但不哭泣
+**与现有表情的区别**：`crying` 在流泪（眼眶红+泪痕），`sad` 只是低落（眼神黯淡+勉强笑/无表情）
+**典型剧本场景**：苦笑说"你知道我最怕什么吗？" / 叹气"是啊，已经救不活了……"
+
+**规格要求**：
+- 分辨率：800×1200px（竖版立绘比例）
+- 格式：PNG透明背景
+- 精度：300DPI
+
+---
+
+#### 【晚棠-10】思考/疑惑表情（困惑/认真考虑时）
+
+**用途**：思考问题、对某事感到疑惑——与 worried 的"焦虑"区分，这是中性的思考状态
+
+**英文正向提示词**：
+```
+anime style illustration, high quality, detailed, Japanese visual novel art style
+a beautiful 18-year-old Chinese girl with long dark brown hair
+thinking expression, slightly tilted head, puzzled or contemplative look
+one eyebrow slightly raised, eyes looking up or to the side
+amber/golden eyes with curiosity and mild confusion
+wearing a standard Chinese high school uniform (blue and white)
+neutral even lighting, everyday atmosphere, no dramatic shadows
+transparent background, PNG, properly transparent, alpha channel
+clean lineart, finger near chin in thoughtful pose (optional), alert but not alarmed
+masterpiece, best quality, 2D game sprite, visual novel character sprite
+```
+
+**中文参考**：
+```
+日系动漫风格插画，高质量，精细，视觉小说艺术风格
+一位美丽的18岁中国女孩，长长的棕黑色头发
+思考/疑惑的表情，头微微倾斜，困惑或沉思的神态
+一边眉毛微微挑起，眼睛向上或向旁边看
+琥珀色眼睛带着好奇和轻微的困惑
+穿着标准中式高中校服（蓝白色）
+中性均匀的光线，日常氛围，没有戏剧性阴影
+透明背景，PNG格式，正确透明处理
+干净的线稿，手指靠近下巴做思考姿势（可选），警觉但没有不安
+杰作，最高品质，2D游戏立绘，视觉小说角色立绘
+```
+
+**角色表情**：思考、疑惑、认真考虑、"什么意思？"、困惑不解
+**与现有表情的区别**：`worried` 偏焦虑/不安（紧张+眉心紧锁），`thinking` 是中性好奇（歪头+单眉上扬）
+**典型剧本场景**："（想了想）那你能给我推荐一本吗？" / "（疑惑）什么意思？"
+
+**规格要求**：
+- 分辨率：800×1200px（竖版立绘比例）
+- 格式：PNG透明背景
+- 精度：300DPI
 
 ---
 

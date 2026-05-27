@@ -74,17 +74,19 @@ label prologue_part1:
     jump prologue_part2
 
 label memory_fragment_death:
-    narrator "{i}—— 她的笑容 ——{/i}"
+    narrator "{i}—— 那个笑容 ——{/i}"
 
-    narrator "她的笑容，干净得像夏天的风。"
+    narrator "有一个人，她的笑容干净得像夏天的风。"
 
-    narrator "三年同桌，我却从未对她说一句——"
+    narrator "很多次想说的话，到了嘴边又咽了回去。"
 
-    narrator "「我喜欢你」。"
+    narrator "「我喜欢你」——这句话在心底藏了很久很久。"
 
-    narrator "后来听说她去了日本。"
+    narrator "后来……后来发生了什么？"
 
-    narrator "再后来，就再也没有后来了。"
+    narrator "想不起来了。"
+
+    narrator "只剩下一种感觉——那是这辈子最大的遗憾之一。"
 
     narrator "{i}—— 兄弟 ——{/i}"
 
@@ -158,7 +160,7 @@ label prologue_part2:
 
     narrator "颤抖着拿起手机——"
 
-    narrator "2024年5月8日。"
+    narrator "2008年5月8日。"
 
     narrator "高考倒计时：30天。"
 
@@ -222,7 +224,7 @@ label prologue_part2:
 label prologue_memory_reconstruction:
     narrator "{i}—— 重生 ——{/i}"
 
-    narrator "你回到了2024年5月8日。"
+    narrator "你回到了2008年5月8日。"
 
     narrator "高考倒计时：30天。"
 
@@ -252,19 +254,19 @@ label prologue_memory_reconstruction:
 
     player_thought "现在最重要的是——"
 
-    narrator "林晚棠。"
+    narrator "好几个名字在脑海中闪过。"
 
-    call show_notification("记忆碎片", "她要走了", "#FFD700")
+    call show_notification("记忆碎片", "模糊的面孔", "#FFD700")
 
-    narrator "林晚棠将在高考后前往日本留学"
+    narrator "你能记住一些重要的名字"
 
-    narrator "此后十年，再未相见"
+    narrator "但他们的样子……很模糊"
 
-    player_thought "她毕业就要去日本了。"
+    player_thought "有一个女孩，好像很重要……她要离开了？"
 
-    player_thought "三十天。只有三十天。"
+    player_thought "还有谁？想不起来了。"
 
-    player_thought "这一次，我不能再错过。"
+    player_thought "……"
 
     player_thought "还有……"
 
@@ -337,9 +339,13 @@ label prologue_part3:
 
     player_thought "今天去学校……"
 
-    player_thought "林晚棠……就坐在我旁边。"
+    player_thought "好多张面孔在脑海里闪过。"
 
-    player_thought "这次，该怎么做？"
+    player_thought "有的熟悉，有的模糊。"
+
+    player_thought "但不管是谁……"
+
+    player_thought "这次，我都不会再错过了。"
 
     player "妈！我去上学了！"
 
@@ -382,7 +388,5 @@ label prologue_part4:
     player_thought "准备好了。"
 
     scene black
-
-    call chapter_title("—— 第一章 · 熟悉的陌生 ——", "", 1.5)
 
     jump chapter1_day1

@@ -11,18 +11,18 @@ init python:
 # 主角
 # =============================================================================
 
-define narrator = Character(None, what_color="#f5f5f5")
+define narrator = Character(None, what_color="#3a3a4e")
 
 define player = Character("[player_name]",
     color="#6c9bd1",
-    what_color="#f5f5f5",
+    what_color="#b8c8e0",
     who_bold=True
 )
 
 # 内心独白（玩家视角）
 define player_thought = Character("[player_name]",
     color="#8ec8e8",
-    what_color="#b8d4e8",
+    what_color="#6a9ac4",
     what_italic=True
 )
 
@@ -32,7 +32,7 @@ define player_thought = Character("[player_name]",
 
 define lindao = Character("林晚棠",
     color="#e8a87c",           # 暖橙色
-    what_color="#fff5ee",
+    what_color="#b08860",      # 深暖棕（亮背景可读）
     who_bold=False,
     who_italic=False
 )
@@ -40,25 +40,25 @@ define lindao = Character("林晚棠",
 # 林晚棠的不同语气/状态
 define lindao_shy = Character("林晚棠",
     color="#e8b88c",
-    what_color="#fff0e8",
+    what_color="#a07850",
     who_italic=True
 )
 
 define lindao_happy = Character("林晚棠",
     color="#f0b87c",
-    what_color="#fff8f0",
+    what_color="#c09050",
     who_bold=True
 )
 
 define lindao_sad = Character("林晚棠",
     color="#d89868",
-    what_color="#fff0f0",
+    what_color="#a06848",
     who_italic=True
 )
 
 define lindao_angry = Character("林晚棠",
     color="#e87858",
-    what_color="#ffe8e8",
+    what_color="#a04830",
     who_bold=True
 )
 
@@ -68,31 +68,31 @@ define lindao_angry = Character("林晚棠",
 
 define suni = Character("苏念卿",
     color="#c0859b",           # 优雅紫
-    what_color="#faf0f5",
+    what_color="#8a5a6a",      # 深玫粉棕
     who_bold=False,
     who_italic=False
 )
 
 define suni_gentle = Character("苏念卿",
     color="#c095ab",
-    what_color="#fff5fa"
+    what_color="#9a6a7a"
 )
 
 define suni_sad = Character("苏念卿",
     color="#a0657b",
-    what_color="#fff0f5",
+    what_color="#7a4055",
     who_italic=True
 )
 
 define suni_happy = Character("苏念卿",
     color="#d0a5bb",
-    what_color="#fffaf8",
+    what_color="#a07090",
     who_bold=True
 )
 
 define suni_reminisce = Character("苏念卿",
     color="#b0758b",
-    what_color="#fff0f8",
+    what_color="#804a62",
     who_italic=True,
     what_italic=True
 )
@@ -103,25 +103,25 @@ define suni_reminisce = Character("苏念卿",
 
 define zhou = Character("周芷晴",
     color="#7dd87d",           # 元气绿
-    what_color="#f0fff0",
+    what_color="#3a8040",      # 深森林绿（亮背景可读）
     who_bold=False
 )
 
 define zhou_energetic = Character("周芷晴",
     color="#8de88d",
-    what_color="#f8fff8",
+    what_color="#4a9050",
     who_bold=True
 )
 
 define zhou_shy = Character("周芷晴",
     color="#6dc86d",
-    what_color="#f0fff0",
+    what_color="#387838",
     who_italic=True
 )
 
 define zhou_serious = Character("周芷晴",
     color="#5db85d",
-    what_color="#f8fff8"
+    what_color="#408040"
 )
 
 # =============================================================================
@@ -130,24 +130,24 @@ define zhou_serious = Character("周芷晴",
 
 define chen = Character("陈墨",
     color="#6b6bab",           # 冷傲紫蓝
-    what_color="#f5f5fa",
+    what_color="#4a4a78",      # 深靛蓝灰
     who_bold=False
 )
 
 define chen_cold = Character("陈墨",
     color="#5b5b9b",
-    what_color="#f0f0fa"
+    what_color="#3a3a6a"
 )
 
 define chen_vulnerable = Character("陈墨",
     color="#8b8bdb",
-    what_color="#fafaff",
+    what_color="#6a6a98",
     who_italic=True
 )
 
 define chen_teasing = Character("陈墨",
     color="#7b7bcb",
-    what_color="#f8f8ff",
+    what_color="#5a5a88",
     who_bold=True
 )
 
@@ -157,31 +157,31 @@ define chen_teasing = Character("陈墨",
 
 define shen = Character("沈听雨",
     color="#9b9bcb",           # 神秘灰紫
-    what_color="#f8f8ff",
+    what_color="#5a5a82",      # 深岩灰紫
     who_bold=False
 )
 
 define shen_mysterious = Character("沈听雨",
     color="#8b8bbb",
-    what_color="#f5f5fa",
+    what_color="#4a4a72",
     who_italic=True
 )
 
 define shen_smile = Character("沈听雨",
     color="#ababdb",
-    what_color="#fafaff",
+    what_color="#6a6a92",
     who_bold=True
 )
 
 define shen_sad = Character("沈听雨",
     color="#7b7bab",
-    what_color="#f0f0fa",
+    what_color="#3a3a62",
     who_italic=True
 )
 
 define shen_reveal = Character("沈听雨",
     color="#cbcbff",
-    what_color="#ffffff",
+    what_color="#7a7ab2",
     who_bold=True
 )
 
@@ -192,31 +192,31 @@ define shen_reveal = Character("沈听雨",
 # 好兄弟 - 林远
 define lin = Character("林远",
     color="#5ba3d0",           # 兄弟蓝
-    what_color="#f0f8ff"
+    what_color="#3a7098"       # 深钢蓝
 )
 
 define lin_happy = Character("林远",
     color="#6bb3e0",
-    what_color="#f5faff",
+    what_color="#4a80a8",
     who_bold=True
 )
 
 define lin_sad = Character("林远",
     color="#4b93c0",
-    what_color="#f0f8ff",
+    what_color="#3a6088",
     who_italic=True
 )
 
 define lin_angry = Character("林远",
     color="#3b83b0",
-    what_color="#ffe8e8",
+    what_color="#8a3030",
     who_bold=True
 )
 
 # 情敌/竞争对手
 define rival = Character("???",
     color="#808080",
-    what_color="#f5f5f5"
+    what_color="#6a6a72"
 )
 
 # =============================================================================
@@ -226,59 +226,65 @@ define rival = Character("???",
 # 母亲
 define mom = Character("妈妈",
     color="#e8a0a0",           # 温柔红
-    what_color="#fff5f5"
+    what_color="#a05858"       # 暗砖红
 )
 
 define mom_worried = Character("妈妈",
     color="#d89090",
-    what_color="#fff0f0",
+    what_color="#904848",
     who_italic=True
 )
 
 define mom_happy = Character("妈妈",
     color="#f0b0b0",
-    what_color="#fff8f8",
+    what_color="#b06868",
     who_bold=True
 )
 
 # 父亲
 define dad = Character("爸爸",
     color="#a0a0a0",
-    what_color="#f5f5f5"
+    what_color="#5a5a5e"
 )
 
 define dad_worried = Character("爸爸",
     color="#909090",
-    what_color="#f0f0f0"
+    what_color="#4a4a4e"
 )
 
 define dad_happy = Character("爸爸",
     color="#b0b0b0",
-    what_color="#f8f8f8"
+    what_color="#6a6a6e"
 )
 
 # 林晚棠的父亲（出现在林晚棠线）
 define lin_father = Character("林父",
     color="#708090",           # 石板灰（深沉/有故事感）
-    what_color="#f0f0f0"
+    what_color="#4a5a68"       # 深石板色
 )
 
 define lin_father_angry = Character("林父",
     color="#505050",
-    what_color="#ffe0e0",
+    what_color="#8a2828",
     who_bold=True
 )
 
 define lin_father_sad = Character("林父",
     color="#606060",
-    what_color="#f0f0f0",
+    what_color="#3a3a42",
     who_italic=True
+)
+
+# 林晚棠的母亲（出现在林晚棠线 Day 18）
+define lin_mom = Character("林母",
+    color="#A08070",           # 温暖棕色
+    what_color="#6a5040"       # 深咖啡色
 )
 
 # 妹妹（提及）
 define sister = Character("妹妹",
     color="#d8a0d8",
-    what_color="#faf0fa"
+    what_color="#8a5a8a"
 )
 
 # =============================================================================
@@ -288,19 +294,39 @@ define sister = Character("妹妹",
 # 班主任
 define teacher = Character("班主任",
     color="#808080",
-    what_color="#f5f5f5"
+    what_color="#5a5a5e"
 )
 
 # 路人/旁白风格
 define npc_generic = Character("???",
     color="#909090",
-    what_color="#f5f5f5"
+    what_color="#6a6a6e"
 )
 
 # 医生（前世记忆）
 define doctor = Character("医生",
     color="#ffffff",
-    what_color="#f5f5f5"
+    what_color="#888890"
+)
+
+# 赵轩然 — 情敌/竞争者（林晚棠线 Day 7-11 出现）
+define zhao_xuran = Character("赵轩然",
+    color="#5B8C8C",           # 青灰色（斯文败类感）
+    what_color="#3a6068"       # 深青灰色
+)
+
+# 通用学生NPC
+define male_student_1 = Character("男生",
+    color="#888888",
+    what_color="#5a5a5e"
+)
+define female_student_1 = Character("女生A",
+    color="#CC88AA",
+    what_color="#8a5570"
+)
+define female_student_2 = Character("女生B",
+    color="#BB99BB",
+    what_color="#7a5580"
 )
 
 # =============================================================================
@@ -310,21 +336,21 @@ define doctor = Character("医生",
 # 记忆闪回旁白
 define memory_narration = Character(None,
     color="#a29bfe",
-    what_color="#e8e0ff",
+    what_color="#6858a8",      # 深紫靛（亮背景可读）
     what_italic=True
 )
 
 # 蝴蝶效应旁白
 define butterfly_narration = Character(None,
     color="#ffeaa7",
-    what_color="#fffef0",
+    what_color="#a08830",      # 暗金色
     what_bold=True
 )
 
 # 记忆碎片收集提示
 define fragment_prompt = Character(None,
     color="#a29bfe",
-    what_color="#f0ebff",
+    what_color="#5848a0",      # 深紫色
     what_bold=True
 )
 
@@ -332,13 +358,19 @@ define fragment_prompt = Character(None,
 # 角色立绘定义
 # =============================================================================
 
-# 林晚棠立绘（6表情）- zoom=0.85 适配1080p屏幕
+# 林晚棠立绘（10表情）- zoom=0.85 适配1080p屏幕
 image lindao normal = Transform("images/character/lindao/LWT_01_normal.png", zoom=0.85)
 image lindao smile = Transform("images/character/lindao/LWT_02_smile.png", zoom=0.85)
 image lindao shy = Transform("images/character/lindao/LWT_03_shy.png", zoom=0.85)
 image lindao worried = Transform("images/character/lindao/LWT_04_worried.png", zoom=0.85)
 image lindao crying = Transform("images/character/lindao/LWT_05_crying.png", zoom=0.85)
 image lindao surprised = Transform("images/character/lindao/LWT_06_surprised.png", zoom=0.85)
+
+# 新增4表情（括号表情清理后补充）
+image lindao angry = Transform("images/character/lindao/LWT_07_angry.png", zoom=0.85)
+image lindao gentle = Transform("images/character/lindao/LWT_08_gentle.png", zoom=0.85)
+image lindao sad = Transform("images/character/lindao/LWT_09_sad.png", zoom=0.85)
+image lindao thinking = Transform("images/character/lindao/LWT_10_thinking.png", zoom=0.85)
 
 # 角色位置定义（用于立绘显示）
 # =============================================================================
