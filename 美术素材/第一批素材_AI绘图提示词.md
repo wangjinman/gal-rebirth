@@ -1,8 +1,8 @@
 # 《重生·轻逆袭》美术素材AI提示词 - 专用文档
 
 > **文档编号**：GAL-PROMPT-001
-> **版本**：v1.8
-> **日期**：2026-05-27
+> **版本**：v1.9
+> **日期**：2026-05-28
 > **状态**：正式使用中
 > **用途**：所有美术素材AI生成提示词的统一管理文档
 > **生成工具建议**：Midjourney / Stable Diffusion XL / DALL-E 3
@@ -24,6 +24,7 @@
 | v1.6 | 2026-05-20 | 新增5张序章背景图提示词（卧室夜景+急救室+玄关+校门日景+记忆碎片特效） | AI辅助 |
 | v1.7 | 2026-05-20 | 新增2张序章CG提示词（加班猝死+意识消散），完善序章素材优先级分析 | AI辅助 |
 | v1.8 | 2026-05-27 | **新增4张林晚棠补充立绘提示词**（angry/gentle/sad/thinking），括号表情清理方案配套素材；characters.rpy 已同步加定义(LWT_07~10) | AI辅助 |
+| v1.9 | 2026-05-28 | **黑屏审计新增素材**：6张新背景（洗手间/操场/天台日景/客厅温馨/大学校门/住宅楼门口）+ 4张新CG（BE空座位/Day16冰点/Day18转机纸条/TE重逢）+ 2个特效叙事屏（冰点/倒计时）；含完整执行计划和P0-P2分级 | AI辅助 |
 
 ---
 
@@ -2583,5 +2584,565 @@ UI_{组件类型}_{状态}.png
 
 ---
 
-> **文档版本记录**：见上方"版本记录"表格
-> **最后更新**：2026-05-20 v1.7 by AI辅助
+# 十二、黑屏审计新增素材（v1.9）
+
+> **审计日期**：2026-05-28
+> **审计范围**：序章(00_prologue.rpy) + 第一章(01_chapter1.rpy) + 林晚棠线(02_lindao_route.rpy) + 占位路线(03-05)
+> **审计结果**：共 ~140 处 `scene black`，分类如下：
+> - **A类 过渡型 ~65%**（Day标题卡/CG前后/结局回顾/返回标题）→ **保留不动**
+> - **B类 叙事插叙 ~20%**（有具体画面描述但纯黑屏）→ **加背景+立绘即可**
+> - **C类 高光CG ~10%**（关键情绪点需要CG定格）→ **需新CG素材**
+> - **D类 结局屏 ~5%**（Ending Card/统计屏）→ **可选优化**
+
+---
+
+## 12.1 新增背景素材（6张）
+
+> 以下背景为黑屏审计B类中确认需要全新绘制的场景，现有背景无法复用（语境/时段/视角不匹配）。
+
+---
+
+#### 【背景-29】学校洗手间·镜前
+
+**用途**：第一章 Day 1，主角在洗手间镜子前看自己年轻的脸——重生后第一次认真面对自己
+
+**出现位置**：`01_chapter1.rpy` 行161
+
+**优先级**：🔴 P0（有内心独白+自嘲式叙事，黑屏体验差）
+
+**剧本上下文**：
+```
+narrator "我站在洗手间的镜子前。看着镜子里那张年轻的脸。"
+player_thought "十八岁……皮肤真好。头发也没秃。肚子也没中年人的啤酒肚。"
+player_thought "重生回来的第一件事，居然是在意自己的颜值。果然是个俗人。"
+```
+
+**英文正向提示词**：
+```
+anime style high school restroom interior, mirror perspective, daytime
+large rectangular mirror above sink, fluorescent light reflection
+clean white tiled walls, slightly worn public school restroom
+sink basin with dripping faucet, soap dispenser on wall
+window with frosted glass letting in soft daylight
+empty and quiet, after school hours atmosphere
+mirror reflection showing vague silhouette (no detailed face)
+tiled floor, mopped but still damp spots
+cinematic composition, intimate first-person POV feel
+nostalgic 2000s Chinese public school aesthetic
+visual novel background, emotional self-reflection scene
+```
+
+**中文参考**：
+```
+日系风格高中洗手间内部，镜前视角，白天
+大长方形镜子在水槽上方，荧光灯反射
+干净白色瓷砖墙，略有磨损的公立学校洗手间
+水槽池台，水龙头滴水，墙上皂液器
+磨砂玻璃窗透入柔和自然日光
+空旷安静，放学后的氛围
+镜中人影模糊轮廓（无详细面部）
+瓷砖地面，拖过但还有湿斑
+电影感构图，亲密的第一人称视角怀旧感
+2000年代中国公立学校美学
+视觉小说背景，情绪化自我反思场景
+```
+
+**规格要求**：1920×1080px | PNG/JPG | 氛围：安静、私密、自我审视、怀旧、2000年代校园
+**构图要点**：镜子占画面上半部分，视角略微仰视镜面；避免镜中出现清晰人脸（保持模糊/剪影）；整体色调偏冷白+日光暖
+
+---
+
+#### 【背景-30】学校操场·台阶午休
+
+**用途**：第一章 Day 2 午休，和好兄弟林远坐在操场台阶上聊天——兄弟情+前世遗憾伏笔
+
+**出现位置**：`01_chapter1.rpy` 行509
+
+**优先级**：🔴 P0（有对话+角色互动+情感旁白，兄弟情关键场景）
+
+**英文正向提示词**：
+```
+anime style school sports ground, outdoor staircase seating area
+concrete bleacher steps in foreground, wide shot
+school running track curving in background, white lane markings
+basketball hoop visible on one side, goalpost on other
+bright midday sunlight, strong shadows from overhead sun
+a few scattered students sitting at distance, eating lunch or chatting
+green chain-link fence surrounding the field
+blue sky with few wispy clouds, spring/early summer atmosphere
+warm nostalgic school life feeling, youthful energy
+cinematic wide angle, visual novel background
+peaceful lunch break moment between classes
+```
+
+**中文参考**：
+```
+日系风格学校运动场，露天看台阶梯区域
+前景混凝土看台台阶，宽镜头
+背景中弯曲的跑道，白色分道线
+一侧篮球架，另一侧球门
+明亮正午阳光，头顶强光投下浓重阴影
+远处零星坐着的学生，吃午饭或聊天
+绿色铁丝网围栏包围场地
+蓝天少云，春末夏初氛围
+温暖怀旧的校园生活感，青春活力
+电影感广角镜头，视觉小说背景
+平静课间午餐时刻
+```
+
+**规格要求**：1920×1080px | PNG/JPG | 氛围：正午、青春、校园户外、兄弟情、温暖
+
+---
+
+#### 【背景-31】天台（日景/午后）
+
+**用途**：Day 10 午休在天台并肩看天（有双立绘对话！） + Day 20 在天台写告白词 —— 与BG-04(黄昏)/BG-16(星空)形成时段完整系列
+
+**出现位置**：`02_lindao_route.rpy` 行1250 + 行5590/5606（3处）
+
+**优先级**：🔴 P0（行1250处有完整对话+lindao smile立绘！行5590是告白准备关键场景！）
+
+**英文正向提示词**：
+```
+anime style school rooftop, bright daytime afternoon
+clear blue sky with fluffy white cumulus clouds
+chain-link fence at edge, rooftop water tank in distance
+concrete floor with warm sunlight casting distinct shadows
+clotheslines with white uniforms fluttering in breeze
+wide open sky occupying upper 60% of frame
+a few potted plants near fence corner, small green leaves
+school building edges barely visible at bottom corners
+cheerful yet peaceful atmosphere, hopeful mood
+soft natural lighting from upper left, golden hour approaching
+cinematic composition, visual novel background
+emotional location for confessions and quiet moments
+```
+
+**中文参考**：
+```
+日系风格学校天台，晴朗白天下午
+清澈蓝天蓬松白色积云
+边缘铁丝网围栏，远处天台水箱
+混凝土地面，温暖阳光投下清晰阴影
+晾衣杆白衬衫在风中飘动
+开阔天空占画面上方60%
+角落几盆绿植，小叶子
+校舍建筑边缘隐约出现在底部边角
+欢快而平和的氛围，充满希望的情绪
+柔和自然光从左上方照射，临近金色时刻
+电影感构图，视觉小说背景
+用于告白和安静时刻的情绪化地点
+```
+
+**规格要求**：1920×1080px | PNG/JPG | 氛围：白天、晴朗、希望、安静、敞亮
+**与BG-04/BG-16关系**：同一地点不同时段，保持一致的建筑布局和透视，仅改变天空颜色和光照。BG-04=夕阳橙红，BG-16=深蓝星空，本张(BG-31)=晴空白云
+
+---
+
+#### 【背景-32】家中客厅·温馨氛围（TE专用）
+
+**用途**：True Ending "成绩出来那天"，林父正式接受主角——家庭认可的关键场景（多角色立绘！）
+
+**出现位置**：`02_lindao_route.rpy` 行8376（TE独有）
+
+**优先级**：🟡 P1（TE专属，有大段对话+多角色立绘：主角+林父+林母+林晚棠）
+
+**英文正向提示词**：
+```
+anime style cozy Chinese home living room, warm evening interior
+modest apartment living room, 2000s Chinese working-class family aesthetic
+comfortable fabric sofa, small tea table with fruit plate and tea set
+family photos on shelf against wall, warm lamp light
+TV on low cabinet, slightly old model
+curtains drawn, warm indoor lighting from ceiling fixture
+homey and lived-in feeling, not luxurious but full of love
+evening sunlight fading through window gaps, golden hour indoors
+clean and tidy but not sterile, real family warmth
+visual novel background, emotional family acceptance scene
+```
+
+**中文参考**：
+```
+日系风格温馨中国家中客厅，傍晚室内
+普通公寓客厅，2000年代中国工薪阶层家居审美
+舒适布艺沙发，小茶几上有水果盘和茶具
+墙边架子上全家福照片，温暖灯光
+电视柜上的老式电视
+窗帘拉上，天花板灯具的温暖室内光照
+温馨有生活感的家，不豪华但充满爱
+窗外缝隙透入的渐暗阳光，室内金色时刻
+整洁但不冰冷，真实的家庭温暖感
+视觉小说背景，情绪化的家庭认可场景
+```
+
+**规格要求**：1920×1080px | PNG/JPG | 氛围：温馨、家庭、接纳、傍晚、平凡幸福
+**与BG-11区别**：BG-11是下午明亮正式做客场景；这张更偏向傍晚暖光+更随意温馨的家庭生活感，色调更暖更黄
+
+---
+
+#### 【背景-33】大学校门·开学日
+
+**用途**：True Ending "九月份，大学开学的第一天"——终极结局画面收束（"身后是十八岁的夏天，面前是全新的人生"）
+
+**出现位置**：`02_lindao_route.rpy` 行8540（TE独有）
+
+**优先级**：🔴 P0（TE最终画面之一！lindao smile立绘显示中！）
+
+**英文正向提示词**：
+```
+anime style university campus gate entrance, bright september morning
+modern university main gate with school name plaque (generic)
+tree-lined avenue leading into campus, fresh green leaves
+students walking in groups, some carrying bags, energetic atmosphere
+flowerbeds with blooming late-summer flowers near gate
+clear blue sky, warm morning sunlight streaming through trees
+contemporary university buildings visible in background
+bicycle parking area to the side with a few bikes locked
+hopeful new beginning atmosphere, transition from high school to university
+romantic and dreamy, emotional milestone moment
+cinematic composition, visual novel ending background
+beautiful lighting, sense of future and possibility
+```
+
+**中文参考**：
+```
+日系风格大学校门入口，晴朗九月清晨
+现代大学主门带校名牌（通用无具体文字）
+林荫道通向校园内，翠绿树叶
+学生三三两两走着，有人提包，充满活力气息
+大门附近花坛开着夏末鲜花
+清澈蓝天，温暖晨光透过树荫洒下
+背景可见当代大学建筑
+旁边自行车停车区，锁着几辆自行车
+充满希望的新开端氛围，从高中到大学的过渡
+浪漫梦幻，重要的里程碑时刻
+电影感构图，视觉小说结局背景美丽光线，未来与可能性的感觉
+```
+
+**规格要求**：1920×1080px | PNG/JPG | 氛围：开学、希望、新起点、大学、阳光、浪漫
+**与BG-22区别**：BG-22是高中校门（滨海市第一中学，校服+矮墙+石狮子）；这张是大学校门，更现代开放（玻璃建筑+大学生+自行车），形成"成长跨越"对比
+
+---
+
+#### 【背景-34】住宅楼门口·雨天入口
+
+**用途**：Day 9 雨中送她到家门口——雨夜街道(BG-09)后的近景切换，更聚焦"家门口告别"
+
+**出现位置**：`02_lindao_route.rpy` 行935
+
+**优先级**：🔴 P0（有完整对话+lindao shy立绘！当前纯黑屏！）
+
+**英文正向提示词**：
+```
+anime style apartment building entrance at night, rainy evening
+residential building entryway with dim warm light spilling from doorway
+wet ground reflecting street lamps and entrance hall lights
+rain falling softly, drizzling now (less heavy than before)
+umbrella stand with wet umbrellas inside door area visible
+staircase leading up into building, faintly lit
+potted plants flanking entrance, leaves glistening with raindrops
+intimate close-up perspective focusing on entrance
+romantic farewell atmosphere, warm safe haven vs cold rain outside
+orange warm light from inside contrasting with cool blue night outside
+cinematic composition, visual novel emotional scene
+```
+
+**中文参考**：
+```
+日系风格公寓楼门口，雨夜傍晚
+住宅楼入口，昏暗温暖灯光从门内溢出
+湿润地面反射路灯和大厅灯光
+小雨淅沥（比之前小了）
+门内可见雨伞架上湿漉漉的雨伞
+通往楼上的楼梯，微弱灯光照亮
+入口两侧盆栽，叶片挂着雨滴
+亲密特写视角，窄画面聚焦入口
+浪漫告别氛围，温暖的避风港 vs 外面冷雨
+室内橙色暖光 vs 室外蓝色冷夜的对比
+电影感构图，视觉小说情绪化场景
+```
+
+**规格要求**：1920×1080px | PNG/JPG | 氛围：雨夜、家门口、温暖、安全、告别、浪漫
+**与BG-09关系**：BG-09是宽阔城市雨街远景；这张是楼门口近景特写，焦点在门内温暖光+门外雨。可从BG-09自然过渡（远景→近景）
+
+---
+
+## 12.2 新增CG场景素材（4张）
+
+> **CG选择原则**：同时满足①情绪峰值 ②角色参与 ③玩家记忆点 ④黑屏无法替代 时才做CG
+
+---
+
+#### 【CG-04】Bad Ending · 空座位
+
+**用途**：Bad Ending核心画面 —— 林晚棠转学离去，空荡荡的座位
+
+**优先级**：🔴 最高P0（BE是最震撼的情感打击）
+
+**情绪峰值**：★★★★★
+
+**剧本位置**：`02_lindao_route.rpy` BE分支 行7492
+
+**画面描述**：
+```
+教室日景，最后一排靠窗的位置
+一张空桌子，椅子被推回桌下
+桌面干干净净，什么都没有
+桌面残留隐约的方形痕迹——那里曾经放过文具
+窗外的阳光照进来，照亮空气中漂浮的尘埃
+旁边的座位还和其他一样拥挤——书本、试卷、水杯
+但那个位置，空得像被人挖走了一块
+主角视角（背影/侧影），站在过道上看那个空座位
+全班同学在背景中模糊谈笑——没有人注意到这个空位
+```
+
+**英文正向提示词**：
+```
+anime style illustration, high quality, detailed CG art
+empty school desk by window in classroom, late afternoon sunlight
+desk surface impossibly clean, only faint rectangular outline where items once sat
+chair pushed neatly under desk, as if waiting for someone who won't return
+sunlight streaming through window, dust particles floating in golden beam
+nearby desks cluttered with textbooks, papers, water bottles — normal student chaos
+background classmates blurred, chatting and laughing, oblivious to the empty seat
+viewpoint from aisle, someone standing and staring at the empty space
+melancholic atmosphere, heartbreaking absence
+warm golden light vs cold empty space contrast
+emotional visual novel CG, bad ending illustration
+masterpiece, cinematic composition, story-telling through emptiness
+```
+
+**中文参考**：
+```
+日系插画风格，高质量，精细CG艺术
+教室窗边最后排的空桌子，午后阳光
+桌面异常干净，只留下模糊的方形痕迹——曾经放着东西的地方
+椅子整齐推回桌下，仿佛在等待一个不会回来的人
+阳光透过窗户洒入，金色光束中漂浮尘埃
+邻近课桌杂乱——课本、试卷、水杯——正常的学生混乱
+背景同学模糊地谈笑着，没人注意到那个空位
+从过道视角站着凝视空位的某人
+忧郁的氛围，令人心碎的缺席感
+温暖金光 vs 冷寂空空的对比
+视觉小说CG艺术，坏结局插画杰作
+电影感构图，通过"空"来讲述故事
+```
+
+**规格**：1920×1080px | PNG/JPG | 情绪：空缺、心碎、遗憾、阳光下孤独 | `show cg be_empty_seat with fade; pause 3.0`
+
+---
+
+#### 【CG-05】Day 16 冰点·关系破裂
+
+**用途**：Day 16 说服失败后教室爆发——关系降至冰点的视觉冲击
+
+**优先级**：🟡 P1（戏剧冲突最高潮，已有angry立绘+对话，CG为强化）
+
+**情绪峰值**：★★★★☆
+
+**画面描述**：
+```
+教室夕阳西斜，林晚棠背对主角，肩膀微微颤抖（忍泪）
+周围同学的视线偷偷投射过来
+主角站在教室后方，手足无措
+两个人的影子曾经有交集——现在平行分开越拉越远
+黑板上方挂着"距离高考XX天"倒计时
+```
+
+**英文正向提示词**：
+```
+anime style dramatic scene illustration, high quality CG
+classroom at sunset, golden-orange light through windows
+girl with long dark brown hair standing with back to viewer
+shoulders trembling slightly, holding back tears
+classmates in background stealing glances, awkward tension
+boy standing helplessly near classroom back door
+long shadows stretching across floor, two sets of shadows that used to overlap now running parallel apart
+chalkboard with "days until exam" countdown
+emotional confrontation aftermath, relationship at freezing point
+golden hour lighting creating dramatic silhouette effect
+heartbreaking visual novel CG art, conflict climax
+cinematic composition, storytelling through body language and light
+```
+
+**中文参考**：
+```
+日系戏剧性场景插画，高质量CG
+教室夕阳，金橙色光线透过窗户
+棕黑色长发女孩背对观众站立，肩膀颤抖忍泪
+背景同学偷瞄，尴尬紧张气氛
+男孩无助地站在教室后门
+地板长影，两组曾重叠的影子现在平行分离
+黑板可见"距离高考XX天"倒计时
+情感冲突余波，关系降至冰点
+金色时刻光线制造戏剧性剪影
+令人心碎的视觉小说CG艺术，冲突高潮
+电影感构图，通过肢体语言和光线讲故事
+```
+
+**规格**：1920×1080px | PNG/JPG | 情绪：冰点、破裂、忍泪、心痛
+
+---
+
+#### 【CG-06】Day 18 转机·纸条与公园
+
+**用途**：Day 18 冷战转机——林晚棠在公园递纸条的瞬间，命运重新连接
+
+**优先级**：🟡 P1（冰点到转机的关键转折）
+
+**情绪峰值**：★★★★☆
+
+**画面描述**：
+```
+公园角落，阳光穿过树叶洒下斑驳光影
+林晚棠站在主角面前，递出折叠纸条
+表情是犹豫的温柔——防线放下，谨慎的希望
+光斑落在她发梢和肩头
+背景绿草地+花瓣（与BG-07同系列但角度更近聚焦人物）
+```
+
+**英文正向提示词**：
+```
+anime style tender scene illustration, high quality CG
+park corner with dappled sunlight filtering through tree leaves
+beautiful 18-year-old Chinese girl with long dark brown hair
+extending a folded paper note toward viewer
+expression: hesitant gentleness, walls coming down, cautious hope
+sunlight bokeh on her hair and shoulders, warm afternoon glow
+green grass and fallen petals on ground
+shallow depth of field, park background softly blurred
+intimate medium shot, focus on the gesture of offering
+turning point moment, reconciliation beginning
+hopeful emotional visual novel CG art
+soft warm color palette, healing atmosphere
+masterpiece, cinematic composition
+```
+
+**中文参考**：
+```
+日系温柔场景插画，高质量CG
+公园角落，阳光透过树叶洒下斑驳光影
+18岁中国女孩，棕黑长发，递出折叠纸条
+表情：犹豫的温柔，防线放下，谨慎的希望
+阳光散景在头发和肩头，温暖午后光晕
+绿地花瓣落地，浅景深公园背景虚焦
+亲密中景聚焦于递出的动作
+转折点时刻，和解开始
+希望的视觉小说CG艺术
+柔和暖色调，治愈氛围
+杰作，电影感构图
+```
+
+**规格**：1920×1080px | PNG/JPG | 情绪：转机、希望、纸条、温柔、和解、光斑
+
+---
+
+#### 【CG-07】True Ending · 樱花重逢/完整结局
+
+**用途**：True Ending 最终画面 —— 所有遗憾被弥补的完整幸福
+
+**优先级**：🔴 最高P0（TE全线终极目标）
+
+**情绪峰值**：★★★★★
+
+**画面方案A（推荐）——樱花校门**：
+```
+校门外樱花大道盛开，情侣手牵手朝镜头走来
+女孩穿白裙（非校服），男孩穿休闲装
+逆光效果，光芒四射
+花瓣飞舞，梦幻氛围
+```
+
+**英文正向提示词**：
+```
+anime style romantic happy ending illustration, highest quality CG
+couple walking hand in hand toward viewer under cherry blossom tunnel
+school gate or university avenue lined with full-bloom cherry blossom trees
+petals dancing in golden sunset wind, dreamlike atmosphere
+girl in elegant white dress, hair flowing
+boy in clean casual outfit, confident and happy
+strong backlight from setting sun, rim lighting silhouettes with warm glow
+path covered in fallen pink petals leading eye toward couple
+city skyline far in distance, peaceful and bright
+ultimate happiness, all regrets redeemed, perfect ending
+tears of joy possible, emotional climax of entire visual novel
+masterpiece level art, gallery-quality illustration
+cinematic composition, hopeful and triumphant mood
+```
+
+**中文参考**：
+```
+日系浪漫Happy Ending插画，最高质量CG
+情侣手牵手在樱花隧道下朝观众走来
+校门或大学路两旁樱花盛开花瓣在金色的夕阳风中飞舞，梦幻氛围
+女孩穿优雅白裙，头发飘逸
+男孩穿干净休闲装，自信幸福
+强烈夕阳逆光，轮廓光给两人镀上温暖光辉
+落满粉色花瓣的小径将视线引向情侣
+远处城市天际线，宁静明亮
+终极幸福，所有遗憾被弥补，完美结局
+可能含喜悦之泪，整部视觉小说的情绪最高潮
+杰作级别艺术，画廊品质插画
+电影感构图，充满希望和胜利的情绪
+```
+
+**规格**：1920×1080px | PNG/PNG | 情绪：圆满、幸福、重逢、光芒 | `show cg te_reunion with fade; pause 4.0`
+
+---
+
+## 12.3 执行计划总览
+
+### 需要用户生成的新素材清单
+
+| # | 类型 | 名称 | 优先级 |
+|---|------|------|--------|
+| BG-29 | 背景 | 学校洗手间·镜前 | 🔴 P0 |
+| BG-30 | 背景 | 学校操场·台阶午休 | 🔴 P0 |
+| BG-31 | 背景 | 天台（日景/午后） | 🔴 P0 |
+| BG-32 | 背景 | 家中客厅·温馨(TE) | 🟡 P1 |
+| BG-33 | 背景 | 大学校门·开学日(TE) | 🔴 P0 |
+| BG-34 | 背景 | 住宅楼门口·雨夜 | 🔴 P0 |
+| CG-04 | CG | BE·空座位 | 🔴 P0 |
+| CG-05 | CG | Day16·冰点 | 🟡 P1 |
+| CG-06 | CG | Day18·转机纸条 | 🟡 P1 |
+| CG-07 | CG | TE·樱花重逢 | 🔴 P0 |
+
+### 已有背景可复用（代码改动即可，无需新素材）
+
+| 位置 | 内容 | 复用已有背景 |
+|------|------|-------------|
+| 序章181 | 重生确认情感爆发 | BG-03 bedroom |
+| Ch1-190 | 走廊遇苏念卿 | BG-06 corridor |
+| Ch1-345 | 上学路上思考 | BG-10 residential_street |
+| LD-2430 | 在她家一下午 | BG-11 living_room |
+| LD-3398 | 送回家路上 | BG-27 residential_night_clear |
+| LD-3591 | 走出咖啡馆 | BG-28 cafe_street_evening |
+| LD-3781 | 打听林父下落 | BG-25 corridor_window_sunset |
+| LD-5460 | 医院检查 | BG-24 hospital_corridor |
+| LD-6276 | 临走约定 | BG-15 basketball_court |
+| LD-7144 | 告白后续话 | BG-16 rooftop_stars |
+
+### 执行阶段
+
+**阶段一（P0）—— 基本体验保障**
+1. 用户生成 6 张新背景 + 2 张核心CG（CG-04 + CG-07）
+2. 我负责：复制文件 + characters.rpy加定义 + 约15处代码改为加bg/cg
+3. 自测确认无残留问题黑屏
+
+**阶段二（P1）—— 情绪提升**
+4. 用户生成 2 张补充CG（CG-05 + CG-06）+ BG-32/BG-33
+5. 我负责：补充代码集成 + BE/TE通关验证
+
+**阶段三（P2）—— 锦上添花**
+6. 特效叙事屏（冰点/倒计时）：决定代码实现 or 图片 → 若图片则用户再出2张
+7. 整体过渡动画优化
+
+### 代码改动统计
+
+| 文件 | 改动数 |
+|------|--------|
+| `00_prologue.rpy` | 1处加bg |
+| `01_chapter1.rpy` | 4~5处加bg |
+| `02_lindao_route.rpy` | 15~20处加bg/CG |
+| `characters.rpy` | +10行定义 |
+| **合计** | **~20~25处** |
