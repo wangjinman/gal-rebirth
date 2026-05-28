@@ -8,7 +8,7 @@ label prologue_part1:
 
     call chapter_title("终焉", "序章·第一幕", 2.0)
 
-    narrator "..."
+    narrator "……"
 
     narrator "我是谁来着？"
 

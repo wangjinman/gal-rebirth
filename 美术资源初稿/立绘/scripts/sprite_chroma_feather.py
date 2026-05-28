@@ -8,11 +8,13 @@ Usage (one file at a time):
 Outputs under J:\\项目\\GAL\\美术资源初稿\\立绘\\
   {base}-transparent-v1.png
   {base}-transparent-v1-feather.png   (unless --no-feather)
+  bust\\{base}-transparent-v1-bust-feather.png   (auto with feather)
   backup_gen\\{base}-magenta-v1_rgb.png
 """
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import shutil
 from pathlib import Path
 
@@ -22,6 +24,14 @@ from PIL import Image, ImageFilter
 OUT_DIR = Path(r"J:\项目\GAL\美术资源初稿\立绘")
 TARGET_W, TARGET_H = 800, 1200
 FEATHER_BLUR = 1.2
+BUST_SCRIPT = Path(__file__).resolve().parent / "sprite_crop_bust.py"
+
+
+def crop_bust(feather_path: Path) -> Path:
+    spec = importlib.util.spec_from_file_location("sprite_crop_bust", BUST_SCRIPT)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.process_one(feather_path)
 
 
 def chroma_key_rgba(im: Image.Image) -> Image.Image:
@@ -79,6 +89,11 @@ def main() -> None:
     p.add_argument("input", type=Path, help="Magenta-screen PNG (RGB/RGBA)")
     p.add_argument("base_name", help="e.g. lin-wantang-expr-smile-v3")
     p.add_argument("--no-feather", action="store_true")
+    p.add_argument(
+        "--no-bust",
+        action="store_true",
+        help="Skip bust crop (default: auto after feather)",
+    )
     args = p.parse_args()
 
     if not args.input.is_file():
@@ -89,7 +104,8 @@ def main() -> None:
     bak_dir.mkdir(parents=True, exist_ok=True)
 
     bak = bak_dir / f"{args.base_name}-magenta-v1_rgb.png"
-    shutil.copy2(args.input, bak)
+    if args.input.resolve() != bak.resolve():
+        shutil.copy2(args.input, bak)
 
     keyed = fit_canvas(chroma_key_rgba(Image.open(args.input)))
     transparent = OUT_DIR / f"{args.base_name}-transparent-v1.png"
@@ -98,8 +114,12 @@ def main() -> None:
 
     if not args.no_feather:
         feather_path = OUT_DIR / f"{args.base_name}-transparent-v1-feather.png"
-        feather_alpha(keyed).save(feather_path, "PNG")
+        feathered = feather_alpha(keyed)
+        feathered.save(feather_path, "PNG")
         print("Wrote", feather_path)
+        if not args.no_bust:
+            bust_path = crop_bust(feather_path)
+            print("Wrote", bust_path)
 
     print("Backup", bak)
 

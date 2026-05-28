@@ -369,7 +369,7 @@ image lindao surprised = Transform("images/character/lindao/LWT_06_surprised.png
 # 新增4表情（括号表情清理后补充）
 image lindao angry = Transform("images/character/lindao/LWT_07_angry.png", zoom=0.85)
 image lindao gentle = Transform("images/character/lindao/LWT_08_gentle.png", zoom=0.85)
-image lindao sad = Transform("images/character/lindao/LWT_09_sad.png", zoom=0.85)
+image lindao sad = Transform("images/character/lindao/LWT_09_sad_action.png", zoom=0.85)
 image lindao thinking = Transform("images/character/lindao/LWT_10_thinking.png", zoom=0.85)
 
 # 角色位置定义（用于立绘显示）

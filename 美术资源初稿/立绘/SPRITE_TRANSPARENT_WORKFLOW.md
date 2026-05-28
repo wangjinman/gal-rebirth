@@ -87,14 +87,14 @@ J:\项目\GAL\美术资源初稿\立绘\
 
 叠在 **深色 + 复杂背景** 上看：
 
-- [ ] 发丝、裙摆外缘无白边/紫边  
+- [ ] 发丝、裙摆外缘无白边/紫边/泛红溢色  
 - [ ] 白衬衣、白袜无镂空  
 - [ ] 校徽、蝴蝶结、裙摆双白条、黑乐福鞋  
 - [ ] 与站立定稿 **肩宽/脚底** 大致一致（同画布 800×1200）
 
 ### 步骤 6 · 半身裁切（游戏内默认）
 
-每完成一张全身 `*-feather.png` 后，运行 `sprite_crop_bust.py` 生成 `bust\` 下对应半身版（见第六节）。
+`sprite_chroma_feather.py` 在写出 `*-feather.png` 后会**自动**裁半身到 `bust\`（可用 `--no-bust` 跳过）。单独补裁时用 `sprite_crop_bust.py`（见第六节）。
 
 ---
 
@@ -109,6 +109,11 @@ J:\项目\GAL\美术资源初稿\立绘\
 | 哭泣 | `lin-wantang-expr-crying-v2-transparent-v1-feather.png` | `bust\lin-wantang-expr-crying-v2-transparent-v1-bust-feather.png` |
 | 感动落泪 | `lin-wantang-expr-crying-moved-v3-transparent-v1-feather.png` | `bust\lin-wantang-expr-crying-moved-v3-transparent-v1-bust-feather.png` |
 | 惊喜 | `lin-wantang-surprised-v4-transparent-v1-feather.png` | `bust\lin-wantang-surprised-v4-transparent-v1-bust-feather.png` |
+| 生气 | `lin-wantang-expr-angry-v7-transparent-v1-feather.png` | `bust\lin-wantang-expr-angry-v7-transparent-v1-bust-feather.png` |
+| 温柔 | `lin-wantang-expr-gentle-v8-transparent-v1-feather.png` | `bust\lin-wantang-expr-gentle-v8-transparent-v1-bust-feather.png` |
+| 失落（站姿） | `lin-wantang-expr-sad-v9-transparent-v1-feather.png` | `bust\lin-wantang-expr-sad-v9-transparent-v1-bust-feather.png` |
+| 失落（动作·捂胸） | `lin-wantang-expr-sad-v9-action-v1-transparent-v1-feather.png` | `bust\lin-wantang-expr-sad-v9-action-v1-transparent-v1-bust-feather.png` |
+| 思考 | `lin-wantang-expr-thinking-v10-transparent-v1-feather.png` | `bust\lin-wantang-expr-thinking-v10-transparent-v1-bust-feather.png` |
 
 ---
 
@@ -178,7 +183,7 @@ python 立绘\scripts\sprite_crop_bust.py
 
 ---
 
-*维护：新增表情时：洋红幕 → 色键 → 羽化 → **裁半身** → 第三节表格补全身 + bust 两行。*
+*维护：新增表情时：洋红幕 → 色键 → 羽化（脚本自带 bust）→ 第三节表格补全身 + bust 两行。*
 
 | 日期 | 修订 |
 |------|------|

@@ -65,7 +65,7 @@ label chapter1_day1:
 
     scene bg classroom_day with dissolve
 
-    narrator "她站在讲台上，笑得像个小太阳。"
+    narrator "她站在讲台上，笑得很耀眼。"
 
     narrator "元气满满，和林晚棠完全是两个类型。"
 
@@ -489,9 +489,7 @@ label chapter1_day2_observe:
 
     narrator "但我注意到了另一件事——"
 
-    narrator "周芷晴在教室里走来走去，和各种人聊天。"
-
-    narrator "她似乎很快就融入了新环境。"
+    narrator "周芷晴在教室里走来走去，和各种人聊天，很快就融入了新环境。"
 
     narrator "和林晚棠完全是两个类型。"
 
@@ -635,23 +633,31 @@ label chapter1_day3:
 
     narrator "她正靠在窗边喝酸奶。"
 
-    zhou "（看到我）嗨！你是……陆鸣对吧？"
+    narrator "她看到了我。"
+
+    zhou "嗨！你是……陆鸣对吧？"
 
     player "嗯。恭喜你考第二。"
 
-    zhou "（摆手）哎呀运气啦运气啦！"
+    narrator "她摆了摆手。"
 
-    narrator "她笑得太自然了，自然到让人觉得她在表演。"
+    zhou "哎呀运气啦运气啦！"
+
+    narrator "她笑得太自然了，像是在表演。"
 
     zhou "不过说真的，你那天一直盯着林晚棠看诶——"
 
     narrator "她突然凑近了一点，压低声音。"
 
-    zhou "（小声）你喜欢她？"
+    zhou "你喜欢她？"
 
-    player "（被噎住）啊？！没有！"
+    narrator "我被噎住了。"
 
-    zhou "（眨眼）放心啦，我不会说的~"
+    player "啊？！没有！"
+
+    narrator "她朝我眨了眨眼。"
+
+    zhou "放心啦，我不会说的~"
 
     narrator "她转身离开的时候，回头看了我一眼。"
 
@@ -688,7 +694,9 @@ label chapter1_day4:
 
     narrator "那个男生手里拿着一张皱巴巴的班级卫生检查表。"
 
-    chen "（声音不大但很冷）我说过很多次，检查表要平整地交上来。"
+    narrator "陈墨的声音不大，但很冷。"
+
+    chen "我说过很多次，检查表要平整地交上来。"
 
     narrator "那个男生涨红了脸。"
 
@@ -717,7 +725,9 @@ label chapter1_day4:
 
     narrator "那一瞬间，我看到了她眼底的一丝疲惫。"
 
-    player "（鬼使神差地）陈墨。"
+    narrator "不知道为什么，我就这么叫出了口。"
+
+    player "陈墨。"
 
     narrator "她停下脚步，回头看我。"
 
@@ -733,7 +743,9 @@ label chapter1_day4:
 
     narrator "沉默了两秒。"
 
-    chen "（语气稍微缓和）……我知道了。"
+    narrator "陈墨的语气似乎缓和了一些。"
+
+    chen "……我知道了。"
 
     narrator "她没说谢谢，也没道歉。"
 
@@ -761,11 +773,15 @@ label chapter1_day4:
 
     show lindao smile at LEFT_CENTER with dissolve
 
-    lindao "（轻声）你好像和前几天不太一样了。"
+    narrator "她的声音很轻。"
+
+    lindao "你好像和前几天不太一样了。"
 
     player "哪里不一样？"
 
-    lindao "（想了想）……说不上来。"
+    narrator "她想了一会儿。"
+
+    lindao "……说不上来。"
 
     narrator "她低下头继续整理书。"
 
@@ -815,43 +831,47 @@ label chapter1_day5:
 
     narrator "她看着窗外，不知道在想什么。"
 
-    suni "（没有回头）欢迎光临~要喝点什么？"
+    narrator "苏念卿没有回头。"
+
+    suni "欢迎光临~要喝点什么？"
 
     player "……一杯柠檬水就好。"
 
     narrator "她回过头。"
 
-    narrator "看到是我之后，表情有一丝微妙的变化。"
+    narrator "看到是我之后，她微微一笑。"
 
-    suni "（微笑）是你啊，陆鸣同学。"
+    suni "是你啊，陆鸣同学。"
 
     suni "放学后来咖啡馆……你家长知道吗？"
 
     player "我都十八了。"
 
-    suni "（笑）十八岁也是未成年人哦。"
+    narrator "她笑了笑。"
 
-    narrator "她起身去调饮料。"
+    suni "十八岁也是未成年人哦。"
 
-    narrator "我注意到她走路时有些迟疑——像是左脚不太舒服。"
+    narrator "她起身去调饮料，走路时有些迟疑，像是左脚不太舒服。"
 
     player_thought "她脚受伤了吗？前世从来没注意到这件事……"
 
-    narrator "她端着柠檬水过来。"
+    narrator "她端着柠檬水过来，放下杯子。"
 
-    suni "（放下杯子）五块钱。"
+    suni "五块钱。"
 
     narrator "我刚要掏钱——"
 
     suni "算了，请你的。"
 
-    narrator "她在我对面坐下。"
+    narrator "她在我对面坐下，目光投向窗外。"
 
-    suni "（看着窗外）你最近……过得还好吗？"
+    suni "你最近……过得还好吗？"
 
     player "还好吧。就是高考有点压力。"
 
-    suni "（轻笑）压力好啊。"
+    narrator "她轻轻笑了笑。"
+
+    suni "压力好啊。"
 
     suni "有压力说明你还活着，还有想要的东西。"
 
@@ -867,7 +887,9 @@ label chapter1_day5:
 
     suni "开店，冲咖啡，看人进进出出。"
 
-    suni "（站起身）柠檬水喝完了就早点回去。"
+    narrator "她站起身。"
+
+    suni "柠檬水喝完了就早点回去。"
 
     suni "别让你妈妈等急了。"
 
@@ -927,7 +949,9 @@ label chapter1_day6:
 
     female_student_1 "晚棠，周末一起去逛街嘛？"
 
-    lindao "（笑着）不好意思啊，我这周末有事。"
+    narrator "她笑着摇了摇头。"
+
+    lindao "不好意思啊，我这周末有事。"
 
     narrator "温柔地拒绝了。"
 
@@ -960,11 +984,15 @@ label chapter1_day6:
 
     show lindao shy at LEFT_CENTER with dissolve
 
-    lindao "（小声）……都被你看穿了啊。"
+    narrator "她的声音很小。"
+
+    lindao "……都被你看穿了啊。"
 
     player "不想去就不去嘛。"
 
-    lindao "（低头）嗯……我只是觉得……"
+    narrator "她低下了头，声音很轻。"
+
+    lindao "嗯……我只是觉得……"
 
     narrator "她没有说完。"
 
@@ -982,7 +1010,9 @@ label chapter1_day6:
 
     narrator "周芷晴挡在了门口。"
 
-    zhou "（双手背在身后，歪头看着我）陆鸣同学~"
+    narrator "周芷晴挡在了门口，双手背在身后，歪头看着我。"
+
+    zhou "陆鸣同学~"
 
     player "……怎么了？"
 
@@ -990,13 +1020,17 @@ label chapter1_day6:
 
     player "还行吧。"
 
-    zhou "（眯眼笑）只是'还行'？"
+    narrator "她眯起眼睛，似笑非笑。"
+
+    zhou "只是'还行'？"
 
     zhou "那我怎么看你跟她说话的时候，表情都不一样了呢？"
 
     player "……你想说什么？"
 
-    zhou "（突然收起笑容，认真脸）没什么。"
+    narrator "她突然收起笑容，表情变得认真。"
+
+    zhou "没什么。"
 
     narrator "她又变回了元气满满的样子。"
 
@@ -1008,7 +1042,9 @@ label chapter1_day6:
 
     narrator "不重，但绝对是有意的。"
 
-    zhou "（回头）加油哦，陆鸣同学~"
+    narrator "她回头看了我一眼。"
+
+    zhou "加油哦，陆鸣同学~"
 
     narrator "她的背影消失在楼梯口。"
 
@@ -1054,7 +1090,9 @@ label chapter1_day7:
 
     narrator "'明天出来打篮球？'"
 
-    player "（回复）明天有事，改天吧。"
+    narrator "我回了条短信。"
+
+    player "明天有事，改天吧。"
 
     narrator "林远秒回了三个问号。"
 
@@ -1062,11 +1100,11 @@ label chapter1_day7:
 
     narrator "后面跟了一串QQ表情。"
 
-    player "（回复）滚。"
+    narrator "我回了条短信。"
+
+    player "滚。"
 
     narrator "我把手机扔到一边。"
-
-    narrator "心里却在想——"
 
     player "明天……该穿什么好呢？"
 
@@ -1076,7 +1114,9 @@ label chapter1_day7:
 
     player_thought "……只是送个同学上学而已。"
 
-    player "（翻了个身）睡觉！"
+    narrator "我翻了个身，强迫自己闭眼。"
+
+    player "睡觉！"
 
     narrator "但我清楚地听到自己的心跳很快。"
 
@@ -1146,5 +1186,28 @@ label chapter1_day8_preview:
 
     player "好了。出发。"
 
-    # 跳转到林晚棠线 Day 8
-    jump lindao_day8_morning
+    # 路线选择
+    narrator "周六早晨。没有课。"
+
+    narrator "这一周发生了太多事——"
+
+    narrator "高考倒计时，每个人都在走向自己的方向。"
+
+    player_thought "接下来……我想靠近谁？"
+
+    menu:
+        "去找林晚棠——她推荐了一本日本文学":
+            $ persistent.chapter1_choice_route = "lindao"
+            jump lindao_day8_morning
+
+        "去苏念卿的咖啡馆看看她":
+            $ persistent.chapter1_choice_route = "suni"
+            jump suni_day8_start
+
+        "陪周芷晴去篮球场练球":
+            $ persistent.chapter1_choice_route = "zhou"
+            jump zhou_day8_start
+
+        "找陈墨谈谈——她最近状态不对":
+            $ persistent.chapter1_choice_route = "chen"
+            jump chen_day8_start
