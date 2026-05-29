@@ -1,41 +1,136 @@
-# 美术素材需求清单
+# 美术素材需求清单（动态状态）
 
 《重生·轻逆袭》(Re: Second Chance)
 
+> ⚠️ 本文档正在从初始规划（v1.0，2026-05-15）向实际集成状态迁移。
+> 新增素材以 `BG-XX` / `CG-0X` 命名，与 `characters.rpy` 定义保持一致。
+
 ---
 
-## 一、素材规格说明
+## 一、已集成素材（✅ 已完成）
+
+### 背景图 BG（34张 / BG-01~34）
+
+| 编号 | 定义名 | 文件名 | 集成日期 |
+|------|--------|--------|---------|
+| BG-01 | bg classroom | BG_01_classroom.png | 2026-05-15 |
+| BG-02 | bg school_gate | BG_02_school_gate.png | 2026-05-15 |
+| BG-03 | bg bedroom | BG_03_bedroom.png | 2026-05-15 |
+| BG-04 | bg rooftop_sunset | BG_04_rooftop_sunset.png | 2026-05-18 |
+| BG-05 | bg corridor | BG_05_corridor.png | 2026-05-18 |
+| BG-06 | bg corridor（同05） | — | 复用 |
+| BG-07 | bg cafe | BG_07_cafe.png | 2026-05-18 |
+| BG-08 | bg street | BG_08_street.png | 2026-05-18 |
+| BG-09 | bg rainy_street | BG_09_rainy_street.png | 2026-05-18 |
+| BG-10 | bg rooftop | BG_10_rooftop.png | 2026-05-21 |
+| BG-11 | bg living_room | BG_11_living_room.png | 2026-05-21 |
+| BG-12 | bg park | BG_12_park.png | 2026-05-21 |
+| BG-13 | bg library | BG_13_library.png | 2026-05-22 |
+| BG-14 | bg rooftop_night | BG_14_rooftop_night.png | 2026-05-22 |
+| BG-15 | bg classroom_empty | BG_15_classroom_empty.png | 2026-05-22 |
+| BG-16 | bg corridor_night | BG_16_corridor_night.png | 2026-05-25 |
+| BG-17 | bg school_gate_dusk | BG_17_school_gate_dusk.png | 2026-05-25 |
+| BG-18 | bg park_corner | BG_18_park_corner.png | 2026-05-25 |
+| BG-19 | bg corridor_window_sunset | BG_19_corridor_window_sunset.png | 2026-05-25 |
+| BG-20 | bg classroom_morning | BG_20_classroom_morning.png | 2026-05-26 |
+| BG-21 | bg bedroom_night | BG_21_bedroom_night.png | 2026-05-26 |
+| BG-22 | bg rooftop_sunrise | BG_22_rooftop_sunrise.png | 2026-05-26 |
+| BG-23 | bg cafe_night | BG_23_cafe_night.png | 2026-05-26 |
+| BG-24 | bg street_night_rain | BG_24_street_night_rain.png | 2026-05-26 |
+| BG-25 | bg schoolyard | BG_25_schoolyard.png | 2026-05-27 |
+| BG-26 | bg corridor_afternoon | BG_26_corridor_afternoon.png | 2026-05-27 |
+| BG-27 | bg bedroom_evening | BG_27_bedroom_evening.png | 2026-05-27 |
+| BG-28 | bg rooftop_noon | BG_28_rooftop_noon.png | 2026-05-27 |
+| BG-29 | bg restroom_mirror | BG_29_restroom_mirror_day.png | **2026-05-29** |
+| BG-30 | bg playground_bleachers | BG_30_playground_bleachers_noon_empty.png | **2026-05-29** |
+| BG-31 | bg rooftop_day | BG_31_rooftop_afternoon_day.png | **2026-05-29** |
+| BG-32 | bg living_room_warm | BG_32_living_room_warm_evening.png | **2026-05-29** |
+| BG-33 | bg university_gate | BG_33_university_gate_september_morning_empty.png | **2026-05-29** |
+| BG-34 | bg apartment_entrance_rain | BG_34_apartment_entrance_rainy_night.png | **2026-05-29** |
+
+### 事件CG（7张 / CG-01~07）
+
+| 编号 | 定义名 | 文件名 | 关联场景 | 集成日期 |
+|------|--------|--------|---------|---------|
+| CG-01 | cg starry_sky_confession | CG_01_starry_sky_confession.png | 星空告白 | 2026-05-21 |
+| CG-02 | cg rain_umbrella | CG_02_rain_umbrella.png | 雨中撑伞 | 2026-05-21 |
+| CG-03 | cg rooftop_embrace | CG_03_rooftop_embrace.png | 天台拥抱 | 2026-05-22 |
+| CG-04 | cg be_empty_seat | CG_04_be_empty_seat.png | BE空座位 | **2026-05-29** |
+| CG-05 | cg day16_freezing | CG_05_day16_freezing_point.png | Day16冰点 | **2026-05-29** |
+| CG-06 | cg day18_note | CG_06_day18_note_park.png | Day18转机纸条 | **2026-05-29** |
+| CG-07 | cg te_reunion | CG_07_te_reunion_sakura.png | TE樱花重逢 | **2026-05-29** |
+
+### 角色立绘（林晚棠 10表情 ✅）
+
+| 定义名 | 文件名 | 集成日期 |
+|--------|--------|---------|
+| lindao normal | LWT_01_normal.png | 2026-05-15 |
+| lindao smile | LWT_02_smile.png | 2026-05-15 |
+| lindao shy | LWT_03_shy.png | 2026-05-15 |
+| lindao worried | LWT_04_worried.png | 2026-05-15 |
+| lindao crying | LWT_05_crying.png | 2026-05-15 |
+| lindao surprised | LWT_06_surprised.png | 2026-05-15 |
+| lindao angry | LWT_07_angry.png | 2026-05-25 |
+| lindao gentle | LWT_08_gentle.png | 2026-05-25 |
+| lindao sad | LWT_09_sad.png | 2026-05-25 |
+| lindao thinking | LWT_10_thinking.png | 2026-05-25 |
+
+---
+
+## 二、待制作素材（P1/P2）
+
+### P1 - 其他4女主立绘
+
+| 角色 | 需制作表情数 | 状态 |
+|------|------------|------|
+| 苏念卿 | 10表情 | ⬜ 未开始 |
+| 周芷晴 | 10表情 | ⬜ 未开始 |
+| 陈墨 | 10表情 | ⬜ 未开始 |
+| 沈听雨（隐藏） | 10表情 | ⬜ 未开始 |
+
+### P2 - UI素材
+
+| ID | 素材名称 | 规格 | 状态 |
+|----|----------|------|------|
+| UI_001 | 对话框背景 | 1920×280 PNG | ✅ 已实现（代码绘制） |
+| UI_002 | 名字框背景 | 200×60 PNG | ✅ 已实现（代码绘制） |
+| UI_003 | 快捷菜单按钮 | 48×48 PNG | ✅ 已实现（代码绘制） |
+| UI_010 | 存档/读档界面背景 | 1920×1080 PNG | ⬜ 待制作 |
+| UI_011 | 设置界面背景 | 1920×1080 PNG | ⬜ 待制作 |
+| UI_012 | 存档槽缩略图框 | 320×180 PNG | ⬜ 待制作 |
+
+### P2 - 特效屏（代码实现 or 图片）
+
+| 场景 | 描述 | 方案待定 |
+|------|------|---------|
+| Day16 冰点特效屏 | 文字碎裂/冻结动画 | 代码实现 or 图片 |
+| Day16 倒计时特效 | 数字跳动+心跳声 | 代码实现 or 图片 |
+
+---
+
+## 三、素材规格说明（不变）
 
 ### 分辨率标准
 | 类型 | 分辨率 | 用途 |
 |------|--------|------|
-| **背景图 (BG)** | 1920×1080 | 场景背景 |
-| **角色立绘 (CG)** | 800×1200 | 角色展示 |
-| **事件CG (Event)** | 1920×1080 | 关键剧情CG |
-| **UI素材** | 视具体需求 | 按钮、边框等 |
+| 背景图 (BG) | 1920×1080 | 场景背景 |
+| 角色立绘 | 800×1200 | 角色展示（透明PNG） |
+| 事件CG | 1920×1080 | 关键剧情CG |
 
 ### 美术风格
-- **画风**：日系唯美风格，类似《trlC》《Summer Pockets》
+- **画风**：日系唯美风格，类似《clannad》《Summer Pockets》
 - **色调**：温暖柔和，暗色系界面配亮色角色
-- **目标用户**：18-28岁男性，轻度二次元向
-
-### 角色立绘表情需求
-每个角色需要 **6-8种表情**：
-1. 平常（默认）
-2. 微笑
-3. 害羞/脸红
-4. 难过/哭泣
-5. 生气
-6. 惊讶
-7. 思考
-8. 特殊（恋爱/告白等）
 
 ---
 
-## 二、第一批素材（P0 - 核心体验）
+## 四、原始需求清单（v1.0 存档，2026-05-15）
 
-### 2.1 核心背景图（5张）
+<details>
+<summary>点击展开初始规划（已过时，保留供参考）</summary>
 
+### 第一批素材（P0 - 核心体验）
+
+#### 核心背景图（5张）
 | ID | 场景名称 | 描述 | 优先级 |
 |----|----------|------|--------|
 | BG_001 | 序章_卧室_清晨 | 高考前卧室，早晨阳光透窗 | ★★★ |
@@ -44,8 +139,7 @@
 | BG_004 | 第一章_教室 | 高中教室，下午阳光，陆鸣&林晚棠座位 | ★★★ |
 | BG_005 | 第一章_校园走廊 | 放学后的走廊，日落光线 | ★★☆ |
 
-### 2.2 核心角色立绘（5张基础版）
-
+#### 核心角色立绘（5张基础版）
 | ID | 角色 | 立绘描述 | 优先级 |
 |----|------|----------|--------|
 | CG_001 | 林晚棠 | 高三女生，温柔内敛，暖橙色系服装 | ★★★ |
@@ -54,149 +148,10 @@
 | CG_004 | 陈墨 | 18岁班长，冷傲学霸，蓝紫色系 | ★★★ |
 | CG_005 | 沈听雨 | 35岁神秘角色，灰紫色调 | ★★☆ |
 
-### 2.3 UI基础素材
-
-| ID | 素材名称 | 规格 | 数量 | 优先级 |
-|----|----------|------|------|--------|
-| UI_001 | 对话框背景 | 1920×220 PNG | 1 | ★★★ |
-| UI_002 | 名字框背景 | 200×60 PNG | 1 | ★★★ |
-| UI_003 | 好感度条 | 150×20 PNG | 1 | ★★★ |
-| UI_004 | 主菜单背景 | 1920×1080 PNG | 1 | ★★★ |
-| UI_005 | 系统按钮图标 | 48×48 PNG | 6 | ★★☆ |
+</details>
 
 ---
 
-## 三、第二批素材（P1 - 剧情展开）
-
-### 3.1 扩展背景图（15张）
-
-| ID | 场景名称 | 描述 | 优先级 |
-|----|----------|------|--------|
-| BG_006 | 街道_放学后 | 校园外街道，夕阳 | ★★☆ |
-| BG_007 | 咖啡馆_念卿小筑 | 苏念卿的咖啡馆，温馨风格 | ★★☆ |
-| BG_008 | 图书馆 | 学校图书馆，安静氛围 | ★★☆ |
-| BG_009 | 天台 | 教学楼天台，告白场景候选 | ★★☆ |
-| BG_010 | 便利店前 | 24小时便利店外 | ★★☆ |
-| BG_011 | 河边 | 河边夜景，萤火虫 | ★★☆ |
-| BG_012 | 神社 | 日本留学前参拜场景 | ★★☆ |
-| BG_013 | 机场 | 离别场景 | ★★☆ |
-| BG_014 | 家庭_客厅_晚 | 晚饭时家庭场景 | ★★☆ |
-| BG_015 | 医院_走廊 | 母亲病友场景 | ★★☆ |
-| BG_016 | 医院_病房 | 沈听雨出场场景 | ★★☆ |
-| BG_017 | 教室_夜间 | 自习室场景 | ★★☆ |
-| BG_018 | 公交车站 | 放学等车场景 | ★★☆ |
-| BG_019 | 公园_樱花 | 樱花树下 | ★★☆ |
-| BG_020 | 雨夜_街道 | 雨中街道，浪漫氛围 | ★★☆ |
-
-### 3.2 角色立绘扩展表情
-
-| ID | 角色 | 需要表情 | 数量 |
-|----|------|----------|------|
-| CG_001_exp | 林晚棠 | 告白脸、脸红、哭、笑 | 4 |
-| CG_002_exp | 苏念卿 | 温柔笑、回忆脸、泪、微醺 | 4 |
-| CG_003_exp | 周芷晴 | 运动脸、元气笑、沮丧、认真 | 4 |
-| CG_004_exp | 陈墨 | 冷脸、示弱、笑、哭 | 4 |
-| CG_005_exp | 沈听雨 | 神秘笑、悲伤、揭示真相 | 3 |
-
-### 3.3 剧情CG图（10张）
-
-| ID | CG名称 | 描述 | 关联女主 | 优先级 |
-|----|--------|------|----------|--------|
-| CG_E001 | 告白 | 林晚棠线告白CG | 林晚棠 | ★★★ |
-| CG_E002 | 雨伞 | 雨中送伞场景 | 林晚棠 | ★★☆ |
-| CG_E003 | 咖啡馆夜谈 | 与苏念卿深夜谈心 | 苏念卿 | ★★☆ |
-| CG_E004 | 篮球场 | 周芷晴打篮球 | 周芷晴 | ★★☆ |
-| CG_E005 | 崩溃 | 陈墨独自哭泣 | 陈墨 | ★★☆ |
-| CG_E006 | 重逢 | 命运揭示 | 沈听雨 | ★★☆ |
-| CG_E007 | 樱花飘落 | 樱花树下的约定 | 林晚棠 | ★★☆ |
-| CG_E008 | 星空 | 深夜阳台看星星 | 苏念卿 | ★★☆ |
-| CG_E009 | 蝴蝶 | 蝴蝶效应视觉化 | 全员 | ★★☆ |
-| CG_E010 | TrueEnding | 最终告白 | 全员 | ★★☆ |
-
----
-
-## 四、第三批素材（P2 - 完善体验）
-
-### 4.1 UI界面素材
-
-| ID | 素材名称 | 规格 | 数量 |
-|----|----------|------|------|
-| UI_006 | 好感度弹出特效 | 256×256 PNG序列 | 10帧 |
-| UI_007 | 记忆碎片收集动画 | 512×512 PNG序列 | 20帧 |
-| UI_008 | 蝴蝶效应特效 | 256×256 PNG序列 | 15帧 |
-| UI_009 | 加载画面 | 1920×1080 PNG | 2 |
-| UI_010 | 存档/读档界面背景 | 1920×1080 PNG | 1 |
-| UI_011 | 设置界面背景 | 1920×1080 PNG | 1 |
-
-### 4.2 差分背景（同一场景不同时间/氛围）
-
-| ID | 场景 | 差分说明 |
-|----|------|----------|
-| BG_001_night | 卧室_深夜 | 序章死亡场景用 |
-| BG_004_morning | 教室_早晨 | 不同时间段 |
-| BG_004_sunset | 教室_傍晚 | 放学时分 |
-| BG_007_night | 咖啡馆_夜晚 | 深夜氛围 |
-
-### 4.3 Q版表情包（可选）
-
-为每个角色制作 **Q版全身表情图**，用于：
-- 好感度提升提示
-- 特殊成就展示
-- 成就系统
-
----
-
-## 五、素材制作注意事项
-
-### 5.1 角色一致性要求
-- 所有角色立绘需保持**相同画风**
-- 建议使用**同一个画师**或**同一个AI模型**
-- 建议固定使用1-2个AI绘图模型批量生成
-
-### 5.2 色调参考
-
-| 角色 | 主色调 | 辅助色 |
-|------|--------|--------|
-| 林晚棠 | 暖橙 #e8a87c | 淡粉 #fff0e8 |
-| 苏念卿 | 优雅紫 #c0859b | 淡紫 #faf0f5 |
-| 周芷晴 | 元气绿 #7dd87d | 亮绿 #f0fff0 |
-| 陈墨 | 冷蓝紫 #6b6bab | 浅蓝 #f5f5fa |
-| 沈听雨 | 神秘灰紫 #9b9bcb | 深灰 #f8f8ff |
-
-### 5.3 背景色调
-- 日常场景：暖色调，温馨感
-- 回忆场景：偏蓝/紫，冷色调
-- 情感高潮：金色/橙色光芒效果
-
----
-
-## 六、AI生成建议
-
-### 推荐工具
-1. **Stable Diffusion** + ControlNet（角色一致性控制）
-2. **MidJourney**（高质量日系风格）
-3. **NovelAI**（动漫风格）
-
-### 提示词模板
-
-**角色立绘**：
-```
-(masterpiece, best quality), 1girl, [角色描述], 
-school uniform, [表情描述], upper body, 
-looking at viewer, soft lighting, 
-anime style, detailed eyes, 
-white background
-```
-
-**背景图**：
-```
-(masterpiece, best quality), [场景描述], 
-cinematic lighting, detailed background, 
-anime style, 1920x1080
-```
-
----
-
-*文档版本：v1.0*
+*文档版本：v1.1（迁移至实际集成状态）*
 *创建日期：2026-05-15*
-*预计更新：随项目进度补充*
+*最后更新：2026-05-29*

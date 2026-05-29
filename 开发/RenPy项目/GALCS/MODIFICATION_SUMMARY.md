@@ -1,164 +1,107 @@
-# 林晚棠立绘集成 - 修改总结报告
+# 修改总结报告（汇总）
 
-**日期**: 2026-05-15
 **项目**: 《重生·轻逆袭》(Re: Second Chance)
-**Git提交**: `d27f422` - feat: 为林晚棠剧本添加Day 8-11立绘显示代码
+**引擎**: Ren'Py 8.5.2
+**路径**: `J:\项目\GAL\开发\RenPy项目\GALCS\`
 
 ---
 
-## 一、修改概述
+## 一、历次修改总览
 
-本次修改将林晚棠的6张立绘从美术素材目录集成到游戏开发目录，并在林晚棠线剧本的Day 8-11中添加了立绘显示代码。
-
----
-
-## 二、文件清单
-
-### 2.1 立绘文件（6张）
-
-| 文件名 | 表情 | 用途 | 大小 |
-|--------|------|------|------|
-| `LWT_01_normal.png` | 标准 | 默认表情 | 1.23 MB |
-| `LWT_02_smile.png` | 微笑 | 开心/认可时 | 1.20 MB |
-| `LWT_03_shy.png` | 害羞 | 心动场景 | 1.59 MB |
-| `LWT_04_worried.png` | 忧虑 | 担忧时 | 1.58 MB |
-| `LWT_05_crying.png` | 哭泣 | 伤心/感动时 | 1.54 MB |
-| `LWT_06_surprised.png` | 惊讶 | 震惊场景 | 1.21 MB |
-
-### 2.2 修改的文件
-
-| 文件路径 | 修改类型 | 说明 |
-|----------|----------|------|
-| `game/characters.rpy` | 新增代码 | 添加立绘引用定义 |
-| `game/script/02_lindao_route.rpy` | 新增代码 | 添加Day 8-11立绘显示 |
-| `game/images/character/lindao/*` | 新增文件 | 6张立绘PNG |
+| 日期 | 修改主题 | 关键结果 |
+|------|---------|---------|
+| 05-15 | 项目框架搭建 + 林晚棠立绘Day8-11 | 基础可运行 ✅ |
+| 05-18 | 扩充背景图 BG-04~09 | 6张新增 |
+| 05-21 | 林晚棠线Day12-15 + CG-01~02 | 剧情推进 ✅ |
+| 05-22 | 林晚棠线Day16-18 + CG-03 | 情敌冲突 ✅ |
+| 05-25 | 林晚棠线Day19-22 + 4新表情(angry/gentle/sad/thinking) | 10表情集齐 ✅ |
+| 05-26 | 林晚棠线Day23-25 + BG-20~28 | 剧本完结 ✅ |
+| 05-27 | 风格修复（括号205处+时代用语5处）+ 黑屏审计文档 | v1.9提示词完成 ✅ |
+| 05-28 | 黑屏审计分类完成 + 待生成素材P0/P1确认 | 审计就绪 ✅ |
+| **05-29** | **阶段二（10处复用背景）+ 阶段一（BG-29~34+CG-04~07集成）** | **21处黑屏消除 ✅** |
 
 ---
 
-## 三、详细修改内容
+## 二、黑屏审计执行记录（05-29，最重要）
 
-### 3.1 characters.rpy - 立绘引用定义
+### 阶段二：10处复用已有背景
 
-**新增位置**: 第317-323行
+**01_chapter1.rpy（4处）**
+| 行号 | 场景 | 替换背景 |
+|------|------|---------|
+| 138 | 走廊去办公室 | `bg corridor` (BG-06) |
+| 190 | 走廊撞见苏念卿 | `bg corridor` (BG-06) |
+| 329 | Day2卧室早晨 | `bg bedroom` (BG-03) |
+| 509 | 操场午休 | `bg playground_bleachers` (BG-30) |
 
-```renpy
-# 林晚棠立绘（6表情）
-image lindao normal = "images/character/lindao/LWT_01_normal.png"
-image lindao smile = "images/character/lindao/LWT_02_smile.png"
-image lindao shy = "images/character/lindao/LWT_03_shy.png"
-image lindao worried = "images/character/lindao/LWT_04_worried.png"
-image lindao crying = "images/character/lindao/LWT_05_crying.png"
-image lindao surprised = "images/character/lindao/LWT_06_surprised.png"
-```
+**02_lindao_route.rpy（6处）**
+| 行号 | 场景 | 替换背景 |
+|------|------|---------|
+| 935 | 雨夜门口 | `bg apartment_entrance_rain` (BG-34，阶段一更新) |
+| 1250 | 天台午休 | `bg rooftop_day` (BG-31，阶段一更新) |
+| 1662 | 校门外送别 | `bg school_gate_dusk` (BG-26) |
+| 1790 | 教室窗边晚霞 | `bg corridor_window_sunset` (BG-25) |
+| 1978 | 卧室收消息 | `bg bedroom` (BG-03) |
+| 2430 | 林晚棠家一下午 | `bg living_room` (BG-11) |
 
-**新增位置**: 第325-334行 - 屏幕位置常量
+### 阶段一：BG-29~34 + CG-04~07 集成
 
-```renpy
-# 角色位置定义（用于立绘显示）
-define LEFT = Position(xpos=0.15, xanchor=0.5)
-define LEFT_CENTER = Position(xpos=0.3, xanchor=0.5)
-define CENTER = Position(xpos=0.5, xanchor=0.5)
-define RIGHT_CENTER = Position(xpos=0.7, xanchor=0.5)
-define RIGHT = Position(xpos=0.85, xanchor=0.5)
-define FAR_LEFT = Position(xpos=0.0, xanchor=0.5)
-define FAR_RIGHT = Position(xpos=1.0, xanchor=0.5)
-```
+**characters.rpy 新增10行定义**（BG-29~34 + CG-04~07）
 
-### 3.2 02_lindao_route.rpy - Day 8-11立绘显示
+**剧本代码改动（11处）**
+| 文件 | 行号 | 改动 |
+|------|------|------|
+| 01_chapter1.rpy | 161 | `scene black` → `bg restroom_mirror` (BG-29) |
+| 01_chapter1.rpy | 509 | `bg park_corner` → `bg playground_bleachers` (BG-30) |
+| 02_lindao_route.rpy | 935 | `bg rainy_street` → `bg apartment_entrance_rain` (BG-34) |
+| 02_lindao_route.rpy | 1250 | `bg rooftop_sunset` → `bg rooftop_day` (BG-31) |
+| 02_lindao_route.rpy | Day16(4264) | `scene black` → `show cg day16_freezing with fade` + hide |
+| 02_lindao_route.rpy | Day18(5069) | "谢谢你没有放弃"后插入 `show/hide cg day18_note` |
+| 02_lindao_route.rpy | Day20(5590) | `scene black` → `bg rooftop_day` (BG-31) |
+| 02_lindao_route.rpy | Day20(5606) | 去掉多余 `scene black` |
+| 02_lindao_route.rpy | BE(7492) | `scene black` → `show cg be_empty_seat with fade` + pause 3.0 + hide |
+| 02_lindao_route.rpy | TE(8376) | `scene black` → `bg living_room_warm` (BG-32) |
+| 02_lindao_route.rpy | TE(8541) | `scene black` → `bg university_gate` (BG-33) |
+| 02_lindao_route.rpy | TE(8612后) | 插入 `show cg te_reunion with fade` + pause 4.0 + hide |
 
-| Day | 场景 | 使用表情 | 代码行 |
-|-----|------|----------|--------|
-| Day 8 | 早上相遇 | surprised, normal, shy | 66-103 |
-| Day 8 | 教室场景 | shy, normal | 126-148 |
-| Day 8 | 送牛奶 | surprised, smile | 160-189 |
-| Day 9 | 雨中送伞 | worried, surprised, shy, crying | 239-359 |
-| Day 10 | 天台午餐 | normal, smile | 394-511 |
-| Day 11 | 夕阳对话 | normal, smile, shy, surprised | 555-641 |
-
----
-
-## 四、路径规范（重要）
-
-### 4.1 美术素材备份目录
-```
-J:\项目\GAL\美术素材\立绘\LWT\
-```
-
-### 4.2 游戏开发引用目录
-```
-J:\项目\GAL\开发\RenPy项目\GALCS\game\images\character\lindao\
-```
-
-### 4.3 代码引用路径（相对路径）
-```
-images/character/lindao/LWT_XX_*.png
-```
+**验证**: 16/16 全部 ✅
 
 ---
 
-## 五、立绘使用规范
+## 三、素材集成现状
 
-### 5.1 显示立绘
-```renpy
-show lindao [表情] at LEFT with dissolve
-```
-
-### 5.2 切换表情
-```renpy
-show lindao [新表情] at LEFT with dissolve
-```
-
-### 5.3 隐藏立绘
-```renpy
-hide lindao with dissolve
-```
-
-### 5.4 位置常量说明
-| 常量 | xpos值 | 用途 |
-|------|--------|------|
-| LEFT | 0.15 | 左对齐（主要角色位置） |
-| CENTER | 0.5 | 居中 |
-| RIGHT | 0.85 | 右对齐 |
+| 类型 | 总数 | 详情 |
+|------|------|------|
+| 背景 BG | **34张** | BG-01~34（含阶段一新增BG-29~34） |
+| CG | **7张** | CG-01~07（含阶段一新增CG-04~07） |
+| 林晚棠立绘 | **10表情** | zoom=0.85，全部集成 ✅ |
+| 其他女主立绘 | 0 | 待制作 |
 
 ---
 
-## 六、Git提交信息
+## 四、待处理事项
 
-```
-commit d27f4223eacc4e3b9fbdafab46495e259aa9aa44
-Author: wangjinman <442988978@qq.com>
-Date:   Fri May 15 16:50:40 2026 +0800
+### P1
+- [ ] 时代错位用语剩余（~3处）
+- [ ] 其他女主立绘+剧本
 
-    feat: 为林晚棠剧本添加Day 8-11立绘显示代码
-```
-
-**变更统计**: 20 files changed, 85 insertions(+), 1 deletion(-)
-
----
-
-## 七、待完成工作
-
-### 7.1 Day 13+ 立绘代码（未完成）
-- [ ] Day 13: 移民风波（哭泣/担忧场景）
-- [ ] Day 14: 多肉存活（微笑/感动场景）
-- [ ] Day 17-18: 蝴蝶效应大高潮（哭泣/开心场景）
-- [ ] Day 20-21: 告白准备（害羞场景）
-- [ ] Day 22-25: 最终告白与结局
-
-### 7.2 其他美术素材（待集成）
-- [ ] 背景图（教室、天台、图书馆等）
-- [ ] UI素材（按钮、对话框边框等）
-- [ ] 其他女主立绘（苏念卿、周芷晴、陈墨、沈听雨）
+### P2
+- [ ] Day16冰点特效屏/倒计时特效（代码实现 or 图片）
+- [ ] UI素材（存档槽/设置面板）
+- [ ] 行9254 另一路线TE是否同步改`university_gate`（待确认）
+- [ ] Git提交（累积大量改动未提交）
 
 ---
 
-## 八、测试建议
+## 五、Ren'Py 8.5 踩坑记录
 
-1. 运行 `j:RenPy 8.x.x Launcher` 
-2. 打开项目: `J:\项目\GAL\开发\RenPy项目\GALCS`
-3. 点击 "Launch Project" 测试立绘显示效果
-4. 检查各场景立绘切换是否流畅
+| 问题 | 错误写法 | 正确写法 |
+|------|---------|---------|
+| 窗口隐藏 | `WindowHide()` | `_window_hide` |
+| 屏幕变换 | `show screen X with transform` | `show screen X at transform_name` |
+| 通知调用 | `$ show_notification(...)` | `call show_notification` |
+| 特殊符号 | ✦ ✧ | 方框，需替换 |
 
 ---
 
-*报告生成时间: 2026-05-15 16:51*
+*最后更新：2026-05-29*
