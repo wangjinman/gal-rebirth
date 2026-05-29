@@ -932,7 +932,7 @@ label lindao_day9_talking:
 
 label lindao_day9_home:
 
-    scene black
+    scene bg apartment_entrance_rain with dissolve
 
 
 
@@ -1247,7 +1247,7 @@ label lindao_day10:
 
 
 
-    scene black
+    scene bg rooftop_day with dissolve
 
 
 
@@ -1659,7 +1659,7 @@ label lindao_day10_5:
 
 
 
-    scene black
+    scene bg school_gate_dusk with dissolve
 
 
 
@@ -1787,7 +1787,7 @@ label lindao_day11:
 
 
 
-    scene black
+    scene bg corridor_window_sunset with dissolve
 
 
 
@@ -1975,7 +1975,7 @@ label lindao_day12:
 
 
 
-    scene black
+    scene bg bedroom with dissolve
 
 
 
@@ -2427,7 +2427,7 @@ label lindao_day12:
 
 
 
-    scene black
+    scene bg living_room with dissolve
 
 
 
@@ -4261,9 +4261,7 @@ label lindao_day16:
 
 
 
-        scene black
-
-
+        show cg day16_freezing with fade
 
         narrator "{b}{color=#FF6B6B}关系降至冰点{/color}{/b}"
 
@@ -4272,6 +4270,8 @@ label lindao_day16:
         narrator "这一次，我真的搞砸了。"
 
 
+
+        hide cg day16_freezing with fade
 
         scene black
 
@@ -5068,9 +5068,12 @@ label lindao_day18:
     narrator "她抬头看着我。"
     lindao "谢谢你没有放弃。"
 
+    show cg day18_note with dissolve
 
     narrator "她的眼眶有些红。"
 
+
+    hide cg day18_note with dissolve
 
     show lindao sad at LEFT with dissolve
 
@@ -5587,7 +5590,7 @@ label lindao_day20:
 
 
 
-    scene black
+    scene bg rooftop_day with dissolve
 
 
 
@@ -5600,10 +5603,6 @@ label lindao_day20:
 
 
     narrator "不能再拖了。"
-
-
-
-    scene black
 
 
 
@@ -7489,9 +7488,9 @@ label lindao_bad_ending_confession_failed:
 
 
 
-    scene black
+    show cg be_empty_seat with fade
 
-
+    pause 3.0
 
     narrator "我站在空荡荡的座位前。"
 
@@ -7524,6 +7523,8 @@ label lindao_bad_ending_confession_failed:
     narrator "连一个'朋友'的称呼都没有。"
 
 
+
+    hide cg be_empty_seat with fade
 
     scene black
 
@@ -8373,7 +8374,7 @@ label lindao_day25_true_ending:
 
 
 
-    scene black
+    scene bg living_room_warm with dissolve
 
 
 
@@ -8537,7 +8538,7 @@ label lindao_day25_true_ending:
 
 
 
-    scene black
+    scene bg university_gate with dissolve
 
 
 
@@ -8608,6 +8609,13 @@ label lindao_day25_true_ending:
     narrator "而且，我拥有了最好的一切。"
 
 
+
+
+    show cg te_reunion with fade
+
+    pause 4.0
+
+    hide cg te_reunion with fade
 
     scene black
 

@@ -543,6 +543,44 @@ image bg residential_night_clear = "images/backgrounds/BG_27_residential_street_
 image bg cafe_street_evening = "images/backgrounds/BG_28_cafe_exterior_street_evening.png"
 
 # =============================================================================
+# 黑屏审计新增背景（BG-29~34）v1.9
+# =============================================================================
+
+# 学校洗手间·镜前·白天 - Day1 重生后照镜子独白 / Day9 整理仪容
+image bg restroom_mirror = "images/backgrounds/BG_29_restroom_mirror_day.png"
+
+# 学校操场·看台台阶·正午 - Day2 午休和林远兄弟情场景
+image bg playground_bleachers = "images/backgrounds/BG_30_playground_bleachers_noon_empty.png"
+
+# 学校天台·白天·午后晴空 - Day10 天台并肩看天 / Day20 写告白词
+image bg rooftop_day = "images/backgrounds/BG_31_rooftop_afternoon_day.png"
+
+# 家中客厅·温馨傍晚 - TE 成绩出来那天林父接受主角（比BG-11更暖更温馨）
+image bg living_room_warm = "images/backgrounds/BG_32_living_room_warm_evening.png"
+
+# 大学校门·九月清晨 - TE 开学日结局（与BG-22高中校门形成对比）
+image bg university_gate = "images/backgrounds/BG_33_university_gate_september_morning_empty.png"
+
+# 住宅楼门口·雨夜 - Day9 送林晚棠到家门口告别（BG-09远景→近景特写）
+image bg apartment_entrance_rain = "images/backgrounds/BG_34_apartment_entrance_rainy_night.png"
+
+# =============================================================================
+# 林晚棠线新增CG（CG-04~07）v1.9
+# =============================================================================
+
+# CG-04 - 【Bad Ending·空座位】林晚棠转学离去，空荡荡的窗边座位（情绪峰值★5）
+image cg be_empty_seat = "images/cg/CG_04_be_empty_seat.png"
+
+# CG-05 - 【Day16·冰点】关系降至冰点，林晚棠背对主角肩膀颤抖（情绪峰值★4）
+image cg day16_freezing = "images/cg/CG_05_day16_freezing_point.png"
+
+# CG-06 - 【Day18·转机纸条】公园里林晚棠递出折叠纸条，命运重新连接（情绪峰值★4）
+image cg day18_note = "images/cg/CG_06_day18_note_park.png"
+
+# CG-07 - 【True Ending·樱花重逢】所有遗憾被弥补的终极幸福画面（情绪峰值★5）
+image cg te_reunion = "images/cg/CG_07_te_reunion_sakura.png"
+
+# =============================================================================
 # UI素材 - 选择菜单按钮（3态差分）
 # =============================================================================
 

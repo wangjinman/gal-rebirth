@@ -135,7 +135,7 @@ label chapter1_day1:
 
     narrator "我没有多想。"
 
-    scene black
+    scene bg corridor with dissolve
 
     narrator "去办公室的路上。"
 
@@ -158,7 +158,7 @@ label chapter1_day1:
             jump chapter1_day1_office
 
 label chapter1_day1_restroom:
-    scene black
+    scene bg restroom_mirror with dissolve
 
     narrator "我站在洗手间的镜子前。"
 
@@ -187,7 +187,7 @@ label chapter1_day1_restroom:
     jump chapter1_day1_office
 
 label chapter1_day1_office:
-    scene black
+    scene bg corridor with dissolve
 
     narrator "我沿着走廊往办公室走。"
 
@@ -326,7 +326,7 @@ label chapter1_day2:
 
     pause 1.0
 
-    scene black
+    scene bg bedroom with dissolve
 
     narrator "第二天。"
 
@@ -506,7 +506,7 @@ label chapter1_day2_observe:
     narrator "先处理最重要的事。"
 
 label chapter1_day2_continue:
-    scene black
+    scene bg playground_bleachers with dissolve
 
     narrator "午休时间。"
 
