@@ -4263,15 +4263,13 @@ label lindao_day16:
 
         show cg day16_freezing with fade
 
-        narrator "{b}{color=#FF6B6B}关系降至冰点{/color}{/b}"
+        call show_ice_point
 
 
+
+        hide cg day16_freezing with dissolve
 
         narrator "这一次，我真的搞砸了。"
-
-
-
-        hide cg day16_freezing with fade
 
         scene black
 
@@ -5068,12 +5066,25 @@ label lindao_day18:
     narrator "她抬头看着我。"
     lindao "谢谢你没有放弃。"
 
+
+    hide lindao with dissolve
+
+
+    # 两人走到附近的空地
+    scene bg playground_bleachers with dissolve
+
+    narrator "我们走到了操场看台那边。"
+
+
     show cg day18_note with dissolve
 
     narrator "她的眼眶有些红。"
 
 
     hide cg day18_note with dissolve
+
+
+    scene bg residential_street with dissolve
 
     show lindao sad at LEFT with dissolve
 
@@ -5593,6 +5604,8 @@ label lindao_day20:
     scene bg rooftop_day with dissolve
 
 
+
+    call show_countdown(12)
 
     narrator "高考倒计时：12天。"
 
@@ -6358,9 +6371,9 @@ label lindao_day23:
 
 
 
-    scene black
+    scene bg rooftop_day with dissolve
 
-
+    call show_countdown(9)
 
     narrator "高考倒计时：9天。"
 
@@ -7252,7 +7265,7 @@ label lindao_day23:
 
 
 
-    scene bg classroom_sunset with dissolve
+    scene bg rooftop_stars with dissolve
 
 
 
@@ -7289,8 +7302,6 @@ label lindao_day23:
 
 
     # 【CG-01 星空告白】
-
-    scene black with dissolve
 
     show cg_01_starry_sky_confession with dissolve
 
@@ -9259,7 +9270,7 @@ label lindao_day25:
 
 
 
-    scene black
+    scene bg university_gate with dissolve
 
 
 

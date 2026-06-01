@@ -368,6 +368,163 @@ transform toast_anim:
 
 
 # =============================================================================
+# Day16 冰点特效屏
+# 用法: call show_ice_point
+# 在 CG-05 图片之上叠加蓝冰色文字 + 颤动动画，模拟关系冻结感
+# 总时长约 3.5 秒
+# =============================================================================
+
+init python:
+    _ice_point_initialized = True
+
+label show_ice_point:
+    window hide
+    show screen _ice_point_screen
+    $ renpy.pause(3.5)
+    hide screen _ice_point_screen with dissolve
+    window show
+    return
+
+screen _ice_point_screen:
+    zorder 250
+
+    # 全屏半透明蓝黑遮罩
+    frame:
+        background Solid("#00001acc")
+        xfill True
+        yfill True
+
+    # 冰裂线条装饰（模拟冻裂感，使用文字排版）
+    vbox:
+        xalign 0.5
+        yalign 0.42
+        spacing 18
+
+        # 主文字：关系降至冰点（用 ATL 颤动动画）
+        text "{b}关系降至冰点{/b}":
+            at ice_shake
+            xalign 0.5
+            size 72
+            color "#7ec8e3"
+            outlines [(3, "#003a5c", 1, 1), (1, "#b0e0f0", 0, 0)]
+
+        # 副文字：英文对照，增加质感
+        text "RELATIONSHIP — FROZEN":
+            at ice_fade_in
+            xalign 0.5
+            size 22
+            color "#4a8fa8"
+            outlines [(1, "#001a2e", 0, 0)]
+
+        # 提示符：强调数值下降
+        null height 8
+
+        text "好感度 {color=#FF4444}-20{/color}":
+            at ice_fade_in
+            xalign 0.5
+            size 28
+            color "#c0d8e8"
+            outlines [(1, "#001020", 0, 0)]
+
+# 主标题：轻微颤动 + 蓝光脉冲感
+transform ice_shake:
+    alpha 0.0
+    easein 0.4 alpha 1.0
+    # 颤动循环（模拟冰裂震动）
+    block:
+        linear 0.06 xoffset -3
+        linear 0.06 xoffset 3
+        linear 0.06 xoffset -2
+        linear 0.06 xoffset 0
+        repeat 4
+    pause 0.5
+    # 颤动结束，稳定
+    pause 1.2
+    easeout 0.5 alpha 0.0
+
+# 副文字/数值：延迟淡入
+transform ice_fade_in:
+    alpha 0.0
+    pause 0.6
+    easein 0.5 alpha 1.0
+    pause 1.5
+    easeout 0.5 alpha 0.0
+
+
+# =============================================================================
+# 高考倒计时特效屏
+# 用法: call show_countdown(days)
+#   days = 剩余天数（整数）
+# 在当前背景之上叠加倒计时，红色数字脉冲缩放，约 2.8 秒
+# =============================================================================
+
+init python:
+    _countdown_days = 0
+
+label show_countdown(days=0):
+    $ _countdown_days = days
+    window hide
+    show screen _countdown_screen
+    $ renpy.pause(2.8)
+    hide screen _countdown_screen with dissolve
+    window show
+    return
+
+screen _countdown_screen:
+    zorder 250
+
+    # 顶部居中显示，不遮挡背景
+    frame:
+        at countdown_slide_in
+        xalign 0.5
+        ypos 60
+        background Solid("#1a000099")
+        xpadding 50
+        ypadding 20
+
+        hbox:
+            xalign 0.5
+            spacing 12
+
+            text "高考倒计时":
+                size 32
+                color "#cccccc"
+                yalign 0.5
+
+            text "{b}[_countdown_days]{/b}":
+                at countdown_pulse
+                size 60
+                color "#FF4444"
+                yalign 0.5
+
+            text "天":
+                size 32
+                color "#cccccc"
+                yalign 0.5
+
+# 整体从上方滑入
+transform countdown_slide_in:
+    yoffset -80
+    alpha 0.0
+    easein 0.35 yoffset 0 alpha 1.0
+    pause 1.8
+    easeout 0.45 yoffset -30 alpha 0.0
+
+# 数字心跳脉冲
+transform countdown_pulse:
+    zoom 1.0
+    # 入场时放大一次
+    pause 0.3
+    linear 0.15 zoom 1.25
+    linear 0.15 zoom 1.0
+    # 等待
+    pause 0.6
+    # 再跳一次
+    linear 0.12 zoom 1.18
+    linear 0.12 zoom 1.0
+
+
+# =============================================================================
 # 主菜单
 # =============================================================================
 
