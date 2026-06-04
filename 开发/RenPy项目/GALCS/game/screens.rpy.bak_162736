@@ -585,6 +585,7 @@ screen load_save_screen(which):
     tag menu
     zorder 150
 
+    # ---- 全屏容器 ----
     vbox:
         spacing 0
 
@@ -594,136 +595,91 @@ screen load_save_screen(which):
             ysize 72
             background Solid("#00000088")
             padding (100, 0, 40, 0)
-
-            # 返回按钮（左侧）
-            #   which="save" → 从游戏快捷按钮进入 → Hide 回到游戏
-            #   which="load" → 从主菜单进入 → 回到主菜单
-            textbutton "← 返回":
+            hbox:
                 yalign 0.5
-                action If(which == "save", Hide("load_save_screen"), ShowMenu("main_menu"))
-                text_style "data_back_button"
+                textbutton "← 返回":
+                    action Hide("load_save_screen")
+                    text_style "data_back_button"
+                text "{b}[which]{/b}":
+                    size 32
+                    color "#f0f0f0"
+                    xpos 30
 
-            # 标题（绝对居中，无视返回按钮）
-            text "{b}[which]{/b}":
-                size 32
-                color "#f0f0f0"
-                xanchor 0.5      # 文字锚点=中心
-                xpos 880         # 屏幕宽1760(去padding)/2 = 绝对居中
-                yalign 0.5
-
-        # 存档槽区域（加暗色底，阻断游戏场景穿透）
+        # 存档槽区域
         frame:
             xalign 0.5
             xsize 1350
-            yfill True
-            background Solid("#1a1a2edd")
-            padding (40, 40, 40, 20)
+            ysize 980
+            background None
+            padding (40, 30, 40, 30)
 
-            vbox:
-                spacing 20
+            grid 3 4:
+                spacing 28
                 xalign 0.5
 
-                # ====== 存档槽 grid（3×3 = 9槽/页）======
-                grid 3 3:
-                    spacing 50
-                    xalign 0.5
+                for i in range(12):
+                    $ slot_num = i + 1
 
-                    for i in range(9):
-                        $ slot_num = (persistent.save_page - 1) * 9 + i + 1
+                    # 每个格子用 fixed 叠层：底层按钮 + 上层视觉元素
+                    fixed:
+                        xsize 380
+                        ysize 228
 
+                        # ====== 底层：imagebutton（只负责交互+背景切换）=====
                         if FileLoadable(slot_num):
-                            # ====== 有存档：fixed 叠层 ======
-                            fixed:
-                                xsize 380
-                                ysize 228
-
-                                # 底层：imagebutton（截图+hover切换）
-                                imagebutton:
-                                    xsize 380
-                                    ysize 228
-                                    idle Composite((380, 228),
-                                        (0, 0), _slot_screenshot(slot_num),
-                                        (0, 0), "images/UI/UI_data_slot_default.png")
-                                    hover Composite((380, 228),
-                                        (0, 0), _slot_screenshot(slot_num),
-                                        (0, 0), "images/UI/UI_data_slot_hover.png")
-                                    action FileAction(slot_num)
-                                    sensitive True
-
-                                # 上层：信息条（底部，半透明底）
-                                frame:
-                                    yalign 1.0
-                                    xfill True
-                                    background Solid("#00000099")
-                                    padding (14, 6, 14, 6)
-                                    vbox:
-                                        spacing 2
-                                        text FileSaveName(slot_num, empty="存档 {}".format(slot_num)):
-                                            size 20
-                                            color "#f0f0f0"
-                                        $ sjson = renpy.slot_json(str(slot_num)) or {}
-                                        $ rt = sjson.get("_game_runtime", 0)
-                                        text "{}  {}".format(
-                                            _format_time(rt),
-                                            FileTime(slot_num, format="%Y/%m/%d %H:%M", empty="")
-                                        ):
-                                            size 15
-                                            color "#cccccc"
-
-                                # 上层：NEW 角标（右上角）
-                                if FileNewest(slot_num):
-                                    add "images/UI/UI_data_badge_new.png":
-                                        xalign 1.0
-                                        yalign 0.0
-                                        xoffset -6
-                                        yoffset 6
-
-                        else:
-                            # ====== 空槽：图片+文字合成到imagebutton ======
-                            $ empty_txt = Text("没有数据", size=28, color="#888888", xanchor=0.5, yanchor=0.5)
                             imagebutton:
                                 xsize 380
                                 ysize 228
-                                idle Composite((380, 228),
-                                    (0, 0), "images/UI/UI_data_slot_empty_default.png",
-                                    (155, 173), empty_txt)
-                                hover Composite((380, 228),
-                                    (0, 0), "images/UI/UI_data_slot_empty_hover.png",
-                                    (155, 173), empty_txt)
+                                idle "images/UI/UI_data_slot_default.png"
+                                hover "images/UI/UI_data_slot_hover.png"
                                 action FileAction(slot_num)
-                                sensitive True
+                                # 无子元素，纯图片按钮，hover 100% 可靠
+                        else:
+                            imagebutton:
+                                xsize 380
+                                ysize 228
+                                idle "images/UI/UI_data_slot_empty_default.png"
+                                hover "images/UI/UI_data_slot_empty_hover.png"
+                                action FileAction(slot_num)
 
-                # ====== 分页导航栏 ======
-                hbox:
-                    xalign 0.5
-                    spacing 40
+                        # ====== 上层：截图（叠加在按钮之上，add 不拦截鼠标）=====
+                        if FileLoadable(slot_num):
+                            add FileScreenshot(slot_num, empty=Null()):
+                                xsize 380
+                                ysize 160
+                                ypos 0
 
-                    # 上一页
-                    textbutton "◀":
-                        action SetField(persistent, "save_page", persistent.save_page - 1)
-                        sensitive persistent.save_page > 1
-                        text_style "data_page_btn"
+                            # ====== 上层：信息条（底部）======
+                            frame:
+                                ypos 160
+                                xsize 380
+                                ysize 68
+                                background None
+                                padding (14, 6, 14, 6)
+                                vbox:
+                                    spacing 2
+                                    text FileSaveName(slot_num, empty=""):
+                                        size 20
+                                        color "#2a2a3e"
+                                    $ sjson = renpy.slot_json(str(slot_num)) or {}
+                                    $ rt = sjson.get("_game_runtime", 0)
+                                    text "{}  {}".format(
+                                        _format_time(rt),
+                                        FileTime(slot_num, format="%Y/%m/%d %H:%M", empty="")
+                                    ):
+                                        size 15
+                                        color "#6a6a8e"
 
-                    # 页码指示
-                    text "第 [persistent.save_page] 页":
-                        size 24
-                        color "#f0f0f0"
-                        yalign 0.5
-
-                    # 下一页
-                    textbutton "▶":
-                        action SetField(persistent, "save_page", persistent.save_page + 1)
-                        sensitive persistent.save_page < 99
-                        text_style "data_page_btn"
-
-                # 提示文字
-                text "共 9 个存档槽 / 页":
-                    size 18
-                    color "#cccccc"
-                    xalign 0.5
+                            # new 角标（右上角）
+                            if FileNewest(slot_num):
+                                add "images/UI/UI_data_badge_new.png":
+                                    xpos 380
+                                    ypos 0
+                                    xoffset -38
+                                    yoffset 6
 
 
-
+# 格式化游戏运行时间（秒 → MM:SS 或 HH:MM:SS）
 init -1 python:
     def _format_time(seconds):
         try:
@@ -737,27 +693,11 @@ init -1 python:
         except (TypeError, ValueError):
             return "00:00"
 
-    def _slot_screenshot(slot_num):
-        """安全获取存档槽截图，失败返回空占位"""
-        try:
-            ss = FileScreenshot(slot_num, empty=None)
-            if ss is not None:
-                return im.Scale(ss, 380, 228)
-        except Exception:
-            pass
-        return Null(width=380, height=228)
-
 
 style data_back_button:
     size 24
     color "#cccccc"
     hover_color "#ffffff"
-
-style data_page_btn:
-    size 36
-    color "#cccccc"
-    hover_color "#ffffff"
-    padding (20, 8, 20, 8)
 
 # =============================================================================
 # 游戏设置界面

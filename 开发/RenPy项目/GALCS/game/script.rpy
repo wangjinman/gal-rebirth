@@ -3,6 +3,9 @@
 # 《重生·轻逆袭》(Re: Second Chance)
 # =============================================================================
 
+# 持久化变量默认值（游戏启动时自动初始化，无需等待新游戏）
+default persistent.save_page = 1
+
 # 启动时执行
 label start:
     # 初始化游戏
@@ -264,14 +267,26 @@ label game_over:
             return
 
 label _return_to_title:
-    jump start
+    # 返回主菜单（标准写法）
+    $ renpy.quit(relaunch=True)
 
 # =============================================================================
 # 标题画面（从Ren'Py模板调用）
+# 注意：不要定义 main_menu label，否则会覆盖 screen main_menu()
+# 如果定义了且含 return，会跳过菜单直接进入 start
 # =============================================================================
 
-label before_main_menu:
+label splashscreen:
+    # 开场画面 → 显示主菜单（show screen 不阻塞，让引擎正常处理后续）
+    scene black
+    with fade
+    pause 0.5
     return
 
 label main_menu:
+    # 显示自定义主菜单屏幕，等待用户操作（Start/Load/Prefs等）
+    show screen main_menu
+    $ renpy.pause()
+
+label before_main_menu:
     return
